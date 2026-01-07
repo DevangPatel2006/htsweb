@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Twitter, Linkedin, Instagram, Mail, MapPin, Heart } from "lucide-react";
+import { Github, Twitter, Linkedin, Instagram, Mail, MapPin, Heart, Rocket } from "lucide-react";
 
 const socialLinks = [
   { icon: Twitter, href: "https://twitter.com/hackthespring", label: "Twitter" },
@@ -13,6 +13,7 @@ const quickLinks = [
   { name: "Tracks", href: "#tracks" },
   { name: "Timeline", href: "#timeline" },
   { name: "Prizes", href: "#prizes" },
+  { name: "Team", href: "#team" },
   { name: "Sponsors", href: "#sponsors" },
   { name: "FAQ", href: "#faq" },
 ];
@@ -29,8 +30,8 @@ export default function Footer() {
     <footer className="relative bg-secondary/50 border-t border-border overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-nebula-purple/5 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-nebula-pink/5 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
       </div>
 
       <div className="container mx-auto px-4 py-16 relative z-10">
@@ -45,9 +46,7 @@ export default function Footer() {
             >
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-12 h-12 rounded-xl bg-gold-gradient flex items-center justify-center shadow-glow-gold">
-                  <span className="font-display text-primary-foreground font-bold text-xl">
-                    H
-                  </span>
+                  <Rocket className="w-6 h-6 text-primary-foreground" />
                 </div>
                 <div>
                   <h3 className="font-display text-2xl font-bold text-primary">
@@ -58,7 +57,7 @@ export default function Footer() {
               </div>
               <p className="font-body text-muted-foreground mb-6 max-w-md">
                 Gujarat's premier 48-hour offline hackathon where innovation blooms. 
-                Join 600+ developers to build, learn, and grow together.
+                Join 600+ developers to build, learn, and grow together across the galaxy.
               </p>
 
               {/* Location */}
@@ -160,7 +159,7 @@ export default function Footer() {
               © 2026 Hack The Spring. All rights reserved.
             </p>
             <p className="font-body text-sm text-muted-foreground flex items-center gap-1">
-              Made with <Heart className="w-4 h-4 text-cherry-blossom fill-current" /> in Gujarat, India
+              Made with <Heart className="w-4 h-4 text-nebula-pink fill-current" /> in Gujarat, India
             </p>
           </div>
         </motion.div>

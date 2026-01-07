@@ -67,18 +67,19 @@ export default {
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
 				},
-				'spring-gold': 'hsl(var(--spring-gold))',
-				'spring-gold-glow': 'hsl(var(--spring-gold-glow))',
-				'emerald': 'hsl(var(--emerald))',
-				'emerald-dark': 'hsl(var(--emerald-dark))',
-				'teal': 'hsl(var(--teal))',
-				'teal-glow': 'hsl(var(--teal-glow))',
-				'cherry-blossom': 'hsl(var(--cherry-blossom))',
-				'aurora-green': 'hsl(var(--aurora-green))',
-				'aurora-blue': 'hsl(var(--aurora-blue))',
-				'night-sky': 'hsl(var(--night-sky))',
-				'forest-deep': 'hsl(var(--forest-deep))',
-				'moonlight': 'hsl(var(--moonlight))',
+				// Extended Space Theme Colors
+				'cosmic-gold': 'hsl(var(--cosmic-gold))',
+				'cosmic-gold-glow': 'hsl(var(--cosmic-gold-glow))',
+				'nebula-purple': 'hsl(var(--nebula-purple))',
+				'nebula-purple-dark': 'hsl(var(--nebula-purple-dark))',
+				'nebula-pink': 'hsl(var(--nebula-pink))',
+				'nebula-pink-glow': 'hsl(var(--nebula-pink-glow))',
+				'cosmic-blue': 'hsl(var(--cosmic-blue))',
+				'cosmic-blue-glow': 'hsl(var(--cosmic-blue-glow))',
+				'star-white': 'hsl(var(--star-white))',
+				'deep-space': 'hsl(var(--deep-space))',
+				'void-black': 'hsl(var(--void-black))',
+				'stardust': 'hsl(var(--stardust))',
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -113,6 +114,10 @@ export default {
 				'scale-in': {
 					'0%': { opacity: '0', transform: 'scale(0.9)' },
 					'100%': { opacity: '1', transform: 'scale(1)' }
+				},
+				'twinkle': {
+					'0%, 100%': { opacity: '0.3', transform: 'scale(1)' },
+					'50%': { opacity: '1', transform: 'scale(1.2)' }
 				}
 			},
 			animation: {
@@ -122,19 +127,21 @@ export default {
 				'glow-pulse': 'glow-pulse 3s ease-in-out infinite',
 				'slide-up': 'slide-up 0.6s ease-out',
 				'fade-in': 'fade-in 0.5s ease-out',
-				'scale-in': 'scale-in 0.4s ease-out'
+				'scale-in': 'scale-in 0.4s ease-out',
+				'twinkle': 'twinkle 3s ease-in-out infinite'
 			},
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-				'hero-gradient': 'linear-gradient(180deg, hsl(160 30% 4%) 0%, hsl(160 30% 8%) 50%, hsl(175 40% 10%) 100%)',
-				'gold-gradient': 'linear-gradient(135deg, hsl(45 90% 55%) 0%, hsl(35 100% 60%) 100%)',
-				'emerald-gradient': 'linear-gradient(135deg, hsl(160 70% 35%) 0%, hsl(175 70% 40%) 100%)',
-				'aurora-gradient': 'linear-gradient(135deg, hsl(120 60% 50%) 0%, hsl(175 70% 40%) 50%, hsl(200 80% 50%) 100%)',
+				'hero-gradient': 'linear-gradient(180deg, hsl(240 30% 3%) 0%, hsl(260 40% 8%) 50%, hsl(280 35% 12%) 100%)',
+				'gold-gradient': 'linear-gradient(135deg, hsl(35 100% 55%) 0%, hsl(45 100% 60%) 100%)',
+				'nebula-gradient': 'linear-gradient(135deg, hsl(270 60% 50%) 0%, hsl(320 80% 55%) 100%)',
+				'cosmic-gradient': 'linear-gradient(135deg, hsl(220 80% 50%) 0%, hsl(270 60% 50%) 50%, hsl(320 80% 55%) 100%)',
 			},
 			boxShadow: {
-				'glow-gold': '0 0 40px hsla(45, 90%, 55%, 0.3)',
-				'glow-emerald': '0 0 30px hsla(160, 70%, 35%, 0.3)',
-				'glow-teal': '0 0 25px hsla(175, 70%, 40%, 0.25)',
+				'glow-gold': '0 0 40px hsla(35, 100%, 55%, 0.4)',
+				'glow-nebula': '0 0 30px hsla(270, 60%, 50%, 0.4)',
+				'glow-pink': '0 0 25px hsla(320, 80%, 55%, 0.35)',
+				'glow-cosmic': '0 0 50px hsla(270, 60%, 50%, 0.3), 0 0 100px hsla(320, 80%, 55%, 0.2)',
 			}
 		}
 	},

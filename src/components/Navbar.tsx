@@ -8,6 +8,7 @@ const navLinks = [
   { name: "Tracks", href: "#tracks" },
   { name: "Timeline", href: "#timeline" },
   { name: "Prizes", href: "#prizes" },
+  { name: "Team", href: "#team" },
   { name: "Sponsors", href: "#sponsors" },
   { name: "FAQ", href: "#faq" },
 ];
