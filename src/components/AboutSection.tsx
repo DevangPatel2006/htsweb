@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Users, Clock, Lightbulb, Trophy, Code, Rocket } from "lucide-react";
+import ImageCarousel from "@/components/ImageCarousel";
 
 const stats = [
   { icon: Users, value: "600+", label: "Participants" },
@@ -43,8 +44,8 @@ export default function AboutSection() {
     >
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
+        <div className="absolute top-0 left-0 w-96 h-96 bg-nebula-purple/5 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 right-0 w-96 h-96 bg-nebula-pink/5 rounded-full blur-3xl" />
       </div>
 
       <div className="container mx-auto px-4 relative z-10">
@@ -56,7 +57,7 @@ export default function AboutSection() {
           className="text-center mb-16"
         >
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="text-gradient-gold">Step Into the Garden</span>
+            <span className="text-gradient-gold">Step Into the Galaxy</span>
           </h2>
           <p className="font-heading text-xl text-muted-foreground max-w-3xl mx-auto">
             of Innovation
@@ -64,7 +65,7 @@ export default function AboutSection() {
         </motion.div>
 
         {/* Main Content */}
-        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-20">
+        <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center mb-16">
           {/* Left - Text Content */}
           <motion.div
             initial={{ opacity: 0, x: -30 }}
@@ -115,6 +116,19 @@ export default function AboutSection() {
           </motion.div>
         </div>
 
+        {/* Image Gallery Carousel */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mb-16"
+        >
+          <h3 className="font-display text-2xl font-semibold text-center mb-8 text-foreground">
+            Event Highlights
+          </h3>
+          <ImageCarousel direction="left" />
+        </motion.div>
+
         {/* Features */}
         <div className="grid md:grid-cols-3 gap-6">
           {features.map((feature, index) => (
@@ -125,7 +139,7 @@ export default function AboutSection() {
               transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
               className="glass-card rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 group"
             >
-              <div className="w-14 h-14 mb-6 rounded-xl bg-emerald-gradient flex items-center justify-center shadow-glow-emerald group-hover:scale-110 transition-transform">
+              <div className="w-14 h-14 mb-6 rounded-xl bg-nebula-gradient flex items-center justify-center shadow-glow-nebula group-hover:scale-110 transition-transform">
                 <feature.icon className="w-7 h-7 text-foreground" />
               </div>
               <h3 className="font-display text-xl font-semibold mb-3 text-foreground">
