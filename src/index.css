@@ -4,117 +4,117 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700&family=Raleway:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700;800&display=swap');
 
-/* Hack The Spring 2026 Design System - Spring Night Forest Theme */
+/* Hack The Spring 2026 Design System - Guardians of the Galaxy / Space Theme */
 
 @layer base {
   :root {
-    /* Core palette - Dark forest with spring accents */
-    --background: 160 30% 6%;
-    --foreground: 60 30% 96%;
+    /* Core palette - Deep Space with Cosmic accents */
+    --background: 240 20% 4%;
+    --foreground: 210 40% 98%;
 
-    --card: 160 25% 10%;
-    --card-foreground: 60 30% 96%;
+    --card: 250 25% 8%;
+    --card-foreground: 210 40% 98%;
 
-    --popover: 160 25% 8%;
-    --popover-foreground: 60 30% 96%;
+    --popover: 250 25% 6%;
+    --popover-foreground: 210 40% 98%;
 
-    /* Primary - Spring Gold */
-    --primary: 45 90% 55%;
-    --primary-foreground: 160 30% 6%;
+    /* Primary - Cosmic Gold/Orange */
+    --primary: 35 100% 55%;
+    --primary-foreground: 240 20% 4%;
 
-    /* Secondary - Deep Emerald */
-    --secondary: 160 60% 15%;
-    --secondary-foreground: 60 30% 96%;
+    /* Secondary - Deep Space Purple */
+    --secondary: 270 50% 15%;
+    --secondary-foreground: 210 40% 98%;
 
-    /* Accent - Teal Glow */
-    --accent: 175 70% 40%;
-    --accent-foreground: 160 30% 6%;
+    /* Accent - Nebula Pink/Magenta */
+    --accent: 320 80% 55%;
+    --accent-foreground: 240 20% 4%;
 
-    /* Muted - Forest mist */
-    --muted: 160 20% 15%;
-    --muted-foreground: 160 15% 60%;
+    /* Muted - Space dust */
+    --muted: 250 20% 12%;
+    --muted-foreground: 220 15% 60%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 60 30% 96%;
+    --destructive-foreground: 210 40% 98%;
 
-    --border: 160 30% 20%;
-    --input: 160 30% 20%;
-    --ring: 45 90% 55%;
+    --border: 260 30% 18%;
+    --input: 260 30% 18%;
+    --ring: 35 100% 55%;
 
     --radius: 0.75rem;
 
-    /* Extended palette */
-    --spring-gold: 45 90% 55%;
-    --spring-gold-glow: 45 100% 70%;
-    --emerald: 160 70% 35%;
-    --emerald-dark: 160 60% 15%;
-    --teal: 175 70% 40%;
-    --teal-glow: 175 80% 55%;
-    --cherry-blossom: 340 70% 70%;
-    --aurora-green: 120 60% 50%;
-    --aurora-blue: 200 80% 50%;
-    --night-sky: 220 40% 8%;
-    --forest-deep: 160 30% 4%;
-    --moonlight: 60 30% 90%;
+    /* Extended Space palette */
+    --cosmic-gold: 35 100% 55%;
+    --cosmic-gold-glow: 40 100% 65%;
+    --nebula-purple: 270 60% 50%;
+    --nebula-purple-dark: 270 50% 25%;
+    --nebula-pink: 320 80% 55%;
+    --nebula-pink-glow: 320 90% 70%;
+    --cosmic-blue: 220 80% 50%;
+    --cosmic-blue-glow: 220 90% 65%;
+    --star-white: 210 40% 98%;
+    --deep-space: 240 30% 3%;
+    --void-black: 240 20% 2%;
+    --stardust: 45 30% 80%;
 
     /* Gradients */
-    --gradient-hero: linear-gradient(180deg, hsl(160 30% 4%) 0%, hsl(160 30% 8%) 50%, hsl(175 40% 10%) 100%);
-    --gradient-gold: linear-gradient(135deg, hsl(45 90% 55%) 0%, hsl(35 100% 60%) 100%);
-    --gradient-emerald: linear-gradient(135deg, hsl(160 70% 35%) 0%, hsl(175 70% 40%) 100%);
-    --gradient-aurora: linear-gradient(135deg, hsl(120 60% 50%) 0%, hsl(175 70% 40%) 50%, hsl(200 80% 50%) 100%);
-    --gradient-card: linear-gradient(145deg, hsl(160 25% 12%) 0%, hsl(160 25% 8%) 100%);
-    --gradient-glass: linear-gradient(135deg, hsla(160 30% 20% / 0.3) 0%, hsla(160 30% 10% / 0.2) 100%);
+    --gradient-hero: linear-gradient(180deg, hsl(240 30% 3%) 0%, hsl(260 40% 8%) 50%, hsl(280 35% 12%) 100%);
+    --gradient-gold: linear-gradient(135deg, hsl(35 100% 55%) 0%, hsl(45 100% 60%) 100%);
+    --gradient-nebula: linear-gradient(135deg, hsl(270 60% 50%) 0%, hsl(320 80% 55%) 100%);
+    --gradient-cosmic: linear-gradient(135deg, hsl(220 80% 50%) 0%, hsl(270 60% 50%) 50%, hsl(320 80% 55%) 100%);
+    --gradient-card: linear-gradient(145deg, hsl(250 25% 10%) 0%, hsl(250 25% 6%) 100%);
+    --gradient-glass: linear-gradient(135deg, hsla(270 30% 20% / 0.3) 0%, hsla(260 30% 10% / 0.2) 100%);
 
     /* Shadows */
-    --shadow-gold: 0 0 40px hsla(45 90% 55% / 0.3);
-    --shadow-emerald: 0 0 30px hsla(160 70% 35% / 0.3);
-    --shadow-teal: 0 0 25px hsla(175 70% 40% / 0.25);
-    --shadow-card: 0 10px 40px hsla(160 30% 4% / 0.5);
-    --shadow-glow: 0 0 60px hsla(45 90% 55% / 0.15);
+    --shadow-gold: 0 0 40px hsla(35 100% 55% / 0.4);
+    --shadow-nebula: 0 0 30px hsla(270 60% 50% / 0.4);
+    --shadow-pink: 0 0 25px hsla(320 80% 55% / 0.35);
+    --shadow-card: 0 10px 40px hsla(240 30% 3% / 0.6);
+    --shadow-glow: 0 0 60px hsla(35 100% 55% / 0.2);
 
     /* Typography */
     --font-display: 'Cinzel', serif;
     --font-heading: 'Playfair Display', serif;
     --font-body: 'Raleway', sans-serif;
 
-    --sidebar-background: 160 30% 6%;
-    --sidebar-foreground: 60 30% 96%;
-    --sidebar-primary: 45 90% 55%;
-    --sidebar-primary-foreground: 160 30% 6%;
-    --sidebar-accent: 160 60% 15%;
-    --sidebar-accent-foreground: 60 30% 96%;
-    --sidebar-border: 160 30% 20%;
-    --sidebar-ring: 45 90% 55%;
+    --sidebar-background: 240 20% 4%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 35 100% 55%;
+    --sidebar-primary-foreground: 240 20% 4%;
+    --sidebar-accent: 270 50% 15%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 260 30% 18%;
+    --sidebar-ring: 35 100% 55%;
   }
 
   .dark {
-    --background: 160 30% 6%;
-    --foreground: 60 30% 96%;
-    --card: 160 25% 10%;
-    --card-foreground: 60 30% 96%;
-    --popover: 160 25% 8%;
-    --popover-foreground: 60 30% 96%;
-    --primary: 45 90% 55%;
-    --primary-foreground: 160 30% 6%;
-    --secondary: 160 60% 15%;
-    --secondary-foreground: 60 30% 96%;
-    --muted: 160 20% 15%;
-    --muted-foreground: 160 15% 60%;
-    --accent: 175 70% 40%;
-    --accent-foreground: 160 30% 6%;
+    --background: 240 20% 4%;
+    --foreground: 210 40% 98%;
+    --card: 250 25% 8%;
+    --card-foreground: 210 40% 98%;
+    --popover: 250 25% 6%;
+    --popover-foreground: 210 40% 98%;
+    --primary: 35 100% 55%;
+    --primary-foreground: 240 20% 4%;
+    --secondary: 270 50% 15%;
+    --secondary-foreground: 210 40% 98%;
+    --muted: 250 20% 12%;
+    --muted-foreground: 220 15% 60%;
+    --accent: 320 80% 55%;
+    --accent-foreground: 240 20% 4%;
     --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 60 30% 96%;
-    --border: 160 30% 20%;
-    --input: 160 30% 20%;
-    --ring: 45 90% 55%;
-    --sidebar-background: 160 30% 6%;
-    --sidebar-foreground: 60 30% 96%;
-    --sidebar-primary: 45 90% 55%;
-    --sidebar-primary-foreground: 160 30% 6%;
-    --sidebar-accent: 160 60% 15%;
-    --sidebar-accent-foreground: 60 30% 96%;
-    --sidebar-border: 160 30% 20%;
-    --sidebar-ring: 45 90% 55%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 260 30% 18%;
+    --input: 260 30% 18%;
+    --ring: 35 100% 55%;
+    --sidebar-background: 240 20% 4%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 35 100% 55%;
+    --sidebar-primary-foreground: 240 20% 4%;
+    --sidebar-accent: 270 50% 15%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 260 30% 18%;
+    --sidebar-ring: 35 100% 55%;
   }
 }
 
@@ -143,9 +143,14 @@
     background-image: var(--gradient-gold);
   }
 
-  .text-gradient-aurora {
+  .text-gradient-cosmic {
     @apply bg-clip-text text-transparent;
-    background-image: var(--gradient-aurora);
+    background-image: var(--gradient-cosmic);
+  }
+
+  .text-gradient-nebula {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-nebula);
   }
 
   .glass-card {
@@ -157,31 +162,59 @@
     box-shadow: var(--shadow-gold);
   }
 
-  .glow-emerald {
-    box-shadow: var(--shadow-emerald);
+  .glow-nebula {
+    box-shadow: var(--shadow-nebula);
   }
 
-  .glow-teal {
-    box-shadow: var(--shadow-teal);
+  .glow-pink {
+    box-shadow: var(--shadow-pink);
   }
 
-  /* Particle effects */
-  .particle {
-    @apply absolute rounded-full pointer-events-none;
-    animation: float 6s ease-in-out infinite;
+  /* Star field background */
+  .star-field {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: hidden;
   }
 
-  .cherry-petal {
-    @apply absolute w-3 h-3 pointer-events-none opacity-60;
-    background: radial-gradient(ellipse at center, hsl(340 70% 70%) 0%, transparent 70%);
-    animation: petal-fall 10s linear infinite;
+  .star {
+    position: absolute;
+    background: white;
+    border-radius: 50%;
+    animation: twinkle var(--duration, 3s) ease-in-out infinite;
+    animation-delay: var(--delay, 0s);
   }
 
-  .firefly {
-    @apply absolute w-1 h-1 rounded-full pointer-events-none;
-    background: hsl(45 100% 70%);
-    box-shadow: 0 0 10px hsl(45 100% 70%), 0 0 20px hsl(45 100% 70%);
-    animation: firefly-float 8s ease-in-out infinite;
+  .star.small {
+    width: 1px;
+    height: 1px;
+    box-shadow: 0 0 2px white;
+  }
+
+  .star.medium {
+    width: 2px;
+    height: 2px;
+    box-shadow: 0 0 4px white, 0 0 8px rgba(255,255,255,0.5);
+  }
+
+  .star.large {
+    width: 3px;
+    height: 3px;
+    box-shadow: 0 0 6px white, 0 0 12px rgba(255,255,255,0.5), 0 0 20px rgba(255,255,255,0.3);
+  }
+
+  .shooting-star {
+    position: absolute;
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, white, transparent);
+    animation: shoot 3s linear infinite;
+    opacity: 0;
   }
 }
 
@@ -200,56 +233,58 @@
 }
 
 /* Keyframes */
+@keyframes twinkle {
+  0%, 100% { 
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes shoot {
+  0% {
+    transform: translateX(-100px) translateY(100px) rotate(-45deg);
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  15% {
+    transform: translateX(300px) translateY(-300px) rotate(-45deg);
+    opacity: 0;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
 @keyframes float {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-20px) rotate(5deg); }
 }
 
-@keyframes petal-fall {
-  0% {
-    transform: translateY(-100vh) rotate(0deg) translateX(0);
-    opacity: 0;
-  }
-  10% { opacity: 0.6; }
-  90% { opacity: 0.6; }
-  100% {
-    transform: translateY(100vh) rotate(720deg) translateX(100px);
-    opacity: 0;
-  }
-}
-
-@keyframes firefly-float {
-  0%, 100% {
-    transform: translate(0, 0);
+@keyframes nebula-pulse {
+  0%, 100% { 
     opacity: 0.3;
+    transform: scale(1);
   }
-  25% {
-    transform: translate(30px, -50px);
-    opacity: 1;
-  }
-  50% {
-    transform: translate(-20px, -30px);
+  50% { 
     opacity: 0.5;
-  }
-  75% {
-    transform: translate(40px, 20px);
-    opacity: 1;
+    transform: scale(1.1);
   }
 }
 
 @keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px hsla(45 90% 55% / 0.3); }
-  50% { box-shadow: 0 0 40px hsla(45 90% 55% / 0.6); }
+  0%, 100% { box-shadow: 0 0 20px hsla(35 100% 55% / 0.3); }
+  50% { box-shadow: 0 0 40px hsla(35 100% 55% / 0.6); }
 }
 
 @keyframes shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
-}
-
-@keyframes aurora {
-  0%, 100% { opacity: 0.3; transform: translateX(0); }
-  50% { opacity: 0.6; transform: translateX(10%); }
 }
 
 .animate-pulse-glow {
@@ -261,6 +296,6 @@
   animation: shimmer 3s linear infinite;
 }
 
-.animate-aurora {
-  animation: aurora 8s ease-in-out infinite;
+.animate-nebula {
+  animation: nebula-pulse 8s ease-in-out infinite;
 }

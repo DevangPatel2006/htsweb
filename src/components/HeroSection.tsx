@@ -2,7 +2,7 @@ import { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { ExternalLink, MapPin, Calendar } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
+import heroBg from "@/assets/space-hero-bg.jpg";
 
 function CountdownTimer() {
   const targetDate = useMemo(() => new Date("2026-03-21T09:00:00"), []);
@@ -62,44 +62,6 @@ function CountdownTimer() {
   );
 }
 
-function Fireflies() {
-  const fireflies = Array.from({ length: 30 }, (_, i) => ({
-    id: i,
-    left: Math.random() * 100,
-    top: Math.random() * 100,
-    delay: Math.random() * 5,
-    duration: 5 + Math.random() * 5,
-  }));
-
-  return (
-    <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      {fireflies.map((fly) => (
-        <motion.div
-          key={fly.id}
-          className="absolute w-1 h-1 rounded-full bg-primary"
-          style={{
-            left: `${fly.left}%`,
-            top: `${fly.top}%`,
-            boxShadow: "0 0 10px hsl(45 100% 70%), 0 0 20px hsl(45 100% 70%)",
-          }}
-          animate={{
-            opacity: [0.2, 1, 0.2],
-            scale: [0.8, 1.2, 0.8],
-            x: [0, 30, -20, 0],
-            y: [0, -40, 20, 0],
-          }}
-          transition={{
-            duration: fly.duration,
-            delay: fly.delay,
-            repeat: Infinity,
-            ease: "easeInOut",
-          }}
-        />
-      ))}
-    </div>
-  );
-}
-
 export default function HeroSection() {
   return (
     <section
@@ -110,14 +72,11 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0">
         <img
           src={heroBg}
-          alt="Spring forest night"
+          alt="Cosmic space nebula"
           className="w-full h-full object-cover"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/40 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background" />
       </div>
-
-      {/* Fireflies */}
-      <Fireflies />
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center pt-20">
