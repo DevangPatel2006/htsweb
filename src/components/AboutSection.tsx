@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
-import { Users, Code, Rocket } from "lucide-react";
+import { Users, Clock, Lightbulb, Trophy } from "lucide-react";
 
 // Import gallery images
 import event1 from "@/assets/gallery/event-1.jpg";
@@ -13,25 +13,11 @@ import event6 from "@/assets/gallery/event-6.jpg";
 
 const images = [event1, event2, event3, event4, event5, event6];
 
-const features = [
-  {
-    icon: Code,
-    title: "Build & Create",
-    description:
-      "Transform your innovative ideas into working prototypes with cutting-edge technologies.",
-  },
-  {
-    icon: Users,
-    title: "Connect & Collaborate",
-    description:
-      "Network with fellow developers, mentors, and industry professionals from across India.",
-  },
-  {
-    icon: Rocket,
-    title: "Learn & Grow",
-    description:
-      "Attend workshops, get mentorship, and accelerate your technical journey.",
-  },
+const stats = [
+  { icon: Users, value: "600+", label: "Participants" },
+  { icon: Clock, value: "48", label: "Hours of Innovation" },
+  { icon: Lightbulb, value: "8+", label: "Innovation Tracks" },
+  { icon: Trophy, value: "₹50K+", label: "Prize Pool" },
 ];
 
 export default function AboutSection() {
@@ -141,24 +127,24 @@ export default function AboutSection() {
           </motion.div>
         </div>
 
-        {/* Features */}
-        <div className="grid md:grid-cols-3 gap-6">
-          {features.map((feature, index) => (
+        {/* Stats - replacing the features */}
+        <div className="grid md:grid-cols-4 gap-6">
+          {stats.map((stat, index) => (
             <motion.div
-              key={feature.title}
+              key={stat.label}
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
-              className="glass-card rounded-2xl p-8 hover:border-primary/50 transition-all duration-300 group"
+              className="glass-card rounded-2xl p-8 text-center hover:border-primary/50 transition-all duration-300 group"
             >
-              <div className="w-14 h-14 mb-6 rounded-xl bg-nebula-gradient flex items-center justify-center shadow-glow-nebula group-hover:scale-110 transition-transform">
-                <feature.icon className="w-7 h-7 text-foreground" />
+              <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+                <stat.icon className="w-7 h-7 text-primary" />
               </div>
-              <h3 className="font-display text-xl font-semibold mb-3 text-foreground">
-                {feature.title}
+              <h3 className="font-display text-3xl md:text-4xl font-bold text-primary mb-2">
+                {stat.value}
               </h3>
-              <p className="font-body text-muted-foreground leading-relaxed">
-                {feature.description}
+              <p className="font-body text-sm text-muted-foreground">
+                {stat.label}
               </p>
             </motion.div>
           ))}

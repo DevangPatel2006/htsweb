@@ -1,8 +1,8 @@
+import React from "react";
 import Navbar from "@/components/Navbar";
 import StarField from "@/components/StarField";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
-import EventHighlightsSection from "@/components/EventHighlightsSection";
 import TracksSection from "@/components/TracksSection";
 import TimelineSection from "@/components/TimelineSection";
 import PrizesSection from "@/components/PrizesSection";
@@ -14,6 +14,20 @@ import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 
 const Index = () => {
+  const [isPlaying, setIsPlaying] = React.useState(false);
+  const audioRef = React.useRef<HTMLAudioElement>(null);
+
+  const toggleMusic = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
+
   return (
     <main className="min-h-screen bg-background overflow-x-hidden relative">
       {/* Global Star Field Background */}
@@ -24,7 +38,6 @@ const Index = () => {
         <Navbar />
         <HeroSection />
         <AboutSection />
-        <EventHighlightsSection />
         <TracksSection />
         <TimelineSection />
         <PrizesSection />
@@ -35,6 +48,36 @@ const Index = () => {
         <FAQSection />
         <Footer />
       </div>
+
+      {/* Music Button - Fixed Bottom Right */}
+      <button
+        onClick={toggleMusic}
+        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-glow-gold hover:scale-110 transition-all duration-300 flex items-center justify-center"
+        aria-label={isPlaying ? "Pause music" : "Play music"}
+      >
+        <svg 
+          xmlns="http://www.w3.org/2000/svg" 
+          width="24" 
+          height="24" 
+          viewBox="0 0 24 24" 
+          fill="none" 
+          stroke="currentColor" 
+          strokeWidth="2" 
+          strokeLinecap="round" 
+          strokeLinejoin="round"
+          className={isPlaying ? "animate-spin" : ""}
+          style={isPlaying ? { animationDuration: '2s' } : {}}
+        >
+          <path d="M9 18V5l12-2v13"/>
+          <circle cx="6" cy="18" r="3"/>
+          <circle cx="18" cy="16" r="3"/>
+        </svg>
+      </button>
+
+      {/* Hidden Audio Element */}
+      <audio ref={audioRef} loop>
+        <source src="/music.mp3" type="audio/mpeg" />
+      </audio>
     </main>
   );
 };

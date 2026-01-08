@@ -79,7 +79,7 @@ export default function TracksSection() {
     <section
       id="tracks"
       ref={ref}
-      className="relative py-24 lg:py-32 overflow-hidden bg-secondary/30"
+      className="relative py-24 lg:py-32 overflow-hidden "
     >
       {/* Background Pattern */}
       <div className="absolute inset-0 pointer-events-none opacity-30">

@@ -4,12 +4,13 @@ import { useRef, useState } from "react";
 import { Linkedin, Twitter, Github, Instagram, Users, Megaphone, Palette, Code, Calendar, Handshake } from "lucide-react";
 
 const teamCategories = [
-  { id: "organizers", label: "Organizers", icon: Users },
-  { id: "management", label: "Management", icon: Calendar },
-  { id: "technical", label: "Technical", icon: Code },
-  { id: "design", label: "Design", icon: Palette },
-  { id: "social", label: "Social Media", icon: Megaphone },
-  { id: "sponsorship", label: "Sponsorship", icon: Handshake },
+  { id: "organizers", label: "Organizers ", icon: Users },
+  { id: "webandtech", label: "Web & Tech", icon: Calendar },
+  { id: "sponsors", label: "Sponshership", icon: Code },
+  { id: "sm&design", label: "SM & Design", icon: Palette },
+  { id: "Logistics", label: "Logistics", icon: Megaphone },
+  { id: "Decoration", label: "Decoration", icon: Handshake },
+  { id: "OutReach", label: "Outreach", icon: Handshake },
 ];
 
 const teamMembers: Record<string, Array<{

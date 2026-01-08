@@ -18,7 +18,7 @@ export default function EventHighlightsSection() {
     <section
       id="event-highlights"
       ref={ref}
-      className="relative py-24 lg:py-32 overflow-hidden bg-secondary/20"
+      className="relative py-24 lg:py-32 overflow-hidden"
     >
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">

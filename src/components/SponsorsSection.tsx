@@ -151,28 +151,7 @@ export default function SponsorsSection() {
         </div>
 
         {/* Become a Sponsor CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.8 }}
-          className="mt-20 text-center"
-        >
-          <div className="glass-card rounded-2xl p-8 md:p-12 max-w-2xl mx-auto">
-            <h3 className="font-display text-2xl md:text-3xl font-bold text-foreground mb-4">
-              Become a Sponsor
-            </h3>
-            <p className="font-body text-muted-foreground mb-6">
-              Partner with Hack The Spring 2026 and connect with 600+ of India's
-              brightest tech talents.
-            </p>
-            <Button variant="hero" size="lg" asChild>
-              <a href="mailto:sponsors@hackthespring.in">
-                <Mail className="w-5 h-5" />
-                Contact Us
-              </a>
-            </Button>
-          </div>
-        </motion.div>
+      
       </div>
     </section>
   );

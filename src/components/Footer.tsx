@@ -10,9 +10,11 @@ const socialLinks = [
 
 export default function Footer() {
   return (
-    <footer className="relative bg-secondary/30 border-t border-border overflow-hidden py-10">
+<footer className="relative bg-[#06121F] border-t border-border overflow-hidden py-10">
+
+
       <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 items-start">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
           {/* Contact Us */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -79,7 +81,6 @@ export default function Footer() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
-            className="lg:col-span-2"
           >
             <h4 className="font-display text-sm font-semibold text-primary mb-4 uppercase tracking-wider flex items-center gap-2">
               <MapPin className="w-4 h-4" />

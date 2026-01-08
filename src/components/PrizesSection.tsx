@@ -61,7 +61,7 @@ export default function PrizesSection() {
     <section
       id="prizes"
       ref={ref}
-      className="relative py-24 lg:py-32 overflow-hidden bg-secondary/30"
+      className="relative py-24 lg:py-32 overflow-hidden "
     >
       {/* Background decorations */}
       <div className="absolute inset-0 pointer-events-none">
@@ -119,36 +119,7 @@ export default function PrizesSection() {
           </motion.div>
         </div>
 
-        {/* Special Prizes */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
-          <h3 className="font-display text-2xl md:text-3xl font-bold text-center mb-8 text-foreground">
-            Special Category Prizes
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto">
-            {specialPrizes.map((prize, index) => (
-              <motion.div
-                key={prize.title}
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                transition={{ duration: 0.4, delay: 0.6 + index * 0.1 }}
-                whileHover={{ y: -5 }}
-                className="glass-card rounded-xl p-5 text-center hover:border-primary/50 transition-all duration-300"
-              >
-                <prize.icon className="w-8 h-8 mx-auto mb-3 text-primary" />
-                <h4 className="font-display text-sm font-semibold text-foreground mb-1">
-                  {prize.title}
-                </h4>
-                <p className="font-body text-lg font-bold text-primary">
-                  {prize.prize}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+        
 
         {/* Participation Benefits */}
         <motion.div

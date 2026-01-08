@@ -133,7 +133,7 @@ export default {
 			backgroundImage: {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 				'hero-gradient': 'linear-gradient(180deg, hsl(240 30% 3%) 0%, hsl(260 40% 8%) 50%, hsl(280 35% 12%) 100%)',
-				'gold-gradient': 'linear-gradient(135deg, hsl(35 100% 55%) 0%, hsl(45 100% 60%) 100%)',
+				'gold-gradient': 'linear-gradient(90deg, #e6ab26 0% 60%, #91611f 60% 100%)',
 				'nebula-gradient': 'linear-gradient(135deg, hsl(270 60% 50%) 0%, hsl(320 80% 55%) 100%)',
 				'cosmic-gradient': 'linear-gradient(135deg, hsl(220 80% 50%) 0%, hsl(270 60% 50%) 50%, hsl(320 80% 55%) 100%)',
 			},
