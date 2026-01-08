@@ -141,7 +141,7 @@
 @layer components {
   .text-gradient-gold {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(90deg, #e6ab26 0%, #91611f 100%);
+    background-image: linear-gradient(90deg, #e6ab26 100%, #91611f 0%);
   }
 
   .text-gradient-cosmic {
@@ -231,6 +231,10 @@
   .font-body {
     font-family: var(--font-body);
   }
+   .glow-text {
+    filter: drop-shadow(0 0 20px rgba(251, 191, 36, 0.8));
+  }
+  
 }
 
 /* Keyframes */

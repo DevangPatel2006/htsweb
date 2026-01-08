@@ -84,7 +84,7 @@ export default function FAQSection() {
           className="text-center mb-16"
         >
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="text-gradient-gold">Frequently Asked Questions</span>
+            <span className="text-gradient-gold glow-text">Frequently Asked Questions</span>
           </h2>
           <p className="font-heading text-xl text-muted-foreground max-w-2xl mx-auto">
             Got questions? We've got answers.
