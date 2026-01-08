@@ -43,7 +43,7 @@ const Index = () => {
         <PrizesSection />
         <TeamSection />
         <TestimonialsSection />
-        <PastEventsSection />
+        
         <SponsorsSection />
         <FAQSection />
         <Footer />
@@ -66,7 +66,8 @@ const Index = () => {
           strokeLinecap="round" 
           strokeLinejoin="round"
           className={isPlaying ? "animate-spin" : ""}
-          style={isPlaying ? { animationDuration: '2s' } : {}}
+style={isPlaying ? { animationDuration: '3s' } : {}}
+
         >
           <path d="M9 18V5l12-2v13"/>
           <circle cx="6" cy="18" r="3"/>
