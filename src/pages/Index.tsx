@@ -35,12 +35,13 @@ const Index = () => {
       
       {/* 2. Background Image (Middle Layer) */}
       <div 
-        className="absolute inset-0 z-0 pointer-events-none opacity-30 bg-cover bg-center bg-no-repeat"
-        style={{ 
-          backgroundImage: 'url("/src/assets/bottom1.png")',
-          backgroundAttachment: 'fixed' 
-        }}
-      />
+  className="absolute inset-0 z-0 pointer-events-none opacity-30 bg-cover bg-center bg-no-repeat"
+  style={{ 
+    backgroundImage: 'url("/bottom1.png")',
+    backgroundAttachment: 'fixed'
+  }}
+/>
+
 
       {/* 3. Content (Top Layer) */}
       <div className="relative z-10">
