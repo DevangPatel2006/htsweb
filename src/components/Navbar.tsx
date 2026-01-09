@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sparkles } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
   { name: "Home", href: "#hero" },
@@ -17,6 +18,8 @@ export default function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
+  const location = useLocation();
+  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -103,6 +106,18 @@ export default function Navbar() {
                 {link.name}
               </motion.a>
             ))}
+            
+            {/* Swag Link */}
+            <Link to="/swag">
+              <motion.span
+                className="px-4 py-2 rounded-lg font-body text-sm transition-all duration-300 text-primary hover:bg-primary/10 flex items-center gap-1 cursor-pointer"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Sparkles size={14} />
+                Swag
+              </motion.span>
+            </Link>
           </div>
 
           {/* CTA Button */}
@@ -158,13 +173,24 @@ export default function Navbar() {
                   {link.name}
                 </motion.a>
               ))}
+              <Link to="/swag" onClick={() => setIsMobileMenuOpen(false)}>
+                <motion.span
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: navLinks.length * 0.05 }}
+                  className="px-4 py-3 rounded-lg font-body text-primary hover:bg-primary/10 flex items-center gap-2"
+                >
+                  <Sparkles size={16} />
+                  Swag
+                </motion.span>
+              </Link>
               <motion.a
                 href="https://unstop.com"
                 target="_blank"
                 rel="noopener noreferrer"
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                transition={{ delay: navLinks.length * 0.05 }}
+                transition={{ delay: (navLinks.length + 1) * 0.05 }}
                 className="mt-2 px-6 py-3 rounded-lg bg-gold-gradient text-primary-foreground font-semibold text-center shadow-glow-gold"
               >
                 Register Now
