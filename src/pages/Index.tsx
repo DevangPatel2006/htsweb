@@ -37,7 +37,7 @@ const Index = () => {
       <div 
         className="absolute inset-0 z-0 pointer-events-none opacity-30 bg-cover bg-center bg-no-repeat"
         style={{ 
-          backgroundImage: 'url("/src/assets/bottom.png")',
+          backgroundImage: 'url("/src/assets/bottom1.png")',
           backgroundAttachment: 'fixed' 
         }}
       />
@@ -86,9 +86,19 @@ const Index = () => {
       </button>
 
       {/* Hidden Audio Element */}
-      <audio ref={audioRef} loop>
-        <source src="/music.mp3" type="audio/mpeg" />
-      </audio>
+     <audio
+  ref={audioRef}
+  loop
+  onEnded={() => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = 0;
+      audioRef.current.play();
+    }
+  }}
+>
+  <source src="/music.mp3" type="audio/mpeg" />
+</audio>
+
     </main>
   );
 };
