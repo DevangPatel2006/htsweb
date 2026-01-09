@@ -18,11 +18,12 @@ export default {
 			}
 		},
 		extend: {
-			fontFamily: {
-				display: ['Cinzel', 'serif'],
-				heading: ['Playfair Display', 'serif'],
-				body: ['Raleway', 'sans-serif'],
-			},
+			// Update this section in tailwind.config.ts
+fontFamily: {
+  display: ['MyCustomFont', 'Cinzel', 'serif'], // Add your font name here
+  heading: ['Playfair Display', 'serif'],
+  body: ['Raleway', 'sans-serif'],
+},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
