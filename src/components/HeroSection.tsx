@@ -69,14 +69,14 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Background Image */}
-      <div className="absolute inset-0 z-0">
+      {/* <div className="absolute inset-0 z-0">
         <img
           src={heroBg}
           alt="Cosmic space nebula"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background" />
-      </div>
+      </div> */}
 
       {/* Content */}
       <div className="relative z-10 container mx-auto px-4 text-center pt-20">

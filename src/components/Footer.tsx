@@ -110,7 +110,7 @@ export default function Footer() {
           className="mt-8 pt-6 border-t border-border/30 text-center"
         >
           <p className="font-body text-xs text-muted-foreground">
-            © 2026 Hack The Spring. All rights reserved. Made with 💜 in Gujarat, India
+            © Hack The Spring 2026. All rights reserved.
           </p>
         </motion.div>
       </div>

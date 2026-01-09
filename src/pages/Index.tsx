@@ -30,10 +30,19 @@ const Index = () => {
 
   return (
     <main className="min-h-screen bg-background overflow-x-hidden relative">
-      {/* Global Star Field Background */}
+      {/* 1. Star Field (Back Layer) */}
       <StarField />
       
-      {/* Content */}
+      {/* 2. Background Image (Middle Layer) */}
+      <div 
+        className="absolute inset-0 z-0 pointer-events-none opacity-30 bg-cover bg-center bg-no-repeat"
+        style={{ 
+          backgroundImage: 'url("/src/assets/bottom.png")',
+          backgroundAttachment: 'fixed' 
+        }}
+      />
+
+      {/* 3. Content (Top Layer) */}
       <div className="relative z-10">
         <Navbar />
         <HeroSection />
@@ -43,7 +52,6 @@ const Index = () => {
         <PrizesSection />
         <TeamSection />
         <TestimonialsSection />
-        
         <SponsorsSection />
         <FAQSection />
         <Footer />
@@ -66,8 +74,7 @@ const Index = () => {
           strokeLinecap="round" 
           strokeLinejoin="round"
           className={isPlaying ? "animate-spin" : ""}
-style={isPlaying ? { animationDuration: '3s' } : {}}
-
+          style={isPlaying ? { animationDuration: '3s' } : {}}
         >
           <path d="M9 18V5l12-2v13"/>
           <circle cx="6" cy="18" r="3"/>
