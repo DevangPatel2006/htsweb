@@ -5,7 +5,7 @@ import { Linkedin, Twitter, Github, Instagram, Users, Megaphone, Palette, Code, 
 
 const teamCategories = [
   { id: "organizers", label: "Organizers ", icon: Users },
-  { id: "Delegate", label: "Delegate ", icon: Users },
+  { id: "Management", label: "Management ", icon: Users },
   { id: "webandtech", label: "Web & Tech", icon: Calendar },
   { id: "sponsors", label: "Sponshership", icon: Code },
   { id: "sm&design", label: "SM & Design", icon: Palette },

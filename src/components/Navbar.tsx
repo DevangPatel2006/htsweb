@@ -78,7 +78,7 @@ export default function Navbar() {
             <img
               src={logo}
               alt="Hack The Spring"
-              className="h-10 w-auto lg:h-12 object-contain"
+              className="h-9 w-auto lg:h-12 object-contain"
             />
             
           </motion.a>
@@ -119,16 +119,7 @@ export default function Navbar() {
           </div>
 
           {/* CTA */}
-          <motion.a
-            href="https://unstop.com"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden lg:flex items-center gap-2 px-6 py-2.5 rounded-lg bg-gold-gradient text-primary-foreground font-semibold text-sm shadow-glow-gold"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Register Now
-          </motion.a>
+          
 
           {/* Mobile Toggle */}
           <button
