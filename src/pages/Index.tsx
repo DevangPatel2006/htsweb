@@ -8,7 +8,6 @@ import TimelineSection from "@/components/TimelineSection";
 import PrizesSection from "@/components/PrizesSection";
 import TeamSection from "@/components/TeamSection";
 import TestimonialsSection from "@/components/TestimonialsSection";
-import PastEventsSection from "@/components/PastEventsSection";
 import SponsorsSection from "@/components/SponsorsSection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
@@ -29,9 +28,23 @@ const Index = () => {
   };
 
   return (
-    <main className="min-h-screen bg-background overflow-x-hidden relative">
+   <main
+  className="min-h-screen overflow-x-hidden relative"
+  style={{
+    background: `
+      linear-gradient(
+        180deg,
+        #13001e 0%,
+        #0b0c15 60%,
+        #05040a 100%
+      )
+    `
+  }}
+>
+
       {/* 1. Star Field (Back Layer) */}
       <StarField />
+      
       
       {/* 2. Background Image (Middle Layer) */}
       <div 
@@ -97,7 +110,7 @@ const Index = () => {
     }
   }}
 >
-  <source src="/music.mp3" type="audio/mpeg" />
+  <source src="/Sequence 01.aac" type="audio/mpeg" />
 </audio>
 
     </main>

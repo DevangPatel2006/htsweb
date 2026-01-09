@@ -81,11 +81,7 @@ export default function TimelineSection() {
       ref={ref}
       className="relative py-24 lg:py-32 overflow-hidden"
     >
-      {/* Background Decorations */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-0 w-72 h-72 bg-accent/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-0 w-72 h-72 bg-primary/10 rounded-full blur-3xl" />
-      </div>
+     
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
@@ -156,7 +152,7 @@ export default function TimelineSection() {
                 <div className="relative z-10 flex-shrink-0">
                   <motion.div
                     whileHover={{ scale: 1.1, rotate: 5 }}
-                    className="w-14 h-14 rounded-full bg-card border-4 border-primary flex items-center justify-center shadow-glow-gold"
+                    className="w-14 h-14 rounded-full bg-card border-4 border-primary flex items-center justify-center "
                   >
                     <event.icon className="w-6 h-6 text-primary" />
                   </motion.div>
