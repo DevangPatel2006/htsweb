@@ -5,12 +5,13 @@ import { Linkedin, Twitter, Github, Instagram, Users, Megaphone, Palette, Code, 
 
 const teamCategories = [
   { id: "organizers", label: "Organizers ", icon: Users },
+  { id: "Delegate", label: "Delegate ", icon: Users },
   { id: "webandtech", label: "Web & Tech", icon: Calendar },
   { id: "sponsors", label: "Sponshership", icon: Code },
   { id: "sm&design", label: "SM & Design", icon: Palette },
   { id: "Logistics", label: "Logistics", icon: Megaphone },
   { id: "Decoration", label: "Decoration", icon: Handshake },
-  { id: "OutReach", label: "Outreach", icon: Handshake },
+  { id: "Outreach", label: "Outreach", icon: Handshake },
 ];
 
 const teamMembers: Record<string, Array<{
@@ -23,10 +24,10 @@ const teamMembers: Record<string, Array<{
   instagram?: string;
 }>> = {
   organizers: [
-    { name: "Arjun Patel", role: "Lead Organizer", linkedin: "#", twitter: "#" },
-    { name: "Priya Sharma", role: "Co-Lead", linkedin: "#", instagram: "#" },
-    { name: "Rahul Mehta", role: "Event Director", linkedin: "#", github: "#" },
-    { name: "Ananya Gupta", role: "Operations Head", linkedin: "#" },
+    { name: "ARJUN PATEL", role: "Lead Organizer", linkedin: "#", twitter: "#" },
+    { name: "PRIYA SHARMA", role: "Co-Lead", linkedin: "#", instagram: "#" },
+    { name: "RAHUL MEHTA", role: "Event Director", linkedin: "#", github: "#" },
+    { name: "ANANYA GUPTA", role: "Operations Head", linkedin: "#" },
   ],
   management: [
     { name: "Vikram Singh", role: "Venue Coordinator", linkedin: "#" },
@@ -154,7 +155,7 @@ export default function TeamSection() {
               </div>
 
               {/* Info */}
-              <h3 className="font-display text-lg font-semibold text-foreground mb-1">
+              <h3 className="font-primary text-lg font-semibold text-foreground mb-1">
                 {member.name}
               </h3>
               <p className="font-body text-sm text-muted-foreground mb-4">

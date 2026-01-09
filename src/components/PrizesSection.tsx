@@ -5,8 +5,8 @@ import { Trophy, Medal, Award, Gift, Star } from "lucide-react";
 
 const prizes = [
   {
-    position: "1st",
-    title: "First Place",
+    position: "1ST",
+    title: "FIRST PLACE",
     amount: "₹25,000",
     icon: Trophy,
     color: "from-yellow-400 to-amber-500",
@@ -19,10 +19,10 @@ const prizes = [
     ],
   },
   {
-    position: "2nd",
-    title: "Second Place",
+    position: "2ND",
+    title: "SECOND PLACE",
     amount: "₹15,000",
-    icon: Medal,
+    icon: Award,
     color: "from-gray-300 to-gray-400",
     shadow: "shadow-[0_0_40px_rgba(156,163,175,0.3)]",
     benefits: [
@@ -32,8 +32,8 @@ const prizes = [
     ],
   },
   {
-    position: "3rd",
-    title: "Third Place",
+    position: "3RD",
+    title: "THIRD PLACE",
     amount: "₹10,000",
     icon: Award,
     color: "from-amber-600 to-amber-700",
@@ -79,7 +79,7 @@ export default function PrizesSection() {
           className="text-center mb-16"
         >
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="text-gradient-gold">Prizes & Rewards</span>
+            <span className="text-gradient-gold">Prizes and Awards</span>
           </h2>
           <p className="font-heading text-xl text-muted-foreground max-w-2xl mx-auto">
             Incredible rewards await the brightest innovators
@@ -128,8 +128,8 @@ export default function PrizesSection() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-16 glass-card rounded-2xl p-8 max-w-3xl mx-auto"
         >
-          <h3 className="font-display text-xl font-semibold text-center mb-6 text-foreground">
-            Every Participant Receives
+          <h3 className="font-primary text-xl font-semibold text-center mb-6 text-foreground">
+            EVERY PARTICIPANT RECEIVES
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             {[
@@ -175,7 +175,7 @@ function PrizeCard({
         <div className="absolute inset-0 bg-black/20" />
         <div className="relative z-10">
           <prize.icon className="w-12 h-12 mx-auto mb-3 text-white drop-shadow-lg" />
-          <span className="font-display text-4xl font-bold text-white drop-shadow-lg">
+          <span className="font-primary text-4xl font-bold text-white drop-shadow-lg">
             {prize.position}
           </span>
         </div>
@@ -183,7 +183,7 @@ function PrizeCard({
 
       {/* Content */}
       <div className="p-6">
-        <h3 className="font-display text-xl font-semibold text-foreground text-center mb-2">
+        <h3 className="font-primary text-xl font-semibold text-foreground text-center mb-2">
           {prize.title}
         </h3>
         <p className="font-display text-3xl font-bold text-primary text-center mb-6">

@@ -140,7 +140,7 @@ export default function AboutSection() {
               <div className="w-14 h-14 mx-auto mb-4 rounded-xl bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                 <stat.icon className="w-7 h-7 text-primary" />
               </div>
-              <h3 className="font-display text-3xl md:text-4xl font-bold text-primary mb-2">
+              <h3 className="font-primary text-3xl md:text-4xl font-bold text-primary mb-2">
                 {stat.value}
               </h3>
               <p className="font-body text-sm text-muted-foreground">

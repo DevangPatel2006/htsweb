@@ -35,31 +35,31 @@ const sponsors = {
 
 const tierConfig = {
   title: {
-    label: "Title Sponsor",
+    label: "TITLE SPONSOR",
     gridCols: "grid-cols-1",
     logoSize: "w-48 h-24",
     borderColor: "border-primary",
   },
   gold: {
-    label: "Gold Sponsors",
+    label: "GOLD SPONSORS",
     gridCols: "grid-cols-2",
     logoSize: "w-40 h-20",
     borderColor: "border-yellow-500",
   },
   silver: {
-    label: "Silver Sponsors",
+    label: "SILVER SPONSORS",
     gridCols: "grid-cols-3",
     logoSize: "w-32 h-16",
     borderColor: "border-gray-400",
   },
   bronze: {
-    label: "Bronze Sponsors",
+    label: "BRONZE SPONSORS",
     gridCols: "grid-cols-4",
     logoSize: "w-24 h-12",
     borderColor: "border-amber-700",
   },
   community: {
-    label: "Community Partners",
+    label: "COMMUNITY PARTNERS",
     gridCols: "grid-cols-5",
     logoSize: "w-20 h-10",
     borderColor: "border-accent",
@@ -108,7 +108,7 @@ export default function SponsorsSection() {
                 animate={isInView ? { opacity: 1, y: 0 } : {}}
                 transition={{ duration: 0.5, delay: tierIndex * 0.1 }}
               >
-                <h3 className="font-display text-xl md:text-2xl font-semibold text-center mb-8 text-foreground">
+                <h3 className="font-primary text-xl md:text-2xl font-semibold text-center mb-8 text-foreground">
                   {tierConfig[tier].label}
                 </h3>
 

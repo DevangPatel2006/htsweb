@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { Twitter } from "lucide-react";
 
@@ -14,42 +14,48 @@ const testimonials = [
   {
     name: "Arjun Patel",
     handle: "@arjun_dev",
-    content: "Just won Hack The Spring 2025! 🏆 Amazing experience with incredible mentors and fellow hackers. Can't wait for next year! #HackTheSpring #hackathon",
+    content:
+      "Just won Hack The Spring 2025! 🏆 Amazing experience with incredible mentors and fellow hackers. Can't wait for next year! #HackTheSpring #hackathon",
     image: event3,
     avatar: "AP",
   },
   {
     name: "Priya Sharma",
     handle: "@priya_codes",
-    content: "Excited to dive into the world of innovation at @HackTheSpring! Ready to code, create, and bring groundbreaking ideas to life. Let the coding frenzy begin! 🚀",
+    content:
+      "Excited to dive into the world of innovation at @HackTheSpring! Ready to code, create, and bring groundbreaking ideas to life. Let the coding frenzy begin! 🚀",
     image: event1,
     avatar: "PS",
   },
   {
     name: "Hack The Spring",
     handle: "@HackTheSpring",
-    content: "🎉 5,000+ Applications & Counting! We're overwhelmed by the response! Extended registration to March 15. Don't miss out! #HackTheSpring2026",
+    content:
+      "🎉 5,000+ Applications & Counting! We're overwhelmed by the response! Extended registration to March 15. Don't miss out! #HackTheSpring2026",
     image: event6,
     avatar: "HT",
   },
   {
     name: "Rahul Mehta",
     handle: "@rahul_tech",
-    content: "The workshops at Hack The Spring were mind-blowing! Learned so much about AI/ML in just 48 hours. Best hackathon experience ever! 💡",
+    content:
+      "The workshops at Hack The Spring were mind-blowing! Learned so much about AI/ML in just 48 hours. Best hackathon experience ever! 💡",
     image: event5,
     avatar: "RM",
   },
   {
     name: "Ananya Gupta",
     handle: "@ananya_builds",
-    content: "Met my future co-founders at @HackTheSpring! The networking and collaboration here is unmatched. Already planning our startup! 🌟",
+    content:
+      "Met my future co-founders at @HackTheSpring! The networking and collaboration here is unmatched. Already planning our startup! 🌟",
     image: event4,
     avatar: "AG",
   },
   {
     name: "DevCommunity",
     handle: "@DevCommunity",
-    content: "Proud community partner of Hack The Spring 2026! Join us for an epic 48-hour coding marathon in Gujarat. 600+ hackers, infinite possibilities! 🔥",
+    content:
+      "Proud community partner of Hack The Spring 2026! Join us for an epic 48-hour coding marathon in Gujarat. 600+ hackers, infinite possibilities! 🔥",
     image: event2,
     avatar: "DC",
   },
@@ -59,36 +65,37 @@ export default function TestimonialsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [isPaused, setIsPaused] = useState(false);
 
+  // Auto scroll (works on all screens, no pause)
   useEffect(() => {
-    const scrollContainer = scrollRef.current;
-    if (!scrollContainer || isPaused) return;
+    const container = scrollRef.current;
+    if (!container) return;
 
     let animationId: number;
     let scrollPosition = 0;
 
     const scroll = () => {
-      if (!scrollContainer || isPaused) return;
-
       scrollPosition += 0.3;
-      if (scrollPosition >= scrollContainer.scrollWidth / 2) {
+
+      if (scrollPosition >= container.scrollWidth / 3) {
         scrollPosition = 0;
       }
 
-      scrollContainer.scrollLeft = scrollPosition;
+      container.scrollLeft = scrollPosition;
       animationId = requestAnimationFrame(scroll);
     };
 
     animationId = requestAnimationFrame(scroll);
 
-    return () => {
-      cancelAnimationFrame(animationId);
-    };
-  }, [isPaused]);
+    return () => cancelAnimationFrame(animationId);
+  }, []);
 
-  // Triple for seamless loop
-  const tripleTestimonials = [...testimonials, ...testimonials, ...testimonials];
+  // Triple list for seamless loop
+  const tripleTestimonials = [
+    ...testimonials,
+    ...testimonials,
+    ...testimonials,
+  ];
 
   return (
     <section
@@ -118,43 +125,32 @@ export default function TestimonialsSection() {
           </p>
         </motion.div>
 
-        {/* Floating Cards Carousel */}
+        {/* Carousel */}
         <motion.div
           initial={{ opacity: 0 }}
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
           className="relative"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
         >
-          {/* Gradient overlays */}
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+          {/* Gradient overlays (DESKTOP ONLY) */}
+          <div className="hidden md:block absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+          <div className="hidden md:block absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
           <div
             ref={scrollRef}
-            className="flex gap-6 overflow-hidden py-8"
-            style={{ scrollBehavior: "auto" }}
+            className="flex gap-6 overflow-hidden py-8 touch-none select-none"
           >
             {tripleTestimonials.map((testimonial, index) => {
-              // Create floating effect with varied rotations and offsets
               const rotation = (index % 5 - 2) * 3;
               const yOffset = (index % 3 - 1) * 20;
 
               return (
                 <motion.div
                   key={index}
-                  className="flex-shrink-0 w-80 glass-card rounded-2xl p-5 border border-border/50 hover:border-primary/50 transition-all duration-300 cursor-pointer"
+                  className="flex-shrink-0 w-80 glass-card rounded-2xl p-5 border border-border/50 pointer-events-none"
                   style={{
                     transform: `rotate(${rotation}deg) translateY(${yOffset}px)`,
                   }}
-                  whileHover={{
-                    scale: 1.05,
-                    rotate: 0,
-                    translateY: 0,
-                    zIndex: 20,
-                  }}
-                  transition={{ duration: 0.3 }}
                 >
                   {/* Header */}
                   <div className="flex items-start justify-between mb-3">
@@ -185,6 +181,7 @@ export default function TestimonialsSection() {
                       src={testimonial.image}
                       alt="Event"
                       className="w-full h-36 object-cover"
+                      draggable={false}
                     />
                   </div>
                 </motion.div>

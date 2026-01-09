@@ -17,56 +17,56 @@ const timelineEvents = [
     icon: Clock,
     date: "March 10, 2026",
     time: "11:59 PM",
-    title: "Registration Closes",
+    title: "REGISTRATION CLOSES",
     description: "Last chance to register for Hack The Spring 2026!",
   },
   {
     icon: UserCheck,
     date: "March 21, 2026",
     time: "8:00 AM",
-    title: "Check-in Begins",
+    title: "CHECK-IN & REGISTRATION",
     description: "Arrive at the venue and complete your registration.",
   },
   {
     icon: PartyPopper,
     date: "March 21, 2026",
     time: "9:30 AM",
-    title: "Opening Ceremony",
+    title: "OPENING CEREMONY",
     description: "Kickoff with keynote speakers and event introduction.",
   },
   {
     icon: Rocket,
     date: "March 21, 2026",
     time: "11:00 AM",
-    title: "Hacking Begins",
+    title: "HACKING BEGINS",
     description: "Start building your innovative solutions!",
   },
   {
     icon: FileCheck,
     date: "March 21, 2026",
     time: "8:00 PM",
-    title: "Checkpoint 1",
+    title: "CHECKPOINT 1",
     description: "First progress check with mentors.",
   },
   {
     icon: Coffee,
     date: "March 22, 2026",
     time: "2:00 PM",
-    title: "Workshop Sessions",
+    title: "WORKSHOP SESSIONS",
     description: "Learn from industry experts and tech sessions.",
   },
   {
     icon: Send,
     date: "March 22, 2026",
     time: "9:00 AM",
-    title: "Final Submissions",
+    title: "FINAL SUBMISSIONS",
     description: "Submit your projects and prepare for demos.",
   },
   {
     icon: Trophy,
     date: "March 22, 2026",
     time: "3:00 PM",
-    title: "Closing Ceremony",
+    title: "CLOSING CEREMONY",
     description: "Winners announcement and prize distribution!",
   },
 ];
@@ -96,7 +96,7 @@ export default function TimelineSection() {
           className="text-center mb-16"
         >
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="text-gradient-gold">Event Timeline</span>
+            <span className="text-gradient-gold">event timeline</span>
           </h2>
           <p className="font-heading text-xl text-muted-foreground max-w-2xl mx-auto">
             Mark your calendar for these important milestones
@@ -143,7 +143,7 @@ export default function TimelineSection() {
                         {event.time}
                       </span>
                     </div>
-                    <h3 className="font-display text-xl font-semibold text-foreground mb-2">
+                    <h3 className="font-primary text-xl font-semibold text-foreground mb-2">
                       {event.title}
                     </h3>
                     <p className="font-body text-muted-foreground text-sm">

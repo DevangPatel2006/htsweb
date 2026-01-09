@@ -110,7 +110,7 @@ export default function FAQSection() {
                   value={`item-${index}`}
                   className="glass-card rounded-xl border-border/50 px-6 data-[state=open]:border-primary/50 transition-all duration-300"
                 >
-                  <AccordionTrigger className="font-display text-left text-foreground hover:text-primary transition-colors py-5">
+                  <AccordionTrigger className=" text-left text-foreground hover:text-primary transition-colors py-5">
                     {faq.question}
                   </AccordionTrigger>
                   <AccordionContent className="font-body text-muted-foreground pb-5 leading-relaxed">
@@ -129,8 +129,8 @@ export default function FAQSection() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-16 text-center"
         >
-          <h3 className="font-display text-xl font-semibold text-foreground mb-6">
-            Still have questions?
+          <h3 className="font-primary text-xl font-semibold text-foreground mb-6">
+            STILL HAVE QUESTIONS?
           </h3>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="hero" asChild>

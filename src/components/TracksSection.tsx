@@ -22,49 +22,49 @@ const tracks = [
   },
   {
     icon: Coins,
-    title: "FinTech",
+    title: "FINTECH",
     description:
       "Revolutionize financial services with innovative technology solutions.",
     color: "from-yellow-500 to-orange-500",
   },
   {
     icon: GraduationCap,
-    title: "EdTech",
+    title: "EDTECH",
     description:
       "Transform education through technology and innovative learning solutions.",
     color: "from-blue-500 to-cyan-500",
   },
   {
     icon: HeartPulse,
-    title: "HealthTech",
+  title: "HEALTHTECH",
     description:
       "Create solutions that improve healthcare accessibility and outcomes.",
     color: "from-red-500 to-pink-500",
   },
   {
     icon: Leaf,
-    title: "Sustainability",
+    title: "SUSTAINABILITY",
     description:
       "Develop eco-friendly solutions for a sustainable future.",
     color: "from-green-500 to-emerald-500",
   },
   {
     icon: Cpu,
-    title: "IoT",
+    title: "IOT",
     description:
       "Connect the physical and digital worlds through smart devices.",
     color: "from-teal-500 to-blue-500",
   },
   {
     icon: Rocket,
-    title: "Web3 & Blockchain",
+    title: "WEB3 / BLOCKCHAIN",
     description:
       "Build decentralized applications and explore the future of the web.",
     color: "from-indigo-500 to-purple-500",
   },
   {
     icon: Sparkles,
-    title: "Open Innovation",
+    title: "OPEN INNOVATION",
     description:
       "Bring your wildest ideas to life - no boundaries, pure creativity.",
     color: "from-amber-500 to-yellow-500",
@@ -133,7 +133,7 @@ export default function TracksSection() {
                     <track.icon className="w-7 h-7 text-white" />
                   </div>
 
-                  <h3 className="font-display text-lg font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
+                  <h3 className="font-primary text-lg font-semibold mb-3 text-foreground group-hover:text-primary transition-colors">
                     {track.title}
                   </h3>
 
