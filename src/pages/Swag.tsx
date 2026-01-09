@@ -1,32 +1,31 @@
 import { useState, useRef } from "react";
-import { motion } from "framer-motion";
 import { ArrowLeft, Download, Upload, User } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import StarField from "@/components/StarField";
+import swagBg from "@/assets/bg.png";
 
 export default function Swag() {
   const [name, setName] = useState("Hacker's Name");
   const [profileImage, setProfileImage] = useState<string | null>(null);
+
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
+  /* ---------------- IMAGE UPLOAD ---------------- */
   const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        setProfileImage(event.target?.result as string);
-      };
-      reader.readAsDataURL(file);
-    }
+    if (!file) return;
+
+    const reader = new FileReader();
+    reader.onload = (e) => setProfileImage(e.target?.result as string);
+    reader.readAsDataURL(file);
   };
 
-  const useDefaultImage = () => {
-    setProfileImage(null);
-  };
+  const useDefaultImage = () => setProfileImage(null);
 
+  /* ---------------- DOWNLOAD SWAG ---------------- */
   const downloadSwag = async () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -34,279 +33,178 @@ export default function Swag() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Set canvas size
-    canvas.width = 800;
-    canvas.height = 800;
+    // HD canvas (auto scale for quality)
+    const SIZE = 1600; // bigger for crispness
+    canvas.width = SIZE;
+    canvas.height = SIZE;
 
-    // Create gradient background
-    const gradient = ctx.createLinearGradient(0, 0, 800, 800);
-    gradient.addColorStop(0, "#1a0a2e");
-    gradient.addColorStop(0.5, "#16213e");
-    gradient.addColorStop(1, "#0f0f23");
-    ctx.fillStyle = gradient;
-    ctx.fillRect(0, 0, 800, 800);
+    /* ---- Background Image ---- */
+    const bg = new Image();
+    bg.src = swagBg;
 
-    // Add stars
-    for (let i = 0; i < 100; i++) {
-      const x = Math.random() * 800;
-      const y = Math.random() * 800;
-      const size = Math.random() * 2;
-      ctx.beginPath();
-      ctx.arc(x, y, size, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(255, 255, 255, ${Math.random() * 0.8 + 0.2})`;
-      ctx.fill();
-    }
+    await new Promise<void>((resolve) => {
+      bg.onload = () => {
+        ctx.drawImage(bg, 0, 0, SIZE, SIZE);
+        resolve();
+      };
+    });
 
-    // Draw decorative border
-    ctx.strokeStyle = "#f7b32b";
-    ctx.lineWidth = 8;
-    ctx.strokeRect(30, 30, 740, 740);
+    /* ---- Profile Circle ---- */
+    const cx = SIZE / 2;
+    const cy = SIZE * 0.5; // exact vertical center
+    const radius = SIZE * 0.15;
 
-    // Inner decorative border
-    ctx.strokeStyle = "#8b5cf6";
-    ctx.lineWidth = 3;
-    ctx.strokeRect(50, 50, 700, 700);
-
-    // Event title
-    ctx.fillStyle = "#f7b32b";
-    ctx.font = "bold 48px Arial";
-    ctx.textAlign = "center";
-    ctx.fillText("HACK THE SPRING", 400, 120);
-
-    // Date
-    ctx.fillStyle = "#a855f7";
-    ctx.font = "24px Arial";
-    ctx.fillText("2026 Edition", 400, 160);
-
-    // Profile circle background
+    // Clip circle
+    ctx.save();
     ctx.beginPath();
-    ctx.arc(400, 380, 150, 0, Math.PI * 2);
-    const circleGradient = ctx.createRadialGradient(400, 380, 0, 400, 380, 150);
-    circleGradient.addColorStop(0, "#8b5cf6");
-    circleGradient.addColorStop(1, "#6366f1");
-    ctx.fillStyle = circleGradient;
-    ctx.fill();
+    ctx.arc(cx, cy, radius, 0, Math.PI * 2);
+    ctx.clip();
 
-    // Profile image or default
     if (profileImage) {
       const img = new Image();
-      img.crossOrigin = "anonymous";
+      img.src = profileImage;
+
       await new Promise<void>((resolve) => {
         img.onload = () => {
-          ctx.save();
-          ctx.beginPath();
-          ctx.arc(400, 380, 130, 0, Math.PI * 2);
-          ctx.clip();
-          ctx.drawImage(img, 270, 250, 260, 260);
-          ctx.restore();
+          ctx.drawImage(
+            img,
+            cx - radius,
+            cy - radius,
+            radius * 2,
+            radius * 2
+          );
           resolve();
         };
-        img.src = profileImage;
       });
     } else {
-      // Default astronaut icon
-      ctx.fillStyle = "#1a0a2e";
-      ctx.beginPath();
-      ctx.arc(400, 380, 130, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.fillStyle = "#f7b32b";
-      ctx.font = "100px Arial";
-      ctx.fillText("🚀", 400, 410);
+      ctx.fillStyle = "#1e1b4b";
+      ctx.fillRect(cx - radius, cy - radius, radius * 2, radius * 2);
+      ctx.font = `${radius}px serif`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = "#facc15";
+      ctx.fillText("🚀", cx, cy);
     }
+    ctx.restore();
 
-    // Profile border
-    ctx.strokeStyle = "#f7b32b";
-    ctx.lineWidth = 6;
+    /* ---- Circle Border ---- */
+    ctx.strokeStyle = "#facc15";
+    ctx.lineWidth = 10;
     ctx.beginPath();
-    ctx.arc(400, 380, 150, 0, Math.PI * 2);
+    ctx.arc(cx, cy, radius, 0, Math.PI * 2);
     ctx.stroke();
 
-    // Hacker's name
-    ctx.fillStyle = "#ffffff";
-    ctx.font = "bold 36px Arial";
-    ctx.fillText(name || "Hacker's Name", 400, 590);
+    /* ---- Name Text ---- */
+    ctx.fillStyle = "#4b1c0d";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
 
-    // Participant badge
-    ctx.fillStyle = "#f7b32b";
-    ctx.font = "bold 28px Arial";
-    ctx.fillText("✨ PARTICIPANT ✨", 400, 640);
+    // preload font before drawing
+    await document.fonts.load("bold 72px 'Playfair Display'");
+    await document.fonts.ready;
 
-    // Tagline
-    ctx.fillStyle = "#a855f7";
-    ctx.font = "18px Arial";
-    ctx.fillText("Guardians of Code • Defenders of Innovation", 400, 720);
+    ctx.font = "bold 72px 'Playfair Display', serif";
+    ctx.fillText(name || "Hacker's Name", cx, cy + radius + 100);
 
-    // Footer
-    ctx.fillStyle = "#6b7280";
-    ctx.font = "14px Arial";
-    ctx.fillText("@HackTheSpring • hackthespring.tech", 400, 760);
-
-    // Download
+    /* ---- Download ---- */
     const link = document.createElement("a");
-    link.download = `hackthespring-swag-${name.replace(/\s+/g, "-").toLowerCase()}.png`;
-    link.href = canvas.toDataURL("image/png");
+    link.download = `duhacks-swag-${name.replace(/\s+/g, "-").toLowerCase()}.png`;
+    link.href = canvas.toDataURL("image/png", 1.0); // full quality
     link.click();
   };
 
+  /* ---------------- UI ---------------- */
   return (
-    <div className="min-h-screen bg-background relative overflow-hidden">
+    <div className="min-h-screen relative overflow-hidden bg-background">
       <StarField />
-      
-      {/* Hidden canvas for generating image */}
+
       <canvas ref={canvasRef} className="hidden" />
-      
-      {/* Hidden file input */}
+
       <input
         ref={fileInputRef}
         type="file"
         accept="image/*"
-        onChange={handleImageUpload}
         className="hidden"
+        onChange={handleImageUpload}
       />
 
-      <div className="relative z-10 container mx-auto px-4 py-8">
-        {/* Back button */}
-        <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Link to="/">
-            <Button variant="outline" className="gap-2 border-primary/50 hover:bg-primary/10">
-              <ArrowLeft size={18} />
-              Go Back to Home
-            </Button>
-          </Link>
-        </motion.div>
+      <div className="relative z-10 max-w-6xl mx-auto px-4 py-8">
+        {/* Back */}
+        <Link to="/">
+          <Button variant="outline" className="mb-6 gap-2">
+            <ArrowLeft size={18} /> Back
+          </Button>
+        </Link>
 
         {/* Title */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="text-center mt-8"
-        >
-          <h1 className="font-display text-5xl md:text-6xl text-primary mb-4">
+        <div className="text-center mb-10">
+          <h1 className="text-4xl md:text-6xl font-bold text-primary">
             Digital Swag ✨
           </h1>
-          <p className="text-muted-foreground text-lg">
-            Show off your cosmic swag and don't forget to tag <span className="text-primary font-semibold">@HackTheSpring</span> 💫
+          <p className="text-muted-foreground mt-2">
+            DUHACKS 5.0 • Share & Tag Us 🚀
           </p>
-        </motion.div>
+        </div>
 
-        {/* Swag Generator Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 40 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="max-w-lg mx-auto mt-12"
-        >
-          {/* Name input */}
-          <div className="mb-6">
+        {/* Main Card */}
+        <div className="grid md:grid-cols-2 gap-10 items-center">
+          {/* Controls */}
+          <div>
             <Input
-              type="text"
-              placeholder="Hacker's Name"
               value={name}
               onChange={(e) => setName(e.target.value)}
-              className="text-center text-lg bg-card/50 border-primary/30 focus:border-primary"
+              className="text-center text-lg mb-4"
+              placeholder="Your Name"
             />
-          </div>
 
-          {/* Upload buttons */}
-          <div className="flex justify-center gap-4 mb-8">
-            <Button
-              variant="outline"
-              onClick={() => fileInputRef.current?.click()}
-              className="gap-2 border-primary/50 hover:bg-primary/10"
-            >
-              <Upload size={18} />
-              Upload Photo
-            </Button>
-            <Button
-              variant="outline"
-              onClick={useDefaultImage}
-              className="gap-2 border-primary/50 hover:bg-primary/10"
-            >
-              <User size={18} />
-              Use Default
-            </Button>
-          </div>
-
-          {/* Preview Card */}
-          <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-deep-space via-cosmic-purple/30 to-deep-space border-4 border-primary/50 shadow-glow-purple">
-            {/* Stars overlay */}
-            <div className="absolute inset-0 opacity-50">
-              {[...Array(30)].map((_, i) => (
-                <div
-                  key={i}
-                  className="absolute w-1 h-1 bg-white rounded-full animate-pulse"
-                  style={{
-                    left: `${Math.random() * 100}%`,
-                    top: `${Math.random() * 100}%`,
-                    animationDelay: `${Math.random() * 2}s`,
-                  }}
-                />
-              ))}
+            <div className="flex gap-4 justify-center mb-6">
+              <Button
+                variant="outline"
+                onClick={() => fileInputRef.current?.click()}
+              >
+                <Upload size={18} /> Upload Photo
+              </Button>
+              <Button variant="outline" onClick={useDefaultImage}>
+                <User size={18} /> Default
+              </Button>
             </div>
 
-            <div className="relative p-8">
-              {/* Event title */}
-              <div className="text-center mb-6">
-                <h2 className="font-display text-3xl text-primary">HACK THE SPRING</h2>
-                <p className="text-nebula-pink text-sm">2026 Edition</p>
-              </div>
-
-              {/* Profile circle */}
-              <div className="relative w-48 h-48 mx-auto mb-6">
-                <div className="absolute inset-0 rounded-full bg-gradient-to-br from-cosmic-purple to-nebula-pink p-1">
-                  <div className="w-full h-full rounded-full bg-deep-space flex items-center justify-center overflow-hidden">
-                    {profileImage ? (
-                      <img
-                        src={profileImage}
-                        alt="Profile"
-                        className="w-full h-full object-cover"
-                      />
-                    ) : (
-                      <span className="text-6xl">🚀</span>
-                    )}
-                  </div>
-                </div>
-                {/* Glow effect */}
-                <div className="absolute inset-0 rounded-full bg-primary/20 blur-xl -z-10" />
-              </div>
-
-              {/* Name */}
-              <h3 className="font-display text-2xl text-center text-foreground mb-2">
-                {name || "Hacker's Name"}
-              </h3>
-
-              {/* Badge */}
-              <p className="text-center text-primary font-semibold">
-                ✨ PARTICIPANT ✨
-              </p>
-
-              {/* Tagline */}
-              <p className="text-center text-muted-foreground text-sm mt-4">
-                Guardians of Code • Defenders of Innovation
-              </p>
-            </div>
-          </div>
-
-          {/* Download Button */}
-          <motion.div
-            className="mt-8 text-center"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
             <Button
               onClick={downloadSwag}
-              className="gap-2 px-8 py-6 text-lg bg-gold-gradient text-primary-foreground shadow-glow-gold hover:scale-105 transition-all"
+              className="w-full py-6 text-lg bg-gold-gradient"
             >
-              <Download size={22} />
-              Download Swag ✨
+              <Download size={22} /> Download Swag
             </Button>
-          </motion.div>
-        </motion.div>
+          </div>
+
+          {/* Preview */}
+          <div className="relative aspect-square rounded-xl overflow-hidden shadow-xl border">
+            <img
+              src={swagBg}
+              alt="Swag Preview"
+              className="absolute inset-0 w-full h-full object-cover"
+            />
+
+            <div className="absolute inset-0 flex flex-col items-center justify-center">
+              <div className="w-40 h-40 rounded-full overflow-hidden border-4 border-yellow-400 bg-black">
+                {profileImage ? (
+                  <img
+                    src={profileImage}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full flex items-center justify-center text-5xl">
+                    🚀
+                  </div>
+                )}
+              </div>
+
+              <p className="mt-4 font-display text-xl md:text-2xl text-center text-[#4b1c0d] bg-[#fff3e0]/90 px-5 py-2 rounded-lg shadow-md tracking-wide">
+                {name || "Hacker's Name"}
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

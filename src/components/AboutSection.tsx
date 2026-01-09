@@ -10,8 +10,25 @@ import event3 from "@/assets/gallery/event-3.jpg";
 import event4 from "@/assets/gallery/event-4.jpg";
 import event5 from "@/assets/gallery/event-5.jpg";
 import event6 from "@/assets/gallery/event-6.jpg";
+import event7 from "@/assets/gallery/event-7.jpg";
+import event8 from "@/assets/gallery/event-8.jpg";
+import event9 from "@/assets/gallery/event-9.jpg";
+import event10 from "@/assets/gallery/event-10.jpg";
+import event11 from "@/assets/gallery/event-11.jpg";
 
-const images = [event1, event2, event3, event4, event5, event6];
+const images = [
+  event1,
+  event2,
+  event3,
+  event4,
+  event5,
+  event6,
+  event7,
+  event8,
+  event9,
+  event10,
+  event11,
+];
 
 const stats = [
   { icon: Users, value: "600+", label: "Participants" },
@@ -70,18 +87,31 @@ export default function AboutSection() {
             animate={isInView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <p className="font-body text-lg text-foreground/80 leading-relaxed mb-6">
-              Welcome to <span className="text-primary font-semibold">Hack The Spring 2026</span> — Gujarat's 
-              premier 48-hour offline hackathon where innovation blooms and ideas flourish! 🌸
+            <p className="font-body text-lg text-foreground/80 leading-relaxed mb-6 text-justify">
+              Welcome to{" "}
+              <span className="text-primary font-semibold">
+                Hack The Spring 2026
+              </span>{" "}
+              — Gujarat's premier 48-hour offline hackathon where innovation
+              blooms and ideas flourish! 🌸
+              blooms and ideas flourish! 🌸
             </p>
-            <p className="font-body text-lg text-foreground/80 leading-relaxed mb-6">
-              Join 600+ brilliant minds from across India as we gather to create, innovate, and transform 
-              the future. Whether you're a seasoned developer or just starting your coding journey, 
-              Hack The Spring provides the perfect environment for growth and collaboration.
+
+            <p className="font-body text-lg text-foreground/80 leading-relaxed mb-6 text-justify">
+              Join 600+ brilliant minds from across India as we gather to
+              create, innovate, and transform the future. Whether you're a
+              seasoned developer or just starting your coding journey, Hack The
+              Spring provides the perfect environment for growth and
+              collaboration.
             </p>
-            <p className="font-body text-lg text-foreground/80 leading-relaxed">
-              From groundbreaking problem statements to expert mentorship and incredible rewards, 
-              this is where your code becomes the seed of tomorrow's innovation. 🌱✨
+
+            <p className="font-body text-lg text-foreground/80 leading-relaxed text-justify">
+              From groundbreaking problem statements to expert mentorship and
+              incredible rewards, this is where your code becomes the seed of
+              tomorrow's innovation. 🌱✨
+              From groundbreaking problem statements to expert mentorship and
+              incredible rewards, this is where your code becomes the seed of
+              tomorrow's innovation. 🌱✨
             </p>
           </motion.div>
 
@@ -92,22 +122,23 @@ export default function AboutSection() {
             transition={{ duration: 0.6, delay: 0.4 }}
             className="relative"
           >
-            <div className="relative w-full h-[400px] md:h-[500px] rounded-2xl overflow-hidden border border-border/50 shadow-xl">
+            <div className="relative w-full aspect-[4/3] lg:aspect-[3/2] rounded-2xl overflow-hidden border border-border/50 shadow-xl">
+
               {images.map((img, index) => (
                 <motion.img
                   key={index}
                   src={img}
                   alt={`Event ${index + 1}`}
                   initial={{ opacity: 0 }}
-                  animate={{ 
+                  animate={{
                     opacity: currentImageIndex === index ? 1 : 0,
-                    scale: currentImageIndex === index ? 1 : 1.1
+                    scale: currentImageIndex === index ? 1 : 1.1,
                   }}
                   transition={{ duration: 0.8 }}
                   className="absolute inset-0 w-full h-full object-cover"
                 />
               ))}
-              
+
               {/* Image indicators */}
               <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
                 {images.map((_, index) => (

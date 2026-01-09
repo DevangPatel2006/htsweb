@@ -110,7 +110,7 @@ export default function FAQSection() {
                   value={`item-${index}`}
                   className="glass-card rounded-xl border-border/50 px-6 data-[state=open]:border-primary/50 transition-all duration-300"
                 >
-                  <AccordionTrigger className=" text-left text-foreground hover:text-primary transition-colors py-5">
+                  <AccordionTrigger className="font-4 text-left text-foreground hover:text-primary transition-colors py-5">
                     {faq.question}
                   </AccordionTrigger>
                   <AccordionContent className="font-body text-muted-foreground pb-5 leading-relaxed">
