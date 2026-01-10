@@ -1,6 +1,4 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useState } from "react";
 import {
   UserCheck,
   PartyPopper,
@@ -10,61 +8,63 @@ import {
   Send,
   Trophy,
   Clock,
+  Calendar,
 } from "lucide-react";
 
-const timelineEvents = [
+const day1Events = [
   {
     icon: Clock,
-    date: "March 10, 2026",
     time: "11:59 PM",
     title: "REGISTRATION CLOSES",
     description: "Last chance to register for Hack The Spring 2026!",
   },
   {
     icon: UserCheck,
-    date: "March 21, 2026",
     time: "8:00 AM",
     title: "CHECK-IN & REGISTRATION",
     description: "Arrive at the venue and complete your registration.",
   },
   {
     icon: PartyPopper,
-    date: "March 21, 2026",
     time: "9:30 AM",
     title: "OPENING CEREMONY",
     description: "Kickoff with keynote speakers and event introduction.",
   },
   {
     icon: Rocket,
-    date: "March 21, 2026",
     time: "11:00 AM",
     title: "HACKING BEGINS",
     description: "Start building your innovative solutions!",
   },
   {
     icon: FileCheck,
-    date: "March 21, 2026",
     time: "8:00 PM",
     title: "CHECKPOINT 1",
     description: "First progress check with mentors.",
   },
+];
+
+const day2Events = [
   {
     icon: Coffee,
-    date: "March 22, 2026",
-    time: "2:00 PM",
-    title: "WORKSHOP SESSIONS",
-    description: "Learn from industry experts and tech sessions.",
+    time: "2:00 AM",
+    title: "MIDNIGHT SNACKS",
+    description: "Fuel up for the final stretch!",
+  },
+  {
+    icon: FileCheck,
+    time: "8:00 AM",
+    title: "CHECKPOINT 2",
+    description: "Second progress check with mentors.",
   },
   {
     icon: Send,
-    date: "March 22, 2026",
-    time: "9:00 AM",
+    time: "12:00 PM",
     title: "FINAL SUBMISSIONS",
     description: "Submit your projects and prepare for demos.",
   },
   {
     icon: Trophy,
-    date: "March 22, 2026",
     time: "3:00 PM",
     title: "CLOSING CEREMONY",
     description: "Winners announcement and prize distribution!",
@@ -72,96 +72,113 @@ const timelineEvents = [
 ];
 
 export default function TimelineSection() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [activeDay, setActiveDay] = useState<1 | 2>(1);
+
+  const currentEvents = activeDay === 1 ? day1Events : day2Events;
+  const currentDate = activeDay === 1 ? "March 21, 2026" : "March 22, 2026";
 
   return (
-    <section
-      id="timeline"
-      ref={ref}
-      className="relative py-24 lg:py-32 overflow-hidden"
-    >
-     
-
+    <section id="timeline" className="relative py-16 lg:py-24 overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+        <div className="text-center mb-10">
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
             <span className="text-gradient-gold">event timeline</span>
           </h2>
-          <p className="font-heading text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className="font-heading text-lg text-muted-foreground max-w-2xl mx-auto">
             Mark your calendar for these important milestones
           </p>
-        </motion.div>
+        </div>
 
-        {/* Timeline */}
-        <div className="relative max-w-4xl mx-auto">
-          {/* Vertical Line */}
-          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-accent to-primary/30 -translate-x-1/2 hidden md:block" />
+        {/* Day Toggle */}
+        <div className="flex justify-center gap-4 mb-10">
+          <button
+            onClick={() => setActiveDay(1)}
+            className={`relative px-6 py-3 md:px-8 md:py-4 rounded-xl font-primary text-base md:text-lg font-semibold transition-all duration-300 ${
+              activeDay === 1
+                ? "bg-primary text-primary-foreground glow-gold"
+                : "glass-card text-foreground hover:border-primary/50"
+            }`}
+          >
+            <span className="flex items-center gap-2">
+              <Calendar className="w-5 h-5" />
+              Day 1
+            </span>
+            {activeDay === 1 && (
+              <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 text-xs text-primary font-body">
+                March 21
+              </span>
+            )}
+          </button>
+          <button
+            onClick={() => setActiveDay(2)}
+            className={`relative px-6 py-3 md:px-8 md:py-4 rounded-xl font-primary text-base md:text-lg font-semibold transition-all duration-300 ${
+              activeDay === 2
+                ? "bg-primary text-primary-foreground glow-gold"
+                : "glass-card text-foreground hover:border-primary/50"
+            }`}
+          >
+            <span className="flex items-center gap-2">
+              <Calendar className="w-5 h-5" />
+              Day 2
+            </span>
+            {activeDay === 2 && (
+              <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 text-xs text-primary font-body">
+                March 22
+              </span>
+            )}
+          </button>
+        </div>
 
-          <div className="space-y-8 md:space-y-0">
-            {timelineEvents.map((event, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`relative flex flex-col md:flex-row items-center gap-4 md:gap-8 ${
-                  index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
-                }`}
-              >
-                {/* Content Card */}
+        {/* Day Card */}
+        <div className="max-w-4xl mx-auto">
+          <div className="glass-card rounded-2xl p-6 md:p-8 border border-border/50">
+            {/* Day Header */}
+            <div className="flex items-center justify-between mb-6 pb-4 border-b border-border/30">
+              <div>
+                <h3 className="font-display text-2xl md:text-3xl text-gradient-gold">
+                  Day {activeDay}
+                </h3>
+                <p className="font-body text-muted-foreground text-sm mt-1">
+                  {currentDate}
+                </p>
+              </div>
+              <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center">
+                <span className="font-display text-lg md:text-xl text-primary">
+                  {activeDay}
+                </span>
+              </div>
+            </div>
+
+            {/* Events Grid */}
+            <div className="grid gap-4">
+              {currentEvents.map((event, index) => (
                 <div
-                  className={`flex-1 ${
-                    index % 2 === 0 ? "md:text-right" : "md:text-left"
-                  }`}
+                  key={`${activeDay}-${index}`}
+                  className="flex items-start gap-4 p-4 rounded-xl bg-card/50 hover:bg-card/80 transition-colors duration-200 border border-transparent hover:border-primary/30"
                 >
-                  <motion.div
-                    whileHover={{ scale: 1.02 }}
-                    className="glass-card rounded-2xl p-6 hover:border-primary/50 transition-all duration-300"
-                  >
-                    <div
-                      className={`flex items-center gap-3 mb-3 ${
-                        index % 2 === 0
-                          ? "md:flex-row-reverse md:justify-start"
-                          : ""
-                      }`}
-                    >
-                      <span className="text-sm font-body text-primary font-semibold">
-                        {event.date}
-                      </span>
-                      <span className="text-xs text-muted-foreground">
-                        {event.time}
-                      </span>
+                  {/* Time & Icon */}
+                  <div className="flex flex-col items-center gap-2 min-w-[60px] md:min-w-[80px]">
+                    <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center">
+                      <event.icon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
                     </div>
-                    <h3 className="font-primary text-xl font-semibold text-foreground mb-2">
+                    <span className="text-xs md:text-sm font-body text-primary font-semibold whitespace-nowrap">
+                      {event.time}
+                    </span>
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex-1">
+                    <h4 className="font-primary text-base md:text-lg font-semibold text-foreground mb-1">
                       {event.title}
-                    </h3>
-                    <p className="font-body text-muted-foreground text-sm">
+                    </h4>
+                    <p className="font-body text-sm text-muted-foreground">
                       {event.description}
                     </p>
-                  </motion.div>
+                  </div>
                 </div>
-
-                {/* Center Icon */}
-                <div className="relative z-10 flex-shrink-0">
-                  <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    className="w-14 h-14 rounded-full bg-card border-4 border-primary flex items-center justify-center "
-                  >
-                    <event.icon className="w-6 h-6 text-primary" />
-                  </motion.div>
-                </div>
-
-                {/* Spacer for opposite side */}
-                <div className="flex-1 hidden md:block" />
-              </motion.div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
