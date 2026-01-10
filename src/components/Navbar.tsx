@@ -3,7 +3,6 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sparkles } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 
-// 👉 Import your logo
 import logo from "@/assets/logo2.png";
 
 const navLinks = [
@@ -64,7 +63,7 @@ export default function Navbar() {
     >
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-16 lg:h-20">
-          {/* ✅ IMAGE LOGO */}
+          {/* Logo */}
           <motion.a
             href="#hero"
             onClick={(e) => {
@@ -80,7 +79,6 @@ export default function Navbar() {
               alt="Hack The Spring"
               className="h-9 w-auto lg:h-12 object-contain"
             />
-            
           </motion.a>
 
           {/* Desktop Navigation */}
@@ -93,15 +91,19 @@ export default function Navbar() {
                   e.preventDefault();
                   handleNavClick(link.href);
                 }}
-                className={`px-4 py-2 rounded-lg font-body text-sm transition-all duration-300 ${
+                className={`group px-4 py-2 font-body text-sm transition-colors duration-300 ${
                   activeSection === link.href.slice(1)
-                    ? "text-primary bg-primary/10"
-                    : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
-                {link.name}
+                {/* TEXT + UNDERLINE WRAPPER */}
+                <span className="relative inline-block">
+                  {link.name}
+                  <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-gold-gradient transition-all duration-300 group-hover:w-full" />
+                </span>
               </motion.a>
             ))}
 
@@ -117,9 +119,6 @@ export default function Navbar() {
               </motion.span>
             </Link>
           </div>
-
-          {/* CTA */}
-          
 
           {/* Mobile Toggle */}
           <button
