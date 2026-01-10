@@ -1,162 +1,211 @@
 import { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { ExternalLink, MapPin, Calendar } from "lucide-react";
 
 import heroBg from "@/assets/hero_section_bg_image.png";
-import logoText from "@/assets/logo3.png"; // ✅ added
+import logoText from "@/assets/logo3.png";
+import countdownFrame from "@/assets/frame.svg";
+import heroButton from "@/assets/button.svg";
 
+/* ----------------------------------
+   COUNTDOWN TIMER
+----------------------------------- */
 function CountdownTimer() {
   const targetDate = useMemo(() => new Date("2026-03-21T09:00:00"), []);
-  const [timeLeft, setTimeLeft] = useState({
-    days: 0,
-    hours: 0,
-    minutes: 0,
-    seconds: 0,
+  const [time, setTime] = useState({
+    d: "00",
+    h: "00",
+    m: "00",
+    s: "00",
   });
 
   useEffect(() => {
-    const calculateTimeLeft = () => {
-      const difference = targetDate.getTime() - new Date().getTime();
-      if (difference > 0) {
-        setTimeLeft({
-          days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-          hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-          minutes: Math.floor((difference / 1000 / 60) % 60),
-          seconds: Math.floor((difference / 1000) % 60),
-        });
-      }
+    const tick = () => {
+      const diff = targetDate.getTime() - Date.now();
+      if (diff <= 0) return;
+
+      setTime({
+        d: String(Math.floor(diff / 86400000)).padStart(2, "0"),
+        h: String(Math.floor((diff / 3600000) % 24)).padStart(2, "0"),
+        m: String(Math.floor((diff / 60000) % 60)).padStart(2, "0"),
+        s: String(Math.floor((diff / 1000) % 60)).padStart(2, "0"),
+      });
     };
 
-    calculateTimeLeft();
-    const timer = setInterval(calculateTimeLeft, 1000);
-    return () => clearInterval(timer);
+    tick();
+    const i = setInterval(tick, 1000);
+    return () => clearInterval(i);
   }, [targetDate]);
 
-  const timeUnits = [
-    { label: "Days", value: timeLeft.days },
-    { label: "Hours", value: timeLeft.hours },
-    { label: "Minutes", value: timeLeft.minutes },
-    { label: "Seconds", value: timeLeft.seconds },
-  ];
+  const fontSize = "text-[22px] sm:text-[26px] md:text-[32px] lg:text-[38px]";
 
   return (
-    <div className="flex gap-3 sm:gap-4 justify-center">
-      {timeUnits.map((unit, index) => (
-        <motion.div
-          key={unit.label}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.8 + index * 0.1 }}
-          className="flex flex-col items-center"
-        >
-          <div className="w-16 h-16 sm:w-20 sm:h-20 rounded-xl bg-card/80 backdrop-blur-sm border border-primary/30 flex items-center justify-center shadow-glow-gold">
-            <span className="font-display text-2xl sm:text-3xl text-primary font-bold">
-              {String(unit.value).padStart(2, "0")}
+    <div className="flex flex-col items-center select-none w-full">
+      {/* TIME */}
+      <div className="flex items-center">
+        {[time.d, time.h, time.m, time.s].map((val, i) => (
+          <div key={i} className="flex items-center">
+            <span
+              className={`${fontSize} font-display text-white leading-none w-[2ch] text-center`}
+            >
+              {val}
             </span>
+
+            {i !== 3 && (
+              <span
+                className={`${fontSize} font-display text-white leading-none mx-3 sm:mx-4 flex items-center`}
+              >
+                :
+              </span>
+            )}
           </div>
-          <span className="mt-2 text-xs sm:text-sm text-muted-foreground font-body uppercase tracking-wider">
-            {unit.label}
+        ))}
+      </div>
+
+      {/* LABELS */}
+      <div className="flex justify-between w-full max-w-[240px] sm:max-w-[340px] md:max-w-[400px] mt-2">
+        {["DAYS", "HOURS", "MINS", "SECS"].map((label) => (
+          <span
+            key={label}
+            className="text-[9px] sm:text-[10px] md:text-xs tracking-[0.3em] text-white/70 font-barlow"
+          >
+            {label}
           </span>
-        </motion.div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }
 
+/* ----------------------------------
+   HERO SECTION
+----------------------------------- */
 export default function HeroSection() {
   return (
     <section
       id="hero"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
-      {/* Background Image */}
+      {/* BACKGROUND */}
       <div className="absolute inset-0 z-0">
         <img
           src={heroBg}
-          alt="Cosmic space nebula"
+          alt="Cosmic background"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background" />
       </div>
 
-      {/* Content */}
+      {/* CONTENT */}
       <div className="relative z-10 container mx-auto px-4 text-center pt-20">
-        <motion.div
+        <div className="flex justify-center mb-4">
+          <p
+            className="
+      font-primary
+      font-light
+      text-white
+      text-[11px]
+      sm:text-[12px]
+      md:text-[13px]
+      uppercase
+      tracking-[0.25em]
+      leading-[1.4]
+      text-center
+      opacity-90
+      drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]
+    "
+          >
+            GOVERNMENT ENGINEERING COLLEGE,
+            <br />
+            SECTOR 28, GANDHINAGAR'S
+          </p>
+        </div>
+
+        {/* LOGO */}
+        <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
           className="mb-6"
         >
-          
-        </motion.div>
+          <img
+            src={logoText}
+            alt="Hack The Spring 2026"
+            className="mx-auto max-w-[90%] sm:max-w-[80%] md:max-w-[70%] lg:max-w-[60%]"
+          />
+        </motion.h1>
 
-        {/* 🔥 IMAGE-FILLED TEXT (NO DESIGN CHANGE) */}
-        <motion.h1
+        {/* SOLVE FOR X — MATCHES FIGMA */}
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-4"
+          className="flex justify-center mb-8"
         >
-          <img
-  src={logoText}
-  alt="Hack The Spring"
-  className="mx-auto max-w-[90%] sm:max-w-[80%] md:max-w-[70%] lg:max-w-[60%]"
-/>
+          <div className="w-[445px] h-[66px] flex items-center justify-center">
+            <p
+              className="
+                font-primary
+                font-light opacity-85 tracking-[0.7em]
 
-
-        </motion.h1>
-
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="font-display text-3xl sm:text-4xl md:text-5xl text-primary mb-6"
-        >
-          
-        </motion.h2>
-
-       
-
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
-          className="font-body text-lg text-foreground/80 mb-8"
-        >
-          48 Hours • 600+ Participants • Endless Possibilities
-        </motion.p>
-
-        {/* Countdown */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
-          className="mb-10"
-        >
-          <CountdownTimer />
+                drop-shadow-[0_4px_4px_rgba(0,0,0,0.6)]
+                text-white
+                text-[18px]
+                sm:text-[22px]
+                md:text-[26px]
+                uppercase
+                
+                leading-none
+                text-center
+              "
+            >
+              SOLVE&nbsp;&nbsp;&nbsp;FOR&nbsp;&nbsp;&nbsp;X
+            </p>
+          </div>
         </motion.div>
 
-        {/* CTA Buttons */}
+        {/* COUNTDOWN */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-          className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="mb-6 flex justify-center"
         >
-          <Button variant="hero" size="xl" asChild>
-            <a
-              href="https://unstop.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <ExternalLink size={20} />
-              Register on Unstop
-            </a>
-          </Button>
-          <Button variant="heroOutline" size="xl" asChild>
-            <a href="#about">Learn More</a>
-          </Button>
+          <div className="relative w-[320px] sm:w-[420px] md:w-[520px]">
+            <img
+              src={countdownFrame}
+              alt="Countdown Frame"
+              className="w-full"
+            />
+            <div className="absolute inset-0 flex items-center justify-center p-[4px]">
+              <CountdownTimer />
+            </div>
+          </div>
+        </motion.div>
+
+        {/* CENTER BUTTON */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="flex justify-center mt-4"
+        >
+          <img
+            src={heroButton}
+            alt="Hero Action Button"
+            className="w-[180px] sm:w-[220px] md:w-[260px] lg:w-[300px] h-auto cursor-pointer"
+          />
+        </motion.div>
+
+        {/* LABEL AT BOTTOM */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.8 }}
+          className="flex justify-center mt-8"
+        >
+          <div className="font-barlow font-semibold italic text-white text-base tracking-[0.3em] leading-normal whitespace-nowrap">
+            &gt; View Mission Parameters
+          </div>
         </motion.div>
       </div>
     </section>
