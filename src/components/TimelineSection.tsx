@@ -104,11 +104,7 @@ export default function TimelineSection() {
               <Calendar className="w-5 h-5" />
               Day 1
             </span>
-            {activeDay === 1 && (
-              <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 text-xs text-primary font-body">
-                March 21
-              </span>
-            )}
+            
           </button>
           <button
             onClick={() => setActiveDay(2)}
@@ -122,11 +118,7 @@ export default function TimelineSection() {
               <Calendar className="w-5 h-5" />
               Day 2
             </span>
-            {activeDay === 2 && (
-              <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 text-xs text-primary font-body">
-                March 22
-              </span>
-            )}
+            
           </button>
         </div>
 
