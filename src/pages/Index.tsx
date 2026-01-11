@@ -65,7 +65,6 @@ const Index = () => {
         <TracksSection />
         <PrizesSection />
         <TimelineSection />
-        <ProtocolsSection />
         <TeamSection />
         <TestimonialsSection />
         <SponsorsSection />

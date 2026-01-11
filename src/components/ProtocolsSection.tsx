@@ -3,7 +3,14 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 
 // Import SVG assets
-import trackSvg from "@/assets/trackno.svg";
+// UPDATED: Added the 6 specific SVGs as requested
+import hackSvg from "@/assets/hack.svg";
+import buildSvg from "@/assets/build.svg";
+import thinkSvg from "@/assets/think.svg";
+import gameSvg from "@/assets/game.svg";
+import chessSvg from "@/assets/chess.svg";
+import lastSvg from "@/assets/last.svg";
+
 import initiateButton from "@/assets/inti.svg";
 import learnMoreButton from "@/assets/learnmore.svg";
 
@@ -11,37 +18,37 @@ import learnMoreButton from "@/assets/learnmore.svg";
 const protocols = [
   {
     id: 1,
-    trackSvg: trackSvg,
+    trackSvg: hackSvg, // Updated
     initiateLink: "https://unstop.com/hackathons/protocol-1-initiate",
     learnMoreLink: "https://discord.gg/protocol-1-learn",
   },
   {
     id: 2,
-    trackSvg: trackSvg,
+    trackSvg: buildSvg, // Updated
     initiateLink: "https://www.figma.com/design/Y0VezvLGs2ZV3UEnhs5eCU/HTS-26?node-id=147-407&t=biCKR6yr4duvMbmX-0",
     learnMoreLink: "https://discord.gg/protocol-2-learn",
   },
   {
     id: 3,
-    trackSvg: trackSvg,
+    trackSvg: thinkSvg, // Updated
     initiateLink: "https://unstop.com/hackathons/protocol-3-initiate",
     learnMoreLink: "https://discord.gg/protocol-3-learn",
   },
   {
     id: 4,
-    trackSvg: trackSvg,
+    trackSvg: gameSvg, // Updated
     initiateLink: "https://unstop.com/hackathons/protocol-4-initiate",
     learnMoreLink: "https://discord.gg/protocol-4-learn",
   },
   {
     id: 5,
-    trackSvg: trackSvg,
+    trackSvg: chessSvg, // Updated
     initiateLink: "https://unstop.com/hackathons/protocol-5-initiate",
     learnMoreLink: "https://discord.gg/protocol-5-learn",
   },
   {
     id: 6,
-    trackSvg: trackSvg,
+    trackSvg: lastSvg, // Updated
     initiateLink: "https://unstop.com/hackathons/protocol-6-initiate",
     learnMoreLink: "https://discord.gg/protocol-6-learn",
   },
@@ -65,11 +72,11 @@ export default function ProtocolsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+          <h2 className="font-display text-[40px] lg:text-[48px] font-bold mb-4">
             <span className="text-gradient-gold">SELECT YOUR PROTOCOL</span>
           </h2>
-          <p className="font-heading text-lg text-muted-foreground italic">
-            Awaiting User Input: Initialize your operational module.
+          <p className="font-barlow tracking-[0.15em] text-[25px] lg:text-[25px] text-muted-foreground italic">
+            AWAITING USER INPUT: INTILIAZE YOUR OPERATIONAL MODULE.
           </p>
         </motion.div>
 

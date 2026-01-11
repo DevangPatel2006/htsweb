@@ -89,7 +89,7 @@ export default function AboutSection() {
               <p 
                 className="font-barlow italic"
                 style={{
-                  fontSize: '15px',
+                  fontSize: '20px',
                   letterSpacing: '0.3em',
                   marginTop: '10px',
                   color: 'rgba(255, 255, 255, 0.6)'
