@@ -39,25 +39,16 @@ export default function AboutSection() {
     <section
       id="about"
       ref={ref}
-      className="relative w-full h-screen overflow-hidden"
-      style={{
-        paddingTop: '99px',
-        paddingBottom: '50px',
-        paddingLeft: '99.5px',
-        paddingRight: '89.5px',
-        display: 'flex',
-        flexDirection: 'column',
-      }}
+      // UPDATED:
+      // 1. changed 'h-screen' to 'min-h-screen lg:h-screen' (allows scrolling on mobile)
+      // 2. changed 'overflow-hidden' to 'overflow-x-hidden' (prevents mobile horizontal scroll)
+      // 3. Converted specific padding to 'lg:' classes and added sensible mobile padding (px-6 py-12)
+      className="relative w-full min-h-screen lg:h-screen overflow-x-hidden flex flex-col px-6 py-12 lg:pt-[99px] lg:pb-[50px] lg:pl-[99.5px] lg:pr-[89.5px]"
     >
       <div className="w-full h-full relative z-10">
-        {/* Grid Definition: Strictly 50% 50% */}
+        {/* Grid Definition: Stacks on mobile (grid-cols-1), 50/50 on desktop (lg:grid-cols-2) */}
         <div 
-          className="grid grid-cols-2" 
-          style={{ 
-            gap: '60px', 
-            height: '100%',
-            alignItems: 'start' // Ensures Image and Title start at the exact same top line
-          }}
+          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-[60px] h-auto lg:h-full items-start"
         >
           
           {/* --- LEFT COLUMN (Title + Text) --- */}
@@ -67,31 +58,24 @@ export default function AboutSection() {
               initial={{ opacity: 0, y: 30 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6 }}
-              style={{ marginBottom: '110px', flexShrink: 0 }} 
+              // Responsive margin bottom: 40px on mobile, 110px on desktop
+              className="mb-10 lg:mb-[110px] shrink-0"
             >
               <h2 
-                className="font-display font-bold"
+                className="font-display font-bold text-3xl lg:text-[40px] text-left leading-[1.2] tracking-[0.03em]"
                 style={{
-                  fontSize: '40px',
-                  lineHeight: '1.2',
-                  letterSpacing: '0.03em',
-                  fontWeight: '800',
+                  // Kept gradient exactly as requested
                   background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
                   WebkitBackgroundClip: 'text',
                   WebkitTextFillColor: 'transparent',
                   backgroundClip: 'text',
-                  textAlign: 'left',
-                  margin: 0
                 }}
               >
                 THE GALACTIC<br/>CONVERGENCE
               </h2>
               <p 
-                className="font-barlow italic"
+                className="font-barlow italic text-lg lg:text-[20px] mt-[10px] tracking-[0.3em]"
                 style={{
-                  fontSize: '20px',
-                  letterSpacing: '0.3em',
-                  marginTop: '10px',
                   color: 'rgba(255, 255, 255, 0.6)'
                 }}
               >
@@ -104,59 +88,38 @@ export default function AboutSection() {
               initial={{ opacity: 0, x: -30 }}
               animate={isInView ? { opacity: 1, x: 0 } : {}}
               transition={{ duration: 0.6, delay: 0.2 }}
-              style={{ flexGrow: 1 }}
+              className="grow"
             >
-              <p 
-                className="font-open leading-relaxed text-justify"
-                style={{ 
-                  fontSize: '20px',
-                  lineHeight: '1.5',
-                  marginBottom: '20px',
-                  color: 'rgba(255, 255, 255, 0.85)'
-                }}
-              >
-                Orchestrated by Government Engineering College, Gandhinagar, this{" "}
-                <span style={{ color: '#FFD700', fontWeight: '600' }}>2-Day</span> Tech Fest unites the brightest
-                minds from across the cosmos.
-              </p>
+              <div className="font-open leading-relaxed text-justify text-base lg:text-[20px] text-white/85 space-y-5">
+                <p>
+                  Orchestrated by Government Engineering College, Gandhinagar, this{" "}
+                  <span style={{ color: '#FFD700', fontWeight: '600' }}>2-Day</span> Tech Fest unites the brightest
+                  minds from across the cosmos.
+                </p>
 
-              <p 
-                className="font-open leading-relaxed text-justify"
-                style={{ 
-                  fontSize: '20px',
-                  lineHeight: '1.5',
-                  marginBottom: '20px',
-                  color: 'rgba(255, 255, 255, 0.85)'
-                }}
-              >
-                We are launching a multi-dimensional expedition covering{" "}
-                <span style={{ color: '#FFD700', fontWeight: '600' }}>software, hardware, and creative strategy</span>{" "}
-                during standard solar hours. At Hack The Spring, every participant is a{" "}
-                <span style={{ color: '#FFD700', fontWeight: '600' }}>Guardian of Innovation</span>. Whether you
-                are debugging complex systems in{" "}
-                <span style={{ color: '#FFD700', fontWeight: '600' }}>Hack.X</span>, building
-                prototypes in{" "}
-                <span style={{ color: '#FFD700', fontWeight: '600' }}>Build.X</span>, or pitching strategies in{" "}
-                <span style={{ color: '#FFD700', fontWeight: '600' }}>Think.X</span>, you are here to{" "}
-                <span style={{ color: '#FFD700', fontWeight: '600' }}>push boundaries</span>.
-              </p>
+                <p>
+                  We are launching a multi-dimensional expedition covering{" "}
+                  <span style={{ color: '#FFD700', fontWeight: '600' }}>software, hardware, and creative strategy</span>{" "}
+                  during standard solar hours. At Hack The Spring, every participant is a{" "}
+                  <span style={{ color: '#FFD700', fontWeight: '600' }}>Guardian of Innovation</span>. Whether you
+                  are debugging complex systems in{" "}
+                  <span style={{ color: '#FFD700', fontWeight: '600' }}>Hack.X</span>, building
+                  prototypes in{" "}
+                  <span style={{ color: '#FFD700', fontWeight: '600' }}>Build.X</span>, or pitching strategies in{" "}
+                  <span style={{ color: '#FFD700', fontWeight: '600' }}>Think.X</span>, you are here to{" "}
+                  <span style={{ color: '#FFD700', fontWeight: '600' }}>push boundaries</span>.
+                </p>
 
-              <p 
-                className="font-open leading-relaxed text-justify"
-                style={{ 
-                  fontSize: '20px',
-                  lineHeight: '1.5',
-                  color: 'rgba(255, 255, 255, 0.85)'
-                }}
-              >
-                From{" "}
-                <span style={{ color: '#FFD700', fontWeight: '600' }}>restoring</span> the{" "}
-                <span style={{ color: '#FFD700', fontWeight: '600' }}>Cosmic Chord</span> to capturing the
-                universe in{" "}
-                <span style={{ color: '#FFD700', fontWeight: '600' }}>Cosmic Lens</span>, this is where your skills
-                become the tools to save the system. Prepare to{" "}
-                <span style={{ color: '#FFD700', fontWeight: '600' }}>Solve for X</span> and leave your mark on the galaxy.
-              </p>
+                <p>
+                  From{" "}
+                  <span style={{ color: '#FFD700', fontWeight: '600' }}>restoring</span> the{" "}
+                  <span style={{ color: '#FFD700', fontWeight: '600' }}>Cosmic Chord</span> to capturing the
+                  universe in{" "}
+                  <span style={{ color: '#FFD700', fontWeight: '600' }}>Cosmic Lens</span>, this is where your skills
+                  become the tools to save the system. Prepare to{" "}
+                  <span style={{ color: '#FFD700', fontWeight: '600' }}>Solve for X</span> and leave your mark on the galaxy.
+                </p>
+              </div>
             </motion.div>
           </div>
 
@@ -168,11 +131,8 @@ export default function AboutSection() {
                initial={{ opacity: 0, x: 30 }}
                animate={isInView ? { opacity: 1, x: 0 } : {}}
                transition={{ duration: 0.6, delay: 0.4 }}
-               className="relative rounded-xl overflow-hidden border shadow-2xl w-full"
+               className="relative rounded-xl overflow-hidden border shadow-2xl w-full h-[220px] lg:h-[280px] shrink-0 mb-[10px]"
                style={{
-                 height: '280px',
-                 flexShrink: 0,
-                 marginBottom: '10px', // EXACTLY 10px Gap as requested
                  borderColor: 'rgba(255, 255, 255, 0.1)'
                }}
             >
@@ -216,7 +176,7 @@ export default function AboutSection() {
               <img 
                 src={CardsFrames} 
                 alt="Mission Modules, Solar Cycles, and Guardians Stats"
-                className="w-full h-auto object-contain object-top" // Aligns top to the gap
+                className="w-full h-auto object-contain object-top"
               />
             </motion.div>
           </div>

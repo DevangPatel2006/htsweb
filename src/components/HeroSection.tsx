@@ -31,63 +31,61 @@ function CountdownTimer() {
     return () => clearInterval(i);
   }, [targetDate]);
 
- return (
-  <div
-    className="grid items-start"
-    style={{
-      gridTemplateColumns:
-        "72px 32px 72px 32px 72px 32px 72px",
-    }}
-  >
-    {/* DAYS */}
-    <div className="flex flex-col items-center">
-      <span className="text-[32px] font-display text-white leading-none">
-        {time.d}
-      </span>
-      <span className="mt-2 text-xs tracking-[0.3em] text-white/70 font-barlow">
-        DAYS
-      </span>
+  return (
+    <div
+      className="grid items-start"
+      style={{
+        gridTemplateColumns:
+          "72px 32px 72px 32px 72px 32px 72px",
+      }}
+    >
+      {/* DAYS */}
+      <div className="flex flex-col items-center">
+        <span className="text-[32px] font-display text-white leading-none">
+          {time.d}
+        </span>
+        <span className="mt-2 text-xs tracking-[0.3em] text-white/70 font-barlow">
+          DAYS
+        </span>
+      </div>
+
+      <span className="text-[38px] text-white text-center leading-none">:</span>
+
+      {/* HOURS */}
+      <div className="flex flex-col items-center">
+        <span className="text-[32px] font-display text-white leading-none">
+          {time.h}
+        </span>
+        <span className="mt-2 text-xs tracking-[0.3em] text-white/70 font-barlow">
+          HOURS
+        </span>
+      </div>
+
+      <span className="text-[38px] text-white text-center leading-none">:</span>
+
+      {/* MINS */}
+      <div className="flex flex-col items-center">
+        <span className="text-[32px] font-display text-white leading-none">
+          {time.m}
+        </span>
+        <span className="mt-2 text-xs tracking-[0.3em] text-white/70 font-barlow">
+          MINS
+        </span>
+      </div>
+
+      <span className="text-[38px] text-white text-center leading-none">:</span>
+
+      {/* SECS */}
+      <div className="flex flex-col items-center">
+        <span className="text-[32px] font-display text-white leading-none">
+          {time.s}
+        </span>
+        <span className="mt-2 text-xs tracking-[0.3em] text-white/70 font-barlow">
+          SECS
+        </span>
+      </div>
     </div>
-
-    <span className="text-[38px] text-white text-center leading-none">:</span>
-
-    {/* HOURS */}
-    <div className="flex flex-col items-center">
-      <span className="text-[32px] font-display text-white leading-none">
-        {time.h}
-      </span>
-      <span className="mt-2 text-xs tracking-[0.3em] text-white/70 font-barlow">
-        HOURS
-      </span>
-    </div>
-
-    <span className="text-[38px] text-white text-center leading-none">:</span>
-
-    {/* MINS */}
-    <div className="flex flex-col items-center">
-      <span className="text-[32px] font-display text-white leading-none">
-        {time.m}
-      </span>
-      <span className="mt-2 text-xs tracking-[0.3em] text-white/70 font-barlow">
-        MINS
-      </span>
-    </div>
-
-    <span className="text-[38px] text-white text-center leading-none">:</span>
-
-    {/* SECS */}
-    <div className="flex flex-col items-center">
-      <span className="text-[32px] font-display text-white leading-none">
-        {time.s}
-      </span>
-      <span className="mt-2 text-xs tracking-[0.3em] text-white/70 font-barlow">
-        SECS
-      </span>
-    </div>
-  </div>
-);
-
-
+  );
 }
 
 /* ----------------------------------
@@ -99,7 +97,16 @@ export default function HeroSection() {
   useEffect(() => {
     const resize = () => {
       const vh = window.innerHeight;
-      setScale(Math.min(vh / 1080, 1));
+      const vw = window.innerWidth;
+      
+      // UPDATED LOGIC:
+      // 1. Calculate scale based on height (original logic)
+      // 2. Calculate scale based on width (assuming ~560px safe content width for mobile)
+      // 3. Take the smaller of the two to ensures content fits on both mobile and desktop
+      const scaleH = vh / 1080;
+      const scaleW = vw / 560; 
+
+      setScale(Math.min(scaleH, scaleW, 1));
     };
     resize();
     window.addEventListener("resize", resize);
