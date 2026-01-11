@@ -18,7 +18,7 @@ const protocols = [
   {
     id: 2,
     trackSvg: trackSvg,
-    initiateLink: "https://unstop.com/hackathons/protocol-2-initiate",
+    initiateLink: "https://www.figma.com/design/Y0VezvLGs2ZV3UEnhs5eCU/HTS-26?node-id=147-407&t=biCKR6yr4duvMbmX-0",
     learnMoreLink: "https://discord.gg/protocol-2-learn",
   },
   {

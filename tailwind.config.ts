@@ -23,7 +23,8 @@ export default {
         display: ["MyCustomFont", "Cinzel", "serif"],
         heading: ["Playfair Display", "serif"],
         body: ["Raleway", "sans-serif"],
-        barlow: ["Barlow", "sans-serif"], // ADD THIS LINE
+        barlow: ["Barlow", "sans-serif"],
+        open: ["OpenFont", "sans-serif"], // <--- ADD THIS LINE
       },
       colors: {
         border: "hsl(var(--border))",

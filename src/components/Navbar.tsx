@@ -21,7 +21,6 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const location = useLocation();
-  const isHomePage = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -83,29 +82,43 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1">
-            {navLinks.map((link) => (
-              <motion.a
-                key={link.name}
-                href={link.href}
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick(link.href);
-                }}
-                className={`group px-4 py-2 font-body text-sm transition-colors duration-300 ${
-                  activeSection === link.href.slice(1)
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
-                }`}
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.95 }}
-              >
-                {/* TEXT + UNDERLINE WRAPPER */}
-                <span className="relative inline-block">
-                  {link.name}
-                  <span className="absolute left-0 bottom-0 h-[2px] w-0 bg-gold-gradient transition-all duration-300 group-hover:w-full" />
-                </span>
-              </motion.a>
-            ))}
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.href.slice(1);
+              
+              return (
+                <motion.a
+                  key={link.name}
+                  href={link.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleNavClick(link.href);
+                  }}
+                  className={`group px-4 py-2 font-barlow text-sm transition-colors duration-300 ${
+                    isActive
+                      ? "text-primary"
+                      : "text-muted-foreground hover:text-foreground"
+                  }`}
+                  whileHover={{ scale: 1.05 }}
+                  whileTap={{ scale: 0.95 }}
+                >
+                  {/* TEXT + UNDERLINE WRAPPER */}
+                  <span className="relative inline-block">
+                    {link.name}
+                    
+                    {/* UPDATES:
+                       1. Added '-bottom-1.5' to create the gap.
+                       2. Updated width logic: if isActive is true, w-full is applied.
+                    */}
+                    <span 
+                      className={`
+                        absolute left-0 -bottom-1.5 h-[2px] bg-gold-gradient transition-all duration-300
+                        ${isActive ? "w-full" : "w-0 group-hover:w-full"}
+                      `} 
+                    />
+                  </span>
+                </motion.a>
+              );
+            })}
 
             {/* Swag */}
             <Link to="/swag">
