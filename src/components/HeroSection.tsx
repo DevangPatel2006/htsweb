@@ -143,7 +143,7 @@ export default function HeroSection() {
           />
 
           <div className="h-[66px] mb-[30px] flex items-center">
-            <p className="font-primary tracking-[0.7em] text-[26px] text-white opacity-85">
+            <p className="font-primary tracking-[0.7em] text-[26px] text-white opacity-85  ">
               SOLVE&nbsp;&nbsp;&nbsp;FOR&nbsp;&nbsp;&nbsp;X
             </p>
           </div>

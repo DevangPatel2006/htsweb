@@ -11,7 +11,7 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import SponsorsSection from "@/components/SponsorsSection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
-
+import ProtocolsSection from "@/components/ProtocolsSection";
 const Index = () => {
   const [isPlaying, setIsPlaying] = React.useState(false);
   const audioRef = React.useRef<HTMLAudioElement>(null);
@@ -64,7 +64,7 @@ const Index = () => {
         <TracksSection />
         <PrizesSection />
         <TimelineSection />
-        
+        <ProtocolsSection />
         <TeamSection />
         <TestimonialsSection />
         <SponsorsSection />
