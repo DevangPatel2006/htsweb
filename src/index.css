@@ -331,7 +331,23 @@
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
+/* Zero Gravity CD Float Animation - Ultra Smooth */
+@keyframes cd-float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-30px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
 
+.cd-float-animation {
+  animation: cd-float 8s cubic-bezier(0.45, 0.05, 0.55, 0.95) infinite;
+  will-change: transform;
+}
 .animate-pulse-glow {
   animation: pulse-glow 2s ease-in-out infinite;
 }
