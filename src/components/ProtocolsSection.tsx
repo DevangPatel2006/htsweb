@@ -3,7 +3,6 @@ import { useInView } from "framer-motion";
 import { useRef } from "react";
 
 // Import SVG assets
-// UPDATED: Added the 6 specific SVGs as requested
 import hackSvg from "@/assets/hack.svg";
 import buildSvg from "@/assets/build.svg";
 import thinkSvg from "@/assets/think.svg";
@@ -18,37 +17,37 @@ import learnMoreButton from "@/assets/learnmore.svg";
 const protocols = [
   {
     id: 1,
-    trackSvg: hackSvg, // Updated
+    trackSvg: hackSvg,
     initiateLink: "https://unstop.com/hackathons/protocol-1-initiate",
     learnMoreLink: "https://discord.gg/protocol-1-learn",
   },
   {
     id: 2,
-    trackSvg: buildSvg, // Updated
+    trackSvg: buildSvg,
     initiateLink: "https://www.figma.com/design/Y0VezvLGs2ZV3UEnhs5eCU/HTS-26?node-id=147-407&t=biCKR6yr4duvMbmX-0",
     learnMoreLink: "https://discord.gg/protocol-2-learn",
   },
   {
     id: 3,
-    trackSvg: thinkSvg, // Updated
+    trackSvg: thinkSvg,
     initiateLink: "https://unstop.com/hackathons/protocol-3-initiate",
     learnMoreLink: "https://discord.gg/protocol-3-learn",
   },
   {
     id: 4,
-    trackSvg: gameSvg, // Updated
+    trackSvg: gameSvg,
     initiateLink: "https://unstop.com/hackathons/protocol-4-initiate",
     learnMoreLink: "https://discord.gg/protocol-4-learn",
   },
   {
     id: 5,
-    trackSvg: chessSvg, // Updated
+    trackSvg: chessSvg,
     initiateLink: "https://unstop.com/hackathons/protocol-5-initiate",
     learnMoreLink: "https://discord.gg/protocol-5-learn",
   },
   {
     id: 6,
-    trackSvg: lastSvg, // Updated
+    trackSvg: lastSvg,
     initiateLink: "https://unstop.com/hackathons/protocol-6-initiate",
     learnMoreLink: "https://discord.gg/protocol-6-learn",
   },
@@ -72,7 +71,7 @@ export default function ProtocolsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="font-display text-[40px] lg:text-[48px] font-bold mb-4">
+          <h2 className="font-display text-[40px] lg:text-[48px] font-bold mb-4 mt-6">
             <span className="text-gradient-gold">SELECT YOUR PROTOCOL</span>
           </h2>
           <p className="font-barlow tracking-[0.15em] text-[25px] lg:text-[25px] text-muted-foreground italic">
@@ -89,15 +88,21 @@ export default function ProtocolsSection() {
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               className="relative"
+              whileHover="hover" // Triggers hover state for children
             >
               {/* Track Background */}
               <div className="relative w-full">
-                <img
+                {/* Main SVG Element with Smooth Pop */}
+                <motion.img
                   src={protocol.trackSvg}
                   alt={`Protocol ${protocol.id}`}
                   className="w-full h-auto block"
                   loading="lazy"
                   draggable="false"
+                  variants={{
+                    hover: { scale: 1.05 } // Smooth pop effect
+                  }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 />
 
                 {/* Buttons Container (ONLY GAP ADDED) */}

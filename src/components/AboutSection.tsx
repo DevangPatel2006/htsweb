@@ -45,7 +45,7 @@ export default function AboutSection() {
       // 3. Converted specific padding to 'lg:' classes and added sensible mobile padding (px-6 py-12)
       className="relative w-full min-h-screen lg:h-screen overflow-x-hidden flex flex-col px-6 py-12 lg:pt-[99px] lg:pb-[50px] lg:pl-[99.5px] lg:pr-[89.5px]"
     >
-      <div className="w-full h-full relative z-10">
+      <div className="w-full h-full relative z-10 mt-4">
         {/* Grid Definition: Stacks on mobile (grid-cols-1), 50/50 on desktop (lg:grid-cols-2) */}
         <div 
           className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-[60px] h-auto lg:h-full items-start"
