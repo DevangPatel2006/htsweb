@@ -138,7 +138,7 @@ export default function TeamSection() {
               className="glass-card rounded-2xl p-6 text-center hover:border-primary/50 transition-all duration-300 group"
             >
               {/* Avatar */}
-              <div className="w-24 h-24 mx-auto mb-4 rounded-full bg-nebula-gradient p-0.5 shadow-glow-nebula group-hover:shadow-glow-gold transition-all duration-300">
+              <div className="w-32 h-32 mx-auto mb-4 rounded-full bg-nebula-gradient p-0.5 shadow-glow-nebula group-hover:shadow-glow-gold transition-all duration-300">
                 <div className="w-full h-full rounded-full bg-card flex items-center justify-center overflow-hidden">
                   {member.image ? (
                     <img
@@ -147,7 +147,7 @@ export default function TeamSection() {
                       className="w-full h-full object-cover"
                     />
                   ) : (
-                    <span className="font-display text-2xl text-primary">
+                    <span className="font-display text-3xl text-primary">
                       {member.name.split(" ").map((n) => n[0]).join("")}
                     </span>
                   )}
@@ -155,10 +155,10 @@ export default function TeamSection() {
               </div>
 
               {/* Info */}
-              <h3 className="font-primary text-lg font-semibold text-foreground mb-1">
+              <h3 className="font-primary text-sm font-semibold text-foreground mb-1">
                 {member.name}
               </h3>
-              <p className="font-body text-sm text-muted-foreground mb-4">
+              <p className="font-body text-xs text-muted-foreground mb-4">
                 {member.role}
               </p>
 
