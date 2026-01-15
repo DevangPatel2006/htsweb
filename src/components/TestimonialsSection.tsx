@@ -117,8 +117,8 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            <span className="text-gradient-gold">Voices from the Galaxy</span>
+          <h2 className="font-display text-4xl md:text-3xl lg:text-6xl font-bold mb-4">
+            <span className="text-gradient-gold">Galaxy Voices</span>
           </h2>
           <p className="font-heading text-lg text-muted-foreground">
             See what people are saying about us on Social Media
