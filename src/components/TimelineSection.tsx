@@ -101,7 +101,7 @@ export default function TimelineSection() {
         <div className="flex justify-center gap-8 mb-8 border-b border-white/10 w-fit mx-auto px-8">
           <button
             onClick={() => setActiveDay(1)}
-            className={`relative pb-3 text-lg md:text-xl font-display tracking-wider transition-all duration-300 ${
+            className={`relative pb-3 text-lg md:text-xl font-barlow tracking-wider transition-all duration-300 ${
               activeDay === 1
                 ? "text-primary border-b-2 border-primary drop-shadow-[0_0_8px_rgba(var(--primary),0.6)]" // Glowing line effect
                 : "text-muted-foreground hover:text-foreground border-b-2 border-transparent"
@@ -112,7 +112,7 @@ export default function TimelineSection() {
           
           <button
             onClick={() => setActiveDay(2)}
-            className={`relative pb-3 text-lg md:text-xl font-display tracking-wider transition-all duration-300 ${
+            className={`relative pb-3 text-lg md:text-xl font-barlow tracking-wider transition-all duration-300 ${
               activeDay === 2
                 ? "text-primary border-b-2 border-primary drop-shadow-[0_0_8px_rgba(var(--primary),0.6)]" // Glowing line effect
                 : "text-muted-foreground hover:text-foreground border-b-2 border-transparent"

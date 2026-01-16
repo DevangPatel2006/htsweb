@@ -2,6 +2,7 @@ import { useEffect, useState, useMemo } from "react";
 import { motion } from "framer-motion";
 
 import heroBg from "@/assets/hero_section_bg_image.png";
+import mobileHeroBg from "@/assets/mobilehero.svg";
 import logoText from "@/assets/logo3.png";
 import countdownFrame from "@/assets/frame.svg";
 import heroButton from "@/assets/button.svg";
@@ -115,11 +116,17 @@ export default function HeroSection() {
 
   return (
     <section className="relative w-screen h-screen overflow-hidden">
-      {/* BACKGROUND */}
+      {/* BACKGROUND - Desktop */}
       <img
         src={heroBg}
         alt=""
-        className="absolute inset-0 w-full h-full object-cover"
+        className="hidden md:block absolute inset-0 w-full h-full object-cover"
+      />
+      {/* BACKGROUND - Mobile */}
+      <img
+        src={mobileHeroBg}
+        alt=""
+        className="md:hidden absolute inset-0 w-full h-full object-cover"
       />
       <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background" />
 
