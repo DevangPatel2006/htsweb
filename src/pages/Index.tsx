@@ -57,10 +57,9 @@ const Index = () => {
 
       {/* 2. Background Image (Middle Layer) - Mobile */}
       <div 
-  className="md:hidden absolute inset-0 z-0 pointer-events-none opacity-30 bg-cover bg-center bg-no-repeat"
+  className="md:hidden fixed inset-0 z-0 pointer-events-none opacity-30 bg-cover bg-center bg-no-repeat"
   style={{ 
-    backgroundImage: 'url("/mobmidd.png")',
-    backgroundAttachment: 'fixed'
+    backgroundImage: 'url("/mobmidd.png")'
   }}
 />
 
