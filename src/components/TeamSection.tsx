@@ -94,7 +94,7 @@ export default function TeamSection() {
           className="flex flex-wrap justify-center gap-2 mb-12"
         >
           {teamCategories.map((category) => {
-            const Icon = category.icon;
+            
             const isActive = activeCategory === category.id;
             
             return (
@@ -109,7 +109,7 @@ export default function TeamSection() {
                     : "bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground border border-border/50"
                 }`}
               >
-                <Icon size={16} />
+              
                 {category.label}
               </motion.button>
             );

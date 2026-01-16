@@ -160,11 +160,10 @@ export default function HeroSection() {
           />
 
           <div className="h-[66px] mb-[30px] flex items-center">
-  <p className="font-primary tracking-[0.7em] text-[16px] md:text-[26px] text-white opacity-85">
-    SOLVE&nbsp;&nbsp;&nbsp;FOR&nbsp;&nbsp;&nbsp;X
-  </p>
-</div>
-
+            <p className="font-primary tracking-[0.7em] text-[16px] md:text-[26px] text-white opacity-85">
+              SOLVE&nbsp;&nbsp;&nbsp;FOR&nbsp;&nbsp;&nbsp;X
+            </p>
+          </div>
 
           <div className="relative w-[520px] h-[145px] mb-[38px]">
             <img src={countdownFrame} className="w-full h-full" />
@@ -173,11 +172,24 @@ export default function HeroSection() {
             </div>
           </div>
 
-          <img src={heroButton} className="h-[53px] mb-[100px]" />
+          {/* UPDATED: Converted to motion.img with hover/pop animation and click handler */}
+          <motion.img
+            src={heroButton}
+            className="h-[53px] mb-[100px] cursor-pointer"
+            whileHover={{ scale: 1.1 }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => {
+              const section = document.getElementById("protocols");
+              if (section) {
+                section.scrollIntoView({ behavior: "smooth" });
+              }
+            }}
+          />
 
-          <div className="font-barlow italic tracking-[0.3em] text-white">
-            &gt; View Mission Parameters
-          </div>
+          <div className="font-barlow italic tracking-[0.3em] text-white transition-transform duration-300 ease-out hover:scale-105">
+  &gt; View Mission Parameters
+</div>
+
         </div>
       </div>
     </section>
