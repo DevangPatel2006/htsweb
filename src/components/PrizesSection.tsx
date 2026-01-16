@@ -6,7 +6,7 @@ const tracks = [
   {
     id: "hackx",
     name: "HACK.X",
-    title: "HACK.X BOUNTY",
+    title: "NOVA CORPS TREASURY",
     prizes: [
       { position: "1st", reward: "₹15,000", extra: "+ Internship", icon: "🥇" },
       { position: "2nd", reward: "₹10,000", extra: null, icon: "🥈" },
@@ -17,7 +17,7 @@ const tracks = [
   {
     id: "buildx",
     name: "BUILD.X",
-    title: "BUILD.X BOUNTY",
+    title: "ROCKET’S SUPPLY CACHE",
     prizes: [
       { position: "1st", reward: "₹15,000", extra: "+ Internship", icon: "🥇" },
       { position: "2nd", reward: "₹10,000", extra: null, icon: "🥈" },
@@ -28,7 +28,7 @@ const tracks = [
   {
     id: "thinkx",
     name: "THINK.X",
-    title: "THINK.X BOUNTY",
+    title: "THE COLLECTOR’S BID",
     prizes: [
       { position: "1st", reward: "₹12,000", extra: "+ Mentorship", icon: "🥇" },
       { position: "2nd", reward: "₹8,000", extra: null, icon: "🥈" },
@@ -39,7 +39,7 @@ const tracks = [
   {
     id: "BATTLE OF KNOWHERE",
     name: "BATTLE OF KNOWHERE",
-    title: "BATTLE OF KNOWHERE",
+    title: "RAVAGER MERCENARY PAY",
     prizes: [
       { position: "1st", reward: "₹8,000", extra: "+ Gaming Gear", icon: "🥇" },
       { position: "2nd", reward: "₹5,000", extra: null, icon: "🥈" },
@@ -50,7 +50,7 @@ const tracks = [
   {
     id: "SOVEREIGN'S GAMBIT",
     name: "SOVEREIGN'S GAMBIT",
-    title: "SOVEREIGN'S GAMBIT BOUNTY",
+    title: "SOVEREIGN GOLD RESERVES",
     prizes: [
       { position: "1st", reward: "₹5,000", extra: "+ Goodies", icon: "🥇" },
       { position: "2nd", reward: "₹3,000", extra: null, icon: "🥈" },
@@ -61,7 +61,7 @@ const tracks = [
   {
     id: "COSMIC LENS",
     name: "COSMIC LENS",
-    title: "COSMIC LENS BOUNTY",
+    title: " AWESOME MIX ROYALTIES",
     prizes: [
       { position: "1st", reward: "₹5,000", extra: "+ Goodies", icon: "🥇" },
       { position: "2nd", reward: "₹3,000", extra: null, icon: "🥈" },
@@ -75,39 +75,47 @@ const tracks = [
 const getStyles = (id) => {
   const styles = {
     hackx: {
-      borderColor: "border-[#00f0ff]/60", // Slightly stronger opacity for outer border
+      borderColor: "border-[#00f0ff]/60",
       activeText: "text-[#00f0ff]",
-      bgSoft: "bg-[#00f0ff]/10",
+      // RESTORED BUTTON BG (10%)
+      activeBtnBg: "bg-[#00f0ff]/10",
+      // RIGHT PANEL BG (5% RGBA)
+      rightPanelBg: "bg-[rgba(0,240,255,0.05)]",
       hover: "hover:text-[#00f0ff] hover:bg-[#00f0ff]/10",
     },
     buildx: {
       borderColor: "border-[#FF8C00]/60",
       activeText: "text-[#FF8C00]",
-      bgSoft: "bg-[#FF8C00]/10",
+      activeBtnBg: "bg-[#FF8C00]/10",
+      rightPanelBg: "bg-[rgba(255,140,0,0.05)]",
       hover: "hover:text-[#FF8C00] hover:bg-[#FF8C00]/10",
     },
     thinkx: {
       borderColor: "border-[#FF003C]/60",
       activeText: "text-[#FF003C]",
-      bgSoft: "bg-[#FF003C]/10",
+      activeBtnBg: "bg-[#FF003C]/10",
+      rightPanelBg: "bg-[rgba(255,0,60,0.05)]",
       hover: "hover:text-[#FF003C] hover:bg-[#FF003C]/10",
     },
     "BATTLE OF KNOWHERE": {
       borderColor: "border-[#A020F0]/60",
       activeText: "text-[#A020F0]",
-      bgSoft: "bg-[#A020F0]/10",
+      activeBtnBg: "bg-[#A020F0]/10",
+      rightPanelBg: "bg-[rgba(160,32,240,0.05)]",
       hover: "hover:text-[#A020F0] hover:bg-[#A020F0]/10",
     },
     "SOVEREIGN'S GAMBIT": {
       borderColor: "border-[#FFD700]/60",
       activeText: "text-[#FFD700]",
-      bgSoft: "bg-[#FFD700]/10",
+      activeBtnBg: "bg-[#FFD700]/10",
+      rightPanelBg: "bg-[rgba(255,215,0,0.05)]",
       hover: "hover:text-[#FFD700] hover:bg-[#FFD700]/10",
     },
     "COSMIC LENS": {
       borderColor: "border-[#39FF14]/60",
       activeText: "text-[#39FF14]",
-      bgSoft: "bg-[#39FF14]/10",
+      activeBtnBg: "bg-[#39FF14]/10",
+      rightPanelBg: "bg-[rgba(57,255,20,0.05)]",
       hover: "hover:text-[#39FF14] hover:bg-[#39FF14]/10",
     },
   };
@@ -141,7 +149,7 @@ export default function PrizesSection() {
             <span className="text-gradient-gold">GALACTIC BOUNTIES</span>
           </h2>
           <p className="font-barlow text-lg text-muted-foreground max-w-2xl mx-auto">
-            Incredible rewards await the brightest innovators
+            A reward pool worth stealing batteries for
           </p>
         </motion.div>
 
@@ -152,15 +160,15 @@ export default function PrizesSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="max-w-5xl mx-auto"
         >
-          {/* MAIN CONTAINER (OUTER BORDER)
-              The border color here changes based on the active track 
-          */}
+          {/* MAIN CONTAINER (OUTER BORDER) */}
           <div
             className={`glass-card rounded-2xl border overflow-hidden transition-colors duration-300 ${activeStyle.borderColor}`}
           >
             <div className="flex flex-col md:flex-row">
               {/* Vertical Tab Menu - Left Side */}
-              <div className="md:w-[40%] border-b md:border-b-0 md:border-r border-primary/20 bg-card/50">
+              <div
+                className={`md:w-[40%] border-b md:border-b-0 md:border-r bg-card/50 transition-colors duration-300 ${activeStyle.borderColor}`}
+              >
                 <div className="p-4 md:p-6">
                   <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-2 md:pb-0">
                     {tracks.map((track) => {
@@ -172,7 +180,7 @@ export default function PrizesSection() {
                           onClick={() => setActiveTrack(track.id)}
                           className={`relative flex items-center justify-start gap-3 px-4 py-3 rounded-lg font-primary text-sm md:text-base font-semibold transition-all duration-300 whitespace-nowrap md:w-full text-left border ${
                             isActive
-                              ? `${style.activeText} ${style.bgSoft} ${style.borderColor}`
+                              ? `${style.activeText} ${style.activeBtnBg} ${style.borderColor}` // Uses activeBtnBg (10% opacity)
                               : `text-muted-foreground hover:bg-primary/5 border-transparent ${style.hover}`
                           }`}
                         >
@@ -188,15 +196,18 @@ export default function PrizesSection() {
               </div>
 
               {/* Prize Card - Right Side */}
-              <div className="md:w-[60%] p-6 md:p-8">
+              {/* Uses rightPanelBg (5% opacity RGBA) */}
+              <div
+                className={`md:w-[60%] p-6 md:p-8 transition-colors duration-300 ${activeStyle.rightPanelBg}`}
+              >
                 <motion.div
                   key={currentTrack.id}
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.3 }}
                 >
-                  {/* Track Title - Default Gold/Primary Color */}
-                  <h3 className="font-display text-2xl md:text-3xl font-bold mb-6 text-primary">
+                  {/* Track Title */}
+                  <h3 className="font-display text-1xl md:text-1.5xl font-bold mb-6 text-primary">
                     {currentTrack.title}
                   </h3>
 
@@ -205,7 +216,6 @@ export default function PrizesSection() {
                     {currentTrack.prizes.map((prize, index) => (
                       <div
                         key={index}
-                        // INNER BORDERS: Default Primary/Gold style (not dynamic)
                         className="flex items-center gap-4 p-4 rounded-xl bg-card/50 border border-primary/10 hover:border-primary/30 transition-all duration-300"
                       >
                         <span className="text-2xl">{prize.icon}</span>
@@ -213,7 +223,6 @@ export default function PrizesSection() {
                           <span className="font-primary text-lg font-semibold text-foreground">
                             {prize.position}:
                           </span>
-                          {/* Reward Amount - Default Gold/Primary Color */}
                           <span className="ml-2 font-heading text-lg font-bold text-primary">
                             {prize.reward}
                           </span>
@@ -245,7 +254,7 @@ export default function PrizesSection() {
           </div>
         </motion.div>
 
-        {/* Footer Strip - All Participants */}
+        {/* Footer Strip */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}

@@ -68,11 +68,7 @@ export default function TeamSection() {
       ref={ref}
       className="relative py-24 lg:py-32 overflow-hidden"
     >
-      {/* Background decorations */}
-      <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-nebula-purple/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-nebula-pink/5 rounded-full blur-3xl" />
-      </div>
+      
 
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
