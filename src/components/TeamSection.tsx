@@ -5,16 +5,11 @@ import { Linkedin, Twitter, Github, Instagram, Users, Megaphone, Palette, Calend
 
 // --- IMPORTANT: IMPORT YOUR IMAGES HERE ---
 // You must import images from your assets folder like this. 
-// Make sure the file names match exactly what is in your folder.
-// Example:
 import arjunImage from "@/assets/organiser1.png"; 
+import deImage from "@/assets/organ2.png"; 
 
-// For this code to work, I am using placeholders. 
-// You need to uncomment the import lines below and change the path to your real files.
-
+// Placeholders for other images (Uncomment and change paths as needed)
 // import arjunImg from "../assets/organiser1.png";
-// import priyaImg from "../assets/priya.png";
-// ... and so on for all members
 
 const teamCategories = [
   { id: "organizers", label: "Organizers ", icon: Users },
@@ -26,38 +21,17 @@ const teamCategories = [
   { id: "Outreach", label: "Outreach", icon: Handshake },
 ];
 
-const teamMembers: Record<string, Array<{
-  name: string;
-  image: string; // This will now take the imported variable, or a valid public path
-  linkedin?: string;
-  twitter?: string;
-  github?: string;
-  instagram?: string;
-}>> = {
+const teamMembers = {
   organizers: [
     {
       name: "ARJUN PATEL",
-      // OPTION 1 (Recommended): Use the imported variable name (uncomment import above)
       image: arjunImage, 
-      
-      // OPTION 2: If you put images in the 'public' folder, use the absolute path like this:
-     // image: "/images/organiser1.png", 
       linkedin: "#", twitter: "#"
     },
     {
-      name: "PRIYA SHARMA",
-      image: "/images/team/organizers/priya-card.png", 
-      linkedin: "#", instagram: "#"
-    },
-    {
-      name: "RAHUL MEHTA",
-      image: "/images/team/organizers/rahul-card.png",
-      linkedin: "#", github: "#"
-    },
-    {
-      name: "ANANYA GUPTA",
-      image: "/images/team/organizers/ananya-card.png",
-      linkedin: "#"
+      name: "ARJUN PATEL",
+      image: deImage, 
+      linkedin: "#", twitter: "#"
     },
   ],
   management: [
@@ -208,13 +182,13 @@ export default function TeamSection() {
           })}
         </motion.div>
 
-        {/* Team Members Grid */}
+        {/* Team Members Display */}
         <motion.div
           key={activeCategory}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 max-w-6xl mx-auto"
+          className="flex flex-wrap justify-center gap-x-8 gap-y-12 max-w-6xl mx-auto"
         >
           {currentCategoryMembers.length > 0 ? (
             currentCategoryMembers.map((member, index) => (
@@ -224,22 +198,22 @@ export default function TeamSection() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               whileHover={{ y: -5 }}
-              className="flex flex-col items-center"
+              className="flex flex-col items-center w-full sm:w-64 lg:w-72"
             >
-              {/* IMAGE CONTAINER - No Styles, just the image */}
-              <div className="w-full mb-4 relative">
+              {/* IMAGE CONTAINER */}
+              {/* UPDATED: w-48 on mobile makes image smaller/sharper. sm:w-full restores desktop size. */}
+              <div className="w-48 sm:w-full mb-4 relative">
                 <img
                   src={member.image}
                   alt={member.name}
                   className="w-full h-auto object-contain block mx-auto"
                   onError={(e) => {
-                    // This fallback only shows if your image path is still wrong
-                    e.currentTarget.style.display = 'none'; // Hide broken image completely so no box appears
+                    e.currentTarget.style.display = 'none'; 
                   }}
                 />
               </div>
 
-              {/* SOCIAL LINKS - No Boxes/Backgrounds */}
+              {/* SOCIAL LINKS */}
               <div className="flex justify-center gap-4">
                 {member.linkedin && (
                   <a
@@ -285,7 +259,7 @@ export default function TeamSection() {
             </motion.div>
           ))
           ) : (
-            <div className="col-span-full text-center text-muted-foreground py-12">
+            <div className="col-span-full text-center text-muted-foreground py-12 w-full">
               Coming Soon...
             </div>
           )}
