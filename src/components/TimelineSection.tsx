@@ -13,61 +13,67 @@ import {
 
 const day1Events = [
   {
-    icon: Clock,
-    time: "11:59 PM",
-    title: "REGISTRATION CLOSES",
-    description: "Last chance to register for Hack The Spring 2026!",
-  },
-  {
     icon: UserCheck,
-    time: "8:00 AM",
-    title: "CHECK-IN & REGISTRATION",
-    description: "Arrive at the venue and complete your registration.",
+    time: "08:30 AM",
+    title: "CHECK-IN & BREAKFAST",
+    description: "Team HTS gathering. Verification of ID and distribution of kits.",
   },
   {
     icon: PartyPopper,
-    time: "9:30 AM",
-    title: "OPENING CEREMONY",
-    description: "Kickoff with keynote speakers and event introduction.",
+    time: "11:00 AM",
+    title: "INAUGURATION",
+    description: "The official launch. Keynote speakers and problem statements revealed.",
   },
   {
     icon: Rocket,
-    time: "11:00 AM",
-    title: "HACKING BEGINS",
-    description: "Start building your innovative solutions!",
+    time: "12:30 PM",
+    title: "ROUND 1: DEPLOYMENT",
+    description: "Hack.X & Build.X Begin. The clock starts. Teams begin working.",
   },
   {
     icon: FileCheck,
-    time: "8:00 PM",
-    title: "CHECKPOINT 1",
-    description: "First progress check with mentors.",
+    time: "03:00 PM",
+    title: "ROUND 2: THE SPLIT",
+    description: "Build.X (Elimination) & Hack.X (Coding Continues).",
+  },
+  {
+    icon: Trophy,
+    time: "04:30 PM",
+    title: "BUILD.X FINALE & HACK.X PROGRESS",
+    description: "Build.X Valedictory awards. Hack.X enters the next phase.",
   },
 ];
 
 const day2Events = [
   {
     icon: Coffee,
-    time: "2:00 AM",
-    title: "MIDNIGHT SNACKS",
-    description: "Fuel up for the final stretch!",
+    time: "08:30 AM",
+    title: "ENTRY & BREAKFAST",
+    description: "Doors open for Day 2. Re-fuel for the final sprint.",
   },
   {
-    icon: FileCheck,
-    time: "8:00 AM",
-    title: "CHECKPOINT 2",
-    description: "Second progress check with mentors.",
+    icon: Rocket,
+    time: "11:00 AM",
+    title: "HACK.X [ROUND 3]",
+    description: "Deep Development. The intensity peaks. Mentors review progress.",
   },
   {
     icon: Send,
     time: "12:00 PM",
-    title: "FINAL SUBMISSIONS",
-    description: "Submit your projects and prepare for demos.",
+    title: "THINK.X BEGINS",
+    description: "Idea Pitching. Non-technical teams present their strategies.",
+  },
+  {
+    icon: Clock,
+    time: "03:00 PM",
+    title: "THE FINAL SPRINT",
+    description: "Hack.X final submissions. Gaming Arenas (BGMI, FreeFire) open.",
   },
   {
     icon: Trophy,
-    time: "3:00 PM",
-    title: "CLOSING CEREMONY",
-    description: "Winners announcement and prize distribution!",
+    time: "05:00 PM",
+    title: "VALEDICTORY CEREMONY",
+    description: "The Final Verdict. Winners announced for Hack.X, Think.X, and Gaming.",
   },
 ];
 
@@ -78,47 +84,41 @@ export default function TimelineSection() {
   const currentDate = activeDay === 1 ? "March 21, 2026" : "March 22, 2026";
 
   return (
-    <section id="timeline" className="relative py-16 lg:py-24 overflow-hidden">
+    // Reduced py-16/24 to py-10/16 to shift the section up
+    <section id="timeline" className="relative py-10 lg:py-16 overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
-        <div className="text-center mb-10">
+        <div className="text-center mb-8">
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            <span className="text-gradient-gold">event timeline</span>
+            <span className="text-gradient-gold">THE PLAN</span>
           </h2>
-          <p className="font-heading text-lg text-muted-foreground max-w-2xl mx-auto">
-            Mark your calendar for these important milestones
+          <p className="font-barlow text-lg text-muted-foreground max-w-2xl mx-auto">
+            DON’T WORRY, WE HAVE MORE THAN 12% OF A PLAN.
           </p>
         </div>
 
-        {/* Day Toggle */}
-        <div className="flex justify-center gap-4 mb-10">
+        {/* Day Toggle - Redesigned to be smaller, simple lines */}
+        <div className="flex justify-center gap-8 mb-8 border-b border-white/10 w-fit mx-auto px-8">
           <button
             onClick={() => setActiveDay(1)}
-            className={`relative px-6 py-3 md:px-8 md:py-4 rounded-xl font-primary text-base md:text-lg font-semibold transition-all duration-300 ${
+            className={`relative pb-3 text-lg md:text-xl font-display tracking-wider transition-all duration-300 ${
               activeDay === 1
-                ? "bg-primary text-primary-foreground glow-gold"
-                : "glass-card text-foreground hover:border-primary/50"
+                ? "text-primary border-b-2 border-primary drop-shadow-[0_0_8px_rgba(var(--primary),0.6)]" // Glowing line effect
+                : "text-muted-foreground hover:text-foreground border-b-2 border-transparent"
             }`}
           >
-            <span className="flex items-center gap-2">
-              <Calendar className="w-5 h-5" />
-              Day 1
-            </span>
-            
+            DAY 01
           </button>
+          
           <button
             onClick={() => setActiveDay(2)}
-            className={`relative px-6 py-3 md:px-8 md:py-4 rounded-xl font-primary text-base md:text-lg font-semibold transition-all duration-300 ${
+            className={`relative pb-3 text-lg md:text-xl font-display tracking-wider transition-all duration-300 ${
               activeDay === 2
-                ? "bg-primary text-primary-foreground glow-gold"
-                : "glass-card text-foreground hover:border-primary/50"
+                ? "text-primary border-b-2 border-primary drop-shadow-[0_0_8px_rgba(var(--primary),0.6)]" // Glowing line effect
+                : "text-muted-foreground hover:text-foreground border-b-2 border-transparent"
             }`}
           >
-            <span className="flex items-center gap-2">
-              <Calendar className="w-5 h-5" />
-              Day 2
-            </span>
-            
+            DAY 02
           </button>
         </div>
 

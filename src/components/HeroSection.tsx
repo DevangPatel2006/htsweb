@@ -144,7 +144,10 @@ export default function HeroSection() {
 
           <motion.img
             src={logoText}
-            className="h-[288px] mb-[20px]"
+            // CHANGED: Added responsive height and max-width constraints.
+            // On mobile, height is 140px. On medium screens and up, it returns to 288px.
+            // max-w-[90%] ensures it never overflows horizontally.
+            className="h-[140px] md:h-[288px] w-auto max-w-[90%] object-contain mb-[20px]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
           />

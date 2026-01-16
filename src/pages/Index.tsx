@@ -46,11 +46,20 @@ const Index = () => {
       <StarField />
       
       
-      {/* 2. Background Image (Middle Layer) */}
+      {/* 2. Background Image (Middle Layer) - Desktop */}
       <div 
-  className="absolute inset-0 z-0 pointer-events-none opacity-30 bg-cover bg-center bg-no-repeat"
+  className="hidden md:block absolute inset-0 z-0 pointer-events-none opacity-30 bg-cover bg-center bg-no-repeat"
   style={{ 
     backgroundImage: 'url("/bottom1.png")',
+    backgroundAttachment: 'fixed'
+  }}
+/>
+
+      {/* 2. Background Image (Middle Layer) - Mobile */}
+      <div 
+  className="md:hidden absolute inset-0 z-0 pointer-events-none opacity-30 bg-cover bg-center bg-no-repeat"
+  style={{ 
+    backgroundImage: 'url("/mobmidd.png")',
     backgroundAttachment: 'fixed'
   }}
 />
