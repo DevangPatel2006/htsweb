@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, Sparkles } from "lucide-react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import logo from "@/assets/logo2.png";
 
@@ -22,6 +22,7 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("hero");
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,9 +46,30 @@ export default function Navbar() {
   }, []);
 
   const handleNavClick = (href: string) => {
+    // 1. Close the menu immediately
     setIsMobileMenuOpen(false);
-    const element = document.querySelector(href);
-    if (element) element.scrollIntoView({ behavior: "smooth" });
+
+    // 2. Define the scroll logic
+    const scrollToTarget = () => {
+      if (href === "#hero") {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      } else {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+    };
+
+    // 3. execute navigation or scroll with a delay to let the menu close
+    if (location.pathname !== "/") {
+      navigate("/");
+      // Wait for page transition
+      setTimeout(scrollToTarget, 100);
+    } else {
+      // On mobile, waiting for the menu to close (300ms) often fixes scroll issues
+      setTimeout(scrollToTarget, 300);
+    }
   };
 
   return (
@@ -102,14 +124,8 @@ export default function Navbar() {
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >
-                  {/* TEXT + UNDERLINE WRAPPER */}
                   <span className="relative inline-block">
                     {link.name}
-                    
-                    {/* UPDATES:
-                       1. Added '-bottom-1.5' to create the gap.
-                       2. Updated width logic: if isActive is true, w-full is applied.
-                    */}
                     <span 
                       className={`
                         absolute left-0 -bottom-1.5 h-[2px] bg-gold-gradient transition-all duration-300

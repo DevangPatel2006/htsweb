@@ -114,7 +114,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="relative w-screen h-screen overflow-hidden">
+    <section id="hero" className="relative w-screen h-screen overflow-hidden">
       {/* BACKGROUND - Desktop */}
       <img
         src={heroBg}
