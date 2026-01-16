@@ -86,8 +86,8 @@ export default function FAQSection() {
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
             <span className="text-gradient-gold ">FAQ'S</span>
           </h2>
-          <p className="font-heading text-xl text-muted-foreground max-w-2xl mx-auto">
-            Got questions? We've got answers.
+          <p className="font-barlow text-xl text-muted-foreground max-w-2xl mx-auto">
+            WE CAUGHT THE MOST COMMON QUESTIONS FOR YOU
           </p>
         </motion.div>
 

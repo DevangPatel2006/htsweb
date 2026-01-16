@@ -147,11 +147,11 @@ export default function TeamSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            <span className="text-gradient-gold">The Guardians</span>
+          <h2 className="font-display text-2xl md:text-4xl lg:text-5xl font-bold mb-6">
+            <span className="text-gradient-gold">THE FREAKIN' GUARDIANS</span>
           </h2>
-          <p className="font-heading text-xl text-muted-foreground max-w-2xl mx-auto">
-            Meet the cosmic crew making it all happen
+          <p className="font-barlow text-xl text-muted-foreground max-w-2xl mx-auto">
+            We aren't just standing in a circle.
           </p>
         </motion.div>
 

@@ -11,7 +11,7 @@ import heroButton from "@/assets/button.svg";
    COUNTDOWN TIMER
 ----------------------------------- */
 function CountdownTimer() {
-  const targetDate = useMemo(() => new Date("2026-03-21T09:00:00"), []);
+  const targetDate = useMemo(() => new Date("2026-02-20T08:30:00"), []);
   const [time, setTime] = useState({ d: "00", h: "00", m: "00", s: "00" });
 
   useEffect(() => {
