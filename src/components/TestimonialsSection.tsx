@@ -42,7 +42,7 @@ const testimonials = [
     content:
       "Proud to organize Hack The Spring ’25 at GEC Gandhinagar, witnessing 450+ participants’ passion and innovation.",
     image: event5,
-    avatar: "RP",
+    avatar: "DR",
   },
   {
     name: "Bhagy Patel",
@@ -54,7 +54,7 @@ const testimonials = [
   },
   {
     name: "Meghani Ansh",
-    handle: "@meghani_ansh",
+    handle: "@meghani ansh",
     content:
       "Secured 1st Runner-Up at Hack The Spring 2025, a two-day hackathon held on 28 Feb–1 Mar at GEC Gandhinagar.",
     image: event1,
@@ -66,7 +66,7 @@ const testimonials = [
     content:
       "Organizing HTS’25 was a journey of teamwork, problem-solving, and learning that shaped us and inspires the future.",
     image: event7,
-    avatar: "MA",
+    avatar: "CA",
   },
 ];
 
@@ -126,7 +126,7 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="font-display text-4xl md:text-3xl lg:text-5xl font-bold mb-4">
+          <h2 className="font-display  text-4xl md:text-3xl lg:text-5xl font-bold mb-4 " style={{ wordSpacing: "-0.5em" }}>
             <span className="text-gradient-gold">HOOKED ON A FEELING</span>
           </h2>
           <p className="font-barlow text-lg text-muted-foreground">
