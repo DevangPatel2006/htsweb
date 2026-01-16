@@ -36,8 +36,7 @@ function CountdownTimer() {
     <div
       className="grid items-start"
       style={{
-        gridTemplateColumns:
-          "72px 32px 72px 32px 72px 32px 72px",
+        gridTemplateColumns: "72px 32px 72px 32px 72px 32px 72px",
       }}
     >
       {/* DAYS */}
@@ -99,13 +98,13 @@ export default function HeroSection() {
     const resize = () => {
       const vh = window.innerHeight;
       const vw = window.innerWidth;
-      
+
       // UPDATED LOGIC:
       // 1. Calculate scale based on height (original logic)
       // 2. Calculate scale based on width (assuming ~560px safe content width for mobile)
       // 3. Take the smaller of the two to ensures content fits on both mobile and desktop
       const scaleH = vh / 1080;
-      const scaleW = vw / 560; 
+      const scaleW = vw / 560;
 
       setScale(Math.min(scaleH, scaleW, 1));
     };
@@ -126,8 +125,9 @@ export default function HeroSection() {
       <img
         src={mobileHeroBg}
         alt=""
-        className="md:hidden absolute inset-0 w-full h-full object-cover"
+        className="md:hidden absolute inset-0 w-full h-full object-cover scale-125 origin-center"
       />
+
       <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/20 to-background" />
 
       {/* SCALE WRAPPER */}
@@ -141,11 +141,11 @@ export default function HeroSection() {
         }}
       >
         <div className="flex flex-col items-center pt-[100px]">
-
           <div className="h-[61px]" />
 
           <p className="font-primary text-[13px] uppercase tracking-[0.25em] text-white opacity-90 text-center mb-[20px]">
-            GOVERNMENT ENGINEERING COLLEGE,<br />
+            GOVERNMENT ENGINEERING COLLEGE,
+            <br />
             SECTOR 28, GANDHINAGAR'S
           </p>
 
@@ -160,10 +160,11 @@ export default function HeroSection() {
           />
 
           <div className="h-[66px] mb-[30px] flex items-center">
-            <p className="font-primary tracking-[0.7em] text-[26px] text-white opacity-85  ">
-              SOLVE&nbsp;&nbsp;&nbsp;FOR&nbsp;&nbsp;&nbsp;X
-            </p>
-          </div>
+  <p className="font-primary tracking-[0.7em] text-[16px] md:text-[26px] text-white opacity-85">
+    SOLVE&nbsp;&nbsp;&nbsp;FOR&nbsp;&nbsp;&nbsp;X
+  </p>
+</div>
+
 
           <div className="relative w-[520px] h-[145px] mb-[38px]">
             <img src={countdownFrame} className="w-full h-full" />
@@ -177,7 +178,6 @@ export default function HeroSection() {
           <div className="font-barlow italic tracking-[0.3em] text-white">
             &gt; View Mission Parameters
           </div>
-
         </div>
       </div>
     </section>
