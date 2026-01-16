@@ -1,7 +1,20 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Linkedin, Twitter, Github, Instagram, Users, Megaphone, Palette, Code, Calendar, Handshake } from "lucide-react";
+import { Linkedin, Twitter, Github, Instagram, Users, Megaphone, Palette, Calendar, Handshake } from "lucide-react";
+
+// --- IMPORTANT: IMPORT YOUR IMAGES HERE ---
+// You must import images from your assets folder like this. 
+// Make sure the file names match exactly what is in your folder.
+// Example:
+import arjunImage from "@/assets/organiser1.png"; 
+
+// For this code to work, I am using placeholders. 
+// You need to uncomment the import lines below and change the path to your real files.
+
+// import arjunImg from "../assets/organiser1.png";
+// import priyaImg from "../assets/priya.png";
+// ... and so on for all members
 
 const teamCategories = [
   { id: "organizers", label: "Organizers ", icon: Users },
@@ -15,44 +28,127 @@ const teamCategories = [
 
 const teamMembers: Record<string, Array<{
   name: string;
-  role: string;
-  image?: string;
+  image: string; // This will now take the imported variable, or a valid public path
   linkedin?: string;
   twitter?: string;
   github?: string;
   instagram?: string;
 }>> = {
   organizers: [
-    { name: "ARJUN PATEL", role: "Lead Organizer", linkedin: "#", twitter: "#" },
-    { name: "PRIYA SHARMA", role: "Co-Lead", linkedin: "#", instagram: "#" },
-    { name: "RAHUL MEHTA", role: "Event Director", linkedin: "#", github: "#" },
-    { name: "ANANYA GUPTA", role: "Operations Head", linkedin: "#" },
+    {
+      name: "ARJUN PATEL",
+      // OPTION 1 (Recommended): Use the imported variable name (uncomment import above)
+      image: arjunImage, 
+      
+      // OPTION 2: If you put images in the 'public' folder, use the absolute path like this:
+     // image: "/images/organiser1.png", 
+      linkedin: "#", twitter: "#"
+    },
+    {
+      name: "PRIYA SHARMA",
+      image: "/images/team/organizers/priya-card.png", 
+      linkedin: "#", instagram: "#"
+    },
+    {
+      name: "RAHUL MEHTA",
+      image: "/images/team/organizers/rahul-card.png",
+      linkedin: "#", github: "#"
+    },
+    {
+      name: "ANANYA GUPTA",
+      image: "/images/team/organizers/ananya-card.png",
+      linkedin: "#"
+    },
   ],
   management: [
-    { name: "Vikram Singh", role: "Venue Coordinator", linkedin: "#" },
-    { name: "Neha Reddy", role: "Logistics Lead", linkedin: "#", instagram: "#" },
-    { name: "Amit Kumar", role: "Registration Head", linkedin: "#" },
+    {
+      name: "Vikram Singh",
+      image: "/images/team/management/vikram-card.png",
+      linkedin: "#"
+    },
+    {
+      name: "Neha Reddy",
+      image: "/images/team/management/neha-card.png",
+      linkedin: "#", instagram: "#"
+    },
+    {
+      name: "Amit Kumar",
+      image: "/images/team/management/amit-card.png",
+      linkedin: "#"
+    },
   ],
   technical: [
-    { name: "Karan Joshi", role: "Tech Lead", linkedin: "#", github: "#" },
-    { name: "Sneha Nair", role: "Platform Developer", linkedin: "#", github: "#" },
-    { name: "Rohan Verma", role: "Backend Lead", github: "#" },
-    { name: "Divya Iyer", role: "DevOps", linkedin: "#", github: "#" },
+    {
+      name: "Karan Joshi",
+      image: "/images/team/technical/karan-card.png",
+      linkedin: "#", github: "#"
+    },
+    {
+      name: "Sneha Nair",
+      image: "/images/team/technical/sneha-card.png",
+      linkedin: "#", github: "#"
+    },
+    {
+      name: "Rohan Verma",
+      image: "/images/team/technical/rohan-card.png",
+      github: "#"
+    },
+    {
+      name: "Divya Iyer",
+      image: "/images/team/technical/divya-card.png",
+      linkedin: "#", github: "#"
+    },
   ],
-  design: [
-    { name: "Aisha Khan", role: "Design Lead", linkedin: "#", instagram: "#" },
-    { name: "Aryan Desai", role: "UI/UX Designer", linkedin: "#" },
-    { name: "Maya Pillai", role: "Graphics Designer", instagram: "#" },
+  "sm&design": [
+    {
+      name: "Aisha Khan",
+      image: "/images/team/design/aisha-card.png",
+      linkedin: "#", instagram: "#"
+    },
+    {
+      name: "Aryan Desai",
+      image: "/images/team/design/aryan-card.png",
+      linkedin: "#"
+    },
+    {
+      name: "Maya Pillai",
+      image: "/images/team/design/maya-card.png",
+      instagram: "#"
+    },
+     {
+      name: "Riya Kapoor",
+      image: "/images/team/social/riya-card.png",
+      instagram: "#", twitter: "#"
+    },
+    {
+      name: "Ishaan Malik",
+      image: "/images/team/social/ishaan-card.png",
+      linkedin: "#", instagram: "#"
+    },
+    {
+      name: "Tanvi Shah",
+      image: "/images/team/social/tanvi-card.png",
+      twitter: "#"
+    },
   ],
-  social: [
-    { name: "Riya Kapoor", role: "Social Media Lead", instagram: "#", twitter: "#" },
-    { name: "Ishaan Malik", role: "Content Creator", linkedin: "#", instagram: "#" },
-    { name: "Tanvi Shah", role: "Community Manager", twitter: "#" },
-  ],
-  sponsorship: [
-    { name: "Varun Agarwal", role: "Sponsorship Lead", linkedin: "#" },
-    { name: "Pooja Menon", role: "Partner Relations", linkedin: "#" },
-    { name: "Siddharth Rao", role: "Outreach Coordinator", linkedin: "#", twitter: "#" },
+  Logistics: [],
+  Decoration: [],
+  Outreach: [
+    {
+      name: "Varun Agarwal",
+      image: "/images/team/sponsorship/varun-card.png",
+      linkedin: "#"
+    },
+    {
+      name: "Pooja Menon",
+      image: "/images/team/sponsorship/pooja-card.png",
+      linkedin: "#"
+    },
+    {
+      name: "Siddharth Rao",
+      image: "/images/team/sponsorship/siddharth-card.png",
+      linkedin: "#", twitter: "#"
+    },
   ],
 };
 
@@ -61,14 +157,14 @@ export default function TeamSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [activeCategory, setActiveCategory] = useState("organizers");
 
+  const currentCategoryMembers = teamMembers[activeCategory] || [];
+
   return (
     <section
       id="team"
       ref={ref}
       className="relative py-24 lg:py-32 overflow-hidden"
     >
-      
-
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <motion.div
@@ -93,9 +189,7 @@ export default function TeamSection() {
           className="flex flex-wrap justify-center gap-2 mb-12"
         >
           {teamCategories.map((category) => {
-            
             const isActive = activeCategory === category.id;
-            
             return (
               <motion.button
                 key={category.id}
@@ -108,7 +202,6 @@ export default function TeamSection() {
                     : "bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground border border-border/50"
                 }`}
               >
-              
                 {category.label}
               </motion.button>
             );
@@ -121,52 +214,41 @@ export default function TeamSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-12 max-w-6xl mx-auto"
         >
-          {teamMembers[activeCategory]?.map((member, index) => (
+          {currentCategoryMembers.length > 0 ? (
+            currentCategoryMembers.map((member, index) => (
             <motion.div
-              key={member.name}
-              initial={{ opacity: 0, scale: 0.9 }}
+              key={member.name + index}
+              initial={{ opacity: 0, scale: 0.95 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              whileHover={{ y: -8, scale: 1.02 }}
-              className="glass-card rounded-2xl p-6 text-center hover:border-primary/50 transition-all duration-300 group"
+              whileHover={{ y: -5 }}
+              className="flex flex-col items-center"
             >
-              {/* Avatar */}
-              <div className="w-32 h-32 mx-auto mb-4 rounded-full bg-nebula-gradient p-0.5 shadow-glow-nebula group-hover:shadow-glow-gold transition-all duration-300">
-                <div className="w-full h-full rounded-full bg-card flex items-center justify-center overflow-hidden">
-                  {member.image ? (
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-cover"
-                    />
-                  ) : (
-                    <span className="font-display text-3xl text-primary">
-                      {member.name.split(" ").map((n) => n[0]).join("")}
-                    </span>
-                  )}
-                </div>
+              {/* IMAGE CONTAINER - No Styles, just the image */}
+              <div className="w-full mb-4 relative">
+                <img
+                  src={member.image}
+                  alt={member.name}
+                  className="w-full h-auto object-contain block mx-auto"
+                  onError={(e) => {
+                    // This fallback only shows if your image path is still wrong
+                    e.currentTarget.style.display = 'none'; // Hide broken image completely so no box appears
+                  }}
+                />
               </div>
 
-              {/* Info */}
-              <h3 className="font-primary text-sm font-semibold text-foreground mb-1">
-                {member.name}
-              </h3>
-              <p className="font-body text-xs text-muted-foreground mb-4">
-                {member.role}
-              </p>
-
-              {/* Social Links */}
-              <div className="flex justify-center gap-2">
+              {/* SOCIAL LINKS - No Boxes/Backgrounds */}
+              <div className="flex justify-center gap-4">
                 {member.linkedin && (
                   <a
                     href={member.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300"
                   >
-                    <Linkedin size={14} />
+                    <Linkedin size={20} />
                   </a>
                 )}
                 {member.twitter && (
@@ -174,9 +256,9 @@ export default function TeamSection() {
                     href={member.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300"
                   >
-                    <Twitter size={14} />
+                    <Twitter size={20} />
                   </a>
                 )}
                 {member.github && (
@@ -184,9 +266,9 @@ export default function TeamSection() {
                     href={member.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300"
                   >
-                    <Github size={14} />
+                    <Github size={20} />
                   </a>
                 )}
                 {member.instagram && (
@@ -194,14 +276,19 @@ export default function TeamSection() {
                     href={member.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-8 h-8 rounded-lg bg-muted flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300"
+                    className="text-muted-foreground hover:text-primary transition-colors duration-300"
                   >
-                    <Instagram size={14} />
+                    <Instagram size={20} />
                   </a>
                 )}
               </div>
             </motion.div>
-          ))}
+          ))
+          ) : (
+            <div className="col-span-full text-center text-muted-foreground py-12">
+              Coming Soon...
+            </div>
+          )}
         </motion.div>
       </div>
     </section>
