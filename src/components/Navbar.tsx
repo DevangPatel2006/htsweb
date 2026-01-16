@@ -8,7 +8,7 @@ import logo from "@/assets/logo2.png";
 const navLinks = [
   { name: "Home", href: "#hero" },
   { name: "About", href: "#about" },
-  { name: "Protocols", href: "#protocols" },
+  { name: "Events", href: "#protocols" },
   { name: "Tracks", href: "#tracks" },
   { name: "Prizes", href: "#prizes" },
   { name: "Timeline", href: "#timeline" },

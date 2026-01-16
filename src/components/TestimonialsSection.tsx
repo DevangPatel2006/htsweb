@@ -1,77 +1,86 @@
 import { useEffect, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Twitter } from "lucide-react";
+import { Linkedin } from "lucide-react";
 
 // Import gallery images for testimonial cards
-import event1 from "@/assets/gallery/event-1.jpg";
-import event2 from "@/assets/gallery/event-2.jpg";
-import event3 from "@/assets/gallery/event-3.jpg";
-import event4 from "@/assets/gallery/event-4.jpg";
-import event5 from "@/assets/gallery/event-5.jpg";
-import event6 from "@/assets/gallery/event-6.jpg";
+import event1 from "@/assets/voices/meg.jfif";
+import event2 from "@/assets/voices/ld.jpg";
+import event3 from "@/assets/voices/dev.jfif";
+import event4 from "@/assets/voices/divy.jfif";
+import event5 from "@/assets/voices/raj.jfif";
+import event6 from "@/assets/voices/bhvy.jfif";
+import event7 from "@/assets/voices/abh.jfif";
 
 const testimonials = [
   {
-    name: "Arjun Patel",
-    handle: "@arjun_dev",
+    name: "L.D. College of Engineering",
+    handle: "@ldcollegeofengineering",
     content:
-      "Just won Hack The Spring 2025! 🏆 Amazing experience with incredible mentors and fellow hackers. Can't wait for next year! #HackTheSpring #hackathon",
+      "Our students secured 2nd Runner-Up at Hack The Spring’25, held 28 Feb - 1 Mar 2025 at GEC Gandhinagar, Gujarat.",
+    image: event2, // Assigned existing image
+    avatar: "LD",
+  },
+  {
+    name: "Devansh Vora",
+    handle: "@devanshvora03",
+    content:
+      "Proud to see my juniors carry forward the legacy with passion. Watching HTS 2025 come alive was truly fulfilling.",
     image: event3,
-    avatar: "AP",
+    avatar: "DV",
   },
   {
-    name: "Priya Sharma",
-    handle: "@priya_codes",
+    name: "Divy Pattani",
+    handle: "@divysoni03",
     content:
-      "Excited to dive into the world of innovation at @HackTheSpring! Ready to code, create, and bring groundbreaking ideas to life. Let the coding frenzy begin! 🚀",
-    image: event1,
-    avatar: "PS",
-  },
-  {
-    name: "Hack The Spring",
-    handle: "@HackTheSpring",
-    content:
-      "🎉 5,000+ Applications & Counting! We're overwhelmed by the response! Extended registration to March 15. Don't miss out! #HackTheSpring2026",
-    image: event6,
-    avatar: "HT",
-  },
-  {
-    name: "Rahul Mehta",
-    handle: "@rahul_tech",
-    content:
-      "The workshops at Hack The Spring were mind-blowing! Learned so much about AI/ML in just 48 hours. Best hackathon experience ever! 💡",
-    image: event5,
-    avatar: "RM",
-  },
-  {
-    name: "Ananya Gupta",
-    handle: "@ananya_builds",
-    content:
-      "Met my future co-founders at @HackTheSpring! The networking and collaboration here is unmatched. Already planning our startup! 🌟",
+      "I participated in my college’s HackTheSpring hackathon. It was a great journey, with valuable feedback from judges and professors.",
     image: event4,
-    avatar: "AG",
+    avatar: "DP",
   },
   {
-    name: "DevCommunity",
-    handle: "@DevCommunity",
+    name: "Dhruvi Raj",
+    handle: "@dhruvi raj",
     content:
-      "Proud community partner of Hack The Spring 2026! Join us for an epic 48-hour coding marathon in Gujarat. 600+ hackers, infinite possibilities! 🔥",
-    image: event2,
-    avatar: "DC",
+      "Proud to organize Hack The Spring ’25 at GEC Gandhinagar, witnessing 450+ participants’ passion and innovation.",
+    image: event5,
+    avatar: "RP",
+  },
+  {
+    name: "Bhagy Patel",
+    handle: "@bhagypatel1810",
+    content:
+      "Great experience at HackTheSpring. Thanks to the organizers and mentors who made the event possible.",
+    image: event6,
+    avatar: "BP",
+  },
+  {
+    name: "Meghani Ansh",
+    handle: "@meghani_ansh",
+    content:
+      "Secured 1st Runner-Up at Hack The Spring 2025, a two-day hackathon held on 28 Feb–1 Mar at GEC Gandhinagar.",
+    image: event1,
+    avatar: "MA",
+  },
+  {
+    name: "Chauhan Abhay",
+    handle: "@abhay7066",
+    content:
+      "Organizing HTS’25 was a journey of teamwork, problem-solving, and learning that shaped us and inspires the future.",
+    image: event7,
+    avatar: "MA",
   },
 ];
 
 export default function TestimonialsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef(null);
 
   // Auto scroll (works on all screens, no pause)
   useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
 
-    let animationId: number;
+    let animationId;
     let scrollPosition = 0;
 
     const scroll = () => {
@@ -167,7 +176,8 @@ export default function TestimonialsSection() {
                         </p>
                       </div>
                     </div>
-                    <Twitter className="w-5 h-5 text-cosmic-blue" />
+                    {/* Changed Twitter to Linkedin */}
+                    <Linkedin className="w-5 h-5 text-cosmic-blue" />
                   </div>
 
                   {/* Content */}
