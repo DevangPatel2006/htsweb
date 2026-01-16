@@ -63,13 +63,13 @@ export default function ProtocolsSection() {
       ref={ref}
       className="relative py-16 lg:py-24 overflow-hidden"
     >
-      <div className="container mx-auto px-4 relative z-10">
+      <div className="container mx-auto px-0 sm:px-4 relative z-10">
         {/* Section Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-12 px-4 sm:px-0"
         >
           <h2 className="font-display text-[40px] lg:text-[48px] font-bold mb-4 mt-6">
             <span className="text-gradient-gold">SELECT YOUR PROTOCOL</span>
@@ -116,6 +116,7 @@ export default function ProtocolsSection() {
                     justify-between
                     items-center
                     gap-[12px]
+                    pointer-events-none
                   "
                 >
                   {/* Initiate Hack Button */}
@@ -123,13 +124,13 @@ export default function ProtocolsSection() {
                     href={protocol.initiateLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block touch-manipulation"
+                    className="block touch-manipulation pointer-events-auto"
                     style={{ WebkitTapHighlightColor: "transparent" }}
                   >
                     <img
                       src={initiateButton}
                       alt="Initiate Hack"
-                      className="h-auto cursor-pointer transition-transform hover:scale-105 active:scale-95"
+                      className="h-auto cursor-pointer transition-transform hover:scale-105 active:scale-95 max-w-full"
                       draggable="false"
                     />
                   </a>
@@ -139,13 +140,13 @@ export default function ProtocolsSection() {
                     href={protocol.learnMoreLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block touch-manipulation"
+                    className="block touch-manipulation pointer-events-auto"
                     style={{ WebkitTapHighlightColor: "transparent" }}
                   >
                     <img
                       src={learnMoreButton}
                       alt="Learn More"
-                      className="h-auto cursor-pointer transition-transform hover:scale-105 active:scale-95"
+                      className="h-auto cursor-pointer transition-transform hover:scale-105 active:scale-95 max-w-full"
                       draggable="false"
                     />
                   </a>

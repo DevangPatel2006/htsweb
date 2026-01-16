@@ -8,39 +8,38 @@ import {
   Send,
   Trophy,
   Clock,
-  Calendar,
 } from "lucide-react";
 
 const day1Events = [
   {
     icon: UserCheck,
     time: "08:30 AM",
-    title: "CHECK-IN & BREAKFAST",
-    description: "Team HTS gathering. Verification of ID and distribution of kits.",
+    title: "DOCKING & REFUEL",
+    description: "Galactic Entry. Complete your registration protocol at the gates. Grab your breakfast rations before the mission commences.",
   },
   {
     icon: PartyPopper,
     time: "11:00 AM",
-    title: "INAUGURATION",
-    description: "The official launch. Keynote speakers and problem statements revealed.",
+    title: "IGNITION SEQUENCE",
+    description: "Inauguration Ceremony. The official launch. Keynote speakers initiate the event protocol. All systems go.",
   },
   {
     icon: Rocket,
-    time: "12:30 PM",
-    title: "ROUND 1: DEPLOYMENT",
-    description: "Hack.X & Build.X Begin. The clock starts. Teams begin working.",
+    time: "12:00 PM",
+    title: "PROTOCOL: ACTION",
+    description: "Round 1 Begins. Build.X: Elimination Round active (Hardware). Hack.X: The coding marathon begins (Non-elimination).",
   },
   {
     icon: FileCheck,
-    time: "03:00 PM",
-    title: "ROUND 2: THE SPLIT",
-    description: "Build.X (Elimination) & Hack.X (Coding Continues).",
+    time: "02:30 PM",
+    title: "THE CRUCIBLE",
+    description: "Hardware Finale & Software Progress. Build.X [Final Round]: Hardware teams face their ultimate assessment. Hack.X [Round 2]: Development continues.",
   },
   {
     icon: Trophy,
-    time: "04:30 PM",
-    title: "BUILD.X FINALE & HACK.X PROGRESS",
-    description: "Build.X Valedictory awards. Hack.X enters the next phase.",
+    time: "04:00 PM",
+    title: "COLLECTOR’S VERDICT",
+    description: "Build.X Valedictory. The hardware mission concludes. Winners of the Build.X are identified and the bounty is awarded.",
   },
 ];
 
@@ -48,32 +47,32 @@ const day2Events = [
   {
     icon: Coffee,
     time: "08:30 AM",
-    title: "ENTRY & BREAKFAST",
-    description: "Doors open for Day 2. Re-fuel for the final sprint.",
+    title: "RE-ENTRY & FUEL",
+    description: "Doors Open. Return to Sector 28. Refuel with breakfast and prepare your workstations for the final sprint.",
   },
   {
     icon: Rocket,
-    time: "11:00 AM",
-    title: "HACK.X [ROUND 3]",
-    description: "Deep Development. The intensity peaks. Mentors review progress.",
+    time: "10:30 AM",
+    title: "THE SNAP (HACK.X)",
+    description: "Hack.X [Round 3]. Elimination Round. A critical checkpoint where only the Top 12 Teams survive to advance. Mentors review progress.",
   },
   {
     icon: Send,
-    time: "12:00 PM",
-    title: "THINK.X BEGINS",
-    description: "Idea Pitching. Non-technical teams present their strategies.",
+    time: "11:00 AM",
+    title: "STAR-LORD’S PITCH",
+    description: "Think.X Begins. The stage is yours. Teams present their strategies to the jury. (Note: Think.X Registration desk opens prior at 10:00 AM)",
   },
   {
     icon: Clock,
-    time: "03:00 PM",
-    title: "THE FINAL SPRINT",
-    description: "Hack.X final submissions. Gaming Arenas (BGMI, FreeFire) open.",
+    time: "01:30 PM",
+    title: "ENDGAME PROTOCOLS",
+    description: "1:30 PM Arena Unlock: The Grandmaster opens lobbies for BGMI & FreeFire. 2:00 PM Hack.X [Final Round]: Surviving teams begin final code polishing.",
   },
   {
     icon: Trophy,
-    time: "05:00 PM",
-    title: "VALEDICTORY CEREMONY",
-    description: "The Final Verdict. Winners announced for Hack.X, Think.X, and Gaming.",
+    time: "04:00 PM",
+    title: "GUARDIANS ASSEMBLED",
+    description: "Valedictory Ceremony. The mission is complete. The Final Verdict is delivered and winners are announced for Hack.X, Think.X, and Side Quests.",
   },
 ];
 
@@ -81,7 +80,7 @@ export default function TimelineSection() {
   const [activeDay, setActiveDay] = useState<1 | 2>(1);
 
   const currentEvents = activeDay === 1 ? day1Events : day2Events;
-  const currentDate = activeDay === 1 ? "March 21, 2026" : "March 22, 2026";
+  const currentDate = activeDay === 1 ? "Friday, February 20, 2026" : "Saturday, February 21, 2026";
 
   return (
     // Reduced py-16/24 to py-10/16 to shift the section up

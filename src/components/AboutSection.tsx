@@ -19,8 +19,17 @@ import event11 from "@/assets/gallery/event-11.jpg";
 import CardsFrames from "@/assets/Frame 29.svg";
 
 const images = [
-  event1, event2, event3, event4, event5, event6, 
-  event7, event8, event9, event10, event11,
+  event1,
+  event2,
+  event3,
+  event4,
+  event5,
+  event6,
+  event7,
+  event8,
+  event9,
+  event10,
+  event11,
 ];
 
 export default function AboutSection() {
@@ -47,10 +56,7 @@ export default function AboutSection() {
     >
       <div className="w-full h-full relative z-10 mt-4">
         {/* Grid Definition: Stacks on mobile (grid-cols-1), 50/50 on desktop (lg:grid-cols-2) */}
-        <div 
-          className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-[60px] h-auto lg:h-full items-start"
-        >
-          
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-[60px] h-auto lg:h-full items-start">
           {/* --- LEFT COLUMN (Title + Text) --- */}
           <div className="flex flex-col h-full">
             {/* Title Section */}
@@ -61,22 +67,26 @@ export default function AboutSection() {
               // Responsive margin bottom: 40px on mobile, 110px on desktop
               className="mb-10 lg:mb-[110px] shrink-0"
             >
-              <h2 
-                className="font-display font-bold text-3xl lg:text-[40px] text-left leading-[1.2] tracking-[0.03em]"
+              <h2
+                className="font-display font-bold text-[27px] sm:text-[26px] lg:text-[40px] text-left leading-[1.2] tracking-[0.03em]"
                 style={{
-                  // Kept gradient exactly as requested
-                  background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
+                  background:
+                    "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)",
+                  WebkitBackgroundClip: "text",
+                  WebkitTextFillColor: "transparent",
+                  backgroundClip: "text",
                 }}
               >
-                THE GALACTIC<br/>CONVERGENCE
+                THE <br className="block lg:hidden" /> GALACTIC
+
+                <br />
+                CONVERGENCE
               </h2>
-              <p 
+
+              <p
                 className="font-barlow italic text-lg lg:text-[20px] mt-[10px] tracking-[0.3em]"
                 style={{
-                  color: 'rgba(255, 255, 255, 0.6)'
+                  color: "rgba(255, 255, 255, 0.6)",
                 }}
               >
                 WHERE ENGINEERING MEETS INFINITY
@@ -92,32 +102,62 @@ export default function AboutSection() {
             >
               <div className="font-open leading-relaxed text-justify text-base lg:text-[20px] text-white/85 space-y-5">
                 <p>
-                  Orchestrated by Government Engineering College, Gandhinagar, this{" "}
-                  <span style={{ color: '#FFD700', fontWeight: '600' }}>2-Day</span> Tech Fest unites the brightest
-                  minds from across the cosmos.
+                  Orchestrated by Government Engineering College, Gandhinagar,
+                  this{" "}
+                  <span style={{ color: "#FFD700", fontWeight: "600" }}>
+                    2-Day
+                  </span>{" "}
+                  Tech Fest unites the brightest minds from across the cosmos.
                 </p>
 
                 <p>
                   We are launching a multi-dimensional expedition covering{" "}
-                  <span style={{ color: '#FFD700', fontWeight: '600' }}>software, hardware, and creative strategy</span>{" "}
-                  during standard solar hours. At Hack The Spring, every participant is a{" "}
-                  <span style={{ color: '#FFD700', fontWeight: '600' }}>Guardian of Innovation</span>. Whether you
-                  are debugging complex systems in{" "}
-                  <span style={{ color: '#FFD700', fontWeight: '600' }}>Hack.X</span>, building
-                  prototypes in{" "}
-                  <span style={{ color: '#FFD700', fontWeight: '600' }}>Build.X</span>, or pitching strategies in{" "}
-                  <span style={{ color: '#FFD700', fontWeight: '600' }}>Think.X</span>, you are here to{" "}
-                  <span style={{ color: '#FFD700', fontWeight: '600' }}>push boundaries</span>.
+                  <span style={{ color: "#FFD700", fontWeight: "600" }}>
+                    software, hardware, and creative strategy
+                  </span>{" "}
+                  during standard solar hours. At Hack The Spring, every
+                  participant is a{" "}
+                  <span style={{ color: "#FFD700", fontWeight: "600" }}>
+                    Guardian of Innovation
+                  </span>
+                  . Whether you are debugging complex systems in{" "}
+                  <span style={{ color: "#FFD700", fontWeight: "600" }}>
+                    Hack.X
+                  </span>
+                  , building prototypes in{" "}
+                  <span style={{ color: "#FFD700", fontWeight: "600" }}>
+                    Build.X
+                  </span>
+                  , or pitching strategies in{" "}
+                  <span style={{ color: "#FFD700", fontWeight: "600" }}>
+                    Think.X
+                  </span>
+                  , you are here to{" "}
+                  <span style={{ color: "#FFD700", fontWeight: "600" }}>
+                    push boundaries
+                  </span>
+                  .
                 </p>
 
                 <p>
                   From{" "}
-                  <span style={{ color: '#FFD700', fontWeight: '600' }}>restoring</span> the{" "}
-                  <span style={{ color: '#FFD700', fontWeight: '600' }}>Cosmic Chord</span> to capturing the
-                  universe in{" "}
-                  <span style={{ color: '#FFD700', fontWeight: '600' }}>Cosmic Lens</span>, this is where your skills
-                  become the tools to save the system. Prepare to{" "}
-                  <span style={{ color: '#FFD700', fontWeight: '600' }}>Solve for X</span> and leave your mark on the galaxy.
+                  <span style={{ color: "#FFD700", fontWeight: "600" }}>
+                    restoring
+                  </span>{" "}
+                  the{" "}
+                  <span style={{ color: "#FFD700", fontWeight: "600" }}>
+                    Cosmic Chord
+                  </span>{" "}
+                  to capturing the universe in{" "}
+                  <span style={{ color: "#FFD700", fontWeight: "600" }}>
+                    Cosmic Lens
+                  </span>
+                  , this is where your skills become the tools to save the
+                  system. Prepare to{" "}
+                  <span style={{ color: "#FFD700", fontWeight: "600" }}>
+                    Solve for X
+                  </span>{" "}
+                  and leave your mark on the galaxy.
                 </p>
               </div>
             </motion.div>
@@ -125,16 +165,15 @@ export default function AboutSection() {
 
           {/* --- RIGHT COLUMN (Visuals) --- */}
           <div className="flex flex-col">
-            
             {/* 1. Image Container */}
             <motion.div
-               initial={{ opacity: 0, x: 30 }}
-               animate={isInView ? { opacity: 1, x: 0 } : {}}
-               transition={{ duration: 0.6, delay: 0.4 }}
-               className="relative rounded-xl overflow-hidden border shadow-2xl w-full h-[220px] lg:h-[280px] shrink-0 mb-[10px]"
-               style={{
-                 borderColor: 'rgba(255, 255, 255, 0.1)'
-               }}
+              initial={{ opacity: 0, x: 30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : {}}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="relative rounded-xl overflow-hidden border shadow-2xl w-full h-[220px] lg:h-[280px] shrink-0 mb-[10px]"
+              style={{
+                borderColor: "rgba(255, 255, 255, 0.1)",
+              }}
             >
               {images.map((img, index) => (
                 <motion.img
@@ -158,8 +197,11 @@ export default function AboutSection() {
                     onClick={() => setCurrentImageIndex(index)}
                     className={`h-2 rounded-full transition-all duration-300`}
                     style={{
-                      width: currentImageIndex === index ? '32px' : '8px',
-                      backgroundColor: currentImageIndex === index ? '#FFD700' : 'rgba(255, 255, 255, 0.5)'
+                      width: currentImageIndex === index ? "32px" : "8px",
+                      backgroundColor:
+                        currentImageIndex === index
+                          ? "#FFD700"
+                          : "rgba(255, 255, 255, 0.5)",
                     }}
                   />
                 ))}
@@ -173,14 +215,13 @@ export default function AboutSection() {
               transition={{ duration: 0.6, delay: 0.6 }}
               className="w-full"
             >
-              <img 
-                src={CardsFrames} 
+              <img
+                src={CardsFrames}
                 alt="Mission Modules, Solar Cycles, and Guardians Stats"
                 className="w-full h-auto object-contain object-top"
               />
             </motion.div>
           </div>
-          
         </div>
       </div>
     </section>
