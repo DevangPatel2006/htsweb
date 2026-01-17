@@ -1,118 +1,117 @@
 import { motion } from "framer-motion";
-import { Github, Twitter, Linkedin, Instagram, Mail, Phone, MapPin } from "lucide-react";
+import { Instagram, Youtube, Linkedin } from "lucide-react";
+import gov from "@/assets/govlogo.svg";
 
 const socialLinks = [
-  { icon: Twitter, href: "https://twitter.com/hackthespring", label: "Twitter" },
   { icon: Instagram, href: "https://instagram.com/hackthespring", label: "Instagram" },
+  { icon: Youtube, href: "https://youtube.com/@hackthespring", label: "YouTube" },
   { icon: Linkedin, href: "https://linkedin.com/company/hackthespring", label: "LinkedIn" },
-  { icon: Github, href: "https://github.com/hackthespring", label: "GitHub" },
 ];
 
 export default function Footer() {
   return (
-<footer className="relative bg-[#06121F] border-t border-border overflow-hidden py-10">
-
-
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-          {/* Contact Us */}
+    <footer className="relative bg-[#0a1628] border-t border-border overflow-hidden text-white w-full">
+      <div 
+        className="max-w-[1400px] mx-auto w-full flex flex-col px-6"
+        style={{ 
+          paddingTop: "45px", 
+          paddingBottom: "0px" 
+        }}
+      >
+        {/* --- GRID LAYOUT --- */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 w-full items-start">
+          
+          {/* --- LEFT COLUMN --- */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
+            className="flex flex-col items-center space-y-4 lg:justify-self-start lg:w-[300px]"
           >
-            <h4 className="font-display text-sm font-semibold text-primary mb-4 uppercase tracking-wider">
-              Contact Us
-            </h4>
-            <div className="space-y-3">
-              <a
-                href="mailto:hello@hackthespring.in"
-                className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
-              >
-                <div className="w-8 h-8 rounded-lg bg-muted/50 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <Mail className="w-4 h-4" />
-                </div>
-                <span className="font-body text-sm">hello@hackthespring.in</span>
-              </a>
-              <a
-                href="tel:+919876543210"
-                className="flex items-center gap-3 text-muted-foreground hover:text-primary transition-colors group"
-              >
-                <div className="w-8 h-8 rounded-lg bg-muted/50 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
-                  <Phone className="w-4 h-4" />
-                </div>
-                <span className="font-body text-sm">+91 98765 43210</span>
-              </a>
+            <img 
+              src={gov}
+              alt="Government Engineering College Logo" 
+              className="h-28 w-auto opacity-90 hover:opacity-100 transition-opacity duration-300" 
+            />
+            <div className="font-open text-[11px] leading-relaxed text-[#E6AB27] font-bold tracking-widest italic text-center">
+              <p>Government Engineering</p>
+              <p>College, Sector 28, Gandhinagar</p>
             </div>
           </motion.div>
 
-          {/* Connect With Us */}
+          {/* --- CENTER COLUMN --- */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
+            className="flex flex-col items-center justify-self-center gap-6"
           >
-            <h4 className="font-display text-sm font-semibold text-primary mb-4 uppercase tracking-wider">
-              Connect With Us
-            </h4>
-            <div className="flex gap-2">
-              {socialLinks.map((social) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  whileHover={{ scale: 1.1, y: -2 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-10 h-10 rounded-lg bg-muted/50 backdrop-blur-sm border border-border/50 flex items-center justify-center text-muted-foreground hover:bg-primary hover:text-primary-foreground hover:border-primary transition-all duration-300"
-                  aria-label={social.label}
-                >
-                  <social.icon className="w-4 h-4" />
-                </motion.a>
-              ))}
+            <div className="flex flex-col items-center space-y-4">
+              <h4 className="font-barlow text-[20px] text-[#B0E5FF] uppercase tracking-[0.1em] font-medium whitespace-nowrap mt-1">
+                SUB-SPACE FREQUENCIES
+              </h4>
+              <div className="flex gap-4">
+                {socialLinks.map((social) => (
+                  <motion.a
+                    key={social.label}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    className="w-8 h-8 flex items-center justify-center text-[#B0E5FF] hover:text-white transition-colors mt-3"
+                  >
+                    <social.icon className="w-5 h-5" />
+                  </motion.a>
+                ))}
+              </div>
+            </div>
+            
+            <div className="flex mt-3 gap-4 text-[12px] text-[#B0E5FF] uppercase tracking-widest font-barlow">
+              <a href="/terms" className="hover:text-white transition-colors">TERMS & CONDITIONS</a>
+              <span className="text-[#B0E5FF] opacity-50">|</span>
+              <a href="/privacy" className="hover:text-white transition-colors">PRIVACY POLICY</a>
             </div>
           </motion.div>
 
-          {/* Find Us */}
+          {/* --- RIGHT COLUMN (Command Post) --- */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, x: 20 }}
+            whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
             viewport={{ once: true }}
+            className="flex flex-col items-center lg:items-end lg:justify-self-end gap-3 lg:w-[300px]"
           >
-            <h4 className="font-display text-sm font-semibold text-primary mb-4 uppercase tracking-wider flex items-center gap-2">
-              <MapPin className="w-4 h-4" />
-              Find Us
+            <h4 className="font-barlow text-[20px] text-[#B0E5FF] uppercase tracking-[0.1em] font-medium whitespace-nowrap self-center lg:self-start">
+              COMMAND POST
             </h4>
-            <div className="rounded-xl overflow-hidden border border-border/50 shadow-lg">
+            <div className="w-full rounded-xl overflow-hidden border border-gray-700/50 shadow-lg relative bg-gray-800">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3672.6753373063604!2d72.62866031496754!3d23.018533084948!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395e87a7a8a5e71b%3A0x1f9b8c7a3f0c5d7e!2sGujarat%2C%20India!5e0!3m2!1sen!2sus!4v1704000000000!5m2!1sen!2sus"
+                src="https://maps.google.com/maps?q=Government+Engineering+College+Sector+28+Gandhinagar&t=&z=13&ie=UTF8&iwloc=&output=embed"
                 width="100%"
-                height="140"
-                style={{ border: 0 }}
+                height="100%"
+                style={{ border: 0, height: "120px" }}
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                className="grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500"
+                // CHANGED: Removed grayscale and opacity classes.
+                // Added 'block' to remove any potential inline display issues.
+                className="block"
+                title="GEC Gandhinagar Map"
               />
             </div>
           </motion.div>
+
         </div>
 
-        {/* Copyright */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          viewport={{ once: true }}
-          className="mt-8 pt-6 border-t border-border/30 text-center"
-        >
-          <p className="font-body text-xs text-muted-foreground">
-            © Hack The Spring 2026. All rights reserved.
+        {/* --- Copyright Row --- */}
+        <div className="w-full text-center pb-2 pt-12">
+          <p className="font-open text-[10px] text-[#B0E5FF] tracking-wide">
+            © 2026 Hack The Spring. Engineered on Terra. We have 12% of a plan.
           </p>
-        </motion.div>
+        </div>
       </div>
     </footer>
   );
