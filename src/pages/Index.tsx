@@ -55,14 +55,17 @@ const Index = () => {
   }}
 />
 
-      {/* 2. Background Image (Middle Layer) - Mobile */}
-      <div 
-  className="md:hidden fixed inset-0 z-0 pointer-events-none opacity-30 bg-cover bg-center bg-no-repeat"
+     // Inside your Index component return:
+
+{/* 2. Background Image (Middle Layer) - Mobile */}
+{/* Use 'will-change-transform' and ensure it doesn't fight with scroll */}
+<div 
+  className="md:hidden fixed inset-0 z-0 pointer-events-none opacity-30 bg-cover bg-center bg-no-repeat will-change-transform"
   style={{ 
-    backgroundImage: 'url("/mobmidd.png")'
+    backgroundImage: 'url("/mobmidd.png")',
+    // Only use if image is highly optimized, otherwise standard div is fine
   }}
 />
-
 
       {/* 3. Content (Top Layer) */}
       <div className="relative z-10">
