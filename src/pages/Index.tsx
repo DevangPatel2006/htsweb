@@ -55,7 +55,7 @@ const Index = () => {
   }}
 />
 
-     // Inside your Index component return:
+    
 
 {/* 2. Background Image (Middle Layer) - Mobile */}
 {/* Use 'will-change-transform' and ensure it doesn't fight with scroll */}
