@@ -24,6 +24,7 @@ export default function Navbar() {
   const location = useLocation();
   const navigate = useNavigate();
 
+  // 1. Handle Active Section Highlighting & Navbar Background
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
@@ -44,6 +45,23 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // 2. Close Mobile Menu on Scroll
+  useEffect(() => {
+    const closeMenuOnScroll = () => {
+      if (isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    if (isMobileMenuOpen) {
+      window.addEventListener("scroll", closeMenuOnScroll);
+    }
+
+    return () => {
+      window.removeEventListener("scroll", closeMenuOnScroll);
+    };
+  }, [isMobileMenuOpen]);
 
   const handleNavClick = (href: string) => {
     // 1. Close the menu immediately
@@ -99,7 +117,7 @@ export default function Navbar() {
             <img
               src={logo}
               alt="Hack The Spring"
-              className="h-9 w-auto lg:h-12 object-contain"
+              className="h-7 sm:h-7 lg:h-12 w-auto object-contain"
             />
           </motion.a>
 
@@ -116,10 +134,11 @@ export default function Navbar() {
                     e.preventDefault();
                     handleNavClick(link.href);
                   }}
+                  // UPDATED: Added hover:text-[#C1EAFF]
                   className={`group px-4 py-2 font-barlow text-sm transition-colors duration-300 ${
                     isActive
                       ? "text-primary"
-                      : "text-muted-foreground hover:text-foreground"
+                      : "text-muted-foreground hover:text-[#C1EAFF]"
                   }`}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
@@ -140,7 +159,7 @@ export default function Navbar() {
             {/* Swag */}
             <Link to="/swag">
               <motion.span
-                className="px-4 py-2 rounded-lg font-body text-sm text-primary hover:bg-primary/10 flex items-center gap-1 cursor-pointer"
+                className="px-4 py-2 rounded-lg font-barlow text-sm text-primary hover:bg-primary/10 flex items-center gap-1 cursor-pointer"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
               >
@@ -160,7 +179,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu - UPDATED */}
+      {/* Mobile Menu */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
@@ -168,8 +187,7 @@ export default function Navbar() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            // Changed styles: Absolute positioning, floating card look, glass effect, removed border-b
-            className="lg:hidden absolute top-[calc(100%)] left-4 right-4 rounded-2xl border border-white/10 shadow-2xl backdrop-blur-xl bg-background/60 overflow-hidden"
+            className="lg:hidden absolute top-[calc(100%)] left-4 right-4 rounded-2xl border border-white/10 shadow-2xl backdrop-blur-xl bg-black/90 overflow-hidden"
           >
             <div className="p-2 flex flex-col gap-1">
               {navLinks.map((link, index) => (
@@ -183,11 +201,11 @@ export default function Navbar() {
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.03 }}
-                  // Made buttons smaller and more compact
-                  className={`px-4 py-2.5 rounded-xl font-body text-sm ${
+                  // UPDATED: Changed text-muted-foreground to text-[#C1EAFF] for default state
+                  className={`px-4 py-2.5 rounded-xl font-barlow text-sm ${
                     activeSection === link.href.slice(1)
                       ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground hover:bg-white/5"
+                      : "text-[#C1EAFF] hover:text-foreground hover:bg-white/5"
                   }`}
                 >
                   {link.name}
@@ -195,13 +213,11 @@ export default function Navbar() {
               ))}
 
               <Link to="/swag" onClick={() => setIsMobileMenuOpen(false)}>
-                <motion.span className="px-4 py-2.5 rounded-xl font-body text-sm text-primary hover:bg-primary/10 flex items-center gap-2">
+                <motion.span className="px-4 py-2.5 rounded-xl font-barlow text-sm text-primary hover:bg-primary/10 flex items-center gap-2">
                   <Sparkles size={16} />
                   Swag
                 </motion.span>
               </Link>
-              
-              {/* Register Now button removed as requested */}
             </div>
           </motion.div>
         )}

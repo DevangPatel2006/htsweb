@@ -22,11 +22,11 @@ export default function TracksSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-display text-3xl lg:text-[48px] font-bold mb-4">
+          <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-4 mt-6">
             <span className="text-gradient-gold">MISSION DIRECTIVES</span>
           </h2>
-          <p className="font-barlow tracking-[0.15em] text-lg lg:text-[25px] text-muted-foreground italic">
-            FOUR FREQUENCIES. ONE OBJECTIVE. TUNE IN TO YOUR MISSION.
+          <p className="font-barlow text-lg lg:text-[20px] mt-[10px] tracking-[0.2em] leading-tight sm:leading-normal text-[#C1EAFF] italic">
+            FOUR FREQUENCIES.  <br className="block sm:hidden" />ONE OBJECTIVE.  <br className="block sm:hidden" />TUNE IN TO YOUR MISSION.
           </p>
           <p className="font-open text-cyan-400 text-xs lg:text-sm tracking-widest">
             HACK.X [SOFTWARE HACKATHON]
@@ -51,7 +51,7 @@ export default function TracksSection() {
           <img 
             src={cd2Svg}
             alt="Mission Directives CD Stack" 
-            className="block lg:hidden w-full max-w-md h-auto cd-float-animation px-4"
+            className="block lg:hidden w-full max-w-md h-auto cd-float-animation px-4 mt-5" 
           />
         </motion.div>
       </div>

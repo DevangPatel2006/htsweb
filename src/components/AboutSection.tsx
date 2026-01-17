@@ -65,7 +65,7 @@ export default function AboutSection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6 }}
               // Responsive margin bottom: 40px on mobile, 110px on desktop
-              className="mb-10 lg:mb-[110px] shrink-0"
+              className="mb-10 lg:mb-[110px] shrink-0 mt-5 sm:mt-0"
             >
               <h2
                 className="font-display font-bold text-[27px] sm:text-[26px] lg:text-[40px] text-left leading-[1.2] tracking-[0.03em]"
@@ -84,12 +84,12 @@ export default function AboutSection() {
               </h2>
 
               <p
-                className="font-barlow italic text-lg lg:text-[20px] mt-[10px] tracking-[0.3em]"
-                style={{
-                  color: "rgba(255, 255, 255, 0.6)",
-                }}
+                className="font-barlow text-lg lg:text-[20px] mt-[10px] tracking-[0.2em] leading-tight sm:leading-normal text-[#C1EAFF] italic"
+
+                
               >
-                WHERE ENGINEERING MEETS INFINITY
+                WHERE ENGINEERING <br className="block sm:hidden" />
+MEETS INFINITY
               </p>
             </motion.div>
 
