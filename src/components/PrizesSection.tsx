@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Gift, ChevronRight } from "lucide-react";
+import { Gift, ChevronRight, FileCheck, Utensils, Package, Users } from "lucide-react";
 
 const tracks = [
   {
@@ -71,15 +71,12 @@ const tracks = [
   },
 ];
 
-// Helper to get specific styles for each track ID
 const getStyles = (id) => {
   const styles = {
     hackx: {
       borderColor: "border-[#00f0ff]/60",
       activeText: "text-[#00f0ff]",
-      // RESTORED BUTTON BG (10%)
       activeBtnBg: "bg-[#00f0ff]/10",
-      // RIGHT PANEL BG (5% RGBA)
       rightPanelBg: "bg-[rgba(0,240,255,0.05)]",
       hover: "hover:text-[#00f0ff] hover:bg-[#00f0ff]/10",
     },
@@ -123,6 +120,13 @@ const getStyles = (id) => {
   return styles[id] || styles.hackx;
 };
 
+const participantBenefits = [
+  { text: "Participation Certificate", icon: FileCheck },
+  { text: "Free Meals & Snacks", icon: Utensils },
+  { text: "Tech Swag", icon: Package },
+  { text: "Networking Access", icon: Users },
+];
+
 export default function PrizesSection() {
   const [activeTrack, setActiveTrack] = useState("hackx");
   const ref = useRef(null);
@@ -135,7 +139,7 @@ export default function PrizesSection() {
     <section
       id="prizes"
       ref={ref}
-      className="relative py-24 lg:py-32 overflow-hidden uppercase"
+      className="relative py-10 md:py-24 lg:py-32 overflow-hidden uppercase"
     >
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
@@ -143,13 +147,14 @@ export default function PrizesSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-12"
+          className="text-center mb-4 md:mb-12 mt-0 md:mt-1"
         >
-          <h2 className="font-display text-4xl md:text-5xl lg:text-5xl font-bold mb-4">
+          <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-14 md:mt-4">
             <span className="text-gradient-gold">GALACTIC BOUNTIES</span>
           </h2>
-          <p className="font-barlow text-lg text-muted-foreground max-w-2xl mx-auto">
-            A reward pool worth stealing batteries for
+          <p className="font-barlow text-lg lg:text-[20px] mt-1 md:mt-[10px] tracking-[0.2em] leading-tight sm:leading-normal text-[#C1EAFF] italic">
+            A reward pool worth <br className="block sm:hidden" />
+            stealing batteries for
           </p>
         </motion.div>
 
@@ -169,8 +174,8 @@ export default function PrizesSection() {
               <div
                 className={`md:w-[40%] border-b md:border-b-0 md:border-r bg-card/50 transition-colors duration-300 ${activeStyle.borderColor}`}
               >
-                <div className="p-4 md:p-6">
-                  <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-2 md:pb-0">
+                <div className="p-2 md:p-6">
+                  <div className="flex md:flex-col gap-1 md:gap-2 overflow-x-auto md:overflow-visible pb-1 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                     {tracks.map((track) => {
                       const style = getStyles(track.id);
                       const isActive = activeTrack === track.id;
@@ -178,14 +183,14 @@ export default function PrizesSection() {
                         <button
                           key={track.id}
                           onClick={() => setActiveTrack(track.id)}
-                          className={`relative flex items-center justify-start gap-3 px-4 py-3 rounded-lg font-primary text-sm md:text-base font-semibold transition-all duration-300 whitespace-nowrap md:w-full text-left border ${
+                          className={`relative flex items-center justify-start gap-2 md:gap-3 px-3 py-2 md:px-4 md:py-3 rounded-lg font-primary text-xs md:text-base font-semibold transition-all duration-300 whitespace-nowrap md:w-full text-left border ${
                             isActive
-                              ? `${style.activeText} ${style.activeBtnBg} ${style.borderColor}` // Uses activeBtnBg (10% opacity)
+                              ? `${style.activeText} ${style.activeBtnBg} ${style.borderColor}`
                               : `text-muted-foreground hover:bg-primary/5 border-transparent ${style.hover}`
                           }`}
                         >
                           {isActive && (
-                            <ChevronRight className="w-4 h-4 flex-shrink-0" />
+                            <ChevronRight className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
                           )}
                           <span className="truncate">{track.name}</span>
                         </button>
@@ -196,9 +201,8 @@ export default function PrizesSection() {
               </div>
 
               {/* Prize Card - Right Side */}
-              {/* Uses rightPanelBg (5% opacity RGBA) */}
               <div
-                className={`md:w-[60%] p-6 md:p-8 transition-colors duration-300 ${activeStyle.rightPanelBg}`}
+                className={`md:w-[60%] p-4 md:p-8 transition-colors duration-300 ${activeStyle.rightPanelBg}`}
               >
                 <motion.div
                   key={currentTrack.id}
@@ -207,27 +211,29 @@ export default function PrizesSection() {
                   transition={{ duration: 0.3 }}
                 >
                   {/* Track Title */}
-                  <h3 className="font-display text-1xl md:text-1.5xl font-bold mb-6 text-primary">
+                  <h3 className="font-display text-lg md:text-1.5xl font-bold mb-4 md:mb-6 text-primary">
                     {currentTrack.title}
                   </h3>
 
                   {/* Prize List */}
-                  <div className="space-y-4 mb-6">
+                  <div className="space-y-3 md:space-y-4 mb-4 md:mb-6">
                     {currentTrack.prizes.map((prize, index) => (
                       <div
                         key={index}
-                        className="flex items-center gap-4 p-4 rounded-xl bg-card/50 border border-primary/10 hover:border-primary/30 transition-all duration-300"
+                        className="flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-xl bg-card/50 border border-primary/10 hover:border-primary/30 transition-all duration-300"
                       >
-                        <span className="text-2xl">{prize.icon}</span>
+                        <span className="text-xl md:text-2xl">
+                          {prize.icon}
+                        </span>
                         <div className="flex-1">
-                          <span className="font-primary text-lg font-semibold text-foreground">
+                          <span className="font-primary text-sm md:text-lg font-semibold text-foreground">
                             {prize.position}:
                           </span>
-                          <span className="ml-2 font-heading text-lg font-bold text-primary">
+                          <span className="ml-2 font-heading text-sm md:text-lg font-bold text-primary">
                             {prize.reward}
                           </span>
                           {prize.extra && (
-                            <span className="ml-2 px-2 py-1 rounded-full bg-accent/20 text-accent text-xs font-semibold">
+                            <span className="ml-2 px-2 py-1 rounded-full bg-accent/20 text-accent text-[10px] md:text-xs font-semibold">
                               {prize.extra}
                             </span>
                           )}
@@ -238,9 +244,9 @@ export default function PrizesSection() {
 
                   {/* Special Note */}
                   {currentTrack.special && (
-                    <div className="flex items-start gap-3 p-4 rounded-xl bg-gradient-to-r from-accent/10 to-primary/10 border border-accent/20">
-                      <Gift className="w-5 h-5 text-accent mt-0.5 flex-shrink-0" />
-                      <p className="font-body text-sm text-muted-foreground">
+                    <div className="flex items-start gap-3 p-3 md:p-4 rounded-xl bg-gradient-to-r from-accent/10 to-primary/10 border border-accent/20">
+                      <Gift className="w-4 h-4 md:w-5 md:h-5 text-accent mt-0.5 flex-shrink-0" />
+                      <p className="font-body text-xs md:text-sm text-muted-foreground">
                         <span className="text-accent font-semibold">
                           Special:
                         </span>{" "}
@@ -259,27 +265,33 @@ export default function PrizesSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 glass-card rounded-2xl p-8 max-w-3xl mx-auto border border-primary/20"
+          // CHANGE: Increased max-w-3xl to max-w-5xl so the text fits on one line
+          className="mt-4 md:mt-16 glass-card rounded-2xl p-4 md:p-8 max-w-5xl mx-auto border border-primary/20"
         >
-          <h3 className="font-primary text-xl font-semibold text-center mb-6 text-foreground">
+          <h3 className="font-primary text-lg md:text-xl font-semibold text-center mb-4 md:mb-6 text-foreground">
             EVERY PARTICIPANT RECEIVES
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-            {[
-              "Participation Certificate",
-              "Free Meals & Snacks",
-              "Tech Swag",
-              "Networking Access",
-            ].map((benefit, index) => (
-              <div key={index} className="flex flex-col items-center gap-2">
-                <div className="w-10 h-10 rounded-full bg-accent/20 flex items-center justify-center">
-                  <Gift className="w-5 h-5 text-accent" />
+          
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4">
+            {participantBenefits.map((benefit, index) => {
+              const Icon = benefit.icon;
+              return (
+                <div
+                  key={index}
+                  // CHANGE: Removed bg-primary/5 and borders.
+                  // Mobile: flex-row, gap-3. Desktop: flex-col, gap-2.
+                  className="flex flex-row md:flex-col items-center gap-3 md:gap-2"
+                >
+                  <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
+                    <Icon className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                  </div>
+                  {/* CHANGE: Added whitespace-nowrap for desktop to force single line */}
+                  <span className="font-barlow text-sm text-muted-foreground text-left md:text-center md:whitespace-nowrap">
+                    {benefit.text}
+                  </span>
                 </div>
-                <span className="font-body text-sm text-muted-foreground">
-                  {benefit}
-                </span>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </motion.div>
       </div>

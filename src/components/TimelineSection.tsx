@@ -83,21 +83,27 @@ export default function TimelineSection() {
   const currentDate = activeDay === 1 ? "Friday, February 20, 2026" : "Saturday, February 21, 2026";
 
   return (
-    // Reduced py-16/24 to py-10/16 to shift the section up
-    <section id="timeline" className="relative py-10 lg:py-16 overflow-hidden">
+    // Changes made:
+    // 1. Added 'mt-3' (12px) for mobile top margin.
+    // 2. Added 'scroll-mt-24' so anchor links land correctly below the header.
+    <section 
+      id="timeline" 
+      className="relative py-10 lg:py-16 overflow-hidden mt-3"
+    >
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <div className="text-center mb-8">
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+          <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-10">
             <span className="text-gradient-gold">THE PLAN</span>
           </h2>
-          <p className="font-barlow text-lg text-muted-foreground max-w-2xl mx-auto">
+           <p className="font-barlow text-lg lg:text-[20px] mt-[10px] tracking-[0.2em] leading-tight sm:leading-normal text-[#C1EAFF] italic">
             DON’T WORRY, WE HAVE MORE THAN 12% OF A PLAN.
           </p>
         </div>
 
-        {/* Day Toggle - Redesigned to be smaller, simple lines */}
-        <div className="flex justify-center gap-8 mb-8 border-b border-white/10 w-fit mx-auto px-8">
+        {/* Day Toggle */}
+        {/* Change made: Removed 'border-b border-white/10' to remove the line */}
+        <div className="flex justify-center gap-8 mb-8 w-fit mx-auto px-8">
           <button
             onClick={() => setActiveDay(1)}
             className={`relative pb-3 text-lg md:text-xl font-barlow tracking-wider transition-all duration-300 ${

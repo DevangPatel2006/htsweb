@@ -4,16 +4,12 @@ import { useRef, useState } from "react";
 import { Linkedin, Twitter, Github, Instagram, Users, Megaphone, Palette, Calendar, Handshake } from "lucide-react";
 
 // --- IMPORTANT: IMPORT YOUR IMAGES HERE ---
-// You must import images from your assets folder like this. 
 import arjunImage from "@/assets/organiser1.png"; 
 import deImage from "@/assets/organ2.png"; 
 
-// Placeholders for other images (Uncomment and change paths as needed)
-// import arjunImg from "../assets/organiser1.png";
-
 const teamCategories = [
-  { id: "organizers", label: "Organizers ", icon: Users },
-  { id: "Management", label: "Management ", icon: Users },
+  { id: "organizers", label: "Organizers", icon: Users },
+  { id: "Management", label: "Management", icon: Users },
   { id: "webandtech", label: "Technical", icon: Calendar },
   { id: "sm&design", label: "Media", icon: Palette },
   { id: "Logistics", label: "Logistics", icon: Megaphone },
@@ -147,10 +143,11 @@ export default function TeamSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="font-display text-2xl md:text-4xl lg:text-5xl font-bold mb-6">
-            <span className="text-gradient-gold">THE FREAKIN' GUARDIANS</span>
-          </h2>
-          <p className="font-barlow text-xl text-muted-foreground max-w-2xl mx-auto">
+           <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-10 [word-spacing:-0.25em] sm:[word-spacing:normal]">
+             <span className="text-gradient-gold">THE FREAKIN' GUARDIANS</span>
+           </h2>
+
+           <p className="font-barlow text-lg lg:text-[20px] mt-[10px] tracking-[0.2em] leading-tight sm:leading-normal text-[#C1EAFF] italic">
             We aren't just standing in a circle.
           </p>
         </motion.div>
@@ -160,20 +157,61 @@ export default function TeamSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-2 mb-12"
+          // GRID: gap-x-0 removes the default grid spacing so we can control it manually
+          className="grid grid-cols-6 gap-y-3 gap-x-0 lg:flex lg:flex-wrap lg:justify-center mb-12"
         >
-          {teamCategories.map((category) => {
+          {teamCategories.map((category, index) => {
             const isActive = activeCategory === category.id;
+            
+            // --- LOGIC FOR TIGHT ALIGNMENT ---
+            // We use 'justify-self' to push buttons towards the center
+            // We use 'mr/ml' margins to pull them even tighter closer where needed
+            
+            let gridClass = "col-span-2"; 
+            let alignClass = "justify-self-center";
+
+            // ROW 1: Index 0, 1 (2 Items)
+            if (index === 0) {
+                gridClass = "col-span-3";
+                alignClass = "justify-self-end mr-1"; // Push Right + small gap
+            } else if (index === 1) {
+                gridClass = "col-span-3";
+                alignClass = "justify-self-start ml-1"; // Push Left + small gap
+            }
+
+            // ROW 2: Index 2, 3, 4 (3 Items)
+            // Added Negative Margins (-mx) to the outer items to delete the gap between them and the middle one
+            else if (index === 2) {
+                gridClass = "col-span-2";
+                alignClass = "justify-self-end -mr-2"; // Pull Right aggressively (Overlap gap)
+            } else if (index === 3) {
+                gridClass = "col-span-2";
+                alignClass = "justify-self-center"; // Stay Center
+            } else if (index === 4) {
+                gridClass = "col-span-2";
+                alignClass = "justify-self-start -ml-2"; // Pull Left aggressively (Overlap gap)
+            }
+
+            // ROW 3: Index 5, 6 (2 Items)
+            else if (index === 5) {
+                gridClass = "col-span-3";
+                alignClass = "justify-self-end mr-1"; 
+            } else if (index === 6) {
+                gridClass = "col-span-3";
+                alignClass = "justify-self-start ml-1"; 
+            }
+
             return (
               <motion.button
                 key={category.id}
                 onClick={() => setActiveCategory(category.id)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`flex items-center gap-2 px-4 py-2 rounded-full font-body text-sm transition-all duration-300 ${
+                // Added: w-fit, justify-self logic
+                className={`flex items-center gap-2 px-3 py-2 rounded-full font-open text-xs sm:text-sm transition-all duration-300 w-fit lg:w-auto ${gridClass} ${alignClass} ${
                   isActive
-                    ? "bg-gold-gradient text-primary-foreground shadow-glow-gold"
-                    : "bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground border border-border/50"
+                    ? "bg-gold-gradient text-primary-foreground shadow-glow-gold z-10" // Added z-10 to keep active on top if they overlap
+                    : "bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground border border-border/50 z-0"
                 }`}
               >
                 {category.label}
@@ -201,7 +239,6 @@ export default function TeamSection() {
               className="flex flex-col items-center w-full sm:w-64 lg:w-72"
             >
               {/* IMAGE CONTAINER */}
-              {/* UPDATED: w-48 on mobile makes image smaller/sharper. sm:w-full restores desktop size. */}
               <div className="w-48 sm:w-full mb-4 relative">
                 <img
                   src={member.image}
