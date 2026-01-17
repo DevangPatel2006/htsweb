@@ -160,17 +160,18 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - UPDATED */}
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="lg:hidden backdrop-blur-xl bg-background/95 border-b border-border"
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            // Changed styles: Absolute positioning, floating card look, glass effect, removed border-b
+            className="lg:hidden absolute top-[calc(100%)] left-4 right-4 rounded-2xl border border-white/10 shadow-2xl backdrop-blur-xl bg-background/60 overflow-hidden"
           >
-            <div className="container mx-auto px-4 py-4 flex flex-col gap-2">
+            <div className="p-2 flex flex-col gap-1">
               {navLinks.map((link, index) => (
                 <motion.a
                   key={link.name}
@@ -179,13 +180,14 @@ export default function Navbar() {
                     e.preventDefault();
                     handleNavClick(link.href);
                   }}
-                  initial={{ opacity: 0, x: -20 }}
+                  initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 }}
-                  className={`px-4 py-3 rounded-lg font-body ${
+                  transition={{ delay: index * 0.03 }}
+                  // Made buttons smaller and more compact
+                  className={`px-4 py-2.5 rounded-xl font-body text-sm ${
                     activeSection === link.href.slice(1)
                       ? "text-primary bg-primary/10"
-                      : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
+                      : "text-muted-foreground hover:text-foreground hover:bg-white/5"
                   }`}
                 >
                   {link.name}
@@ -193,20 +195,13 @@ export default function Navbar() {
               ))}
 
               <Link to="/swag" onClick={() => setIsMobileMenuOpen(false)}>
-                <motion.span className="px-4 py-3 rounded-lg font-body text-primary hover:bg-primary/10 flex items-center gap-2">
+                <motion.span className="px-4 py-2.5 rounded-xl font-body text-sm text-primary hover:bg-primary/10 flex items-center gap-2">
                   <Sparkles size={16} />
                   Swag
                 </motion.span>
               </Link>
-
-              <motion.a
-                href="https://unstop.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-2 px-6 py-3 rounded-lg bg-gold-gradient text-primary-foreground font-semibold text-center shadow-glow-gold"
-              >
-                Register Now
-              </motion.a>
+              
+              {/* Register Now button removed as requested */}
             </div>
           </motion.div>
         )}
