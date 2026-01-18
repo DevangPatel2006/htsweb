@@ -126,10 +126,10 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="font-display  text-4xl md:text-3xl lg:text-5xl font-bold mb-4 " style={{ wordSpacing: "-0.5em" }}>
+          <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-10 [word-spacing:-0.25em] sm:[word-spacing:normal]">
             <span className="text-gradient-gold">HOOKED ON A FEELING</span>
           </h2>
-          <p className="font-barlow text-lg text-muted-foreground">
+           <p className="font-barlow text-lg lg:text-[20px] mt-[10px] tracking-[0.2em] leading-tight sm:leading-normal text-[#C1EAFF] italic">
             They’re high on believing... that these were the best 2 days.
           </p>
         </motion.div>

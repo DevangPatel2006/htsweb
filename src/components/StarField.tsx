@@ -8,15 +8,33 @@ interface Star {
   size: "small" | "medium" | "large";
   duration: number;
   delay: number;
+  opacity: number;      // Determines how bright the star is
+  boxShadow: string;    // Adds a tiny glow only to bright stars
 }
 
 export default function StarField() {
-  /* ---------------- NORMAL STARS (UNCHANGED) ---------------- */
+  /* ---------------- MOBILE DETECTION ---------------- */
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    // Check immediately and on resize
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  /* ---------------- STAR GENERATION ---------------- */
   const stars = useMemo<Star[]>(() => {
     const arr: Star[] = [];
+    const starCount = isMobile ? 100 : 150;
 
-    for (let i = 0; i < 150; i++) {
+    for (let i = 0; i < starCount; i++) {
       const r = Math.random();
+      // 15% chance to be a "Bright" star, 85% chance to be a dim background star
+      const isBright = Math.random() < 0.15; 
+
+      // Sizes: Small (most common), Medium, Large (rare)
       const size = r < 0.6 ? "small" : r < 0.9 ? "medium" : "large";
 
       arr.push({
@@ -24,98 +42,55 @@ export default function StarField() {
         left: Math.random() * 100,
         top: Math.random() * 100,
         size,
-        duration: 5 + Math.random() * 8,
+        duration: 5 + Math.random() * 8, // Twinkle duration
         delay: Math.random() * 15,
+        
+        // logic: If bright -> opacity 1. Else -> opacity between 0.1 and 0.5
+        opacity: isBright ? 1 : 0.1 + Math.random() * 0.4, 
+        
+        // logic: Only bright stars get a tiny white glow to make them "pop"
+        boxShadow: isBright ? "0 0 4px 1px rgba(255, 255, 255, 0.8)" : "none",
       });
     }
     return arr;
-  }, []);
-
-  /* ---------------- SHOOTING STAR CONTROL ---------------- */
-  const [activeShooter, setActiveShooter] = useState(0);
-
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setActiveShooter((p) => (p + 1) % 3);
-    }, 5000); // 🔥 EXACT 5 second gap
-
-    return () => clearInterval(interval);
-  }, []);
-
-  /* ---------------- SHOOTING STAR DATA ---------------- */
-  const shootingStars = useMemo(() => {
-    return Array.from({ length: 3 }).map((_, i) => {
-      const edge = Math.floor(Math.random() * 4);
-
-      let top = 0;
-      let left = 0;
-      let angle = 0;
-
-      switch (edge) {
-        case 0: // TOP
-          top = -10;
-          left = Math.random() * 100;
-          angle = 45 + Math.random() * 90;
-          break;
-        case 1: // RIGHT
-          top = Math.random() * 100;
-          left = 110;
-          angle = 135 + Math.random() * 90;
-          break;
-        case 2: // BOTTOM
-          top = 110;
-          left = Math.random() * 100;
-          angle = 225 + Math.random() * 90;
-          break;
-        case 3: // LEFT
-          top = Math.random() * 100;
-          left = -10;
-          angle = -45 + Math.random() * 90;
-          break;
-      }
-
-      return { id: i, top, left, angle };
-    });
-  }, []);
+  }, [isMobile]);
 
   return (
     <div className="star-field">
-      {/* Normal stars */}
+      {/* Stars */}
       {stars.map((star) => (
         <motion.div
           key={star.id}
-          className={`star ${star.size}`}
+          className={`star ${star.size} ${isMobile ? 'star-mobile' : ''}`}
           style={{
             left: `${star.left}%`,
             top: `${star.top}%`,
+            boxShadow: star.boxShadow, // Applied here
             ["--duration" as any]: `${star.duration}s`,
             ["--delay" as any]: `${star.delay}s`,
           }}
           initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: star.delay * 0.1, duration: 0.5 }}
-        />
-      ))}
-
-      {/* Shooting stars (ONE AT A TIME) */}
-      {shootingStars.map((star, index) => (
-        <div
-          key={star.id}
-          className={`shooting-star ${
-            index === activeShooter ? "shooting-active" : ""
-          }`}
-          style={{
-            top: `${star.top}%`,
-            left: `${star.left}%`,
-            ["--angle" as any]: `${star.angle}deg`,
+          // Animate to the specific star's opacity, not just generic '1'
+          animate={{ 
+            opacity: [0, star.opacity, star.opacity * 0.5, star.opacity] 
+          }}
+          transition={{ 
+            delay: star.delay * 0.1, 
+            duration: star.duration,
+            repeat: Infinity, // Makes them twinkle forever
+            repeatType: "reverse"
           }}
         />
       ))}
 
-      {/* Nebula glows (unchanged) */}
-      <div className="nebula nebula-purple" />
-      <div className="nebula nebula-pink" />
-      <div className="nebula nebula-blue" />
+      {/* Nebula glows (desktop only) */}
+      {!isMobile && (
+        <>
+          <div className="nebula nebula-purple" />
+          <div className="nebula nebula-pink" />
+          <div className="nebula nebula-blue" />
+        </>
+      )}
     </div>
   );
 }

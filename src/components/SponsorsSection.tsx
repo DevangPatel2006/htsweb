@@ -90,10 +90,10 @@ export default function SponsorsSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-display text-4xl md:text-5xl lg:text-5xl font-bold mb-6">
+           <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-10 [word-spacing:-0.25em] sm:[word-spacing:normal]">
             <span className="text-gradient-gold">NOVA CORPS ALLIANCE</span>
           </h2>
-          <p className="font-barlow text-xl text-muted-foreground max-w-2xl mx-auto">
+            <p className="font-barlow text-lg lg:text-[20px] mt-[10px] tracking-[0.2em] leading-tight sm:leading-normal text-[#C1EAFF] italic">
             THE OFFICIAL BACKERS OF THIS MISSION
           </p>
         </motion.div>
