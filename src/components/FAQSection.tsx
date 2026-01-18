@@ -129,9 +129,10 @@ export default function FAQSection() {
           transition={{ duration: 0.6, delay: 0.8 }}
           className="mt-16 text-center"
         >
-          <h3 className="font-primary text-xl font-semibold text-foreground mb-6">
-            SEND A DISTRESS SIGNAL
-          </h3>
+          <h3 className="font-primary text-xl font-semibold mb-6 text-[#C1EAFF]">
+  SEND A DISTRESS SIGNAL
+</h3>
+
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="hero" asChild>
               <a href="mailto:hello@hackthespring.in">

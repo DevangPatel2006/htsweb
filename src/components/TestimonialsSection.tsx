@@ -17,7 +17,7 @@ const testimonials = [
     handle: "@ldcollegeofengineering",
     content:
       "Our students secured 2nd Runner-Up at Hack The Spring’25, held 28 Feb - 1 Mar 2025 at GEC Gandhinagar, Gujarat.",
-    image: event2, // Assigned existing image
+    image: event2,
     avatar: "LD",
   },
   {
@@ -74,23 +74,38 @@ export default function TestimonialsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const scrollRef = useRef(null);
+  const isPaused = useRef(false);
 
-  // Auto scroll (works on all screens, no pause)
+  // Auto scroll (Optimized for Mobile Touch)
   useEffect(() => {
     const container = scrollRef.current;
     if (!container) return;
 
     let animationId;
-    let scrollPosition = 0;
+    
+    // We use a float tracker because scrollLeft is an integer and loses precision
+    let currentScroll = container.scrollLeft; 
 
     const scroll = () => {
-      scrollPosition += 0.3;
-
-      if (scrollPosition >= container.scrollWidth / 3) {
-        scrollPosition = 0;
+      // 1. Always sync with real DOM position first
+      // This ensures if user swiped, we know about it immediately
+      if (Math.abs(currentScroll - container.scrollLeft) > 2) {
+         currentScroll = container.scrollLeft;
       }
 
-      container.scrollLeft = scrollPosition;
+      // 2. If not paused by touch/hover, increment
+      if (!isPaused.current) {
+        currentScroll += 0.5; // Adjust speed here
+
+        // Loop logic
+        if (currentScroll >= container.scrollWidth / 3) {
+          currentScroll = 0;
+          container.scrollLeft = 0; // Snap back instantly
+        } else {
+          container.scrollLeft = currentScroll;
+        }
+      } 
+      
       animationId = requestAnimationFrame(scroll);
     };
 
@@ -129,7 +144,7 @@ export default function TestimonialsSection() {
           <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-10 [word-spacing:-0.25em] sm:[word-spacing:normal]">
             <span className="text-gradient-gold">HOOKED ON A FEELING</span>
           </h2>
-           <p className="font-barlow text-lg lg:text-[20px] mt-[10px] tracking-[0.2em] leading-tight sm:leading-normal text-[#C1EAFF] italic">
+          <p className="font-barlow uppercase text-lg lg:text-[20px] mt-[10px] tracking-[0.2em] leading-tight sm:leading-normal text-[#C1EAFF] italic">
             They’re high on believing... that these were the best 2 days.
           </p>
         </motion.div>
@@ -141,13 +156,19 @@ export default function TestimonialsSection() {
           transition={{ duration: 0.6, delay: 0.2 }}
           className="relative"
         >
-          {/* Gradient overlays (DESKTOP ONLY) */}
+          {/* Gradient overlays (Hidden on mobile to allow full width swipe) */}
           <div className="hidden md:block absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
           <div className="hidden md:block absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
 
           <div
             ref={scrollRef}
-            className="flex gap-6 overflow-hidden py-8 touch-none select-none"
+            // Pause logic triggers
+            onMouseEnter={() => (isPaused.current = true)}
+            onMouseLeave={() => (isPaused.current = false)}
+            onTouchStart={() => (isPaused.current = true)}
+            onTouchEnd={() => (isPaused.current = false)}
+            // 'touch-pan-x' ensures mobile browsers handle the gesture nicely
+            className="flex gap-6 overflow-x-auto [scrollbar-width:none] py-8 select-none touch-pan-x"
           >
             {tripleTestimonials.map((testimonial, index) => {
               const rotation = (index % 5 - 2) * 3;
@@ -156,7 +177,7 @@ export default function TestimonialsSection() {
               return (
                 <motion.div
                   key={index}
-                  className="flex-shrink-0 w-80 glass-card rounded-2xl p-5 border border-border/50 pointer-events-none"
+                  className="flex-shrink-0 w-80 glass-card rounded-2xl p-5 border border-border/50"
                   style={{
                     transform: `rotate(${rotation}deg) translateY(${yOffset}px)`,
                   }}
@@ -176,7 +197,6 @@ export default function TestimonialsSection() {
                         </p>
                       </div>
                     </div>
-                    {/* Changed Twitter to Linkedin */}
                     <Linkedin className="w-5 h-5 text-cosmic-blue" />
                   </div>
 

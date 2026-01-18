@@ -94,7 +94,7 @@ export default function SponsorsSection() {
             <span className="text-gradient-gold">NOVA CORPS ALLIANCE</span>
           </h2>
             <p className="font-barlow text-lg lg:text-[20px] mt-[10px] tracking-[0.2em] leading-tight sm:leading-normal text-[#C1EAFF] italic">
-            THE OFFICIAL BACKERS OF THIS MISSION
+            THE OFFICIAL BACKERS OF <br className="block sm:hidden" />THIS MISSION
           </p>
         </motion.div>
 

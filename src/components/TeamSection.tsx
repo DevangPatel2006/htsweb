@@ -150,8 +150,8 @@ export default function TeamSection() {
              <span className="text-gradient-gold">THE FREAKIN' GUARDIANS</span>
            </h2>
 
-           <p className="font-barlow text-lg lg:text-[20px] mt-[10px] tracking-[0.2em] leading-tight sm:leading-normal text-[#C1EAFF] italic">
-            We aren't just standing in a circle.
+           <p className="font-barlow uppercase text-lg lg:text-[20px] mt-[10px] tracking-[0.2em] leading-tight sm:leading-normal text-[#C1EAFF] italic">
+            We aren't just standing<br className="block sm:hidden" /> in a circle.
           </p>
         </motion.div>
 
