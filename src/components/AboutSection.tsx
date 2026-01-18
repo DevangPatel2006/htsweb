@@ -48,11 +48,9 @@ export default function AboutSection() {
     <section
       id="about"
       ref={ref}
-      // UPDATED:
-      // 1. changed 'h-screen' to 'min-h-screen lg:h-screen' (allows scrolling on mobile)
-      // 2. changed 'overflow-hidden' to 'overflow-x-hidden' (prevents mobile horizontal scroll)
-      // 3. Converted specific padding to 'lg:' classes and added sensible mobile padding (px-6 py-12)
-      className="relative w-full min-h-screen lg:h-screen overflow-x-hidden flex flex-col px-6 py-12 lg:pt-[99px] lg:pb-[50px] lg:pl-[99.5px] lg:pr-[89.5px]"
+      // UPDATED: Removed 'lg:h-screen'. Kept 'min-h-screen'. 
+      // This ensures the section expands to fit content on all screens, preventing internal scrollbars.
+      className="relative w-full min-h-screen overflow-x-hidden flex flex-col px-6 py-12 lg:pt-[99px] lg:pb-[50px] lg:pl-[99.5px] lg:pr-[89.5px]"
     >
       <div className="w-full h-full relative z-10 mt-4">
         {/* Grid Definition: Stacks on mobile (grid-cols-1), 50/50 on desktop (lg:grid-cols-2) */}
@@ -78,18 +76,15 @@ export default function AboutSection() {
                 }}
               >
                 THE <br className="block lg:hidden" /> GALACTIC
-
                 <br />
                 CONVERGENCE
               </h2>
 
               <p
                 className="font-barlow text-lg lg:text-[20px] mt-[10px] tracking-[0.2em] leading-tight sm:leading-normal text-[#C1EAFF] italic"
-
-                
               >
                 WHERE ENGINEERING <br className="block sm:hidden" />
-MEETS INFINITY
+                MEETS INFINITY
               </p>
             </motion.div>
 
