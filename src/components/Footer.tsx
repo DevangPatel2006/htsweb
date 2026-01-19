@@ -48,10 +48,8 @@ export default function Footer() {
             viewport={{ once: true }}
             className="flex flex-col items-center justify-self-center gap-6"
           >
-            <div className="flex flex-col items-center space-y-4">
-              <h4 className="font-barlow text-[20px] text-[#B0E5FF] uppercase tracking-[0.1em] font-medium whitespace-nowrap mt-1">
-                SUB-SPACE FREQUENCIES
-              </h4>
+            <div className="flex flex-col items-center space-y-4 mt-0 lg:mt-5">
+            
               <div className="flex gap-4">
                 {socialLinks.map((social) => (
                   <motion.a
@@ -96,18 +94,23 @@ export default function Footer() {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
-                // CHANGED: Removed grayscale and opacity classes.
-                // Added 'block' to remove any potential inline display issues.
                 className="block"
                 title="GEC Gandhinagar Map"
               />
             </div>
           </motion.div>
-
         </div>
 
+        {/* --- DIVIDER LINE --- */}
+        {/* -mx-6: Pulls the line 24px to the left and right to touch the edges 
+          w-[calc(100%+48px)]: Ensures width covers the padding area
+          mt-8 mb-3: Decreased vertical gap
+          border-slate-800: Solid dark line
+        */}
+        <div className="w-[calc(100%+48px)] -mx-6 border-t border-slate-800 mt-8 mb-3"></div>
+
         {/* --- Copyright Row --- */}
-        <div className="w-full text-center pb-2 pt-12">
+        <div className="w-full text-center pb-5">
           <p className="font-open text-[10px] text-[#B0E5FF] tracking-wide">
             © 2026 Hack The Spring. Engineered on Terra. We have 12% of a plan.
           </p>
