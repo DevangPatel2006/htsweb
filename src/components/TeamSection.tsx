@@ -222,6 +222,8 @@ export default function TeamSection() {
                     href={member.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
+                    // SEO FIX: Add aria-label
+                    aria-label={`Connect with ${member.name} on LinkedIn`}
                     className="text-muted-foreground hover:text-primary transition-colors duration-300"
                   >
                     <Linkedin size={20} />
@@ -232,6 +234,8 @@ export default function TeamSection() {
                     href={member.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
+                    // SEO FIX: Add aria-label
+                    aria-label={`Follow ${member.name} on Twitter`}
                     className="text-muted-foreground hover:text-primary transition-colors duration-300"
                   >
                     <Twitter size={20} />
@@ -242,6 +246,8 @@ export default function TeamSection() {
                     href={member.github}
                     target="_blank"
                     rel="noopener noreferrer"
+                    // SEO FIX: Add aria-label
+                    aria-label={`View ${member.name}'s GitHub Profile`}
                     className="text-muted-foreground hover:text-primary transition-colors duration-300"
                   >
                     <Github size={20} />
@@ -252,6 +258,8 @@ export default function TeamSection() {
                     href={member.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
+                    // SEO FIX: Add aria-label
+                    aria-label={`Follow ${member.name} on Instagram`}
                     className="text-muted-foreground hover:text-primary transition-colors duration-300"
                   >
                     <Instagram size={20} />

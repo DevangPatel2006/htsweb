@@ -83,9 +83,6 @@ export default function TimelineSection() {
   const currentDate = activeDay === 1 ? "Friday, February 20, 2026" : "Saturday, February 21, 2026";
 
   return (
-    // Changes made:
-    // 1. Added 'mt-3' (12px) for mobile top margin.
-    // 2. Added 'scroll-mt-24' so anchor links land correctly below the header.
     <section 
       id="timeline" 
       className="relative py-10 lg:py-16 overflow-hidden mt-3"
@@ -94,6 +91,7 @@ export default function TimelineSection() {
         {/* Section Header */}
         <div className="text-center mb-8">
           <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-10">
+            {/* SEO OPTIMIZATION: Invisible Context Keywords */}
             <span className="sr-only">Hack The Spring Event Schedule and Timeline - </span>
             <span className="text-gradient-gold">THE PLAN</span>
           </h2>
@@ -103,13 +101,12 @@ export default function TimelineSection() {
         </div>
 
         {/* Day Toggle */}
-        {/* Change made: Removed 'border-b border-white/10' to remove the line */}
         <div className="flex justify-center gap-8 mb-8 w-fit mx-auto px-8">
           <button
             onClick={() => setActiveDay(1)}
             className={`relative pb-3 text-lg md:text-xl font-barlow tracking-wider transition-all duration-300 ${
               activeDay === 1
-                ? "text-primary border-b-2 border-primary drop-shadow-[0_0_8px_rgba(var(--primary),0.6)]" // Glowing line effect
+                ? "text-primary border-b-2 border-primary drop-shadow-[0_0_8px_rgba(var(--primary),0.6)]" 
                 : "text-muted-foreground hover:text-foreground border-b-2 border-transparent"
             }`}
           >
@@ -120,7 +117,7 @@ export default function TimelineSection() {
             onClick={() => setActiveDay(2)}
             className={`relative pb-3 text-lg md:text-xl font-barlow tracking-wider transition-all duration-300 ${
               activeDay === 2
-                ? "text-primary border-b-2 border-primary drop-shadow-[0_0_8px_rgba(var(--primary),0.6)]" // Glowing line effect
+                ? "text-primary border-b-2 border-primary drop-shadow-[0_0_8px_rgba(var(--primary),0.6)]" 
                 : "text-muted-foreground hover:text-foreground border-b-2 border-transparent"
             }`}
           >
@@ -137,7 +134,11 @@ export default function TimelineSection() {
                 <h3 className="font-display text-2xl md:text-3xl text-gradient-gold">
                   Day {activeDay}
                 </h3>
-                <p className="font-body text-muted-foreground text-sm mt-1">
+                {/* SEO OPTIMIZATION: Added title attribute for date context */}
+                <p 
+                  className="font-body text-muted-foreground text-sm mt-1"
+                  title={`Event Date: ${currentDate}`}
+                >
                   {currentDate}
                 </p>
               </div>
@@ -160,7 +161,11 @@ export default function TimelineSection() {
                     <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-primary/20 border border-primary/50 flex items-center justify-center">
                       <event.icon className="w-5 h-5 md:w-6 md:h-6 text-primary" />
                     </div>
-                    <span className="text-xs md:text-sm font-body text-primary font-semibold whitespace-nowrap">
+                    {/* SEO OPTIMIZATION: Added title attribute for time context */}
+                    <span 
+                      className="text-xs md:text-sm font-body text-primary font-semibold whitespace-nowrap"
+                      title={`Event Start Time: ${event.time}`}
+                    >
                       {event.time}
                     </span>
                   </div>

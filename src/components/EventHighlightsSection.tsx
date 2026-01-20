@@ -35,6 +35,7 @@ export default function EventHighlightsSection() {
           className="text-center mb-12"
         >
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
+            <span className="sr-only">Hack The Spring 2026 Stats and </span>
             <span className="text-gradient-gold">Event Highlights</span>
           </h2>
           <p className="font-heading text-lg text-muted-foreground">
