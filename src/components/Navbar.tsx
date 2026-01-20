@@ -107,7 +107,7 @@ export default function Navbar() {
           <motion.a
             href="#hero"
             // --- SEO UPDATE: Added Aria Label ---
-            aria-label="Hack The Spring 2026 Home - Back to Top"
+            aria-label="Hack The Spring Homepage"
             onClick={(e) => {
               e.preventDefault();
               handleNavClick("#hero");
@@ -174,7 +174,7 @@ export default function Navbar() {
           <button
             className="lg:hidden p-2 text-foreground"
             // --- SEO UPDATE: Added Aria Label for Accessibility ---
-            aria-label="Toggle Navigation Menu"
+           aria-label="Toggle Navigation Menu"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}

@@ -56,13 +56,27 @@ const faqs = [
 export default function FAQSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-
+const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
   return (
     <section
       id="faq"
       ref={ref}
       className="relative py-24 lg:py-32 overflow-hidden"
     >
+      <script type="application/ld+json">
+        {JSON.stringify(faqSchema)}
+      </script>
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div
