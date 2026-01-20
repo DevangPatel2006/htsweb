@@ -3,7 +3,7 @@ import { ArrowLeft, Download, Upload, User, Sparkles } from "lucide-react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import swagBg from "@/assets/bg.png"; // Ensure this matches your filename
+import swagBg from "@/assets/bg.png"; 
 
 export default function Swag() {
   const [name, setName] = useState("");
@@ -13,19 +13,17 @@ export default function Swag() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  // --- ALIGNMENT CONFIGURATION ---
+  // --- ALIGNMENT CONFIGURATION (Based on 4096px Spec) ---
   const POS = {
-    CIRCLE_CY: 0.46,    // Vertical center of the circle (46% from top)
-    CIRCLE_RAD: 0.225,  // Radius of the circle (22.5% of width)
-    PLATE_CY: 0.865,    // Vertical center of the gold plate
-    PLATE_WIDTH: 0.55,  // Max width for text
+    CIRCLE_CY: 1884 / 4096,   // Center Y: 1884px
+    CIRCLE_RAD: 922 / 4096,   // Radius: 922px
+    PLATE_CY: 3543 / 4096,    // Text Center Y: 3543px
+    PLATE_WIDTH: 2250 / 4096, // Text Max Width: 2250px
   };
 
   // SEO UPDATE: Dynamic Title for Swag Page
   useEffect(() => {
     document.title = "Badge Generator & Swag | Hack The Spring 2026";
-    
-    // Reset title when leaving page
     return () => {
       document.title = "Hack The Spring 2026 - GEC Gandhinagar Techfest";
     };
@@ -50,8 +48,6 @@ export default function Swag() {
         setProfileImage(e.target?.result as string);
     };
     reader.readAsDataURL(file);
-    
-    // Reset input so you can re-upload the same file if needed
     e.target.value = ""; 
   };
 
@@ -70,30 +66,22 @@ export default function Swag() {
     canvas.width = SIZE;
     canvas.height = SIZE;
 
+    // Clear canvas before starting
+    ctx.clearRect(0,0,SIZE,SIZE);
+
     const cx = SIZE * 0.5;
     const circleY = SIZE * POS.CIRCLE_CY;
     const circleRadius = SIZE * POS.CIRCLE_RAD;
     const plateY = SIZE * POS.PLATE_CY;
     
-    // 2. Draw Background
-    const bg = new Image();
-    bg.crossOrigin = "anonymous";
-    bg.src = swagBg;
+    // --- LAYER ORDER CHANGE: DRAW PHOTO FIRST (BOTTOM LAYER) ---
 
-    await new Promise<void>((resolve) => {
-      bg.onload = () => {
-        ctx.drawImage(bg, 0, 0, SIZE, SIZE);
-        resolve();
-      };
-      bg.onerror = () => resolve(); // Attempt to draw anyway
-    });
-
-    // 3. Draw Profile Picture (ON TOP of BG)
-    // We clip a circle region first, then draw the image into it.
+    // 2. Draw Profile Picture (Bottom Layer)
+    // We still clip it to the circle shape so it doesn't bleed outside the frame area
     ctx.save();
     ctx.beginPath();
     ctx.arc(cx, circleY, circleRadius, 0, Math.PI * 2);
-    ctx.clip(); // Mask everything to this circle
+    ctx.clip(); 
 
     if (profileImage) {
       const img = new Image();
@@ -111,7 +99,7 @@ export default function Swag() {
         img.onerror = () => resolve();
       });
     } else {
-      // Default placeholder if no image
+      // Default placeholder
       ctx.fillStyle = "#020617";
       ctx.fillRect(0, 0, SIZE, SIZE);
       ctx.font = `${circleRadius}px sans-serif`;
@@ -120,15 +108,30 @@ export default function Swag() {
       ctx.fillStyle = "#ffffff";
       ctx.fillText("🚀", cx, circleY);
     }
-    
-    // Optional: Add a blue hologram tint over the photo
+    // Optional: Add tint to photo layer
     ctx.globalCompositeOperation = "overlay";
     ctx.fillStyle = "rgba(0, 190, 255, 0.15)";
     ctx.fillRect(0, 0, SIZE, SIZE);
     
-    ctx.restore(); // Remove clipping
+    ctx.restore(); // Remove clipping, finished with bottom layer
 
-    // 4. Draw Name
+    // 3. Draw Background Frame (Middle Layer - Sits ON TOP of photo)
+    // NOTE: The bg.png image must have a transparent center for the photo below to show through.
+    const bg = new Image();
+    bg.crossOrigin = "anonymous";
+    bg.src = swagBg;
+
+    await new Promise<void>((resolve) => {
+      bg.onload = () => {
+        // Draw BG over the existing photo layer
+        ctx.drawImage(bg, 0, 0, SIZE, SIZE);
+        resolve();
+      };
+      bg.onerror = () => resolve();
+    });
+
+
+    // 4. Draw Name (Top Layer)
     const displayName = name.trim() || "HACKER NAME";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
@@ -175,16 +178,11 @@ export default function Swag() {
         <div className="flex flex-col items-center order-2 lg:order-1">
           <div className="relative w-full max-w-[450px] aspect-square rounded-xl shadow-2xl border border-white/10 bg-[#090216]">
             
-            {/* 1. Background Image (Z-10: Bottom) */}
-            <img 
-              src={swagBg} 
-              alt="Badge Template" 
-              className="absolute inset-0 w-full h-full object-cover z-10 pointer-events-none"
-            />
+            {/* --- CSS LAYERING CHANGED HERE --- */}
 
-            {/* 2. Profile Picture (Z-20: Top) - FIXED: Now sits on top of bg */}
+            {/* 1. Profile Picture (Z-10: Bottom Layer) */}
             <div 
-              className="absolute z-20 rounded-full overflow-hidden bg-black/50 flex items-center justify-center"
+              className="absolute z-10 rounded-full overflow-hidden bg-black/50 flex items-center justify-center"
               style={{
                 top: `${(POS.CIRCLE_CY - POS.CIRCLE_RAD) * 100}%`,
                 left: `${(0.5 - POS.CIRCLE_RAD) * 100}%`,
@@ -202,19 +200,27 @@ export default function Swag() {
               )}
             </div>
 
-            {/* 3. Name Text (Z-30: Top Most) */}
+             {/* 2. Background ImageFrame (Z-20: Middle Layer - Sits on top of photo) */}
+             {/* NOTE: This image needs a transparent center hole to see the photo behind it */}
+            <img 
+              src={swagBg} 
+              alt="Badge Template" 
+              className="absolute inset-0 w-full h-full object-cover z-20 pointer-events-none"
+            />
+
+            {/* 3. Name Text (Z-30: Top Most Layer) */}
             <div 
-              className="absolute z-30 w-full flex items-center justify-center text-center"
+              className="absolute z-30 flex items-center justify-center text-center"
               style={{
-                top: '82%', // Visual tweak for preview alignment
-                height: '10%',
+                top: `${POS.PLATE_CY * 100}%`,
                 left: '50%',
-                transform: 'translateX(-50%)',
-                maxWidth: '55%'
+                transform: 'translate(-50%, -50%)',
+                width: '100%',
+                maxWidth: `${POS.PLATE_WIDTH * 100}%`
               }}
             >
               <h2 
-                className="font-serif font-black uppercase text-transparent bg-clip-text bg-gradient-to-b from-[#5c3a21] via-[#1a1109] to-[#5c3a21]"
+                className="font-serif font-black uppercase text-transparent bg-clip-text bg-gradient-to-b from-[#5c3a21] via-[#1a1109] to-[#5c3a21] whitespace-nowrap"
                 style={{ 
                    fontSize: 'clamp(16px, 3.5cqw, 32px)',
                    filter: 'drop-shadow(0px 1px 1px rgba(255,255,255,0.2))' 
