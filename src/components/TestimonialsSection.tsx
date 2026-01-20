@@ -73,7 +73,7 @@ const testimonials = [
 export default function TestimonialsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const scrollRef = useRef(null);
+  const scrollRef = useRef<HTMLDivElement>(null);
   const isPaused = useRef(false);
 
   // Auto scroll (Optimized for Mobile Touch)
@@ -81,7 +81,7 @@ export default function TestimonialsSection() {
     const container = scrollRef.current;
     if (!container) return;
 
-    let animationId;
+    let animationId: number;
     
     // We use a float tracker because scrollLeft is an integer and loses precision
     let currentScroll = container.scrollLeft; 
@@ -121,12 +121,28 @@ export default function TestimonialsSection() {
     ...testimonials,
   ];
 
+  // SEO: Generate JSON-LD Schema for Reviews
+  const reviewSchema = {
+    "@context": "https://schema.org",
+    "@type": "CreativeWorkSeries",
+    "name": "Hack The Spring 2026 Reviews",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "bestRating": "5",
+      "ratingCount": testimonials.length
+    }
+  };
+
   return (
     <section
       id="testimonials"
       ref={ref}
       className="relative py-24 lg:py-32 overflow-hidden"
     >
+      {/* SEO: Inject Review Schema */}
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(reviewSchema) }} />
+
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-nebula-purple/5 rounded-full blur-3xl" />
@@ -209,9 +225,11 @@ export default function TestimonialsSection() {
                   <div className="rounded-xl overflow-hidden border border-border/50">
                     <img
                       src={testimonial.image}
-                      alt="Event"
+                      // SEO UPDATE: Better Alt Text
+                      alt={`${testimonial.name} participating at Hack The Spring Event`}
                       className="w-full h-36 object-cover"
                       draggable={false}
+                      loading="lazy"
                     />
                   </div>
                 </motion.div>

@@ -11,6 +11,16 @@ import event6 from "@/assets/gallery/event-6.jpg";
 
 const images = [event1, event2, event3, event4, event5, event6];
 
+// SEO: Specific keywords for each image to rank in Google Images
+const altTags = [
+  "Hack The Spring Hackathon Coding Event",
+  "Robotics Competition Arena",
+  "Student Innovation Showcase",
+  "Prize Distribution Ceremony",
+  "Team Brainstorming Session",
+  "Gaming Tournament Setup"
+];
+
 interface ImageCarouselProps {
   direction?: "left" | "right";
   speed?: number;
@@ -75,8 +85,12 @@ export default function ImageCarousel({ direction = "left", speed = 30 }: ImageC
           >
             <img
               src={img}
-              alt={`Event ${(index % images.length) + 1}`}
+              // SEO UPDATE: Dynamic Alt Text mapping
+              alt={altTags[index % altTags.length] || "Hack The Spring Event Highlight"}
               className="w-full h-full object-cover"
+              loading="lazy" // SEO UPDATE: Improves page speed
+              width="320"    // SEO UPDATE: Helps prevent layout shift
+              height="224"   
             />
           </motion.div>
         ))}

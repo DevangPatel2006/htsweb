@@ -21,6 +21,16 @@ export default function Swag() {
     PLATE_WIDTH: 0.55,  // Max width for text
   };
 
+  // SEO UPDATE: Dynamic Title for Swag Page
+  useEffect(() => {
+    document.title = "Badge Generator & Swag | Hack The Spring 2026";
+    
+    // Reset title when leaving page
+    return () => {
+      document.title = "Hack The Spring 2026 - GEC Gandhinagar Techfest";
+    };
+  }, []);
+
   useEffect(() => {
     const loadFonts = async () => {
       try {
