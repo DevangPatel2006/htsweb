@@ -12,6 +12,7 @@ const teamCategories = [
   { id: "organizers", label: "Organizers" },
   { id: "Management", label: "Management" },
   { id: "webandtech", label: "Technical" },
+  { id: "jury", label: "Jury" },
   { id: "sm&design", label: "Media" },
   { id: "Logistics", label: "Operation" },
   { id: "Decoration", label: "Decoration" },
@@ -130,7 +131,7 @@ export default function TeamSection() {
 
   // Type assertion to handle the dynamic key access if using TypeScript, 
   // or just standard JS access.
-  const currentCategoryMembers = teamMembers[activeCategory as keyof typeof teamMembers] || [];
+  const currentCategoryMembers = teamMembers[activeCategory] || [];
 
   return (
     <section
@@ -138,6 +139,17 @@ export default function TeamSection() {
       ref={ref}
       className="relative py-24 lg:py-32 overflow-hidden"
     >
+      {/* Hide scrollbar via CSS for a cleaner mobile look */}
+      <style>{`
+        .no-scrollbar::-webkit-scrollbar {
+          display: none;
+        }
+        .no-scrollbar {
+          -ms-overflow-style: none;
+          scrollbar-width: none;
+        }
+      `}</style>
+
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <motion.div
@@ -156,12 +168,12 @@ export default function TeamSection() {
           </p>
         </motion.div>
 
-        {/* Categories Toggles (Icons Removed) */}
+        {/* Categories Toggles (Horizontal Scroll on Mobile, Center Wrap on Desktop) */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex flex-wrap justify-center gap-3 mb-12"
+          className="flex flex-nowrap overflow-x-auto sm:flex-wrap justify-start sm:justify-center gap-3 mb-12 px-4 sm:px-0 w-full sm:w-auto no-scrollbar pb-2 sm:pb-0"
         >
           {teamCategories.map((category) => {
             const isActive = activeCategory === category.id;
@@ -172,13 +184,13 @@ export default function TeamSection() {
                 onClick={() => setActiveCategory(category.id)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className={`flex items-center gap-2 px-6 py-2 rounded-full font-open text-sm sm:text-base transition-all duration-300 ${
+                // UPDATED CLASSNAME HERE: removed shadow-glow-gold completely
+                className={`flex-shrink-0 whitespace-nowrap flex items-center gap-2 px-6 py-2 rounded-full font-open text-sm sm:text-base transition-all duration-300 ${
                   isActive
-                    ? "bg-gold-gradient text-primary-foreground shadow-glow-gold" 
+                    ? "bg-gold-gradient text-primary-foreground" 
                     : "bg-secondary/50 text-muted-foreground hover:bg-secondary hover:text-foreground border border-border/50"
                 }`}
               >
-                {/* Icon removed here */}
                 {category.label}
               </motion.button>
             );
@@ -222,7 +234,6 @@ export default function TeamSection() {
                     href={member.linkedin}
                     target="_blank"
                     rel="noopener noreferrer"
-                    // SEO FIX: Add aria-label
                     aria-label={`Connect with ${member.name} on LinkedIn`}
                     className="text-muted-foreground hover:text-primary transition-colors duration-300"
                   >
@@ -234,7 +245,6 @@ export default function TeamSection() {
                     href={member.twitter}
                     target="_blank"
                     rel="noopener noreferrer"
-                    // SEO FIX: Add aria-label
                     aria-label={`Follow ${member.name} on Twitter`}
                     className="text-muted-foreground hover:text-primary transition-colors duration-300"
                   >
@@ -246,7 +256,6 @@ export default function TeamSection() {
                     href={member.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    // SEO FIX: Add aria-label
                     aria-label={`View ${member.name}'s GitHub Profile`}
                     className="text-muted-foreground hover:text-primary transition-colors duration-300"
                   >
@@ -258,7 +267,6 @@ export default function TeamSection() {
                     href={member.instagram}
                     target="_blank"
                     rel="noopener noreferrer"
-                    // SEO FIX: Add aria-label
                     aria-label={`Follow ${member.name} on Instagram`}
                     className="text-muted-foreground hover:text-primary transition-colors duration-300"
                   >
