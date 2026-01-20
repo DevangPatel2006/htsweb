@@ -91,6 +91,7 @@ export default function SponsorsSection() {
           className="text-center mb-16"
         >
            <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-10 [word-spacing:-0.25em] sm:[word-spacing:normal]">
+            <span className="sr-only">Hack The Spring Official Sponsors and Partners - </span>
             <span className="text-gradient-gold">NOVA CORPS ALLIANCE</span>
           </h2>
             <p className="font-barlow text-lg lg:text-[20px] mt-[10px] tracking-[0.2em] leading-tight sm:leading-normal text-[#C1EAFF] italic">

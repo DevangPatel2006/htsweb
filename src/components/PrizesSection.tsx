@@ -150,6 +150,7 @@ export default function PrizesSection() {
           className="text-center mb-4 md:mb-12 mt-0 md:mt-1"
         >
           <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-14 md:mt-4">
+            <span className="sr-only">Hack The Spring Prizes, Rewards and Cash Pool - </span>
             <span className="text-gradient-gold">GALACTIC BOUNTIES</span>
           </h2>
           <p className="font-barlow text-lg lg:text-[20px] mt-1 md:mt-[10px] tracking-[0.2em] leading-tight sm:leading-normal text-[#C1EAFF] italic">

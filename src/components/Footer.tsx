@@ -1,13 +1,23 @@
 import { motion } from "framer-motion";
 import { Instagram, Youtube, Linkedin } from "lucide-react";
 import gov from "@/assets/govlogo.svg";
-
 const socialLinks = [
-  { icon: Instagram, href: "https://instagram.com/hackthespring", label: "Instagram" },
-  { icon: Youtube, href: "https://youtube.com/@hackthespring", label: "YouTube" },
-  { icon: Linkedin, href: "https://linkedin.com/company/hackthespring", label: "LinkedIn" },
+  { 
+    icon: Instagram, 
+    href: "https://instagram.com/hackthespring", 
+    label: "Follow Hack The Spring on Instagram" // <--- UPDATE THIS
+  },
+  { 
+    icon: Youtube, 
+    href: "https://youtube.com/@hackthespring", 
+    label: "Subscribe to Hack The Spring YouTube Channel" // <--- UPDATE THIS
+  },
+  { 
+    icon: Linkedin, 
+    href: "https://linkedin.com/company/hackthespring", 
+    label: "Connect with Hack The Spring on LinkedIn" // <--- UPDATE THIS
+  },
 ];
-
 export default function Footer() {
   return (
     <footer className="relative bg-[#0a1628] border-t border-border overflow-hidden text-white w-full">
@@ -35,8 +45,10 @@ export default function Footer() {
               className="h-28 w-auto opacity-90 hover:opacity-100 transition-opacity duration-300" 
             />
             <div className="font-open text-[11px] leading-relaxed text-[#E6AB27] font-bold tracking-widest italic text-center">
-              <p>Government Engineering</p>
-              <p>College, Sector 28, Gandhinagar</p>
+              <address className="font-open text-[11px] leading-relaxed text-[#E6AB27] font-bold tracking-widest italic text-center not-italic">
+              <p>Government Engineering College</p>
+              <p>Sector 28, Gandhinagar</p>
+            </address>
             </div>
           </motion.div>
 
@@ -87,16 +99,16 @@ export default function Footer() {
             </h4>
             <div className="w-full rounded-xl overflow-hidden border border-gray-700/50 shadow-lg relative bg-gray-800">
               <iframe
-                src="https://maps.google.com/maps?q=Government+Engineering+College+Sector+28+Gandhinagar&t=&z=13&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="100%"
-                style={{ border: 0, height: "120px" }}
-                allowFullScreen
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-                className="block"
-                title="GEC Gandhinagar Map"
-              />
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3665.556436407986!2d72.6360403149681!3d23.25920398483363!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x395c2bf8e1467401%3A0xc349c258d440076a!2sGovernment%20Engineering%20College%2C%20Sector%2028%2C%20Gandhinagar!5e0!3m2!1sen!2sin!4v1676960000000!5m2!1sen!2sin"
+              width="100%"
+              height="100%"
+              style={{ border: 0, height: "120px" }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="block"
+              title="GEC Gandhinagar Campus Map"
+            />
             </div>
           </motion.div>
         </div>

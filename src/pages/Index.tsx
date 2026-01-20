@@ -11,7 +11,9 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import SponsorsSection from "@/components/SponsorsSection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
+import SectionSeparator from "@/components/SectionSeparator"; // Assuming this is your Cassette component
 import ProtocolsSection from "@/components/ProtocolsSection";
+
 const Index = () => {
   const [isPlaying, setIsPlaying] = React.useState(false);
   const audioRef = React.useRef<HTMLAudioElement>(null);
@@ -28,57 +30,79 @@ const Index = () => {
   };
 
   return (
-   <main
-  className="min-h-screen overflow-x-hidden relative"
-  style={{
-    background: `
-      linear-gradient(
-        180deg,
-        #13001e 0%,
-        #0b0c15 60%,
-        #05040a 100%
-      )
-    `
-  }}
->
-
+    <main
+      className="min-h-screen overflow-x-hidden relative"
+      style={{
+        background: `
+          linear-gradient(
+            180deg,
+            #13001e 0%,
+            #0b0c15 60%,
+            #05040a 100%
+          )
+        `
+      }}
+    >
       {/* 1. Star Field (Back Layer) */}
       <StarField />
       
-      
       {/* 2. Background Image (Middle Layer) - Desktop */}
       <div 
-  className="hidden md:block absolute inset-0 z-0 pointer-events-none opacity-30 bg-cover bg-center bg-no-repeat"
-  style={{ 
-    backgroundImage: 'url("/bottom1.png")',
-    backgroundAttachment: 'fixed'
-  }}
-/>
+        className="hidden md:block absolute inset-0 z-0 pointer-events-none opacity-30 bg-cover bg-center bg-no-repeat"
+        style={{ 
+          backgroundImage: 'url("/bottom1.png")',
+          backgroundAttachment: 'fixed'
+        }}
+      />
 
-    
-
-{/* 2. Background Image (Middle Layer) - Mobile */}
-{/* Use 'will-change-transform' and ensure it doesn't fight with scroll */}
-<div 
-  className="md:hidden fixed inset-0 z-0 pointer-events-none opacity-30 bg-cover bg-center bg-no-repeat will-change-transform"
-  style={{ 
-    backgroundImage: 'url("/mobmidd.png")',
-    // Only use if image is highly optimized, otherwise standard div is fine
-  }}
-/>
+      {/* 2. Background Image (Middle Layer) - Mobile */}
+      <div 
+        className="md:hidden fixed inset-0 z-0 pointer-events-none opacity-30 bg-cover bg-center bg-no-repeat will-change-transform"
+        style={{ 
+          backgroundImage: 'url("/mobmidd.png")',
+        }}
+      />
 
       {/* 3. Content (Top Layer) */}
       <div className="relative z-10">
         <Navbar />
         <HeroSection />
+        
+        {/* Removed variant="stars" because the component doesn't accept props */}
+        
+        
         <AboutSection />
+        
+        <SectionSeparator />
+        
         <ProtocolsSection />
+        
+        <SectionSeparator />
+        
         <TracksSection />
+        
+        <SectionSeparator />
+        
         <PrizesSection />
+        
+        <SectionSeparator />
+        
         <TimelineSection />
+        
+        <SectionSeparator />
+        
         <TeamSection />
+        
+        <SectionSeparator />
+        
         <TestimonialsSection />
+        
+        <SectionSeparator />
+        
         <SponsorsSection />
+        
+        <SectionSeparator />
+        
         <FAQSection />
         <Footer />
       </div>
@@ -90,40 +114,39 @@ const Index = () => {
         aria-label={isPlaying ? "Pause music" : "Play music"}
       >
         <svg
-  xmlns="http://www.w3.org/2000/svg"
-  width="24"
-  height="24"
-  viewBox="0 0 24 24"
-  fill="none"
-  stroke="currentColor"
-  strokeWidth="1"
-  strokeLinecap="round"
-  strokeLinejoin="round"
-  className={`text-black ${isPlaying ? "animate-spin" : ""}`}
-  style={isPlaying ? { animationDuration: "3s" } : {}}
->
-  <rect width="20" height="16" x="2" y="4" rx="2" />
-  <circle cx="8" cy="10" r="2" />
-  <path d="M8 12h8" />
-  <circle cx="16" cy="10" r="2" />
-  <path d="m6 20 .7-2.9A1.4 1.4 0 0 1 8.1 16h7.8a1.4 1.4 0 0 1 1.4 1l.7 3" />
-</svg>
-
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          className={`text-black ${isPlaying ? "animate-spin" : ""}`}
+          style={isPlaying ? { animationDuration: "3s" } : {}}
+        >
+          <rect width="20" height="16" x="2" y="4" rx="2" />
+          <circle cx="8" cy="10" r="2" />
+          <path d="M8 12h8" />
+          <circle cx="16" cy="10" r="2" />
+          <path d="m6 20 .7-2.9A1.4 1.4 0 0 1 8.1 16h7.8a1.4 1.4 0 0 1 1.4 1l.7 3" />
+        </svg>
       </button>
 
       {/* Hidden Audio Element */}
-     <audio
-  ref={audioRef}
-  loop
-  onEnded={() => {
-    if (audioRef.current) {
-      audioRef.current.currentTime = 0;
-      audioRef.current.play();
-    }
-  }}
->
-  <source src="/Sequence 01.aac" type="audio/mpeg" />
-</audio>
+      <audio
+        ref={audioRef}
+        loop
+        onEnded={() => {
+          if (audioRef.current) {
+            audioRef.current.currentTime = 0;
+            audioRef.current.play();
+          }
+        }}
+      >
+        <source src="/Sequence 01.aac" type="audio/mpeg" />
+      </audio>
 
     </main>
   );

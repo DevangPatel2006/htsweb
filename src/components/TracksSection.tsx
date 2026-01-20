@@ -23,6 +23,7 @@ export default function TracksSection() {
           className="text-center mb-16"
         >
           <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-4 mt-6">
+            <span className="sr-only">Hack The Spring Event Tracks and Themes - </span>
             <span className="text-gradient-gold">MISSION DIRECTIVES</span>
           </h2>
           <p className="font-barlow text-lg lg:text-[20px] mt-[10px] tracking-[0.2em] leading-tight sm:leading-normal text-[#C1EAFF] italic">

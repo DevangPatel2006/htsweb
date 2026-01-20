@@ -75,6 +75,7 @@ export default function AboutSection() {
                   backgroundClip: "text",
                 }}
               >
+                <span className="sr-only">About Hack The Spring 2026 Techfest - </span>
                 THE <br className="block lg:hidden" /> GALACTIC
                 <br />
                 CONVERGENCE

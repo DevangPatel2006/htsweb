@@ -72,6 +72,7 @@ export default function ProtocolsSection() {
           className="text-center mb-12 px-4 sm:px-0"
         >
           <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-6">
+            <span className="sr-only">Hack The Spring Registration and Problem Statements - </span>
             <span className="text-gradient-gold">SELECT YOUR PROTOCOL</span>
           </h2>
           <p className="font-barlow text-lg lg:text-[20px] mt-[10px] tracking-[0.2em] leading-tight sm:leading-normal text-[#C1EAFF] italic">

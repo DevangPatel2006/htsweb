@@ -13,7 +13,7 @@ const teamCategories = [
   { id: "Management", label: "Management" },
   { id: "webandtech", label: "Technical" },
   { id: "sm&design", label: "Media" },
-  { id: "Logistics", label: "Logistics" },
+  { id: "Logistics", label: "Operation" },
   { id: "Decoration", label: "Decoration" },
   { id: "Outreach", label: "Outreach" },
 ];
@@ -147,6 +147,7 @@ export default function TeamSection() {
           className="text-center mb-12"
         >
            <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-10 [word-spacing:-0.25em] sm:[word-spacing:normal]">
+            <span className="sr-only">Hack The Spring Organizing Team and Committee - </span>
              <span className="text-gradient-gold">THE FREAKIN' GUARDIANS</span>
            </h2>
 

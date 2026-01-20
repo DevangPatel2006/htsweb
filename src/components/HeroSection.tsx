@@ -118,13 +118,13 @@ export default function HeroSection() {
       {/* BACKGROUND - Desktop */}
       <img
         src={heroBg}
-        alt=""
+        alt="Hack The Spring 2026 Space Theme Background"
         className="hidden md:block absolute inset-0 w-full h-full object-cover"
       />
       {/* BACKGROUND - Mobile */}
       <img
         src={mobileHeroBg}
-        alt=""
+        alt="Hack The Spring Mobile Background"
         className="md:hidden absolute inset-0 w-full h-full object-cover scale-125 origin-center"
       />
 
@@ -149,11 +149,16 @@ export default function HeroSection() {
             SECTOR 28, GANDHINAGAR'S
           </p>
 
+          {/* --- SEO INJECTION: INVISIBLE H1 --- */}
+          {/* This tells Google exactly what the page is about without changing the design */}
+          <h1 className="sr-only">
+            Hack The Spring 2026 - Government Engineering College Gandhinagar Annual Techfest
+          </h1>
+
           <motion.img
             src={logoText}
-            // CHANGED: Added responsive height and max-width constraints.
-            // On mobile, height is 140px. On medium screens and up, it returns to 288px.
-            // max-w-[90%] ensures it never overflows horizontally.
+            // --- SEO UPDATE: Descriptive Alt Text ---
+            alt="Hack The Spring 2026 Official Event Logo"
             className="h-[140px] md:h-[288px] w-auto max-w-[90%] object-contain mb-[20px]"
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -166,15 +171,16 @@ export default function HeroSection() {
           </div>
 
           <div className="relative w-[520px] h-[145px] mb-[38px]">
-            <img src={countdownFrame} className="w-full h-full" />
+            <img src={countdownFrame} alt="Countdown to Hackathon Launch" className="w-full h-full" />
             <div className="absolute inset-0 flex items-center justify-center">
               <CountdownTimer />
             </div>
           </div>
 
-          {/* UPDATED: Converted to motion.img with hover/pop animation and click handler */}
           <motion.img
             src={heroButton}
+            // --- SEO UPDATE: Alt Text for Button ---
+            alt="View Mission Parameters and Event Protocols"
             className="h-[53px] mb-[100px] cursor-pointer"
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
@@ -187,8 +193,8 @@ export default function HeroSection() {
           />
 
           <div className="font-barlow italic tracking-[0.3em] text-white transition-transform duration-300 ease-out hover:scale-105">
-  &gt; View Mission Parameters
-</div>
+            &gt; View Mission Parameters
+          </div>
 
         </div>
       </div>

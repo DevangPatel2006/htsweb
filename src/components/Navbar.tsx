@@ -106,6 +106,8 @@ export default function Navbar() {
           {/* Logo */}
           <motion.a
             href="#hero"
+            // --- SEO UPDATE: Added Aria Label ---
+            aria-label="Hack The Spring 2026 Home - Back to Top"
             onClick={(e) => {
               e.preventDefault();
               handleNavClick("#hero");
@@ -116,7 +118,7 @@ export default function Navbar() {
           >
             <img
               src={logo}
-              alt="Hack The Spring"
+              alt="Hack The Spring Official Logo"
               className="h-7 sm:h-7 lg:h-12 w-auto object-contain"
             />
           </motion.a>
@@ -134,7 +136,6 @@ export default function Navbar() {
                     e.preventDefault();
                     handleNavClick(link.href);
                   }}
-                  // UPDATED: Added hover:text-[#C1EAFF]
                   className={`group px-4 py-2 font-barlow text-sm transition-colors duration-300 ${
                     isActive
                       ? "text-primary"
@@ -172,6 +173,8 @@ export default function Navbar() {
           {/* Mobile Toggle */}
           <button
             className="lg:hidden p-2 text-foreground"
+            // --- SEO UPDATE: Added Aria Label for Accessibility ---
+            aria-label="Toggle Navigation Menu"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -201,7 +204,6 @@ export default function Navbar() {
                   initial={{ opacity: 0, x: -10 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: index * 0.03 }}
-                  // UPDATED: Changed text-muted-foreground to text-[#C1EAFF] for default state
                   className={`px-4 py-2.5 rounded-xl font-barlow text-sm ${
                     activeSection === link.href.slice(1)
                       ? "text-primary bg-primary/10"
