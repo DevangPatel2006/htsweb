@@ -345,7 +345,7 @@ export default function TeamSection() {
     <section
       id="team"
       ref={ref}
-      className="relative py-24 lg:py-32 overflow-hidden"
+      className="relative py-24 lg:pt-[100px] lg:pb-32 overflow-hidden"
     >
       {/* Hide scrollbar via CSS for a cleaner mobile look */}
       <style>{`
@@ -366,7 +366,7 @@ export default function TeamSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-1">
+          <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-1 lg:mt-0">
             <span className="sr-only">Hack The Spring Organizing Team and Committee - </span>
              <span className="text-gradient-gold">THE FREAKIN' GUARDIANS</span>
            </h2>
@@ -404,69 +404,76 @@ export default function TeamSection() {
           })}
         </motion.div>
 
-        {/* Team Members Display */}
-        <motion.div
-          key={activeCategory}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.4 }}
-          className={`flex flex-wrap justify-center max-w-7xl mx-auto ${
-            activeCategory === "administration" ? "gap-x-4 gap-y-8" : "gap-x-8 gap-y-12"
-          }`}
-        >
-          {sortedMembers.map((member, index) => (
-            <motion.div
-              key={member.name + index}
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              whileHover={{ y: -5 }}
-              // --- LAYOUT LOGIC ---
-              // Admin = 20% width (1/5) so all 5 fit in one row.
-              // Others = 25% width (1/4) so 4 fit in one row.
-              className={`flex flex-col items-center w-full sm:w-[calc(50%-2rem)] ${
-                activeCategory === "administration" ? "lg:w-[calc(20%-1rem)]" : "lg:w-[calc(25%-2rem)]"
-              }`}
-            >
-              {/* Wrapper to preserve visual scale */}
-              <div className="w-full max-w-[280px]">
-                {/* IMAGE CONTAINER */}
-                <div className="w-48 sm:w-full mb-4 relative aspect-[4/5] flex items-end justify-center">
-                  {member.image ? (
-                    <img
-                      src={member.image}
-                      alt={member.name}
-                      className="w-full h-full object-contain object-bottom block mx-auto"
-                      onError={(e) => {
-                        e.currentTarget.style.display = 'none'; 
-                      }}
-                    />
-                  ) : (
-                    // Placeholder
-                    <div className="w-full h-full bg-secondary/20 rounded-lg flex items-center justify-center border border-dashed border-secondary/40">
-                      <span className="text-secondary/50 text-sm">No Image</span>
-                    </div>
-                  )}
-                </div>
+        {/* Team Members Display - Mobile Scroll Container */}
+        <div className="relative">
+          <motion.div
+            key={activeCategory}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4 }}
+            className={`flex sm:flex-wrap justify-start sm:justify-center max-w-7xl mx-auto overflow-x-auto sm:overflow-visible no-scrollbar snap-x snap-mandatory sm:snap-none px-4 sm:px-0 ${
+              activeCategory === "administration" ? "gap-x-6 sm:gap-x-4 gap-y-8" : "gap-x-6 sm:gap-x-8 gap-y-12"
+            }`}
+          >
+            {sortedMembers.map((member, index) => (
+              <motion.div
+                key={member.name + index}
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                whileHover={{ y: -5 }}
+                // --- LAYOUT LOGIC ---
+                // Mobile: All sections show 2 members at a time (45% width each with gap)
+                // Tablet+: Same as before
+                // Admin = 20% width (1/5) so all 5 fit in one row.
+                // Others = 25% width (1/4) so 4 fit in one row.
+                className={`flex-shrink-0 snap-center flex flex-col items-center w-[45%] sm:w-[calc(50%-2rem)] ${
+                  activeCategory === "administration" ? "lg:w-[calc(20%-1rem)]" : "lg:w-[calc(25%-2rem)]"
+                }`}
+              >
+                {/* Wrapper to preserve visual scale and center content */}
+                <div className="w-full flex flex-col items-center">
+                  {/* IMAGE CONTAINER */}
+                  <div className="w-full max-w-[200px] sm:max-w-[280px] mb-4 relative aspect-[4/5] flex items-end justify-center">
+                    {member.image ? (
+                      <img
+                        src={member.image}
+                        alt={member.name}
+                        className="w-full h-full object-contain object-bottom block mx-auto"
+                        loading="lazy"
+                        onError={(e) => {
+                          e.currentTarget.style.display = 'none'; 
+                        }}
+                      />
+                    ) : (
+                      // Placeholder
+                      <div className="w-full h-full bg-secondary/20 rounded-lg flex items-center justify-center border border-dashed border-secondary/40">
+                        <span className="text-secondary/50 text-xs sm:text-sm">No Image</span>
+                      </div>
+                    )}
+                  </div>
 
-                {/* SOCIAL LINKS */}
-                <div className="flex justify-center gap-4 mt-2">
-                  <SocialLink 
-                    href={member.linkedin} 
-                    icon={Linkedin} 
-                    label={`Connect with ${member.name} on LinkedIn`} 
-                  />
                   
-                  <SocialLink 
-                    href={member.instagram} 
-                    icon={Instagram} 
-                    label={`Follow ${member.name} on Instagram`} 
-                  />
+
+                  {/* SOCIAL LINKS - Centered */}
+                  <div className="flex justify-center gap-4 mt-2">
+                    <SocialLink 
+                      href={member.linkedin} 
+                      icon={Linkedin} 
+                      label={`Connect with ${member.name} on LinkedIn`} 
+                    />
+                    
+                    <SocialLink 
+                      href={member.instagram} 
+                      icon={Instagram} 
+                      label={`Follow ${member.name} on Instagram`} 
+                    />
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );

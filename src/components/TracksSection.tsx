@@ -12,7 +12,7 @@ export default function TracksSection() {
     <section
       id="tracks"
       ref={ref}
-      className="relative py-24 lg:py-32 overflow-hidden mt-7"
+      className="relative py-24 lg:pt-[100px] lg:pb-32 overflow-hidden mt-7 lg:mt-0"
     >
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
@@ -22,7 +22,7 @@ export default function TracksSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-4 mt-6">
+          <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-4 mt-6 lg:mt-0">
             <span className="sr-only">Hack The Spring Event Tracks and Themes - </span>
             <span className="text-gradient-gold">MISSION DIRECTIVES</span>
           </h2>

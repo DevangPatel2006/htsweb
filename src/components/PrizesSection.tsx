@@ -133,7 +133,7 @@ export default function PrizesSection() {
     <section
       id="prizes"
       ref={ref}
-      className="relative py-10 md:py-24 lg:py-32 overflow-hidden uppercase"
+      className="relative py-10 md:py-24 lg:pt-[100px] lg:pb-32 overflow-hidden uppercase"
     >
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
@@ -143,7 +143,7 @@ export default function PrizesSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-4 md:mb-12 mt-0 md:mt-1"
         >
-          <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-14 md:mt-4">
+          <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-14 md:mt-4 lg:mt-0">
             <span className="sr-only">Hack The Spring Prizes, Rewards and Cash Pool - </span>
             <span className="text-gradient-gold">GALACTIC BOUNTIES</span>
           </h2>

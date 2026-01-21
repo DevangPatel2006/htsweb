@@ -82,7 +82,7 @@ export default function FAQSection() {
     <section
       id="faq"
       ref={ref}
-      className="relative py-24 lg:py-32 overflow-hidden"
+      className="relative py-24 lg:pt-[100px] lg:pb-32 overflow-hidden"
     >
       <script type="application/ld+json">
         {JSON.stringify(faqSchema)}
@@ -107,7 +107,7 @@ export default function FAQSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-10 [word-spacing:-0.25em] sm:[word-spacing:normal]">
+          <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-10 lg:mt-0 [word-spacing:-0.25em] sm:[word-spacing:normal]">
             <span className="sr-only">Hack The Spring Frequently Asked Questions - </span>
             <span className="text-gradient-gold ">FAQ'S</span>
           </h2>
