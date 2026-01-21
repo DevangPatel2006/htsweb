@@ -5,14 +5,14 @@ import { Linkedin, Twitter, Github, Instagram } from "lucide-react";
 
 // --- IMPORTANT: IMPORT YOUR IMAGES HERE ---
 import arjunImage from "@/assets/organiser1.png"; 
+import tech from "@/assets/team/tech_rikin.png"; 
+import tech2 from "@/assets/team/web_mohammed.png"; 
 import deImage from "@/assets/organ2.png"; 
 
-// Removed the 'icon' property from these objects
 const teamCategories = [
   { id: "organizers", label: "Organizers" },
   { id: "Management", label: "Management" },
   { id: "webandtech", label: "Technical" },
-  { id: "jury", label: "Jury" },
   { id: "sm&design", label: "Media" },
   { id: "Logistics", label: "Operation" },
   { id: "Decoration", label: "Decoration" },
@@ -33,15 +33,15 @@ const teamMembers = {
     },
   ],
   management: [
-    {
-      name: "Vikram Singh",
-      image: "/images/team/management/vikram-card.png",
-      linkedin: "#"
+     {
+      name: "d PATEL",
+      image: arjunImage, 
+      linkedin: "#", twitter: "#"
     },
     {
-      name: "Neha Reddy",
-      image: "/images/team/management/neha-card.png",
-      linkedin: "#", instagram: "#"
+      name: "ARJUN PATEL",
+      image: deImage, 
+      linkedin: "#", twitter: "#"
     },
     {
       name: "Amit Kumar",
@@ -51,13 +51,13 @@ const teamMembers = {
   ],
   webandtech: [
     {
-      name: "Karan Joshi",
-      image: "/images/team/technical/karan-card.png",
+      name: "Rikin Pithadia",
+      image: tech,
       linkedin: "#", github: "#"
     },
     {
       name: "Sneha Nair",
-      image: "/images/team/technical/sneha-card.png",
+      image: tech2,
       linkedin: "#", github: "#"
     },
     {
@@ -129,8 +129,6 @@ export default function TeamSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   const [activeCategory, setActiveCategory] = useState("organizers");
 
-  // Type assertion to handle the dynamic key access if using TypeScript, 
-  // or just standard JS access.
   const currentCategoryMembers = teamMembers[activeCategory] || [];
 
   return (
@@ -168,7 +166,7 @@ export default function TeamSection() {
           </p>
         </motion.div>
 
-        {/* Categories Toggles (Horizontal Scroll on Mobile, Center Wrap on Desktop) */}
+        {/* Categories Toggles */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
@@ -184,7 +182,6 @@ export default function TeamSection() {
                 onClick={() => setActiveCategory(category.id)}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                // UPDATED CLASSNAME HERE: removed shadow-glow-gold completely
                 className={`flex-shrink-0 whitespace-nowrap flex items-center gap-2 px-6 py-2 rounded-full font-open text-sm sm:text-base transition-all duration-300 ${
                   isActive
                     ? "bg-gold-gradient text-primary-foreground" 
@@ -205,8 +202,8 @@ export default function TeamSection() {
           transition={{ duration: 0.4 }}
           className="flex flex-wrap justify-center gap-x-8 gap-y-12 max-w-6xl mx-auto"
         >
-          {currentCategoryMembers.length > 0 ? (
-            currentCategoryMembers.map((member, index) => (
+          {/* Loop directly through members; if empty, nothing renders */}
+          {currentCategoryMembers.map((member, index) => (
             <motion.div
               key={member.name + index}
               initial={{ opacity: 0, scale: 0.95 }}
@@ -275,12 +272,7 @@ export default function TeamSection() {
                 )}
               </div>
             </motion.div>
-          ))
-          ) : (
-            <div className="col-span-full text-center text-muted-foreground py-12 w-full">
-              Coming Soon...
-            </div>
-          )}
+          ))}
         </motion.div>
       </div>
     </section>

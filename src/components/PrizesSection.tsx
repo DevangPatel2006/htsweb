@@ -1,6 +1,6 @@
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Gift, ChevronRight, FileCheck, Utensils, Package, Users } from "lucide-react";
+import { ChevronRight, FileCheck, Utensils, Package, Users } from "lucide-react";
 
 const tracks = [
   {
@@ -8,66 +8,60 @@ const tracks = [
     name: "HACK.X",
     title: "NOVA CORPS TREASURY",
     prizes: [
-      { position: "1st", reward: "₹15,000", extra: "+ Internship", icon: "🥇" },
-      { position: "2nd", reward: "₹10,000", extra: null, icon: "🥈" },
-      { position: "3rd", reward: "₹5,000", extra: null, icon: "🥉" },
+      { position: "1st", reward: "₹15,000", extra: "+ Internship" },
+      { position: "2nd", reward: "₹10,000", extra: null },
+      { position: "3rd", reward: "₹5,000", extra: null },
     ],
-    special: "Internship powered by Sponsor Partner",
   },
   {
     id: "buildx",
     name: "BUILD.X",
     title: "ROCKET’S SUPPLY CACHE",
     prizes: [
-      { position: "1st", reward: "₹15,000", extra: "+ Internship", icon: "🥇" },
-      { position: "2nd", reward: "₹10,000", extra: null, icon: "🥈" },
-      { position: "3rd", reward: "₹5,000", extra: null, icon: "🥉" },
+      { position: "1st", reward: "₹15,000", extra: "+ Internship" },
+      { position: "2nd", reward: "₹10,000", extra: null },
+      { position: "3rd", reward: "₹5,000", extra: null },
     ],
-    special: "Best Innovation Award",
   },
   {
     id: "thinkx",
     name: "THINK.X",
     title: "THE COLLECTOR’S BID",
     prizes: [
-      { position: "1st", reward: "₹12,000", extra: "+ Mentorship", icon: "🥇" },
-      { position: "2nd", reward: "₹8,000", extra: null, icon: "🥈" },
-      { position: "3rd", reward: "₹4,000", extra: null, icon: "🥉" },
+      { position: "1st", reward: "₹12,000", extra: "+ Mentorship" },
+      { position: "2nd", reward: "₹8,000", extra: null },
+      { position: "3rd", reward: "₹4,000", extra: null },
     ],
-    special: "Access to Exclusive Workshops",
   },
   {
     id: "BATTLE OF KNOWHERE",
     name: "BATTLE OF KNOWHERE",
     title: "RAVAGER MERCENARY PAY",
     prizes: [
-      { position: "1st", reward: "₹8,000", extra: "+ Gaming Gear", icon: "🥇" },
-      { position: "2nd", reward: "₹5,000", extra: null, icon: "🥈" },
-      { position: "3rd", reward: "₹3,000", extra: null, icon: "🥉" },
+      { position: "1st", reward: "₹8,000", extra: "+ Gaming Gear" },
+      { position: "2nd", reward: "₹5,000", extra: null },
+      { position: "3rd", reward: "₹3,000", extra: null },
     ],
-    special: "Premium Gaming Accessories",
   },
   {
     id: "SOVEREIGN'S GAMBIT",
     name: "SOVEREIGN'S GAMBIT",
     title: "SOVEREIGN GOLD RESERVES",
     prizes: [
-      { position: "1st", reward: "₹5,000", extra: "+ Goodies", icon: "🥇" },
-      { position: "2nd", reward: "₹3,000", extra: null, icon: "🥈" },
-      { position: "3rd", reward: "₹2,000", extra: null, icon: "🥉" },
+      { position: "1st", reward: "₹5,000", extra: "+ Goodies" },
+      { position: "2nd", reward: "₹3,000", extra: null },
+      { position: "3rd", reward: "₹2,000", extra: null },
     ],
-    special: "Special Mentions & Shoutouts",
   },
   {
     id: "COSMIC LENS",
     name: "COSMIC LENS",
     title: " AWESOME MIX ROYALTIES",
     prizes: [
-      { position: "1st", reward: "₹5,000", extra: "+ Goodies", icon: "🥇" },
-      { position: "2nd", reward: "₹3,000", extra: null, icon: "🥈" },
-      { position: "3rd", reward: "₹2,000", extra: null, icon: "🥉" },
+      { position: "1st", reward: "₹5,000", extra: "+ Goodies" },
+      { position: "2nd", reward: "₹3,000", extra: null },
+      { position: "3rd", reward: "₹2,000", extra: null },
     ],
-    special: "Special Mentions & Shoutouts",
   },
 ];
 
@@ -212,49 +206,28 @@ export default function PrizesSection() {
                   transition={{ duration: 0.3 }}
                 >
                   {/* Track Title */}
-                  <h3 className="font-display text-lg md:text-1.5xl font-bold mb-4 md:mb-6 text-primary">
+                  <h3 className="font-display text-lg md:text-1.5xl font-bold mb-4 md:mb-6 text-primary text-left">
                     {currentTrack.title}
                   </h3>
 
-                  {/* Prize List */}
-                  <div className="space-y-3 md:space-y-4 mb-4 md:mb-6">
+                  {/* Prize List - WITH BULLET POINTS */}
+                  <ul className="space-y-3 md:space-y-4 mb-4 md:mb-6 text-left list-disc list-inside">
                     {currentTrack.prizes.map((prize, index) => (
-                      <div
+                      <li
                         key={index}
-                        className="flex items-center gap-3 md:gap-4 p-3 md:p-4 rounded-xl bg-card/50 border border-primary/10 hover:border-primary/30 transition-all duration-300"
+                        className="font-primary text-sm md:text-lg font-semibold text-foreground"
                       >
-                        <span className="text-xl md:text-2xl">
-                          {prize.icon}
+                        <span>
+                          {prize.position} {prize.reward}
                         </span>
-                        <div className="flex-1">
-                          <span className="font-primary text-sm md:text-lg font-semibold text-foreground">
-                            {prize.position}:
+                        {prize.extra && (
+                          <span className="ml-2 text-accent text-[10px] md:text-xs">
+                            {prize.extra}
                           </span>
-                          <span className="ml-2 font-heading text-sm md:text-lg font-bold text-primary">
-                            {prize.reward}
-                          </span>
-                          {prize.extra && (
-                            <span className="ml-2 px-2 py-1 rounded-full bg-accent/20 text-accent text-[10px] md:text-xs font-semibold">
-                              {prize.extra}
-                            </span>
-                          )}
-                        </div>
-                      </div>
+                        )}
+                      </li>
                     ))}
-                  </div>
-
-                  {/* Special Note */}
-                  {currentTrack.special && (
-                    <div className="flex items-start gap-3 p-3 md:p-4 rounded-xl bg-gradient-to-r from-accent/10 to-primary/10 border border-accent/20">
-                      <Gift className="w-4 h-4 md:w-5 md:h-5 text-accent mt-0.5 flex-shrink-0" />
-                      <p className="font-body text-xs md:text-sm text-muted-foreground">
-                        <span className="text-accent font-semibold">
-                          Special:
-                        </span>{" "}
-                        {currentTrack.special}
-                      </p>
-                    </div>
-                  )}
+                  </ul>
                 </motion.div>
               </div>
             </div>
@@ -266,27 +239,23 @@ export default function PrizesSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.4 }}
-          // CHANGE: Increased max-w-3xl to max-w-5xl so the text fits on one line
           className="mt-4 md:mt-16 glass-card rounded-2xl p-4 md:p-8 max-w-5xl mx-auto border border-primary/20"
         >
           <h3 className="font-primary text-lg md:text-xl font-semibold text-center mb-4 md:mb-6 text-foreground">
             EVERY PARTICIPANT RECEIVES
           </h3>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4">
             {participantBenefits.map((benefit, index) => {
               const Icon = benefit.icon;
               return (
                 <div
                   key={index}
-                  // CHANGE: Removed bg-primary/5 and borders.
-                  // Mobile: flex-row, gap-3. Desktop: flex-col, gap-2.
                   className="flex flex-row md:flex-col items-center gap-3 md:gap-2"
                 >
                   <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
                     <Icon className="w-4 h-4 md:w-5 md:h-5 text-accent" />
                   </div>
-                  {/* CHANGE: Added whitespace-nowrap for desktop to force single line */}
                   <span className="font-barlow text-sm text-muted-foreground text-left md:text-center md:whitespace-nowrap">
                     {benefit.text}
                   </span>
