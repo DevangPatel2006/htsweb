@@ -114,7 +114,7 @@ export default function Footer() {
             <h4 className="font-barlow text-[20px] text-[#B0E5FF] uppercase tracking-[0.1em] font-medium whitespace-nowrap self-center lg:self-start">
               COMMAND POST
             </h4>
-            // ... inside your Return statement
+            
 <div className="w-full rounded-xl overflow-hidden border border-gray-700/50 shadow-lg relative bg-gray-800">
   <iframe
     src="https://www.google.com/maps?q=Government+Engineering+College,+Sector+28,+Gandhinagar&output=embed"
