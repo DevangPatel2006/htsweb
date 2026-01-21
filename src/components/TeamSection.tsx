@@ -6,7 +6,7 @@ import { Instagram, Linkedin, Twitter } from "lucide-react";
 // --- TEAM IMAGE IMPORTS ---
 
 // // Organizers
-// import devangImage from "@/assets/team/devang.png";
+import devangImage from "@/assets/team/og_devang.png";
 import vrajImage from "@/assets/team/og_vraj.png";
 
 // Technical
@@ -66,12 +66,12 @@ const teamMembers = {
   organizers: [
     {
       name: "Devang Patel",
-      // image: devangImage,
+      image: devangImage,
       linkedin: "#", instagram: "#"
     },
     {
       name: "Vraj Patel",
-      // image: vrajImage,
+      image: vrajImage,
       linkedin: "#", instagram: "#"
     },
   ],
