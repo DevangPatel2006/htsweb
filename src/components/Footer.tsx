@@ -80,9 +80,9 @@ export default function Footer() {
             </div>
             
             <div className="flex mt-3 gap-4 text-[12px] text-[#B0E5FF] uppercase tracking-widest font-barlow">
-              <a href="/terms" className="hover:text-white transition-colors">TERMS & CONDITIONS</a>
+              <a href="https://docs.google.com/document/d/1xnkktyxc5uyCJH3j_7DQIshCK1-gnSKlyG-gYIJUWCA/edit?usp=sharing" className="hover:text-white transition-colors">TERMS & CONDITIONS</a>
               <span className="text-[#B0E5FF] opacity-50">|</span>
-              <a href="/privacy" className="hover:text-white transition-colors">PRIVACY POLICY</a>
+              <a href="https://docs.google.com/document/d/18XM5Vp7Zp_9uPX70eP3ctnzwbdZyrEu8tYyUMmEBpww/edit?usp=sharing" className="hover:text-white transition-colors">PRIVACY POLICY</a>
             </div>
           </motion.div>
 

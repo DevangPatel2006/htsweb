@@ -7,7 +7,7 @@ import { Instagram, Linkedin, Twitter } from "lucide-react";
 
 // // Organizers
 // import devangImage from "@/assets/team/devang.png";
-// import vrajImage from "@/assets/team/vraj.png";
+import vrajImage from "@/assets/team/og_vraj.png";
 
 // Technical
 import mohammedImage from "@/assets/team/web_mohammed.png"; 
