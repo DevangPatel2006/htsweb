@@ -405,13 +405,14 @@ export default function TeamSection() {
         </motion.div>
 
         {/* Team Members Display */}
-        {/* CHANGED from Grid to Flex Wrap to center alignment on incomplete rows */}
         <motion.div
           key={activeCategory}
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.4 }}
-          className="flex flex-wrap justify-center gap-x-8 gap-y-12 max-w-7xl mx-auto"
+          className={`flex flex-wrap justify-center max-w-7xl mx-auto ${
+            activeCategory === "administration" ? "gap-x-4 gap-y-8" : "gap-x-8 gap-y-12"
+          }`}
         >
           {sortedMembers.map((member, index) => (
             <motion.div
@@ -420,47 +421,48 @@ export default function TeamSection() {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               whileHover={{ y: -5 }}
-              // ---------------------------------------------------------------------------------
-              // MODIFIED LOGIC:
-              // - Uses `w-[calc(33.33%-2rem)]` for "Administration" (3 items per row)
-              // - Uses `w-[calc(25%-2rem)]` for others (4 items per row)
-              // ---------------------------------------------------------------------------------
+              // --- LAYOUT LOGIC ---
+              // Admin = 20% width (1/5) so all 5 fit in one row.
+              // Others = 25% width (1/4) so 4 fit in one row.
               className={`flex flex-col items-center w-full sm:w-[calc(50%-2rem)] ${
-                activeCategory === "administration" ? "lg:w-[calc(33.33%-2rem)]" : "lg:w-[calc(25%-2rem)]"
-              } max-w-[280px]`}
+                activeCategory === "administration" ? "lg:w-[calc(20%-1rem)]" : "lg:w-[calc(25%-2rem)]"
+              }`}
             >
-              {/* IMAGE CONTAINER */}
-              <div className="w-48 sm:w-full mb-4 relative aspect-[4/5] flex items-end justify-center">
-                {member.image ? (
-                  <img
-                    src={member.image}
-                    alt={member.name}
-                    className="w-full h-full object-contain object-bottom block mx-auto"
-                    onError={(e) => {
-                      e.currentTarget.style.display = 'none'; 
-                    }}
-                  />
-                ) : (
-                  // Placeholder for when image is commented out or missing
-                  <div className="w-full h-full bg-secondary/20 rounded-lg flex items-center justify-center border border-dashed border-secondary/40">
-                    <span className="text-secondary/50 text-sm">No Image</span>
-                  </div>
-                )}
-              </div>
+              {/* Wrapper to preserve visual scale */}
+              <div className="w-full max-w-[280px]">
+                {/* IMAGE CONTAINER */}
+                <div className="w-48 sm:w-full mb-4 relative aspect-[4/5] flex items-end justify-center">
+                  {member.image ? (
+                    <img
+                      src={member.image}
+                      alt={member.name}
+                      className="w-full h-full object-contain object-bottom block mx-auto"
+                      onError={(e) => {
+                        e.currentTarget.style.display = 'none'; 
+                      }}
+                    />
+                  ) : (
+                    // Placeholder
+                    <div className="w-full h-full bg-secondary/20 rounded-lg flex items-center justify-center border border-dashed border-secondary/40">
+                      <span className="text-secondary/50 text-sm">No Image</span>
+                    </div>
+                  )}
+                </div>
 
-              {/* SOCIAL LINKS (Using Helper Component to keep icons visible but disabled) */}
-              <div className="flex justify-center gap-4 mt-2">
-                <SocialLink 
-                  href={member.linkedin} 
-                  icon={Linkedin} 
-                  label={`Connect with ${member.name} on LinkedIn`} 
-                />
-                
-                <SocialLink 
-                  href={member.instagram} 
-                  icon={Instagram} 
-                  label={`Follow ${member.name} on Instagram`} 
-                />
+                {/* SOCIAL LINKS */}
+                <div className="flex justify-center gap-4 mt-2">
+                  <SocialLink 
+                    href={member.linkedin} 
+                    icon={Linkedin} 
+                    label={`Connect with ${member.name} on LinkedIn`} 
+                  />
+                  
+                  <SocialLink 
+                    href={member.instagram} 
+                    icon={Instagram} 
+                    label={`Follow ${member.name} on Instagram`} 
+                  />
+                </div>
               </div>
             </motion.div>
           ))}
