@@ -168,13 +168,6 @@ const teamMembers = {
   ],
   administration: [
     {
-      name: "Divy Gandhi",
-      role: "Finance",
-      image: divyImage,
-      linkedin: "https://www.linkedin.com/in/divygandhi4978", 
-      instagram: "https://www.instagram.com/divygandhi4978"
-    },
-    {
       name: "Parth Prajapati",
       role: "Event Management",
       image: parthpImage,
@@ -187,6 +180,13 @@ const teamMembers = {
       image: hiyaImage,
       linkedin: "https://www.linkedin.com/in/hiyajagtap", 
       instagram: "https://www.instagram.com/hiya.jagtap"
+    },
+    {
+      name: "Divy Gandhi",
+      role: "Finance",
+      image: divyImage,
+      linkedin: "https://www.linkedin.com/in/divygandhi4978", 
+      instagram: "https://www.instagram.com/divygandhi4978"
     },
     {
       name: "Rageshree Chauhan",

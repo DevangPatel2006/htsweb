@@ -12,61 +12,71 @@ import { Mail, MessageCircle } from "lucide-react";
 
 const faqs = [
   {
-    question: "Who can participate in Hack The Spring 2026?",
+    question: "What is Techfest Hack the Spring ’26?",
     answer:
-      "Hack The Spring 2026 is open to all students, professionals, and enthusiasts! Whether you're a beginner or an experienced developer, from any academic discipline, you're welcome to join. Teams can have 1-4 members.",
+      "Techfest Hack the Spring ’26 is a two-day inter-college technical festival focused on innovation, problem-solving, idea presentation, and interactive competitions.",
   },
   {
-    question: "Is there a registration fee?",
+    question: "When and where will the event be held?",
     answer:
-      "No! Participation in Hack The Spring 2026 is completely free. We believe innovation shouldn't have barriers. All participants get free meals, snacks, and beverages throughout the event.",
+      "The event will be held on 20th and 21st February 2026 at Government Engineering College, Gandhinagar (GECG).",
   },
   {
-    question: "What if I don't have a team?",
+    question: "Who can participate in the event?",
     answer:
-      "No worries! We have a team formation session at the beginning of the event and a Discord community where you can connect with other participants looking for teammates. You can also participate solo!",
+      "Students enrolled in a recognized educational institution can participate. Eligibility may vary for specific events.",
   },
   {
-    question: "What should I bring to the hackathon?",
+    question: "Can students from different colleges form a team?",
     answer:
-      "Bring your laptop, charger, any hardware you might need for your project, valid ID proof, and lots of enthusiasm! We'll provide the rest - workspace, internet, food, and all the caffeine you need.",
+      "Yes, cross-college and cross-institute teams are allowed, unless restricted by a specific event.",
   },
   {
-    question: "Is this my first hackathon - can I still participate?",
+    question: "Is there any registration fee?",
     answer:
-      "Absolutely! Hack The Spring is beginner-friendly. We have workshops, mentorship sessions, and experienced volunteers to guide first-timers. It's the perfect place to start your hackathon journey!",
+      "Yes, registration fee details will be announced on the official registration platform.",
   },
   {
-    question: "Are participants from other colleges/cities allowed?",
+    question: "Will certificates be provided?",
     answer:
-      "Yes! Hack The Spring welcomes participants from across India. We encourage diversity in teams and love seeing collaborations between students from different institutions.",
+      "Yes, participation certificates will be provided to all registered participants. Winner certificates will be provided to selected teams.",
   },
   {
-    question: "What kind of projects can we build?",
+    question: "Will Accommodation be provided?",
     answer:
-      "You can build anything within our 8 tracks: AI/ML, FinTech, EdTech, HealthTech, Sustainability, IoT, Web3/Blockchain, or Open Innovation. The key is to build something innovative that solves a real problem.",
+      "No Accommodation will be provided by the college. But, you can contact the team if you need.",
   },
   {
-    question: "Will accommodation be provided?",
+    question: "Will food be provided?",
     answer:
-      "The hackathon is a 48-hour event at the venue. We provide a comfortable hacking space with rest areas. For participants traveling from other cities, we can suggest nearby affordable accommodations.",
+      "Yes, Food/Refreshments will be provided, depending on the competition you have registered for.",
+  },
+  {
+    question: "Do participants need to bring their own devices?",
+    answer:
+      "Yes, participants are required to bring their own laptops, hardware components, chargers, and necessary tools as per their event requirements.",
+  },
+  {
+    question: "How do I contact the admins?",
+    answer:
+      "Push the button! (The one on Discord). Open a Ticket in the support channel, and we will teleport to you.",
   },
 ];
 
 export default function FAQSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-const faqSchema = {
+  const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": faqs.map(faq => ({
+    "mainEntity": faqs.map((faq) => ({
       "@type": "Question",
       "name": faq.question,
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
+        "text": faq.answer,
+      },
+    })),
   };
   return (
     <section
@@ -101,7 +111,7 @@ const faqSchema = {
             <span className="sr-only">Hack The Spring Frequently Asked Questions - </span>
             <span className="text-gradient-gold ">FAQ'S</span>
           </h2>
-           <p className="font-barlow text-lg lg:text-[20px] mt-[10px] tracking-[0.2em] leading-tight sm:leading-normal text-[#C1EAFF] italic">
+          <p className="font-barlow text-lg lg:text-[20px] mt-[10px] tracking-[0.2em] leading-tight sm:leading-normal text-[#C1EAFF] italic">
             WE CAUGHT THE MOST COMMON QUESTIONS FOR YOU
           </p>
         </motion.div>
@@ -145,8 +155,8 @@ const faqSchema = {
           className="mt-16 text-center"
         >
           <h3 className="font-primary text-xl font-semibold mb-6 text-[#C1EAFF]">
-  SEND A DISTRESS SIGNAL
-</h3>
+            SEND A DISTRESS SIGNAL
+          </h3>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="hero" asChild>
