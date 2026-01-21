@@ -73,35 +73,35 @@ const Index = () => {
         
         <AboutSection />
         
-        <SectionSeparator />
+        
         
         <ProtocolsSection />
         
-        <SectionSeparator />
+        
         
         <TracksSection />
         
-        <SectionSeparator />
+        
         
         <PrizesSection />
         
-        <SectionSeparator />
+        
         
         <TimelineSection />
         
-        <SectionSeparator />
+        
         
         <TeamSection />
         
-        <SectionSeparator />
+        
         
         <TestimonialsSection />
         
-        <SectionSeparator />
+        
         
         <SponsorsSection />
         
-        <SectionSeparator />
+        
         
         <FAQSection />
         <Footer />

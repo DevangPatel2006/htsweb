@@ -366,7 +366,7 @@ export default function TeamSection() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-           <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-10 [word-spacing:-0.25em] sm:[word-spacing:normal]">
+          <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-1">
             <span className="sr-only">Hack The Spring Organizing Team and Committee - </span>
              <span className="text-gradient-gold">THE FREAKIN' GUARDIANS</span>
            </h2>
