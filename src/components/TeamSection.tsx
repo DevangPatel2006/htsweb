@@ -55,11 +55,13 @@ import vivekImage from "@/assets/team/hosp_vivek.png";
 
 const teamCategories = [
   { id: "organizers", label: "Organizers" },
+  { id: "administration", label: "Administration" },
+  { id: "operations", label: "Operations" },
   { id: "technical", label: "Technical" },
   { id: "outreach", label: "Outreach" },
-  { id: "administration", label: "Administration" },
+  
   { id: "venue", label: "Venue" },
-  { id: "operations", label: "Operations" },
+  
 ];
 
 const teamMembers = {

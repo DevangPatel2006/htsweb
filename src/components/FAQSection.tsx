@@ -12,9 +12,9 @@ import { Mail, MessageCircle } from "lucide-react";
 
 const faqs = [
   {
-    question: "What is Techfest Hack the Spring ’26?",
+    question: "What is  HackTheSpring ’26?",
     answer:
-      "Techfest Hack the Spring ’26 is a two-day inter-college technical festival focused on innovation, problem-solving, idea presentation, and interactive competitions.",
+      "HackTheSpring ’26 is a two-day inter-college technical festival focused on innovation, problem-solving, idea presentation, and interactive competitions.",
   },
   {
     question: "When and where will the event be held?",

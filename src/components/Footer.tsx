@@ -5,7 +5,7 @@ import gov from "@/assets/govlogo.svg";
 const socialLinks = [
   { 
     icon: Instagram, 
-    href: "https://instagram.com/hackthespring", 
+    href: "https://www.instagram.com/hackthespring?igsh=dmM5NWQzajNxd3Jp", 
     label: "Follow Hack The Spring on Instagram" 
   },
   { 
@@ -15,7 +15,7 @@ const socialLinks = [
   },
   { 
     icon: Linkedin, 
-    href: "https://linkedin.com/company/hackthespring", 
+    href: "https://www.linkedin.com/company/hackthespring-26/", 
     label: "Connect with Hack The Spring on LinkedIn" 
   },
 ];
