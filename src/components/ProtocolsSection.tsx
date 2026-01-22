@@ -4,8 +4,8 @@ import { useRef } from "react";
 
 // Import SVG assets
 import hackSvg from "@/assets/hack.svg";
-import buildSvg from "@/assets/build.svg";
-import thinkSvg from "@/assets/think.svg";
+import buildSvg from "@/assets/Group 11.svg";
+import thinkSvg from "@/assets/thinknew.svg";
 import gameSvg from "@/assets/game.svg";
 import chessSvg from "@/assets/chess.svg";
 import lastSvg from "@/assets/last.svg";
@@ -89,7 +89,7 @@ export default function ProtocolsSection() {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="relative"
+              className={`relative ${[1, 2, 3, 6].includes(protocol.id) ? "-mb-[5.1%] sm:mb-0" : ""}`}
               whileHover="hover" // Triggers hover state for children
             >
               {/* Track Background */}
@@ -107,11 +107,10 @@ export default function ProtocolsSection() {
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 />
 
-                {/* Buttons Container (ONLY GAP ADDED) */}
                 <div
-                  className="
+                  className={`
                     absolute
-                    bottom-[24.65px]
+                    ${[4, 5].includes(protocol.id) ? "bottom-[24.65px]" : "bottom-[calc(24.65px+10.07%)]"}
                     left-[36.15px]
                     right-[36.77px]
                     flex
@@ -119,7 +118,7 @@ export default function ProtocolsSection() {
                     items-center
                     gap-[12px]
                     pointer-events-none
-                  "
+                  `}
                 >
                   {/* Initiate Hack Button */}
                   <a
