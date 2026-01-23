@@ -6,6 +6,7 @@ import { Instagram, Linkedin, Twitter } from "lucide-react";
 // --- TEAM IMAGE IMPORTS ---
 
 // // Organizers
+import sir from "@/assets/team/fc_nitinsir.png";
 import devangImage from "@/assets/team/og_devang.png";
 import vrajImage from "@/assets/team/og_vraj.png";
 
@@ -59,13 +60,16 @@ const teamCategories = [
   { id: "operations", label: "Operations" },
   { id: "technical", label: "Technical" },
   { id: "outreach", label: "Outreach" },
-  
   { id: "venue", label: "Venue" },
-  
 ];
 
 const teamMembers = {
   organizers: [
+    {
+      name: "Nitin  Raval",
+      image: sir,
+      linkedin: "#", instagram: "#"
+    },
     {
       name: "Devang Patel",
       image: devangImage,
@@ -335,11 +339,8 @@ export default function TeamSection() {
 
   // SORTING LOGIC: Members with images go first
   const sortedMembers = [...currentCategoryMembers].sort((a, b) => {
-    // If 'a' has an image and 'b' does not, 'a' comes first (-1)
     if (a.image && !b.image) return -1;
-    // If 'b' has an image and 'a' does not, 'b' comes first (1)
     if (!a.image && b.image) return 1;
-    // Maintain original order otherwise
     return 0;
   });
 
@@ -349,7 +350,6 @@ export default function TeamSection() {
       ref={ref}
       className="relative py-24 lg:pt-[100px] lg:pb-32 overflow-hidden"
     >
-      {/* Hide scrollbar via CSS for a cleaner mobile look */}
       <style>{`
         .no-scrollbar::-webkit-scrollbar {
           display: none;
@@ -406,15 +406,20 @@ export default function TeamSection() {
           })}
         </motion.div>
 
-        {/* Team Members Display - Mobile Scroll Container */}
+        {/* Team Members Display */}
         <div className="relative">
           <motion.div
             key={activeCategory}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className={`flex sm:flex-wrap justify-start sm:justify-center max-w-7xl mx-auto overflow-x-auto sm:overflow-visible no-scrollbar snap-x snap-mandatory sm:snap-none px-4 sm:px-0 ${
-              activeCategory === "administration" ? "gap-x-6 sm:gap-x-4 gap-y-8" : "gap-x-6 sm:gap-x-8 gap-y-12"
+            className={`flex justify-start sm:justify-center max-w-7xl mx-auto px-4 sm:px-0 ${
+              // CONTAINER LAYOUT LOGIC
+              activeCategory === "organizers" 
+                ? "flex-wrap justify-center gap-y-12 sm:gap-x-8" // Organizers: Wrap & Stack (Vertical list on mobile)
+                : "flex-nowrap sm:flex-wrap overflow-x-auto sm:overflow-visible no-scrollbar snap-x snap-mandatory sm:snap-none gap-x-6 sm:gap-x-8 gap-y-12" // Others: No Wrap (Horizontal scroll)
+            } ${
+               activeCategory === "administration" ? "sm:gap-x-4" : "" 
             }`}
           >
             {sortedMembers.map((member, index) => (
@@ -424,12 +429,11 @@ export default function TeamSection() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
-                // --- LAYOUT LOGIC ---
-                // Mobile: All sections show 2 members at a time (45% width each with gap)
-                // Tablet+: Same as before
-                // Admin = 20% width (1/5) so all 5 fit in one row.
-                // Others = 25% width (1/4) so 4 fit in one row.
-                className={`flex-shrink-0 snap-center flex flex-col items-center w-[45%] sm:w-[calc(50%-2rem)] ${
+                // ITEM WIDTH LOGIC
+                className={`flex-shrink-0 snap-center flex flex-col items-center sm:w-[calc(50%-2rem)] ${
+                   // Mobile Widths: Organizers = 100% (Full line), Others = 45% (Scrollable)
+                   activeCategory === "organizers" ? "w-full" : "w-[45%]"
+                } ${
                   activeCategory === "administration" ? "lg:w-[calc(20%-1rem)]" : "lg:w-[calc(25%-2rem)]"
                 }`}
               >
@@ -448,14 +452,11 @@ export default function TeamSection() {
                         }}
                       />
                     ) : (
-                      // Placeholder
                       <div className="w-full h-full bg-secondary/20 rounded-lg flex items-center justify-center border border-dashed border-secondary/40">
                         <span className="text-secondary/50 text-xs sm:text-sm">No Image</span>
                       </div>
                     )}
                   </div>
-
-                  
 
                   {/* SOCIAL LINKS - Centered */}
                   <div className="flex justify-center gap-4 mt-2">

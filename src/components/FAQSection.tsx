@@ -1,5 +1,4 @@
-import { motion } from "framer-motion";
-import { useInView } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import {
   Accordion,
@@ -12,9 +11,9 @@ import { Mail, MessageCircle } from "lucide-react";
 
 const faqs = [
   {
-    question: "What is  HackTheSpring ’26?",
+    question: "What is HackTheSpring '26?",
     answer:
-      "HackTheSpring ’26 is a two-day inter-college technical festival focused on innovation, problem-solving, idea presentation, and interactive competitions.",
+      "HackTheSpring '26 is a two-day inter-college technical festival focused on innovation, problem-solving, idea presentation, and interactive competitions.",
   },
   {
     question: "When and where will the event be held?",
@@ -66,27 +65,27 @@ const faqs = [
 export default function FAQSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    "mainEntity": faqs.map((faq) => ({
+    mainEntity: faqs.map((faq) => ({
       "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
+      name: faq.question,
+      acceptedAnswer: {
         "@type": "Answer",
-        "text": faq.answer,
+        text: faq.answer,
       },
     })),
   };
+
   return (
     <section
       id="faq"
       ref={ref}
       className="relative py-24 lg:pt-[100px] lg:pb-32 overflow-hidden"
     >
-      <script type="application/ld+json">
-        {JSON.stringify(faqSchema)}
-      </script>
+      <script type="application/ld+json">{JSON.stringify(faqSchema)}</script>
       {/* Background */}
       <div className="absolute inset-0 pointer-events-none">
         <div
@@ -108,7 +107,9 @@ export default function FAQSection() {
           className="text-center mb-16"
         >
           <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-10 lg:mt-0 [word-spacing:-0.25em] sm:[word-spacing:normal]">
-            <span className="sr-only">Hack The Spring Frequently Asked Questions - </span>
+            <span className="sr-only">
+              Hack The Spring Frequently Asked Questions -{" "}
+            </span>
             <span className="text-gradient-gold ">FAQ'S</span>
           </h2>
           <p className="font-barlow text-lg lg:text-[20px] mt-[10px] tracking-[0.2em] leading-tight sm:leading-normal text-[#C1EAFF] italic">
@@ -158,22 +159,23 @@ export default function FAQSection() {
             SEND A DISTRESS SIGNAL
           </h3>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="hero" asChild>
-              <a href="mailto:hello@hackthespring.in">
-                <Mail className="w-5 h-5" />
-                Send an Email
-              </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Button
+              variant="hero"
+              className="gap-2"
+              onClick={() => window.location.href = 'mailto:hackthespring@gecg28.ac.in'}
+            >
+              <Mail className="w-5 h-5" />
+              Send an Email
             </Button>
-            <Button variant="heroOutline" asChild>
-              <a
-                href="https://discord.gg/hackthespring"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                <MessageCircle className="w-5 h-5" />
-                Join Discord
-              </a>
+
+            <Button
+              variant="heroOutline"
+              className="gap-2"
+              onClick={() => window.open('https://discord.gg/hackthespring', '_blank', 'noopener,noreferrer')}
+            >
+              <MessageCircle className="w-5 h-5" />
+              Join Discord
             </Button>
           </div>
         </motion.div>
