@@ -11,9 +11,9 @@ import { Mail, MessageCircle } from "lucide-react";
 
 const faqs = [
   {
-    question: "What is HackTheSpring '26?",
+    question: "What is HackTheSpring ’26?",
     answer:
-      "HackTheSpring '26 is a two-day inter-college technical festival focused on innovation, problem-solving, idea presentation, and interactive competitions.",
+      "HackTheSpring ’26 is a two-day inter-college technical festival focused on innovation, problem-solving, idea presentation, and interactive competitions.",
   },
   {
     question: "When and where will the event be held?",
@@ -148,6 +148,7 @@ export default function FAQSection() {
           </Accordion>
         </motion.div>
 
+
         {/* Still Have Questions */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -160,23 +161,32 @@ export default function FAQSection() {
           </h3>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            <Button
-              variant="hero"
-              className="gap-2"
-              onClick={() => window.location.href = 'mailto:hackthespring@gecg28.ac.in'}
+            
+            {/* UPDATED LINK: 
+               Directly points to Gmail's "Compose Message" URL.
+               target="_blank" forces it to open in a new tab.
+            */}
+            <a 
+              href="https://mail.google.com/mail/?view=cm&fs=1&to=hackthespring@gecg28.ac.in"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <Mail className="w-5 h-5" />
-              Send an Email
-            </Button>
+              <Button variant="hero" className="gap-2">
+                <Mail className="w-5 h-5" />
+                Send an Email
+              </Button>
+            </a>
 
-            <Button
-              variant="heroOutline"
-              className="gap-2"
-              onClick={() => window.open('https://discord.gg/hackthespring', '_blank', 'noopener,noreferrer')}
+            <a
+              href="https://discord.gg/hackthespring"
+              target="_blank"
+              rel="noopener noreferrer"
             >
-              <MessageCircle className="w-5 h-5" />
-              Join Discord
-            </Button>
+              <Button variant="heroOutline" className="gap-2">
+                <MessageCircle className="w-5 h-5" />
+                Join Discord
+              </Button>
+            </a>
           </div>
         </motion.div>
       </div>
