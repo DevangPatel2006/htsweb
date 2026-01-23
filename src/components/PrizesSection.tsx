@@ -1,6 +1,15 @@
 import { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { ChevronRight, FileCheck, Utensils, Package, Users } from "lucide-react";
+import { 
+  ChevronRight, 
+  FileCheck, 
+  Utensils, 
+  Package, 
+  Users, 
+  Trophy, 
+  Medal, 
+  Award 
+} from "lucide-react";
 
 const tracks = [
   {
@@ -38,7 +47,7 @@ const tracks = [
     name: "BATTLE OF KNOWHERE",
     title: "RAVAGER MERCENARY PAY",
     prizes: [
-      { position: "1st", reward: "₹8,000", extra: "+ Gaming Gear" },
+      { position: "1st", reward: "₹8,000", extra: "+ Gear" },
       { position: "2nd", reward: "₹5,000", extra: null },
       { position: "3rd", reward: "₹3,000", extra: null },
     ],
@@ -67,50 +76,13 @@ const tracks = [
 
 const getStyles = (id) => {
   const styles = {
-    hackx: {
-      borderColor: "border-[#00f0ff]/60",
-      activeText: "text-[#00f0ff]",
-      activeBtnBg: "bg-[#00f0ff]/10",
-      rightPanelBg: "bg-[rgba(0,240,255,0.05)]",
-      hover: "hover:text-[#00f0ff] hover:bg-[#00f0ff]/10",
-    },
-    buildx: {
-      borderColor: "border-[#FF8C00]/60",
-      activeText: "text-[#FF8C00]",
-      activeBtnBg: "bg-[#FF8C00]/10",
-      rightPanelBg: "bg-[rgba(255,140,0,0.05)]",
-      hover: "hover:text-[#FF8C00] hover:bg-[#FF8C00]/10",
-    },
-    thinkx: {
-      borderColor: "border-[#FF003C]/60",
-      activeText: "text-[#FF003C]",
-      activeBtnBg: "bg-[#FF003C]/10",
-      rightPanelBg: "bg-[rgba(255,0,60,0.05)]",
-      hover: "hover:text-[#FF003C] hover:bg-[#FF003C]/10",
-    },
-    "BATTLE OF KNOWHERE": {
-      borderColor: "border-[#A020F0]/60",
-      activeText: "text-[#A020F0]",
-      activeBtnBg: "bg-[#A020F0]/10",
-      rightPanelBg: "bg-[rgba(160,32,240,0.05)]",
-      hover: "hover:text-[#A020F0] hover:bg-[#A020F0]/10",
-    },
-    "SOVEREIGN'S GAMBIT": {
-      borderColor: "border-[#FFD700]/60",
-      activeText: "text-[#FFD700]",
-      activeBtnBg: "bg-[#FFD700]/10",
-      rightPanelBg: "bg-[rgba(255,215,0,0.05)]",
-      hover: "hover:text-[#FFD700] hover:bg-[#FFD700]/10",
-    },
-    "COSMIC LENS": {
-      borderColor: "border-[#39FF14]/60",
-      activeText: "text-[#39FF14]",
-      activeBtnBg: "bg-[#39FF14]/10",
-      rightPanelBg: "bg-[rgba(57,255,20,0.05)]",
-      hover: "hover:text-[#39FF14] hover:bg-[#39FF14]/10",
-    },
+    hackx: { borderColor: "border-[#00f0ff]/60", activeText: "text-[#00f0ff]", activeBtnBg: "bg-[#00f0ff]/10", rightPanelBg: "bg-[rgba(0,240,255,0.05)]", hover: "hover:text-[#00f0ff] hover:bg-[#00f0ff]/10" },
+    buildx: { borderColor: "border-[#FF8C00]/60", activeText: "text-[#FF8C00]", activeBtnBg: "bg-[#FF8C00]/10", rightPanelBg: "bg-[rgba(255,140,0,0.05)]", hover: "hover:text-[#FF8C00] hover:bg-[#FF8C00]/10" },
+    thinkx: { borderColor: "border-[#FF003C]/60", activeText: "text-[#FF003C]", activeBtnBg: "bg-[#FF003C]/10", rightPanelBg: "bg-[rgba(255,0,60,0.05)]", hover: "hover:text-[#FF003C] hover:bg-[#FF003C]/10" },
+    "BATTLE OF KNOWHERE": { borderColor: "border-[#A020F0]/60", activeText: "text-[#A020F0]", activeBtnBg: "bg-[#A020F0]/10", rightPanelBg: "bg-[rgba(160,32,240,0.05)]", hover: "hover:text-[#A020F0] hover:bg-[#A020F0]/10" },
+    "SOVEREIGN'S GAMBIT": { borderColor: "border-[#FFD700]/60", activeText: "text-[#FFD700]", activeBtnBg: "bg-[#FFD700]/10", rightPanelBg: "bg-[rgba(255,215,0,0.05)]", hover: "hover:text-[#FFD700] hover:bg-[#FFD700]/10" },
+    "COSMIC LENS": { borderColor: "border-[#39FF14]/60", activeText: "text-[#39FF14]", activeBtnBg: "bg-[#39FF14]/10", rightPanelBg: "bg-[rgba(57,255,20,0.05)]", hover: "hover:text-[#39FF14] hover:bg-[#39FF14]/10" },
   };
-
   return styles[id] || styles.hackx;
 };
 
@@ -130,47 +102,28 @@ export default function PrizesSection() {
   const activeStyle = getStyles(activeTrack);
 
   return (
-    <section
-      id="prizes"
-      ref={ref}
-      className="relative py-10 md:py-24 lg:pt-[100px] lg:pb-32 overflow-hidden uppercase"
-    >
+    <section id="prizes" ref={ref} className="relative py-10 md:py-24 overflow-hidden uppercase">
       <div className="container mx-auto px-4 relative z-10">
+        
         {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-4 md:mb-12 mt-0 md:mt-1"
-        >
-          <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-14 md:mt-4 lg:mt-0">
-            <span className="sr-only">Hack The Spring Prizes, Rewards and Cash Pool - </span>
+        <motion.div initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} className="text-center mb-8 md:mb-12">
+          <h2 className="font-display text-[27px] lg:text-[44px] font-bold mb-2">
             <span className="text-gradient-gold">GALACTIC BOUNTIES</span>
           </h2>
-          <p className="font-barlow text-lg lg:text-[20px] mt-1 md:mt-[10px] tracking-[0.2em] leading-tight sm:leading-normal text-[#C1EAFF] italic">
-            A reward pool worth <br className="block sm:hidden" />
-            stealing batteries for
+          <p className="font-barlow text-sm lg:text-[18px] tracking-[0.2em] text-[#C1EAFF] italic">
+            A reward pool worth <br className="block sm:hidden" /> stealing batteries for
           </p>
         </motion.div>
 
-        {/* Main Content - Tab Menu + Prize Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="max-w-5xl mx-auto"
-        >
-          {/* MAIN CONTAINER (OUTER BORDER) */}
-          <div
-            className={`glass-card rounded-2xl border overflow-hidden transition-colors duration-300 ${activeStyle.borderColor}`}
-          >
+        {/* Main Content */}
+        <div className="max-w-5xl mx-auto">
+          <div className={`glass-card rounded-3xl border overflow-hidden transition-colors duration-500 ${activeStyle.borderColor}`}>
             <div className="flex flex-col md:flex-row">
-              {/* Vertical Tab Menu - Left Side */}
-              <div
-                className={`md:w-[40%] border-b md:border-b-0 md:border-r bg-card/50 transition-colors duration-300 ${activeStyle.borderColor}`}
-              >
-                <div className="p-2 md:p-6">
-                  <div className="flex md:flex-col gap-1 md:gap-2 overflow-x-auto md:overflow-visible pb-1 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+              
+              {/* Sidebar Tabs */}
+              <div className={`md:w-[30%] border-b md:border-b-0 md:border-r bg-card/40 ${activeStyle.borderColor}`}>
+                <div className="p-4 md:p-6">
+                  <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-2 md:pb-0 scrollbar-hide">
                     {tracks.map((track) => {
                       const style = getStyles(track.id);
                       const isActive = activeTrack === track.id;
@@ -178,15 +131,11 @@ export default function PrizesSection() {
                         <button
                           key={track.id}
                           onClick={() => setActiveTrack(track.id)}
-                          className={`relative flex items-center justify-start gap-2 md:gap-3 px-3 py-2 md:px-4 md:py-3 rounded-lg font-primary text-xs md:text-base font-semibold transition-all duration-300 whitespace-nowrap md:w-full text-left border ${
-                            isActive
-                              ? `${style.activeText} ${style.activeBtnBg} ${style.borderColor}`
-                              : `text-muted-foreground hover:bg-primary/5 border-transparent ${style.hover}`
+                          className={`flex items-center gap-3 px-4 py-3 rounded-xl font-primary text-[10px] md:text-xs font-bold border transition-all duration-300 ${
+                            isActive ? `${style.activeText} ${style.activeBtnBg} ${style.borderColor}` : `text-muted-foreground border-transparent ${style.hover}`
                           }`}
                         >
-                          {isActive && (
-                            <ChevronRight className="w-3 h-3 md:w-4 md:h-4 flex-shrink-0" />
-                          )}
+                          {isActive && <ChevronRight className="w-3 h-3 shrink-0" />}
                           <span className="truncate">{track.name}</span>
                         </button>
                       );
@@ -195,75 +144,79 @@ export default function PrizesSection() {
                 </div>
               </div>
 
-              {/* Prize Card - Right Side */}
-              <div
-                className={`md:w-[60%] p-4 md:p-8 transition-colors duration-300 ${activeStyle.rightPanelBg}`}
-              >
-                <motion.div
-                  key={currentTrack.id}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  {/* Track Title */}
-                  <h3 className="font-display text-lg md:text-1.5xl font-bold mb-4 md:mb-6 text-primary text-left">
+              {/* Prize Details Panel */}
+              <div className={`md:w-[70%] p-6 md:p-10 transition-colors duration-500 ${activeStyle.rightPanelBg}`}>
+                <motion.div key={currentTrack.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                  <h3 className={`font-display text-xs md:text-base font-bold mb-8 tracking-widest ${activeStyle.activeText}`}>
                     {currentTrack.title}
                   </h3>
 
-                  {/* Prize List - WITH BULLET POINTS */}
-                  <ul className="space-y-3 md:space-y-4 mb-4 md:mb-6 text-left list-disc list-inside">
-                    {currentTrack.prizes.map((prize, index) => (
-                      <li
-                        key={index}
-                        className="font-primary text-sm md:text-lg font-semibold text-foreground"
-                      >
-                        <span>
-                          {prize.position} {prize.reward}
-                        </span>
-                        {prize.extra && (
-                          <span className="ml-2 text-accent text-[10px] md:text-xs">
-                            {prize.extra}
-                          </span>
-                        )}
-                      </li>
-                    ))}
-                  </ul>
+                  <div className="flex flex-col sm:grid sm:grid-cols-3 gap-4">
+                    {currentTrack.prizes.map((prize, index) => {
+                      const getIcon = (pos) => {
+                        const iconClass = "w-10 h-10 sm:w-8 sm:h-8 text-white";
+                        if (pos === "1st") return <Trophy className={iconClass} />;
+                        if (pos === "2nd") return <Medal className={iconClass} />;
+                        return <Award className={iconClass} />;
+                      };
+
+                      return (
+                        <div
+                          key={index}
+                          className="flex flex-row sm:flex-col items-center sm:justify-between p-5 rounded-2xl bg-white/5 border border-white/10 min-h-[85px] sm:min-h-[160px] gap-4"
+                        >
+                          <div className="shrink-0 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
+                            {getIcon(prize.position)}
+                          </div>
+
+                          <div className="text-left sm:text-center flex-1">
+                            <p className="font-barlow text-[8px] sm:text-[9px] tracking-[0.2em] text-white/40 mb-0.5 uppercase">
+                              {prize.position} Place
+                            </p>
+                            
+                            {/* HORIZONTAL LINE FOR REWARD AND EXTRA */}
+                            <div className="flex flex-row sm:flex-col items-baseline sm:items-center gap-2 sm:gap-1">
+                              <p className="font-display text-base sm:text-lg font-bold text-white tracking-[0.1em] whitespace-nowrap">
+                                {prize.reward}
+                              </p>
+                              {prize.extra && (
+                                <span className="text-[7px] sm:text-[8px] text-white/60 italic font-medium px-2 py-0.5 rounded-full bg-white/5 border border-white/5 uppercase tracking-wider whitespace-nowrap">
+                                  {prize.extra}
+                                </span>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
                 </motion.div>
               </div>
             </div>
           </div>
-        </motion.div>
+        </div>
 
-        {/* Footer Strip */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-4 md:mt-16 glass-card rounded-2xl p-4 md:p-8 max-w-5xl mx-auto border border-primary/20"
-        >
-          <h3 className="font-primary text-lg md:text-xl font-semibold text-center mb-4 md:mb-6 text-foreground">
-            PARTICIPANT RECEIVES
+        {/* Participant Benefits Footer */}
+        <div className="mt-8 md:mt-12 glass-card rounded-2xl p-6 md:p-8 max-w-5xl mx-auto border border-white/5 bg-white/[0.02]">
+          <h3 className="font-primary text-[9px] md:text-xs font-bold text-center mb-8 tracking-[0.3em] text-white/70">
+            EVERY PARTICIPANT RECEIVES
           </h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-4">
             {participantBenefits.map((benefit, index) => {
               const Icon = benefit.icon;
               return (
-                <div
-                  key={index}
-                  className="flex flex-row md:flex-col items-center gap-3 md:gap-2"
-                >
-                  <div className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-4 h-4 md:w-5 md:h-5 text-accent" />
+                <div key={index} className="flex flex-col items-center text-center gap-3">
+                  <div className="w-9 h-9 rounded-full bg-white/5 flex items-center justify-center border border-white/10">
+                    <Icon className="w-4 h-4 text-white/80" />
                   </div>
-                  <span className="font-barlow text-sm text-muted-foreground text-left md:text-center md:whitespace-nowrap">
+                  <span className="font-barlow text-[9px] md:text-xs text-white/50 tracking-wide uppercase">
                     {benefit.text}
                   </span>
                 </div>
               );
             })}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );
