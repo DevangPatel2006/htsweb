@@ -116,7 +116,7 @@ const getStyles = (id) => {
 
 const participantBenefits = [
   { text: "Participation Certificate", icon: FileCheck },
-  { text: "Free Meals & Snacks", icon: Utensils },
+  { text: "Free Meals / Snacks", icon: Utensils },
   { text: "Tech Swag", icon: Package },
   { text: "Networking Access", icon: Users },
 ];
@@ -242,7 +242,7 @@ export default function PrizesSection() {
           className="mt-4 md:mt-16 glass-card rounded-2xl p-4 md:p-8 max-w-5xl mx-auto border border-primary/20"
         >
           <h3 className="font-primary text-lg md:text-xl font-semibold text-center mb-4 md:mb-6 text-foreground">
-            EVERY PARTICIPANT RECEIVES
+            PARTICIPANT RECEIVES
           </h3>
 
           <div className="grid grid-cols-1 md:grid-cols-4 gap-3 md:gap-4">
