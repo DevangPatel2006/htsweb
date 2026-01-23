@@ -109,12 +109,12 @@ const teamMembers = {
       image: harshImage,
       linkedin: "#", instagram: "#"
     },
-    {
-      name: "Dhrumil Shah",
-      role: "Documentation",
-      // image: dhrumilImage,
-      linkedin: "#", instagram: "#"
-    },
+    // {
+    //   name: "Dhrumil Shah",
+    //   role: "Documentation",
+    //   // image: dhrumilImage,
+    //   linkedin: "#", instagram: "#"
+    // },
     {
       name: "Manan Sanghani",
       role: "Documentation",
@@ -123,24 +123,24 @@ const teamMembers = {
     },
   ],
   outreach: [
-    {
-      name: "Priyanshu Singh",
-      role: "Campaigning",
-      // image: priyanshuImage,
-      linkedin: "#", instagram: "#"
-    },
-    {
-      name: "Kathan Mankad",
-      role: "Campaigning",
-      // image: kathanImage,
-      linkedin: "#", instagram: "#"
-    },
-    {
-      name: "Parth Wathodkar",
-      role: "Campaigning",
-      // image: parthwImage,
-      linkedin: "#", instagram: "#"
-    },
+    // {
+    //   name: "Priyanshu Singh",
+    //   role: "Campaigning",
+    //   // image: priyanshuImage,
+    //   linkedin: "#", instagram: "#"
+    // },
+    // {
+    //   name: "Kathan Mankad",
+    //   role: "Campaigning",
+    //   // image: kathanImage,
+    //   linkedin: "#", instagram: "#"
+    // },
+    // {
+    //   name: "Parth Wathodkar",
+    //   role: "Campaigning",
+    //   // image: parthwImage,
+    //   linkedin: "#", instagram: "#"
+    // },
     {
       name: "Surya Chandak",
       role: "Campaigning",
@@ -153,12 +153,12 @@ const teamMembers = {
       image: hemanshiImage,
       linkedin: "#", instagram: "#"
     },
-    {
-      name: "Vandan Jakhaniya",
-      role: "Social Media",
-      // image: vandanImage,
-      linkedin: "#", instagram: "#"
-    },
+    // {
+    //   name: "Vandan Jakhaniya",
+    //   role: "Social Media",
+    //   // image: vandanImage,
+    //   linkedin: "#", instagram: "#"
+    // },
     {
       name: "Viral Mahemdavadia",
       role: "Social Media",
@@ -208,38 +208,38 @@ const teamMembers = {
     },
   ],
   venue: [
-    {
-      name: "Pranav Patel",
-      role: "Logistics",
-      // image: pranavImage,
-      linkedin: "#", instagram: "#"
-    },
-    {
-      name: "Karan Rabadiya",
-      role: "Logistics",
-      // image: karanImage,
-      linkedin: "https://www.linkedin.com/in/karan-rabadiya-81bbb6313", 
-      instagram: "https://www.instagram.com/k_a_r_a_n_1098?igsh=YXY3dnNydmc2MHNt"
-    },
+    // {
+    //   name: "Pranav Patel",
+    //   role: "Logistics",
+    //   // image: pranavImage,
+    //   linkedin: "#", instagram: "#"
+    // },
+    // {
+    //   name: "Karan Rabadiya",
+    //   role: "Logistics",
+    //   // image: karanImage,
+    //   linkedin: "https://www.linkedin.com/in/karan-rabadiya-81bbb6313", 
+    //   instagram: "https://www.instagram.com/k_a_r_a_n_1098?igsh=YXY3dnNydmc2MHNt"
+    // },
     {
       name: "Yagnit Baraiya",
       role: "Logistics",
       image: yagnitImage,
       linkedin: "#", instagram: "#"
     },
-    {
-      name: "Pakshil Patel",
-      role: "Infrastructure",
-      // image: pakshilImage,
-      linkedin: "www.linkedin.com/in/pakshil-patel-423911289", 
-      instagram: "https://www.instagram.com/pakshil_patel"
-    },
-    {
-      name: "Dhaval Kanani",
-      role: "Infrastructure",
-      // image: dhavalImage,
-      linkedin: "#", instagram: "#"
-    },
+    // {
+    //   name: "Pakshil Patel",
+    //   role: "Infrastructure",
+    //   // image: pakshilImage,
+    //   linkedin: "www.linkedin.com/in/pakshil-patel-423911289", 
+    //   instagram: "https://www.instagram.com/pakshil_patel"
+    // },
+    // {
+    //   name: "Dhaval Kanani",
+    //   role: "Infrastructure",
+    //   // image: dhavalImage,
+    //   linkedin: "#", instagram: "#"
+    // },
     {
       name: "Trusha Bhatt",
       role: "Decoration",
@@ -270,19 +270,19 @@ const teamMembers = {
       linkedin: "https://www.linkedin.com/in/prerana-som-bm-gecg-dte", 
       instagram: "https://www.instagram.com/thephilosophicalpakodi?igsh=ODZkZ2FlbW5vOHoz"
     },
-    {
-      name: "Parth Panera",
-      role: "Delegate Affairs",
-      // image: parthpaneraImage,
-      linkedin: "www.linkedin.com/in/parth-panera-79b7b4289", 
-      instagram: "#"
-    },
-    {
-      name: "Karan Meghnathi",
-      role: "Delegate Affairs",
-      // image: karanmImage,
-      linkedin: "#", instagram: "#"
-    },
+    // {
+    //   name: "Parth Panera",
+    //   role: "Delegate Affairs",
+    //   // image: parthpaneraImage,
+    //   linkedin: "www.linkedin.com/in/parth-panera-79b7b4289", 
+    //   instagram: "#"
+    // },
+    // {
+    //   name: "Karan Meghnathi",
+    //   role: "Delegate Affairs",
+    //   // image: karanmImage,
+    //   linkedin: "#", instagram: "#"
+    // },
     {
       name: "Vraj Vaghasiya",
       role: "Food & Sanitation",
@@ -295,38 +295,42 @@ const teamMembers = {
       image: vivekImage,
       linkedin: "#", instagram: "#"
     },
-    {
-      name: "Shreyansh Thakor",
-      role: "Safety",
-      // image: shreyanshImage,
-      linkedin: "#", instagram: "#"
-    },
+    // {
+    //   name: "Shreyansh Thakor",
+    //   role: "Safety",
+    //   // image: shreyanshImage,
+    //   linkedin: "#", instagram: "#"
+    // },
   ],
 };
 
 // Helper component to handle icons consistently
 const SocialLink = ({ href, icon: Icon, label }) => {
-  const hasLink = href && href !== "#" && href.trim() !== "";
-  
-  if (hasLink) {
-    return (
-      <a
-        href={href}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={label}
-        className="text-muted-foreground hover:text-primary transition-colors duration-300"
-      >
-        <Icon size={20} />
-      </a>
-    );
+  // 1. Determine the actual link to use
+  let finalHref = href;
+
+  // 2. If the link is missing, empty, or "#", set it to the platform's home page
+  if (!finalHref || finalHref === "#" || finalHref.trim() === "") {
+    if (Icon === Linkedin) {
+      finalHref = "https://www.linkedin.com";
+    } else if (Icon === Instagram) {
+      finalHref = "https://www.instagram.com";
+    } else if (Icon === Twitter) {
+      finalHref = "https://twitter.com";
+    }
   }
 
-  // Render disabled icon if no link
+  // 3. Always render the clickable <a> tag (no disabled state)
   return (
-    <span className="text-muted-foreground/30 cursor-not-allowed" aria-hidden="true">
+    <a
+      href={finalHref}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={label}
+      className="text-muted-foreground hover:text-primary transition-colors duration-300"
+    >
       <Icon size={20} />
-    </span>
+    </a>
   );
 };
 
@@ -416,8 +420,8 @@ export default function TeamSection() {
             className={`flex justify-start sm:justify-center max-w-7xl mx-auto px-4 sm:px-0 ${
               // CONTAINER LAYOUT LOGIC
               activeCategory === "organizers" 
-                ? "flex-wrap justify-center gap-y-12 sm:gap-x-8" // Organizers: Wrap & Stack (Vertical list on mobile)
-                : "flex-nowrap sm:flex-wrap overflow-x-auto sm:overflow-visible no-scrollbar snap-x snap-mandatory sm:snap-none gap-x-6 sm:gap-x-8 gap-y-12" // Others: No Wrap (Horizontal scroll)
+                ? "flex-wrap justify-center gap-y-12 sm:gap-x-8" // Organizers: Wrap & Stack
+                : "flex-nowrap sm:flex-wrap overflow-x-auto sm:overflow-visible no-scrollbar snap-x snap-mandatory sm:snap-none gap-x-6 sm:gap-x-8 gap-y-12" // Others
             } ${
                activeCategory === "administration" ? "sm:gap-x-4" : "" 
             }`}
@@ -429,12 +433,12 @@ export default function TeamSection() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
-                // ITEM WIDTH LOGIC
+                // ITEM WIDTH LOGIC - UPDATED HERE
                 className={`flex-shrink-0 snap-center flex flex-col items-center sm:w-[calc(50%-2rem)] ${
-                   // Mobile Widths: Organizers = 100% (Full line), Others = 45% (Scrollable)
                    activeCategory === "organizers" ? "w-full" : "w-[45%]"
                 } ${
-                  activeCategory === "administration" ? "lg:w-[calc(20%-1rem)]" : "lg:w-[calc(25%-2rem)]"
+                  // FIX: Changed from lg:w-[calc(20%-1rem)] to lg:w-[18%] to ensure all 5 fit in one line with gaps
+                  activeCategory === "administration" ? "lg:w-[18%]" : "lg:w-[calc(25%-2rem)]"
                 }`}
               >
                 {/* Wrapper to preserve visual scale and center content */}
