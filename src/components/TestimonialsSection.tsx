@@ -6,10 +6,10 @@ import { Linkedin } from "lucide-react";
 import event1 from "@/assets/voices/meg.jfif";
 import event2 from "@/assets/voices/ld.jpg";
 import event3 from "@/assets/voices/dev.jfif";
-import event4 from "@/assets/voices/divy.jfif";
+import event4 from "@/assets/voices/new.jpeg";
 import event5 from "@/assets/voices/raj.jfif";
 import event6 from "@/assets/voices/bhvy.jfif";
-import event7 from "@/assets/voices/new.jpeg";
+import event7 from "@/assets/voices/abh.jfif";
 
 const testimonials = [
 {
@@ -72,7 +72,7 @@ const testimonials = [
     handle: "Murtaza-Godhrawala",
     content:
       "🏆 A Little Late to Share — But Grateful Beyond Words! 🏆Proud to share that our team Trinetra secured the 2nd Runner-Up position at the Technoverse Hackathon, part of HackTheSpring (HTS’25) at Government Engineering College, Gandhinagar! 🎉",
-    image: event7,
+    image: event4,
     avatar: "CA",
     linkedinUrl: "https://www.linkedin.com/posts/murtaza-godhrawala-6b8572349_hackthespring25-technoverse-ai-activity-7393883111119327232-Do-A?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEDf59kBvoU31IlGYO4U_pzcbVONHJRiT40",
   },
