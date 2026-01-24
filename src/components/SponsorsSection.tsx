@@ -99,8 +99,20 @@ export default function SponsorsSection() {
           </p>
         </motion.div>
 
-        {/* Sponsor Tiers */}
-        <div className="space-y-16">
+        {/* COMING SOON PLACEHOLDER */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : {}}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex justify-center items-center py-12 lg:py-20"
+        >
+          <h1 className="font-barlow text-5xl md:text-7xl font-bold tracking-[0.15em] text-[#C1EAFF]/30 select-none uppercase">
+            COMING SOON
+          </h1>
+        </motion.div>
+
+        {/* Sponsor Tiers (Commented Out for now) */}
+        {/* <div className="space-y-16">
           {(Object.keys(sponsors) as Array<keyof typeof sponsors>).map(
             (tier, tierIndex) => (
               <motion.div
@@ -149,7 +161,8 @@ export default function SponsorsSection() {
               </motion.div>
             )
           )}
-        </div>
+        </div> 
+        */}
 
         {/* Become a Sponsor CTA */}
       

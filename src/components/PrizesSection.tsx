@@ -27,9 +27,9 @@ const tracks = [
     name: "BUILD.X",
     title: "ROCKET’S SUPPLY CACHE",
     prizes: [
-      { position: "1st", reward: "6,000", extra: "+ Internship" },
+      { position: "1st", reward: "6,000", extra: null },
       { position: "2nd", reward: "₹4,000", extra: null },
-      { position: "3rd", reward: "₹3,000", extra: null },
+      { position: "3rd", reward: "₹2,000", extra: null },
     ],
   },
   {
@@ -38,6 +38,7 @@ const tracks = [
     title: "THE COLLECTOR’S BID",
     prizes: [
       { position: "1st", reward: "₹1000", extra: "+ Mentorship" },
+      { position: "2nd", reward: "₹500", extra: "+ Mentorship" },
      
     ],
   },
@@ -46,7 +47,7 @@ const tracks = [
     name: "BATTLE OF KNOWHERE",
     title: "RAVAGER MERCENARY PAY",
     prizes: [
-      { position: "1st", reward: "₹1000", extra: "+ Gear" },
+      { position: "1st", reward: "₹1000", extra: null },
       { position: "2nd", reward: "₹500", extra: null },
 
     ],
@@ -56,7 +57,8 @@ const tracks = [
     name: "SOVEREIGN'S GAMBIT",
     title: "SOVEREIGN GOLD RESERVES",
     prizes: [
-      { position: "1st", reward: "₹500", extra: "+ Goodies" },
+      { position: "1st", reward: "₹500", extra: null },
+      { position: "2nd", reward: "₹250", extra: null },
       ,
     ],
   },
@@ -65,7 +67,8 @@ const tracks = [
     name: "COSMIC LENS",
     title: " AWESOME MIX ROYALTIES",
     prizes: [
-      { position: "1st", reward: "₹500", extra: "+ Goodies" },
+      { position: "1st", reward: "₹500", extra: "- Photography" },
+      { position: "1st", reward: "₹500", extra: "- Content Creation" },
       
     ],
   },
