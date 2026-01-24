@@ -68,7 +68,7 @@ const teamMembers = {
     {
       name: "Nitin  Raval",
       image: sir,
-      linkedin: "#", instagram: "#"
+      linkedin: "#", instagram: "https://www.instagram.com/nitinraval2111/"
     },
     {
       name: "Devang Patel",
