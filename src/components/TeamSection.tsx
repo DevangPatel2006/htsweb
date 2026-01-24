@@ -73,12 +73,13 @@ const teamMembers = {
     {
       name: "Devang Patel",
       image: devangImage,
-      linkedin: "#", instagram: "#"
+      linkedin: "https://www.linkedin.com/in/devangpatel06/", instagram: "https://www.instagram.com/k_devang_?igsh=M211eTgydGo1eGN3"
     },
     {
       name: "Vraj Patel",
       image: vrajImage,
-      linkedin: "#", instagram: "#"
+      linkedin: "https://www.linkedin.com/in/vrajramanpatel", 
+      instagram: "https://www.instagram.com/vrajinmatrix"
     },
   ],
   technical: [
@@ -108,7 +109,8 @@ const teamMembers = {
       name: "Harsh Chauhan",
       role: "Design",
       image: harshImage,
-      linkedin: "#", instagram: "#"
+      linkedin: "https://www.linkedin.com/in/harshchauhan081", 
+      instagram: "https://www.instagram.com/_.chauhan._27"
     },
     // {
     //   name: "Dhrumil Shah",
@@ -120,7 +122,8 @@ const teamMembers = {
       name: "Manan Sanghani",
       role: "Documentation",
       image: mananImage,
-      linkedin: "#", instagram: "#"
+      linkedin: "https://www.linkedin.com/in/manan-sanghani-7662942a5?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", 
+      instagram: "https://www.instagram.com/manan_______05?igsh=MTAwZmRvMzNkMjR4Yg=="
     },
   ],
   outreach: [
@@ -146,13 +149,15 @@ const teamMembers = {
       name: "Surya Chandak",
       role: "Campaigning",
       image: suryaImage,
-      linkedin: "#", instagram: "#"
+      linkedin: "https://www.linkedin.com/in/surya-chandak-b6880b362?utm_source=share_via&utm_content=profile&utm_medium=member_android", 
+      instagram: "https://www.instagram.com/suryachandak_?igsh=dGd4MGtqNjM2M2p4"
     },
     {
       name: "Hemanshi Jalondhara",
       role: "Campaigning",
       image: hemanshiImage,
-      linkedin: "#", instagram: "#"
+      linkedin: "https://www.linkedin.com/in/hemanshi-jalondhara-669269284", 
+      instagram: "https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=wz9j3ap"
     },
     // {
     //   name: "Vandan Jakhaniya",
@@ -164,13 +169,15 @@ const teamMembers = {
       name: "Viral Mahemdavadia",
       role: "Social Media",
       image: viralImage,
-      linkedin: "#", instagram: "#"
+      linkedin: "https://www.linkedin.com/in/viral-gecgn-mech-aa100a375?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", 
+      instagram: "https://www.instagram.com/viral_031?igsh=NzJpdDA5YjhsdGU3"
     },
     {
       name: "Bharvi Savaliya",
       role: "Social Media",
       image: bharviImage,
-      linkedin: "#", instagram: "#"
+      linkedin: "https://www.linkedin.com/in/bharvii-savaliya-607048354?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", 
+      instagram: "https://www.instagram.com/bharvii._?igsh=MWplM2N2c2JiZmtxcw=="
     },
   ],
   administration: [
@@ -199,13 +206,15 @@ const teamMembers = {
       name: "Rageshree Chauhan",
       role: "Evaluation (Jury)",
       image: rageshreeImage,
-      linkedin: "#", instagram: "#"
+      linkedin: "https://www.linkedin.com/in/rageshreechauhan", 
+      instagram: "https://www.instagram.com/shreeeiously?igsh=N3oxM3NtMGtmcXFv"
     },
     {
       name: "Vruti Rupapara",
       role: "Evaluation (Jury)",
       image: vrutiImage,
-      linkedin: "#", instagram: "#"
+      linkedin: "https://www.linkedin.com/in/vruti-rupapara?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", 
+      instagram: "https://www.instagram.com/vrrr_26"
     },
   ],
   venue: [
@@ -226,7 +235,8 @@ const teamMembers = {
       name: "Yagnit Baraiya",
       role: "Logistics",
       image: yagnitImage,
-      linkedin: "#", instagram: "#"
+      linkedin: "https://www.linkedin.com/in/yagnit-baraiya-73421534a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", 
+      instagram: "https://www.instagram.com/yagnitbaraiya_9924?igsh=MTBkdDd5MjJ0bWRrcA=="
     },
     // {
     //   name: "Pakshil Patel",
@@ -268,7 +278,7 @@ const teamMembers = {
       name: "Prerana Som",
       role: "Registration",
       image: preranaImage,
-      linkedin: "https://www.linkedin.com/in/prerana-som-bm-gecg-dte", 
+      linkedin: "https://www.linkedin.com/in/prerana-som-bm-gecg-dte?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", 
       instagram: "https://www.instagram.com/thephilosophicalpakodi?igsh=ODZkZ2FlbW5vOHoz"
     },
     // {
@@ -288,13 +298,15 @@ const teamMembers = {
       name: "Vraj Vaghasiya",
       role: "Food & Sanitation",
       image: vrajvImage,
-      linkedin: "#", instagram: "#"
+      linkedin: "https://www.linkedin.com/in/vraj-vaghasiya-0b84aa383", 
+      instagram: "https://www.instagram.com/vraj_vaghasiya_203?igsh=MWpqbTc2ZGkyZDdidw=="
     },
     {
       name: "Vivek Patel",
       role: "Food & Sanitation",
       image: vivekImage,
-      linkedin: "#", instagram: "#"
+      linkedin: "https://www.linkedin.com/in/vivek-patel-220b55290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", 
+      instagram: "https://www.instagram.com/patel_vivekk_523?igsh=MTVlZzBkaHkxYWZsYQ=="
     },
     // {
     //   name: "Shreyansh Thakor",
@@ -485,4 +497,4 @@ export default function TeamSection() {
       </div>
     </section>
   );
-} 
+}
