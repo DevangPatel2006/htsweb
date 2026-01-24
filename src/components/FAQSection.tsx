@@ -177,8 +177,9 @@ export default function FAQSection() {
               href={emailHref}
               target={emailHref.startsWith('mailto') ? "_self" : "_blank"}
               rel="noopener noreferrer"
+              className="w-full sm:w-auto"
             >
-              <Button variant="hero" className="gap-2">
+              <Button variant="hero" className="gap-2 w-full">
                 <Mail className="w-5 h-5" />
                 Send an Email
               </Button>
@@ -188,12 +189,13 @@ export default function FAQSection() {
               href="https://discord.gg/hackthespring"
               target="_blank"
               rel="noopener noreferrer"
+              className="w-full sm:w-auto"
             >
-              <Button variant="heroOutline" className="gap-2">
+              <Button variant="heroOutline" className="gap-2 w-full">
                 <MessageCircle className="w-5 h-5" />
                 Join Discord
               </Button>
-            </a>
+            </a>   
           </div>
         </motion.div>
       </div>
