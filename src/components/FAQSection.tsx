@@ -1,5 +1,5 @@
 import { motion, useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import {
   Accordion,
   AccordionContent,
@@ -66,6 +66,17 @@ export default function FAQSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
   
+  // Logic to switch link based on device
+  const [emailHref, setEmailHref] = useState("mailto:hackthespring@gecg28.ac.in");
+
+  useEffect(() => {
+    // Check if user is NOT on mobile
+    const isDesktop = !/Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+    if (isDesktop) {
+      setEmailHref("https://mail.google.com/mail/?view=cm&fs=1&to=hackthespring@gecg28.ac.in");
+    }
+  }, []);
+
   const faqSchema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
@@ -162,13 +173,9 @@ export default function FAQSection() {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
             
-            {/* UPDATED LINK: 
-               Directly points to Gmail's "Compose Message" URL.
-               target="_blank" forces it to open in a new tab.
-            */}
             <a 
-              href="https://mail.google.com/mail/?view=cm&fs=1&to=hackthespring@gecg28.ac.in"
-              target="_blank"
+              href={emailHref}
+              target={emailHref.startsWith('mailto') ? "_self" : "_blank"}
               rel="noopener noreferrer"
             >
               <Button variant="hero" className="gap-2">
