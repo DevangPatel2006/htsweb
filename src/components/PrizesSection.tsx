@@ -17,7 +17,7 @@ const tracks = [
     name: "HACK.X",
     title: "NOVA CORPS TREASURY",
     prizes: [
-      { position: "1st", reward: "₹9,000", extra: "+ Internship" },
+      { position: "1st", reward: "₹9,000", extra: null },
       { position: "2nd", reward: "₹6,000", extra: null },
       { position: "3rd", reward: "₹3,000", extra: null },
     ],
@@ -143,13 +143,19 @@ export default function PrizesSection() {
               {/* Prize Details Panel */}
               <div className={`md:w-[70%] p-6 md:p-10 transition-colors duration-500 ${activeStyle.rightPanelBg}`}>
                 <motion.div key={currentTrack.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                  <h3 className={`font-display text-xs md:text-base font-bold mb-8 tracking-widest ${activeStyle.activeText}`}>
+                  
+                  {/* Updated Title Logic */}
+                  <h3 className={`font-display text-xs md:text-base font-bold mb-8 tracking-widest ${activeStyle.activeText} flex flex-col md:flex-row md:items-baseline gap-2`}>
                     {currentTrack.title}
+                    {activeTrack === 'hackx' && (
+                      <span className="font-barlow text-[15px] text-[#E6AB26] tracking-wide font-normal normal-case opacity-80">
+                        & INTERNSHIP OPPORTUNITY
+                      </span>
+                    )}
                   </h3>
 
                   <div className="flex flex-col sm:grid sm:grid-cols-3 gap-4">
                     {currentTrack.prizes.map((prize, index) => {
-                      // Check if this specific prize has an extra perk
                       const hasExtra = !!prize.extra;
                       
                       const getIcon = (pos) => {
@@ -178,7 +184,6 @@ export default function PrizesSection() {
                               {prize.position} Place
                             </p>
                             
-                            {/* HORIZONTAL LINE FOR REWARD AND EXTRA */}
                             <div className="flex flex-row sm:flex-col items-baseline sm:items-center gap-2 sm:gap-1">
                               <p className="font-display text-base sm:text-lg font-bold text-white tracking-[0.1em] whitespace-nowrap">
                                 {prize.reward}
