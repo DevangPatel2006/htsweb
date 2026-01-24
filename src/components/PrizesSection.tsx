@@ -17,9 +17,9 @@ const tracks = [
     name: "HACK.X",
     title: "NOVA CORPS TREASURY",
     prizes: [
-      { position: "1st", reward: "₹15,000", extra: "+ Internship" },
-      { position: "2nd", reward: "₹10,000", extra: null },
-      { position: "3rd", reward: "₹5,000", extra: null },
+      { position: "1st", reward: "₹9,000", extra: "+ Internship" },
+      { position: "2nd", reward: "₹6,000", extra: null },
+      { position: "3rd", reward: "₹3,000", extra: null },
     ],
   },
   {
@@ -27,9 +27,9 @@ const tracks = [
     name: "BUILD.X",
     title: "ROCKET’S SUPPLY CACHE",
     prizes: [
-      { position: "1st", reward: "₹15,000", extra: "+ Internship" },
-      { position: "2nd", reward: "₹10,000", extra: null },
-      { position: "3rd", reward: "₹5,000", extra: null },
+      { position: "1st", reward: "6,000", extra: "+ Internship" },
+      { position: "2nd", reward: "₹4,000", extra: null },
+      { position: "3rd", reward: "₹3,000", extra: null },
     ],
   },
   {
@@ -37,9 +37,8 @@ const tracks = [
     name: "THINK.X",
     title: "THE COLLECTOR’S BID",
     prizes: [
-      { position: "1st", reward: "₹12,000", extra: "+ Mentorship" },
-      { position: "2nd", reward: "₹8,000", extra: null },
-      { position: "3rd", reward: "₹4,000", extra: null },
+      { position: "1st", reward: "₹1000", extra: "+ Mentorship" },
+     
     ],
   },
   {
@@ -47,9 +46,9 @@ const tracks = [
     name: "BATTLE OF KNOWHERE",
     title: "RAVAGER MERCENARY PAY",
     prizes: [
-      { position: "1st", reward: "₹8,000", extra: "+ Gear" },
-      { position: "2nd", reward: "₹5,000", extra: null },
-      { position: "3rd", reward: "₹3,000", extra: null },
+      { position: "1st", reward: "₹1000", extra: "+ Gear" },
+      { position: "2nd", reward: "₹500", extra: null },
+
     ],
   },
   {
@@ -57,9 +56,8 @@ const tracks = [
     name: "SOVEREIGN'S GAMBIT",
     title: "SOVEREIGN GOLD RESERVES",
     prizes: [
-      { position: "1st", reward: "₹5,000", extra: "+ Goodies" },
-      { position: "2nd", reward: "₹3,000", extra: null },
-      { position: "3rd", reward: "₹2,000", extra: null },
+      { position: "1st", reward: "₹500", extra: "+ Goodies" },
+      ,
     ],
   },
   {
@@ -67,9 +65,8 @@ const tracks = [
     name: "COSMIC LENS",
     title: " AWESOME MIX ROYALTIES",
     prizes: [
-      { position: "1st", reward: "₹5,000", extra: "+ Goodies" },
-      { position: "2nd", reward: "₹3,000", extra: null },
-      { position: "3rd", reward: "₹2,000", extra: null },
+      { position: "1st", reward: "₹500", extra: "+ Goodies" },
+      
     ],
   },
 ];
