@@ -85,7 +85,7 @@ const getStyles = (id) => {
 
 const participantBenefits = [
   { text: "Participation Certificate", icon: FileCheck },
-  { text: "Free Meals / Snacks", icon: Utensils },
+  { text: "Meals / Snacks", icon: Utensils },
   { text: "Tech Swag", icon: Package },
   { text: "Networking Access", icon: Users },
 ];

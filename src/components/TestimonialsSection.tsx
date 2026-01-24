@@ -12,68 +12,69 @@ import event6 from "@/assets/voices/bhvy.jfif";
 import event7 from "@/assets/voices/abh.jfif";
 
 const testimonials = [
-  {
+{
     name: "L.D. College of Engineering",
     handle: "@ldcollegeofengineering",
     content:
       "Our students secured 2nd Runner-Up at Hack The Spring’25, held 28 Feb - 1 Mar 2025 at GEC Gandhinagar, Gujarat.",
     image: event2,
     avatar: "LD",
-    linkedinUrl: "https://www.linkedin.com/school/ldcollegeofengineering/", // Add actual link
-  },
-  {
+    linkedinUrl: "https://www.linkedin.com/posts/l%2Ed-college-of-engineering---ahmedabad_ldce-proudmoment-technicalexcellence-activity-7304771375574007808-kqED?utm_source=share&utm_medium=member_android&rcm=ACoAAEIDyTIBBYNLy8oJqgpAT-MyMMX1AB61zmo",
+},
+
+{
     name: "Devansh Vora",
     handle: "@devanshvora03",
     content:
       "Proud to see my juniors carry forward the legacy with passion. Watching HTS 2025 come alive was truly fulfilling.",
     image: event3,
     avatar: "DV",
-    linkedinUrl: "https://www.linkedin.com/in/devanshvora/", // Add actual link
-  },
-  {
-    name: "Divy Pattani",
-    handle: "@divysoni03",
-    content:
-      "I participated in my college’s HackTheSpring hackathon. It was a great journey, with valuable feedback from judges and professors.",
-    image: event4,
-    avatar: "DP",
-    linkedinUrl: "https://www.linkedin.com/in/divy-pattani/", // Add actual link
-  },
-  {
-    name: "Dhruvi Raj",
+    linkedinUrl: "https://www.linkedin.com/posts/devanshvora03_hackthespring-hts2025-legacycontinues-activity-7302241927452594176-HrdV?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEDf59kBvoU31IlGYO4U_pzcbVONHJRiT40",
+ },
+ {
+ name: "Dhruvi Raj",
     handle: "@dhruvi raj",
     content:
       "Proud to organize Hack The Spring ’25 at GEC Gandhinagar, witnessing 450+ participants’ passion and innovation.",
     image: event5,
     avatar: "DR",
-    linkedinUrl: "https://www.linkedin.com/", // Add actual link
-  },
-  {
+    linkedinUrl: "https://www.linkedin.com/posts/dhruvi-raj-34841924b_hackthespring-organizer-hts2025-activity-7305326483772690432-X1cx?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEDf59kBvoU31IlGYO4U_pzcbVONHJRiT40",
+},
+{
     name: "Bhagy Patel",
     handle: "@bhagypatel1810",
     content:
       "Great experience at HackTheSpring. Thanks to the organizers and mentors who made the event possible.",
     image: event6,
     avatar: "BP",
-    linkedinUrl: "https://www.linkedin.com/", // Add actual link
-  },
-  {
+    linkedinUrl: "https://www.linkedin.com/posts/bhagypatel1810_hackthespring-expandingexpress-hackathonexperience-activity-7304370987578322944-K1__?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEDf59kBvoU31IlGYO4U_pzcbVONHJRiT40",
+ },
+ {
     name: "Meghani Ansh",
     handle: "@meghani ansh",
     content:
       "Secured 1st Runner-Up at Hack The Spring 2025, a two-day hackathon held on 28 Feb–1 Mar at GEC Gandhinagar.",
     image: event1,
     avatar: "MA",
-    linkedinUrl: "https://www.linkedin.com/", // Add actual link
-  },
-  {
+    linkedinUrl: "https://www.linkedin.com/posts/meghani-ansh-340785298_hackthespring-hackathon-teamwork-activity-7302893127827099648-aBCD?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEDf59kBvoU31IlGYO4U_pzcbVONHJRiT40", 
+},
+ {
     name: "Chauhan Abhay",
     handle: "@abhay7066",
     content:
       "Organizing HTS’25 was a journey of teamwork, problem-solving, and learning that shaped us and inspires the future.",
     image: event7,
     avatar: "CA",
-    linkedinUrl: "https://www.linkedin.com/", // Add actual link
+    linkedinUrl: "https://www.linkedin.com/posts/abhay7066_hts25-step-into-the-technoverse-i-activity-7306583024064724992-0W3I?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEDf59kBvoU31IlGYO4U_pzcbVONHJRiT40",
+ },
+ {
+    name: "Murtaza Godhrawala",
+    handle: "Murtaza-Godhrawala",
+    content:
+      "🏆 A Little Late to Share — But Grateful Beyond Words! 🏆Proud to share that our team Trinetra secured the 2nd Runner-Up position at the Technoverse Hackathon, part of HackTheSpring (HTS’25) at Government Engineering College, Gandhinagar! 🎉",
+    image: event7,
+    avatar: "CA",
+    linkedinUrl: "https://www.linkedin.com/posts/murtaza-godhrawala-6b8572349_hackthespring25-technoverse-ai-activity-7393883111119327232-Do-A?utm_source=share&utm_medium=member_desktop&rcm=ACoAAEDf59kBvoU31IlGYO4U_pzcbVONHJRiT40",
   },
 ];
 
