@@ -9,7 +9,7 @@ import event3 from "@/assets/voices/dev.jfif";
 import event4 from "@/assets/voices/divy.jfif";
 import event5 from "@/assets/voices/raj.jfif";
 import event6 from "@/assets/voices/bhvy.jfif";
-import event7 from "@/assets/voices/abh.jfif";
+import event7 from "@/assets/voices/new.jpeg";
 
 const testimonials = [
 {
