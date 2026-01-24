@@ -27,7 +27,7 @@ const tracks = [
     name: "BUILD.X",
     title: "ROCKET’S SUPPLY CACHE",
     prizes: [
-      { position: "1st", reward: "6,000", extra: null },
+      { position: "1st", reward: "₹6,000", extra: null },
       { position: "2nd", reward: "₹4,000", extra: null },
       { position: "3rd", reward: "₹2,000", extra: null },
     ],
@@ -39,7 +39,6 @@ const tracks = [
     prizes: [
       { position: "1st", reward: "₹1000", extra: "+ Mentorship" },
       { position: "2nd", reward: "₹500", extra: "+ Mentorship" },
-     
     ],
   },
   {
@@ -49,7 +48,6 @@ const tracks = [
     prizes: [
       { position: "1st", reward: "₹1000", extra: null },
       { position: "2nd", reward: "₹500", extra: null },
-
     ],
   },
   {
@@ -59,7 +57,6 @@ const tracks = [
     prizes: [
       { position: "1st", reward: "₹500", extra: null },
       { position: "2nd", reward: "₹250", extra: null },
-      ,
     ],
   },
   {
@@ -68,8 +65,7 @@ const tracks = [
     title: " AWESOME MIX ROYALTIES",
     prizes: [
       { position: "1st", reward: "₹500", extra: "- Photography" },
-      { position: "1st", reward: "₹500", extra: "- Content Creation" },
-      
+      { position: "2nd", reward: "₹500", extra: "- Content Creation" },
     ],
   },
 ];
@@ -153,6 +149,9 @@ export default function PrizesSection() {
 
                   <div className="flex flex-col sm:grid sm:grid-cols-3 gap-4">
                     {currentTrack.prizes.map((prize, index) => {
+                      // Check if this specific prize has an extra perk
+                      const hasExtra = !!prize.extra;
+                      
                       const getIcon = (pos) => {
                         const iconClass = "w-10 h-10 sm:w-8 sm:h-8 text-white";
                         if (pos === "1st") return <Trophy className={iconClass} />;
@@ -163,13 +162,18 @@ export default function PrizesSection() {
                       return (
                         <div
                           key={index}
-                          className="flex flex-row sm:flex-col items-center sm:justify-between p-5 rounded-2xl bg-white/5 border border-white/10 min-h-[85px] sm:min-h-[160px] gap-4"
+                          className={`
+                            flex flex-row sm:flex-col items-center 
+                            p-5 rounded-2xl bg-white/5 border border-white/10 
+                            min-h-[85px] sm:min-h-[160px] gap-4
+                            ${hasExtra ? "sm:justify-between" : "sm:justify-center sm:gap-6"} 
+                          `}
                         >
                           <div className="shrink-0 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
                             {getIcon(prize.position)}
                           </div>
 
-                          <div className="text-left sm:text-center flex-1">
+                          <div className={`text-left sm:text-center ${hasExtra ? "flex-1" : ""}`}>
                             <p className="font-barlow text-[8px] sm:text-[9px] tracking-[0.2em] text-white/40 mb-0.5 uppercase">
                               {prize.position} Place
                             </p>
