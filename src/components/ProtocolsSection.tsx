@@ -18,37 +18,37 @@ const protocols = [
   {
     id: 1,
     trackSvg: hackSvg,
-    initiateLink: "https://unstop.com/hackathons/protocol-1-initiate",
+    initiateLink: "https://unstop.com/p/hackthespring26-government-engineering-college-gec-gandhinagar-1627826",
     learnMoreLink: "https://discord.gg/protocol-1-learn",
   },
   {
     id: 2,
     trackSvg: buildSvg,
-    initiateLink: "https://www.figma.com/design/Y0VezvLGs2ZV3UEnhs5eCU/HTS-26?node-id=147-407&t=biCKR6yr4duvMbmX-0",
+    initiateLink: "https://unstop.com/p/buildx-government-engineering-college-gec-gandhinagar-1628010",
     learnMoreLink: "https://discord.gg/protocol-2-learn",
   },
   {
     id: 3,
     trackSvg: thinkSvg,
-    initiateLink: "https://unstop.com/hackathons/protocol-3-initiate",
+    initiateLink: "https://unstop.com/p/thinkx-government-engineering-college-gec-gandhinagar-1628037",
     learnMoreLink: "https://discord.gg/protocol-3-learn",
   },
   {
     id: 4,
     trackSvg: gameSvg,
-    initiateLink: "https://unstop.com/hackathons/protocol-4-initiate",
+    initiateLink: "https://unstop.com/p/battle-of-nowhere-esports-tournament-government-engineering-college-gec-gandhinagar-1628523",
     learnMoreLink: "https://discord.gg/protocol-4-learn",
   },
   {
     id: 5,
     trackSvg: chessSvg,
-    initiateLink: "https://unstop.com/hackathons/protocol-5-initiate",
+    initiateLink: "https://unstop.com/p/solvereigns-gambit-government-engineering-college-gec-gandhinagar-1628065",
     learnMoreLink: "https://discord.gg/protocol-5-learn",
   },
   {
     id: 6,
     trackSvg: lastSvg,
-    initiateLink: "https://unstop.com/hackathons/protocol-6-initiate",
+    initiateLink: "https://unstop.com/p/cosmic-lens-government-engineering-college-gandhinagar-gujarat-1628652",
     learnMoreLink: "https://discord.gg/protocol-6-learn",
   },
 ];

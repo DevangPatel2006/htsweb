@@ -11,12 +11,12 @@ import TestimonialsSection from "@/components/TestimonialsSection";
 import SponsorsSection from "@/components/SponsorsSection";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
-import SectionSeparator from "@/components/SectionSeparator"; // Assuming this is your Cassette component
+import SectionSeparator from "@/components/SectionSeparator";
 import ProtocolsSection from "@/components/ProtocolsSection";
 
 const Index = () => {
   const [isPlaying, setIsPlaying] = React.useState(false);
-  const audioRef = React.useRef<HTMLAudioElement>(null);
+  const audioRef = React.useRef(null);
 
   const toggleMusic = () => {
     if (audioRef.current) {
@@ -43,6 +43,31 @@ const Index = () => {
         `
       }}
     >
+      {/* --- CUSTOM ANIMATION FOR BUTTON RING --- */}
+      <style>{`
+        @keyframes btn-ring-pulse {
+          0% {
+            transform: scale(1);
+            opacity: 1;
+            border-width: 1px;
+            box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.7);
+          }
+          70% {
+             transform: scale(1.6);
+             opacity: 0;
+             border-width: 0px;
+             box-shadow: 0 0 20px 10px rgba(234, 179, 8, 0);
+          }
+          100% {
+            transform: scale(1.6);
+            opacity: 0;
+          }
+        }
+        .animate-music-pulse {
+          animation: btn-ring-pulse 3s infinite cubic-bezier(0.4, 0, 0.6, 1);
+        }
+      `}</style>
+
       {/* 1. Star Field (Back Layer) */}
       <StarField />
       
@@ -68,71 +93,61 @@ const Index = () => {
         <Navbar />
         <HeroSection />
         
-        {/* Removed variant="stars" because the component doesn't accept props */}
-        
-        
         <AboutSection />
-        
-        
         
         <ProtocolsSection />
         
-        
-        
         <TracksSection />
-        
-        
         
         <PrizesSection />
         
-        
-        
         <TimelineSection />
-        
-        
         
         <TeamSection />
         
-        
-        
         <TestimonialsSection />
         
-        
-        
         <SponsorsSection />
-        
-        
         
         <FAQSection />
         <Footer />
       </div>
 
-      {/* Music Button - Fixed Bottom Right */}
-      <button
-        onClick={toggleMusic}
-        className="fixed bottom-6 right-6 z-50 w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-glow-gold hover:scale-110 transition-all duration-300 flex items-center justify-center"
-        aria-label={isPlaying ? "Pause music" : "Play music"}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          className={`text-black ${isPlaying ? "animate-spin" : ""}`}
-          style={isPlaying ? { animationDuration: "3s" } : {}}
+      {/* Music Button Container - Fixed Bottom Right */}
+      <div className="fixed bottom-6 right-6 z-50 flex items-center justify-center">
+        
+        {/* The Yellow Pulse Ring (Behind Button) */}
+        <div 
+          className="absolute inset-0 rounded-full border border-yellow-400 animate-music-pulse pointer-events-none"
+        />
+
+        {/* The Button Itself */}
+        <button
+          onClick={toggleMusic}
+          className="relative w-14 h-14 rounded-full bg-primary text-primary-foreground shadow-glow-gold hover:scale-110 transition-all duration-300 flex items-center justify-center"
+          aria-label={isPlaying ? "Pause music" : "Play music"}
         >
-          <rect width="20" height="16" x="2" y="4" rx="2" />
-          <circle cx="8" cy="10" r="2" />
-          <path d="M8 12h8" />
-          <circle cx="16" cy="10" r="2" />
-          <path d="m6 20 .7-2.9A1.4 1.4 0 0 1 8.1 16h7.8a1.4 1.4 0 0 1 1.4 1l.7 3" />
-        </svg>
-      </button>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            className={`text-black ${isPlaying ? "animate-spin" : ""}`}
+            style={isPlaying ? { animationDuration: "3s" } : {}}
+          >
+            <rect width="20" height="16" x="2" y="4" rx="2" />
+            <circle cx="8" cy="10" r="2" />
+            <path d="M8 12h8" />
+            <circle cx="16" cy="10" r="2" />
+            <path d="m6 20 .7-2.9A1.4 1.4 0 0 1 8.1 16h7.8a1.4 1.4 0 0 1 1.4 1l.7 3" />
+          </svg>
+        </button>
+      </div>
 
       {/* Hidden Audio Element */}
       <audio

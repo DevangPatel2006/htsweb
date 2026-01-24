@@ -83,19 +83,20 @@ const teamMembers = {
   ],
   technical: [
     {
-      name: "Mohammed Pithapur",
-      role: "Web & Tech",
-      image: mohammedImage, 
-      linkedin: "https://www.linkedin.com/in/mohammed-pithapur", 
-      instagram: "https://www.instagram.com/mohammed.index?igsh=ZTh2enVldHFpcHY5"
-    },
-    {
       name: "Rikin Pithadia",
       role: "Web & Tech",
       image: rikinImage,
       linkedin: "https://www.linkedin.com/in/rikin-pithadia-20b94729b/", 
       instagram: "https://www.instagram.com/rikin_2911?igsh=MWkwd3BoenVidGZqZQ=="
     },
+    {
+      name: "Mohammed Pithapur",
+      role: "Web & Tech",
+      image: mohammedImage, 
+      linkedin: "https://www.linkedin.com/in/mohammed-pithapur", 
+      instagram: "https://www.instagram.com/mohammed.index?igsh=ZTh2enVldHFpcHY5"
+    },
+    
     {
       name: "Prince Parmar",
       role: "Design",
@@ -484,4 +485,4 @@ export default function TeamSection() {
       </div>
     </section>
   );
-}
+} 

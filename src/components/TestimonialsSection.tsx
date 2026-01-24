@@ -19,6 +19,7 @@ const testimonials = [
       "Our students secured 2nd Runner-Up at Hack The Spring’25, held 28 Feb - 1 Mar 2025 at GEC Gandhinagar, Gujarat.",
     image: event2,
     avatar: "LD",
+    linkedinUrl: "https://www.linkedin.com/school/ldcollegeofengineering/", // Add actual link
   },
   {
     name: "Devansh Vora",
@@ -27,6 +28,7 @@ const testimonials = [
       "Proud to see my juniors carry forward the legacy with passion. Watching HTS 2025 come alive was truly fulfilling.",
     image: event3,
     avatar: "DV",
+    linkedinUrl: "https://www.linkedin.com/in/devanshvora/", // Add actual link
   },
   {
     name: "Divy Pattani",
@@ -35,6 +37,7 @@ const testimonials = [
       "I participated in my college’s HackTheSpring hackathon. It was a great journey, with valuable feedback from judges and professors.",
     image: event4,
     avatar: "DP",
+    linkedinUrl: "https://www.linkedin.com/in/divy-pattani/", // Add actual link
   },
   {
     name: "Dhruvi Raj",
@@ -43,6 +46,7 @@ const testimonials = [
       "Proud to organize Hack The Spring ’25 at GEC Gandhinagar, witnessing 450+ participants’ passion and innovation.",
     image: event5,
     avatar: "DR",
+    linkedinUrl: "https://www.linkedin.com/", // Add actual link
   },
   {
     name: "Bhagy Patel",
@@ -51,6 +55,7 @@ const testimonials = [
       "Great experience at HackTheSpring. Thanks to the organizers and mentors who made the event possible.",
     image: event6,
     avatar: "BP",
+    linkedinUrl: "https://www.linkedin.com/", // Add actual link
   },
   {
     name: "Meghani Ansh",
@@ -59,6 +64,7 @@ const testimonials = [
       "Secured 1st Runner-Up at Hack The Spring 2025, a two-day hackathon held on 28 Feb–1 Mar at GEC Gandhinagar.",
     image: event1,
     avatar: "MA",
+    linkedinUrl: "https://www.linkedin.com/", // Add actual link
   },
   {
     name: "Chauhan Abhay",
@@ -67,13 +73,14 @@ const testimonials = [
       "Organizing HTS’25 was a journey of teamwork, problem-solving, and learning that shaped us and inspires the future.",
     image: event7,
     avatar: "CA",
+    linkedinUrl: "https://www.linkedin.com/", // Add actual link
   },
 ];
 
 export default function TestimonialsSection() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const scrollRef = useRef<HTMLDivElement>(null);
+  const scrollRef = useRef(null);
   const isPaused = useRef(false);
 
   // Auto scroll (Optimized for Mobile Touch)
@@ -81,14 +88,13 @@ export default function TestimonialsSection() {
     const container = scrollRef.current;
     if (!container) return;
 
-    let animationId: number;
+    let animationId;
     
     // We use a float tracker because scrollLeft is an integer and loses precision
     let currentScroll = container.scrollLeft; 
 
     const scroll = () => {
       // 1. Always sync with real DOM position first
-      // This ensures if user swiped, we know about it immediately
       if (Math.abs(currentScroll - container.scrollLeft) > 2) {
          currentScroll = container.scrollLeft;
       }
@@ -183,7 +189,6 @@ export default function TestimonialsSection() {
             onMouseLeave={() => (isPaused.current = false)}
             onTouchStart={() => (isPaused.current = true)}
             onTouchEnd={() => (isPaused.current = false)}
-            // 'touch-pan-x' ensures mobile browsers handle the gesture nicely
             className="flex gap-6 overflow-x-auto [scrollbar-width:none] py-8 select-none touch-pan-x"
           >
             {tripleTestimonials.map((testimonial, index) => {
@@ -191,9 +196,12 @@ export default function TestimonialsSection() {
               const yOffset = (index % 3 - 1) * 20;
 
               return (
-                <motion.div
+                <motion.a
                   key={index}
-                  className="flex-shrink-0 w-80 glass-card rounded-2xl p-5 border border-border/50"
+                  href={testimonial.linkedinUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-shrink-0 w-80 glass-card rounded-2xl p-5 border border-border/50 cursor-pointer block hover:border-cosmic-blue/50 transition-colors"
                   style={{
                     transform: `rotate(${rotation}deg) translateY(${yOffset}px)`,
                   }}
@@ -225,14 +233,13 @@ export default function TestimonialsSection() {
                   <div className="rounded-xl overflow-hidden border border-border/50">
                     <img
                       src={testimonial.image}
-                      // SEO UPDATE: Better Alt Text
                       alt={`${testimonial.name} participating at Hack The Spring Event`}
                       className="w-full h-36 object-cover"
                       draggable={false}
                       loading="lazy"
                     />
                   </div>
-                </motion.div>
+                </motion.a>
               );
             })}
           </div>
