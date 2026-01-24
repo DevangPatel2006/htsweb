@@ -127,6 +127,13 @@ const teamMembers = {
     },
   ],
   outreach: [
+     {
+      name: "Bharvi Savaliya",
+      role: "Social Media",
+      image: bharviImage,
+      linkedin: "https://www.linkedin.com/in/bharvii-savaliya-607048354?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", 
+      instagram: "https://www.instagram.com/bharvii._?igsh=MWplM2N2c2JiZmtxcw=="
+    },
     // {
     //   name: "Priyanshu Singh",
     //   role: "Campaigning",
@@ -172,13 +179,7 @@ const teamMembers = {
       linkedin: "https://www.linkedin.com/in/viral-gecgn-mech-aa100a375?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", 
       instagram: "https://www.instagram.com/viral_031?igsh=NzJpdDA5YjhsdGU3"
     },
-    {
-      name: "Bharvi Savaliya",
-      role: "Social Media",
-      image: bharviImage,
-      linkedin: "https://www.linkedin.com/in/bharvii-savaliya-607048354?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", 
-      instagram: "https://www.instagram.com/bharvii._?igsh=MWplM2N2c2JiZmtxcw=="
-    },
+   
   ],
   administration: [
     {
