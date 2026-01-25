@@ -119,7 +119,8 @@ export default function PrizesSection() {
               {/* Sidebar Tabs */}
               <div className={`md:w-[30%] border-b md:border-b-0 md:border-r bg-card/40 ${activeStyle.borderColor}`}>
                 <div className="p-4 md:p-6">
-                  <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-2 md:pb-0 scrollbar-hide">
+                  {/* CHANGED: Added specific classes to hide scrollbar across all browsers */}
+                  <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
                     {tracks.map((track) => {
                       const style = getStyles(track.id);
                       const isActive = activeTrack === track.id;
@@ -148,7 +149,8 @@ export default function PrizesSection() {
                   <h3 className={`font-display text-xs md:text-base font-bold mb-8 tracking-widest ${activeStyle.activeText} flex flex-col md:flex-row md:items-baseline gap-2`}>
                     {currentTrack.title}
                     {activeTrack === 'hackx' && (
-                      <span className="font-barlow text-[15px] text-[#E6AB26] tracking-wide font-normal normal-case opacity-80">
+                      /* CHANGED: Added 'italic' class here */
+                      <span className="font-barlow text-[15px] text-[#E6AB26] tracking-wide font-normal italic normal-case opacity-80">
                         & INTERNSHIP OPPORTUNITY
                       </span>
                     )}

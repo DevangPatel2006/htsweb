@@ -77,7 +77,7 @@ const day2Events = [
 ];
 
 export default function TimelineSection() {
-  const [activeDay, setActiveDay] = useState<1 | 2>(1);
+  const [activeDay, setActiveDay] = useState(1);
 
   const currentEvents = activeDay === 1 ? day1Events : day2Events;
   const currentDate = activeDay === 1 ? "Friday, February 20, 2026" : "Saturday, February 21, 2026";
@@ -104,7 +104,8 @@ export default function TimelineSection() {
         <div className="flex justify-center gap-8 mb-8 w-fit mx-auto px-8">
           <button
             onClick={() => setActiveDay(1)}
-            className={`relative pb-3 text-lg md:text-xl font-barlow tracking-wider transition-all duration-300 ${
+            // Update: Changed tracking-wider to tracking-normal
+            className={`relative pb-3 text-lg md:text-xl font-barlow tracking-normal transition-all duration-300 ${
               activeDay === 1
                 ? "text-primary border-b-2 border-primary drop-shadow-[0_0_8px_rgba(var(--primary),0.6)]" 
                 : "text-muted-foreground hover:text-foreground border-b-2 border-transparent"
@@ -115,7 +116,8 @@ export default function TimelineSection() {
           
           <button
             onClick={() => setActiveDay(2)}
-            className={`relative pb-3 text-lg md:text-xl font-barlow tracking-wider transition-all duration-300 ${
+            // Update: Changed tracking-wider to tracking-normal
+            className={`relative pb-3 text-lg md:text-xl font-barlow tracking-normal transition-all duration-300 ${
               activeDay === 2
                 ? "text-primary border-b-2 border-primary drop-shadow-[0_0_8px_rgba(var(--primary),0.6)]" 
                 : "text-muted-foreground hover:text-foreground border-b-2 border-transparent"
@@ -131,9 +133,16 @@ export default function TimelineSection() {
             {/* Day Header */}
             <div className="flex items-center justify-between mb-6 pb-4 border-b border-border/30">
               <div>
-                <h3 className="font-display text-2xl md:text-3xl text-gradient-gold">
-                  Day {activeDay}
+                {/* CHANGE HERE: 
+                  1. Added 'flex items-center gap-1'.
+                  2. 'gap-1' controls the space. You can change to gap-2 (wider) or gap-0.5 (tighter).
+                  3. Wrapped "Day" and activeDay in spans.
+                */}
+                <h3 className="font-display text-2xl md:text-3xl text-gradient-gold gap-5 flex items-center gap-1">
+                  <span>Day </span>
+                  <span> {activeDay}</span>
                 </h3>
+
                 {/* SEO OPTIMIZATION: Added title attribute for date context */}
                 <p 
                   className="font-body text-muted-foreground text-sm mt-1"
@@ -141,11 +150,6 @@ export default function TimelineSection() {
                 >
                   {currentDate}
                 </p>
-              </div>
-              <div className="w-12 h-12 md:w-14 md:h-14 rounded-full bg-primary/20 border-2 border-primary flex items-center justify-center">
-                <span className="font-display text-lg md:text-xl text-primary">
-                  {activeDay}
-                </span>
               </div>
             </div>
 
