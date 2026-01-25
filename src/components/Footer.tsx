@@ -82,7 +82,8 @@ export default function Footer() {
             </div>
             
             {/* --- UPDATED LINKS HERE --- */}
-            <div className="flex mt-3 gap-4 text-[12px] text-[#B0E5FF] uppercase tracking-widest font-barlow">
+            {/* Added 'justify-center' to ensure centering */}
+            <div className="flex justify-center mt-3 gap-4 text-[12px] text-[#B0E5FF] uppercase tracking-widest font-barlow">
               <a 
                 href="https://docs.google.com/document/d/18XM5Vp7Zp_9uPX70eP3ctnzwbdZyrEu8tYyUMmEBpww/edit?usp=drivesdk" 
                 target="_blank"
@@ -115,19 +116,19 @@ export default function Footer() {
               COMMAND POST
             </h4>
             
-<div className="w-full rounded-xl overflow-hidden border border-gray-700/50 shadow-lg relative bg-gray-800">
-  <iframe
-    src="https://www.google.com/maps?q=Government+Engineering+College,+Sector+28,+Gandhinagar&output=embed"
-    width="100%"
-    height="100%"
-    style={{ border: 0, height: "120px" }}
-    allowFullScreen
-    loading="lazy"
-    referrerPolicy="no-referrer-when-downgrade"
-    className="block"
-    title="GEC Gandhinagar Campus Map"
-  />
-</div>
+            <div className="w-full rounded-xl overflow-hidden border border-gray-700/50 shadow-lg relative bg-gray-800">
+              <iframe
+                src="https://www.google.com/maps?q=Government+Engineering+College,+Sector+28,+Gandhinagar&output=embed"
+                width="100%"
+                height="100%"
+                style={{ border: 0, height: "120px" }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="block"
+                title="GEC Gandhinagar Campus Map"
+              />
+            </div>
           </motion.div>
         </div>
 

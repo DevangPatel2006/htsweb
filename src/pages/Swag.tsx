@@ -7,8 +7,8 @@ import { cn } from "@/lib/utils";
 
 // --- ASSETS ---
 // Ensure these images exist in your assets folder
-import swagBgPortrait from "@/assets/Group 11.svg"; 
-import swagBgStory from "@/assets/Group 11.svg"; 
+import swagBgPortrait from "@/assets/swags.png"; 
+import swagBgStory from "@/assets/swagsst.png"; 
 
 // --- TYPES ---
 type FormatConfig = {
