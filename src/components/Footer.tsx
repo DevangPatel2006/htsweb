@@ -54,16 +54,15 @@ export default function Footer() {
             </div>
           </motion.div>
 
-          {/* --- CENTER COLUMN --- */}
+          {/* --- CENTER COLUMN (Updated Mobile Alignment) --- */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
             viewport={{ once: true }}
-            className="flex flex-col items-center justify-self-center gap-6"
+            className="flex flex-col items-center justify-self-center w-full gap-6"
           >
             <div className="flex flex-col items-center space-y-4 mt-0 lg:mt-5">
-            
               <div className="flex gap-4">
                 {socialLinks.map((social) => (
                   <motion.a
@@ -81,30 +80,43 @@ export default function Footer() {
               </div>
             </div>
             
-            {/* --- UPDATED LINKS HERE --- */}
-            {/* Added 'justify-center' to ensure centering */}
-            <div className="flex justify-center mt-3 gap-4 text-[12px] text-[#B0E5FF] uppercase tracking-widest font-barlow">
-              <a 
-                href="https://docs.google.com/document/d/18XM5Vp7Zp_9uPX70eP3ctnzwbdZyrEu8tYyUMmEBpww/edit?usp=drivesdk" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
-              >
-                TERMS & CONDITIONS
-              </a>
-              <span className="text-[#B0E5FF] opacity-50">|</span>
-              <a 
-                href="https://docs.google.com/document/d/1xnkktyxc5uyCJH3j_7DQIshCK1-gnSKlyG-gYIJUWCA/edit?usp=drivesdk" 
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-white transition-colors"
-              >
-                PRIVACY POLICY
-              </a>
+            {/* --- LINKS SECTION --- */}
+            {/* MOBILE FIX: Removed flex-1 on mobile so it centers naturally as a block.
+                DESKTOP (lg): Retained flex-1 logic to keep the pipe geometrically centered.
+            */}
+            <div className="flex items-center justify-center w-full max-w-[500px] mt-3 text-[12px] text-[#B0E5FF] uppercase tracking-widest font-barlow">
+              
+              {/* Left Link: Auto width on mobile, Flex-1/Right-align on Desktop */}
+              <div className="lg:flex-1 lg:text-right">
+                <a 
+                  href="https://docs.google.com/document/d/18XM5Vp7Zp_9uPX70eP3ctnzwbdZyrEu8tYyUMmEBpww/edit?usp=drivesdk" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  TERMS & CONDITIONS
+                </a>
+              </div>
+
+              {/* Separator */}
+              <span className="text-[#B0E5FF] opacity-50 px-3">|</span>
+
+              {/* Right Link: Auto width on mobile, Flex-1/Left-align on Desktop */}
+              <div className="lg:flex-1 lg:text-left">
+                <a 
+                  href="https://docs.google.com/document/d/1xnkktyxc5uyCJH3j_7DQIshCK1-gnSKlyG-gYIJUWCA/edit?usp=drivesdk" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:text-white transition-colors"
+                >
+                  PRIVACY POLICY
+                </a>
+              </div>
+
             </div>
           </motion.div>
 
-          {/* --- RIGHT COLUMN (Command Post) --- */}
+          {/* --- RIGHT COLUMN --- */}
           <motion.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}

@@ -19,7 +19,6 @@ type FormatConfig = {
   bgImage: string;
   width: number;
   height: number;
-  // Position config (Normalized 0 to 1 based on Width/Height)
   pos: {
     circleCy: number;   // Center Y (percentage of height)
     circleRad: number;  // Radius (percentage of WIDTH)
@@ -33,14 +32,13 @@ export default function Swag() {
   const [profileImage, setProfileImage] = useState<string | null>(null);
   const [isGenerating, setIsGenerating] = useState(false);
   
-  // Default to Portrait since Square is removed
-  const [selectedFormat, setSelectedFormat] = useState<"portrait" | "story">("portrait");
+  // Default to Story based on your screenshot
+  const [selectedFormat, setSelectedFormat] = useState<"portrait" | "story">("story");
 
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // --- CONFIGURATION MAP ---
-  // Only 4:5 and 9:16 allowed
   const FORMATS: Record<string, FormatConfig> = {
     portrait: {
       id: "portrait",
@@ -51,10 +49,9 @@ export default function Swag() {
       width: 4096,
       height: 5120, // 4:5 Ratio
       pos: {
-        // TODO: Adjust these decimals to match your specific SVG/PNG layout
-        circleCy: 0.40, // 40% down from top
-        circleRad: 0.225, // Radius is 22.5% of the total Width
-        plateCy: 0.75, // Text is 75% down from top
+        circleCy: 0.40, 
+        circleRad: 0.225, 
+        plateCy: 0.75, 
         plateWidth: 0.55,
       }
     },
@@ -67,18 +64,19 @@ export default function Swag() {
       width: 4096,
       height: 7282, // 9:16 Ratio
       pos: {
-        // TODO: Adjust these decimals to match your specific SVG/PNG layout
-        circleCy: 0.35, 
-        circleRad: 0.225, 
-        plateCy: 0.70, 
-        plateWidth: 0.55,
+        // --- FIXED COORDINATES ---
+        // These are calculated to align perfectly with the visual elements
+        circleCy: 0.384,  // 38.4% down the image (Center of Porthole)
+        circleRad: 0.218, // Slightly smaller radius to fit inside the rim
+        plateCy: 0.536,   // 53.6% down (Center of Orange Box)
+        plateWidth: 0.55, // Width of the orange box
       }
     }
   };
 
   const activeConfig = FORMATS[selectedFormat];
 
-  // Font loading only
+  // Font loading
   useEffect(() => {
     const loadFonts = async () => {
       try {
@@ -111,7 +109,7 @@ export default function Swag() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // 1. Setup Canvas based on Active Config
+    // 1. Setup Canvas
     const W = activeConfig.width;
     const H = activeConfig.height;
     
@@ -126,45 +124,8 @@ export default function Swag() {
     const circleRadius = W * activeConfig.pos.circleRad; 
     const plateY = H * activeConfig.pos.plateCy;
     
-    // --- 2. Draw Profile Picture (Bottom Layer) ---
-    ctx.save();
-    ctx.beginPath();
-    ctx.arc(cx, circleY, circleRadius, 0, Math.PI * 2);
-    ctx.clip(); 
-
-    if (profileImage) {
-      const img = new Image();
-      img.src = profileImage;
-      await new Promise<void>((resolve) => {
-        img.onload = () => {
-          // Calculate Aspect Ratio to "Cover" the circle
-          const scale = Math.max((circleRadius * 2) / img.width, (circleRadius * 2) / img.height);
-          const w = img.width * scale;
-          const h = img.height * scale;
-          // Center the image
-          ctx.drawImage(img, cx - w / 2, circleY - h / 2, w, h);
-          resolve();
-        };
-        img.onerror = () => resolve();
-      });
-    } else {
-      // Default placeholder
-      ctx.fillStyle = "#020617";
-      ctx.fillRect(0, 0, W, H);
-      ctx.font = `${circleRadius}px sans-serif`;
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillStyle = "#ffffff";
-      ctx.fillText("🚀", cx, circleY);
-    }
-    
-    // Tint
-    ctx.globalCompositeOperation = "overlay";
-    ctx.fillStyle = "rgba(0, 190, 255, 0.15)";
-    ctx.fillRect(0, 0, W, H);
-    ctx.restore(); 
-
-    // --- 3. Draw Background Frame (Middle Layer) ---
+    // --- 2. Draw Background Frame (Bottom Layer) ---
+    // We draw the background FIRST because it is a JPG (no transparency)
     const bg = new Image();
     bg.crossOrigin = "anonymous";
     bg.src = activeConfig.bgImage;
@@ -177,31 +138,80 @@ export default function Swag() {
       bg.onerror = () => resolve();
     });
 
+    // --- 3. Draw Profile Picture (Middle Layer - Masked) ---
+    // We draw the profile pic ON TOP, but clipped to a circle so it fits the window
+    ctx.save();
+    ctx.beginPath();
+    ctx.arc(cx, circleY, circleRadius, 0, Math.PI * 2);
+    ctx.clip(); // Restrict drawing to the circle
+
+    if (profileImage) {
+      const img = new Image();
+      img.src = profileImage;
+      await new Promise<void>((resolve) => {
+        img.onload = () => {
+          // "Cover" logic: Scale image to fill the circle without stretching
+          const scale = Math.max((circleRadius * 2) / img.width, (circleRadius * 2) / img.height);
+          const w = img.width * scale;
+          const h = img.height * scale;
+          
+          // Draw centered
+          ctx.drawImage(img, cx - w / 2, circleY - h / 2, w, h);
+          resolve();
+        };
+        img.onerror = () => resolve();
+      });
+    } else {
+      // Default placeholder if no image
+      ctx.fillStyle = "#020617";
+      ctx.fillRect(0, 0, W, H);
+      ctx.font = `${circleRadius}px sans-serif`;
+      ctx.textAlign = "center";
+      ctx.textBaseline = "middle";
+      ctx.fillStyle = "#ffffff";
+      ctx.fillText("🚀", cx, circleY);
+    }
+    
+    // Inner shadow overlay to make it look "inside" the porthole
+    ctx.globalCompositeOperation = "source-over"; // Draw on top of image
+    const gradient = ctx.createRadialGradient(cx, circleY, circleRadius * 0.8, cx, circleY, circleRadius);
+    gradient.addColorStop(0, "transparent");
+    gradient.addColorStop(1, "rgba(0,0,0,0.4)"); // Dark rim
+    ctx.fillStyle = gradient;
+    ctx.beginPath();
+    ctx.arc(cx, circleY, circleRadius, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.restore(); // Remove clip
+
     // --- 4. Draw Name (Top Layer) ---
     const displayName = name.trim() || "HACKER NAME";
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     
-    let fontSize = 210;
+    // Start with a sensible font size (smaller than before)
+    let fontSize = 120; 
     ctx.font = `900 ${fontSize}px 'Cinzel', serif`;
     let textWidth = ctx.measureText(displayName.toUpperCase()).width;
     const maxTextWidth = W * activeConfig.pos.plateWidth;
 
-    while (textWidth > maxTextWidth && fontSize > 60) {
-      fontSize -= 10;
+    // Shrink text if it's too long
+    while (textWidth > maxTextWidth && fontSize > 40) {
+      fontSize -= 5;
       ctx.font = `900 ${fontSize}px 'Cinzel', serif`;
       textWidth = ctx.measureText(displayName.toUpperCase()).width;
     }
 
-    // Gradient Text
-    const textGradient = ctx.createLinearGradient(0, plateY - 100, 0, plateY + 100);
+    // Gradient Text for Metallic Effect
+    const textGradient = ctx.createLinearGradient(0, plateY - (fontSize/2), 0, plateY + (fontSize/2));
     textGradient.addColorStop(0, "#452814"); 
     textGradient.addColorStop(0.5, "#1a0f08");
     textGradient.addColorStop(1, "#452814"); 
     ctx.fillStyle = textGradient;
 
-    ctx.shadowColor = "rgba(255, 255, 255, 0.2)";
-    ctx.shadowOffsetY = 3;
+    // Slight shadow to make text pop
+    ctx.shadowColor = "rgba(255, 255, 255, 0.3)";
+    ctx.shadowOffsetY = 2;
     ctx.fillText(displayName.toUpperCase(), cx, plateY);
     ctx.shadowColor = "transparent";
 
@@ -231,36 +241,37 @@ export default function Swag() {
                 maxWidth: '500px'
             }}
           >
-            
-            {/* 1. Profile Picture (Bottom) */}
+            {/* BACKGROUND IMAGE */}
+            <img 
+              src={activeConfig.bgImage} 
+              alt="Badge Template" 
+              className="absolute inset-0 w-full h-full object-cover z-10 pointer-events-none"
+            />
+
+            {/* PROFILE PICTURE (Layered via Z-Index) */}
+            {/* Positioned absolutely based on percentages to match canvas logic */}
             <div 
-              className="absolute z-10 rounded-full overflow-hidden bg-black/50 flex items-center justify-center"
+              className="absolute z-20 rounded-full overflow-hidden flex items-center justify-center"
               style={{
                 top: `${(activeConfig.pos.circleCy * 100)}%`, 
                 left: '50%',
                 transform: 'translate(-50%, -50%)',
                 width: `${activeConfig.pos.circleRad * 2 * 100}%`,
                 aspectRatio: '1/1', 
+                // Using a box-shadow to blend edges visually in preview
+                boxShadow: 'inset 0 0 20px rgba(0,0,0,0.5)'
               }}
             >
               {profileImage ? (
-                <>
                   <img src={profileImage} alt="Profile" className="w-full h-full object-cover" />
-                  <div className="absolute inset-0 bg-cyan-400/10 mix-blend-overlay pointer-events-none" />
-                </>
               ) : (
-                <div className="text-4xl animate-pulse">🚀</div>
+                <div className="w-full h-full bg-black/50 flex items-center justify-center">
+                    <span className="text-4xl animate-pulse">🚀</span>
+                </div>
               )}
             </div>
 
-             {/* 2. Background ImageFrame (Middle) */}
-            <img 
-              src={activeConfig.bgImage} 
-              alt="Badge Template" 
-              className="absolute inset-0 w-full h-full object-cover z-20 pointer-events-none"
-            />
-
-            {/* 3. Name Text (Top) */}
+            {/* NAME TEXT (Top Layer) */}
             <div 
               className="absolute z-30 flex items-center justify-center text-center"
               style={{
@@ -274,7 +285,8 @@ export default function Swag() {
               <h2 
                 className="font-serif font-black uppercase text-transparent bg-clip-text bg-gradient-to-b from-[#5c3a21] via-[#1a1109] to-[#5c3a21] whitespace-nowrap"
                 style={{ 
-                   fontSize: 'clamp(16px, 3.5cqw, 32px)',
+                   // Dynamic font size for preview based on container width
+                   fontSize: 'clamp(14px, 2.8cqw, 24px)',
                    filter: 'drop-shadow(0px 1px 1px rgba(255,255,255,0.2))' 
                 }} 
               >
@@ -290,7 +302,6 @@ export default function Swag() {
         {/* CONTROLS SECTION */}
         <div className="bg-white/5 backdrop-blur-md border border-white/10 p-8 rounded-2xl shadow-xl order-1 lg:order-2">
             <Link to="/">
-              {/* CHANGE HERE: added hover:bg-transparent */}
               <Button variant="ghost" className="pl-0 gap-2 text-white/60 hover:text-white hover:bg-transparent mb-4">
                 <ArrowLeft size={16} /> Back
               </Button>
