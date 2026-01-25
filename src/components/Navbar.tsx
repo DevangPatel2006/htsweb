@@ -165,7 +165,7 @@ export default function Navbar() {
                 whileTap={{ scale: 0.95 }}
               >
                 <Sparkles size={14} />
-                Swag
+                Badge
               </motion.span>
             </Link>
           </div>
