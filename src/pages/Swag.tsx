@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 
 // --- ASSETS ---
 import swagBgStory from "@/assets/swagsst.png"; 
-import defaultBadge from "@/assets/default_badge.png"; // Added default image
+import defaultBadge from "@/assets/default_badge.png"; 
 
 export default function Swag() {
   // -------------------------------------------------------------------------
@@ -56,7 +56,7 @@ export default function Swag() {
     const imgToDraw = profileImage || defaultBadge;
     
     const img = new Image();
-    img.crossOrigin = "anonymous"; // Helps prevent security errors with some images
+    img.crossOrigin = "anonymous"; 
     img.src = imgToDraw;
     await new Promise((res) => {
       img.onload = () => {
@@ -109,7 +109,7 @@ export default function Swag() {
     ctx.fillStyle = textGrad;
     ctx.fillText(firstName, nameX, nameY);
 
-    // --- EXPORT LOGIC (MOBILE SHARE OR DESKTOP DOWNLOAD) ---
+    // --- EXPORT LOGIC ---
     canvas.toBlob(async (blob) => {
         if (!blob) {
             setIsGenerating(false);
@@ -119,7 +119,6 @@ export default function Swag() {
         const fileName = `galactic-id-${firstName || 'HACKER'}.png`;
         const file = new File([blob], fileName, { type: "image/png" });
 
-        // Try to share (Mobile)
         if (navigator.canShare && navigator.canShare({ files: [file] })) {
             try {
                 await navigator.share({
@@ -128,12 +127,9 @@ export default function Swag() {
                     text: 'Check out my Hack The Spring identity! 🚀',
                 });
             } catch (error) {
-                // If share fails or is cancelled, we generally don't do anything, 
-                // but you could add a fallback download here if desired.
                 console.log("Share skipped", error);
             }
         } else {
-            // Fallback to Download (Desktop)
             const link = document.createElement("a");
             link.download = fileName;
             link.href = canvas.toDataURL("image/png");
@@ -146,7 +142,11 @@ export default function Swag() {
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#050508] p-6 font-barlow">
-      <div className="w-full max-w-6xl grid lg:grid-cols-2 gap-12 items-center">
+      {/* UPDATED LINE BELOW: 
+          Changed from 'grid' to 'flex flex-col lg:grid'
+          This forces vertical stacking + centering on mobile, but keeps grid on desktop.
+      */}
+      <div className="w-full max-w-6xl flex flex-col lg:grid lg:grid-cols-2 gap-12 items-center justify-center">
         
         {/* PREVIEW */}
         <div className="flex flex-col items-center">
@@ -154,7 +154,7 @@ export default function Swag() {
             className="relative rounded-xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-white/5 bg-black"
             style={{ aspectRatio: '9/16', height: '80vh', maxHeight: '850px' }}
           >
-            {/* PHOTO (Z-10) - SHOWS DEFAULT IF NO IMAGE UPLOADED */}
+            {/* PHOTO (Z-10) */}
             <div 
               className="absolute z-10 rounded-full overflow-hidden flex items-center justify-center bg-zinc-900"
               style={{
@@ -196,7 +196,8 @@ export default function Swag() {
         </div>
 
         {/* UI CONTROLS */}
-        <div className="bg-[#0f0f13] border border-white/10 p-10 rounded-3xl shadow-2xl">
+        {/* Added 'w-full' to ensure it takes full width when centered in flex column */}
+        <div className="w-full bg-[#0f0f13] border border-white/10 p-10 rounded-3xl shadow-2xl">
           <Link 
             to="/" 
             className="flex items-center gap-2 text-zinc-500 hover:text-white transition-colors duration-200 mb-8 w-fit group"
