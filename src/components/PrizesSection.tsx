@@ -8,7 +8,8 @@ import {
   Users, 
   Trophy, 
   Medal, 
-  Award 
+  Award,
+  CheckCircle2 
 } from "lucide-react";
 
 const tracks = [
@@ -16,6 +17,12 @@ const tracks = [
     id: "hackx",
     name: "HACK.X",
     title: "NOVA CORPS TREASURY",
+    trackBenefits: [
+      "Internship Opportunity",
+      "Food: 2 Days Breakfast & Lunch",
+      "Networking Access",
+      "Industry Experience"
+    ],
     prizes: [
       { position: "1st", reward: "₹9,000", extra: null },
       { position: "2nd", reward: "₹6,000", extra: null },
@@ -26,6 +33,12 @@ const tracks = [
     id: "buildx",
     name: "BUILD.X",
     title: "ROCKET’S SUPPLY CACHE",
+    trackBenefits: [
+      "Internship Opportunity",
+      "Food: 2 Days Breakfast & Lunch",
+      "Networking Access",
+      "Industry Experience"
+    ],
     prizes: [
       { position: "1st", reward: "₹6,000", extra: null },
       { position: "2nd", reward: "₹4,000", extra: null },
@@ -119,7 +132,6 @@ export default function PrizesSection() {
               {/* Sidebar Tabs */}
               <div className={`md:w-[30%] border-b md:border-b-0 md:border-r bg-card/40 ${activeStyle.borderColor}`}>
                 <div className="p-4 md:p-6">
-                  {/* CHANGED: Added specific classes to hide scrollbar across all browsers */}
                   <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
                     {tracks.map((track) => {
                       const style = getStyles(track.id);
@@ -143,64 +155,130 @@ export default function PrizesSection() {
 
               {/* Prize Details Panel */}
               <div className={`md:w-[70%] p-6 md:p-10 transition-colors duration-500 ${activeStyle.rightPanelBg}`}>
-                <motion.div key={currentTrack.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                <motion.div key={currentTrack.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="h-full">
                   
-                  {/* Updated Title Logic */}
                   <h3 className={`font-display text-xs md:text-base font-bold mb-8 tracking-widest ${activeStyle.activeText} flex flex-col md:flex-row md:items-baseline gap-2`}>
                     {currentTrack.title}
-                    {activeTrack === 'hackx' && (
-                      /* CHANGED: Added 'italic' class here */
-                      <span className="font-barlow text-[15px] text-[#E6AB26] tracking-wide font-normal italic normal-case opacity-80">
-                        & INTERNSHIP OPPORTUNITY
-                      </span>
-                    )}
                   </h3>
 
-                  <div className="flex flex-col sm:grid sm:grid-cols-3 gap-4">
-                    {currentTrack.prizes.map((prize, index) => {
-                      const hasExtra = !!prize.extra;
+                  {currentTrack.trackBenefits ? (
+                    // FLEX ROW WITH ITEMS-STRETCH TO FORCE EQUAL HEIGHT
+                    <div className="flex flex-col xl:flex-row gap-6 h-full items-stretch">
                       
-                      const getIcon = (pos) => {
+                      {/* Left: Prize Money (Determines height) */}
+                      <div className="flex-1 flex flex-col gap-4">
+                        {currentTrack.prizes.map((prize, index) => {
+                          const iconClass = "w-8 h-8 text-white";
+                          let Icon = Award;
+                          if (prize.position === "1st") Icon = Trophy;
+                          if (prize.position === "2nd") Icon = Medal;
+
+                          return (
+                            <div key={index} className="flex items-center p-4 rounded-xl bg-white/5 border border-white/10 gap-4">
+                              <div className="shrink-0 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
+                                <Icon className={iconClass} />
+                              </div>
+                              <div>
+                                <p className="font-barlow text-[9px] tracking-[0.2em] text-white/40 mb-0.5 uppercase">
+                                  {prize.position}
+                                </p>
+                                <p className="font-display text-lg font-bold text-white tracking-[0.1em]">
+                                  {prize.reward}
+                                </p>
+                              </div>
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      {/* Right: Benefits List (Adjusts to fill height) */}
+                      <div className="xl:w-[300px] shrink-0 flex flex-col rounded-xl bg-white/[0.03] border border-white/5 px-6 py-5">
+                         <h4 className="font-display text-xs font-bold text-white/60 mb-4 tracking-widest border-b border-white/10 pb-2">
+                           INCLUDES
+                         </h4>
+                         
+                         {/* JUSTIFY-BETWEEN forces the 4 items to spread evenly to the bottom */}
+                         <ul className="flex-1 flex flex-col justify-between">
+                           {currentTrack.trackBenefits.map((benefit, i) => {
+                             const isInternship = benefit.toLowerCase().includes("internship");
+                             
+                             return (
+                               <li key={i} className="flex items-center gap-4">
+                                 {isInternship ? (
+                                    <motion.div
+                                      animate={{ filter: ["drop-shadow(0 0 0px #FFD700)", "drop-shadow(0 0 8px #FFD700)", "drop-shadow(0 0 0px #FFD700)"] }}
+                                      transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                                    >
+                                      <CheckCircle2 className="w-5 h-5 text-[#FFD700]" />
+                                    </motion.div>
+                                 ) : (
+                                    <CheckCircle2 className={`w-5 h-5 ${activeStyle.activeText}`} />
+                                 )}
+                                 
+                                 <motion.span 
+                                   className={`font-barlow text-sm font-medium tracking-wide leading-tight ${
+                                     isInternship ? "text-[#FFD700] font-bold" : "text-white/80"
+                                   }`}
+                                   animate={isInternship ? { 
+                                      textShadow: ["0 0 0px rgba(255,215,0,0)", "0 0 10px rgba(255,215,0,0.8)", "0 0 0px rgba(255,215,0,0)"],
+                                      opacity: [0.8, 1, 0.8]
+                                   } : {}}
+                                   transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
+                                 >
+                                   {benefit}
+                                 </motion.span>
+                               </li>
+                             );
+                           })}
+                         </ul>
+                      </div>
+                    </div>
+                  ) : (
+                    /* Standard Grid for other tracks */
+                    <div className="flex flex-col sm:grid sm:grid-cols-3 gap-4">
+                      {currentTrack.prizes.map((prize, index) => {
+                        const hasExtra = !!prize.extra;
                         const iconClass = "w-10 h-10 sm:w-8 sm:h-8 text-white";
-                        if (pos === "1st") return <Trophy className={iconClass} />;
-                        if (pos === "2nd") return <Medal className={iconClass} />;
-                        return <Award className={iconClass} />;
-                      };
+                        let Icon = Award;
+                        if (prize.position === "1st") Icon = Trophy;
+                        if (prize.position === "2nd") Icon = Medal;
 
-                      return (
-                        <div
-                          key={index}
-                          className={`
-                            flex flex-row sm:flex-col items-center 
-                            p-5 rounded-2xl bg-white/5 border border-white/10 
-                            min-h-[85px] sm:min-h-[160px] gap-4
-                            ${hasExtra ? "sm:justify-between" : "sm:justify-center sm:gap-6"} 
-                          `}
-                        >
-                          <div className="shrink-0 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
-                            {getIcon(prize.position)}
-                          </div>
+                        return (
+                          <div
+                            key={index}
+                            className={`
+                              flex flex-row sm:flex-col items-center 
+                              p-5 rounded-2xl bg-white/5 border border-white/10 
+                              min-h-[85px] sm:min-h-[160px] gap-4
+                              ${hasExtra ? "sm:justify-between" : "sm:justify-center sm:gap-6"} 
+                            `}
+                          >
+                            <div className="shrink-0 drop-shadow-[0_0_8px_rgba(255,255,255,0.3)]">
+                              <Icon className={iconClass} />
+                            </div>
 
-                          <div className={`text-left sm:text-center ${hasExtra ? "flex-1" : ""}`}>
-                            <p className="font-barlow text-[8px] sm:text-[9px] tracking-[0.2em] text-white/40 mb-0.5 uppercase">
-                              {prize.position} Place
-                            </p>
-                            
-                            <div className="flex flex-row sm:flex-col items-baseline sm:items-center gap-2 sm:gap-1">
-                              <p className="font-display text-base sm:text-lg font-bold text-white tracking-[0.1em] whitespace-nowrap">
-                                {prize.reward}
+                            <div className={`text-left sm:text-center ${hasExtra ? "flex-1" : ""}`}>
+                              <p className="font-barlow text-[8px] sm:text-[9px] tracking-[0.2em] text-white/40 mb-0.5 uppercase">
+                                {prize.position} Place
                               </p>
-                              {prize.extra && (
-                                <span className="text-[7px] sm:text-[8px] text-white/60 italic font-medium px-2 py-0.5 rounded-full bg-white/5 border border-white/5 uppercase tracking-wider whitespace-nowrap">
-                                  {prize.extra}
-                                </span>
-                              )}
+                              
+                              <div className="flex flex-row sm:flex-col items-baseline sm:items-center gap-2 sm:gap-1">
+                                <p className="font-display text-base sm:text-lg font-bold text-white tracking-[0.1em] whitespace-nowrap">
+                                  {prize.reward}
+                                </p>
+                                {prize.extra && (
+                                  <span className="text-[7px] sm:text-[8px] text-white/60 italic font-medium px-2 py-0.5 rounded-full bg-white/5 border border-white/5 uppercase tracking-wider whitespace-nowrap">
+                                    {prize.extra}
+                                  </span>
+                                )}
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      );
-                    })}
-                  </div>
+                        );
+                      })}
+                    </div>
+                  )}
+
                 </motion.div>
               </div>
             </div>
