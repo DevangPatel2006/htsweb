@@ -35,10 +35,11 @@ const tracks = [
     name: "BUILD.X",
     title: "ROCKET'S SUPPLY CACHE",
     trackBenefits: [
-      "Internship Opportunity",
-      "2 Days Breakfast & Lunch",
-      "Networking Access",
-      "Industry Experience"
+      "CERTIFICATE OF PARTICIPATION",
+      "BREAKFAST & LUNCH",
+      "GIFT VOUCHERS",
+      "NETWORKING ACCESS",
+      "HANDS-ON EXPERIENCE"
     ],
     prizes: [
       { position: "1st", reward: "₹6,000", extra: null },
