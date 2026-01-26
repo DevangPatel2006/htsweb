@@ -56,6 +56,7 @@ export default function Swag() {
     const imgToDraw = profileImage || defaultBadge;
     
     const img = new Image();
+    img.crossOrigin = "anonymous"; // Helps prevent security errors with some images
     img.src = imgToDraw;
     await new Promise((res) => {
       img.onload = () => {
@@ -108,11 +109,39 @@ export default function Swag() {
     ctx.fillStyle = textGrad;
     ctx.fillText(firstName, nameX, nameY);
 
-    const link = document.createElement("a");
-    link.download = `galactic-id-${firstName || 'HACKER'}.png`;
-    link.href = canvas.toDataURL("image/png");
-    link.click();
-    setIsGenerating(false);
+    // --- EXPORT LOGIC (MOBILE SHARE OR DESKTOP DOWNLOAD) ---
+    canvas.toBlob(async (blob) => {
+        if (!blob) {
+            setIsGenerating(false);
+            return;
+        }
+
+        const fileName = `galactic-id-${firstName || 'HACKER'}.png`;
+        const file = new File([blob], fileName, { type: "image/png" });
+
+        // Try to share (Mobile)
+        if (navigator.canShare && navigator.canShare({ files: [file] })) {
+            try {
+                await navigator.share({
+                    files: [file],
+                    title: 'My Galactic ID',
+                    text: 'Check out my Hack The Spring identity! 🚀',
+                });
+            } catch (error) {
+                // If share fails or is cancelled, we generally don't do anything, 
+                // but you could add a fallback download here if desired.
+                console.log("Share skipped", error);
+            }
+        } else {
+            // Fallback to Download (Desktop)
+            const link = document.createElement("a");
+            link.download = fileName;
+            link.href = canvas.toDataURL("image/png");
+            link.click();
+        }
+        
+        setIsGenerating(false);
+    }, "image/png");
   };
 
   return (
