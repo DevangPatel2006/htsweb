@@ -4,8 +4,9 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 
-// --- ASSET ---
+// --- ASSETS ---
 import swagBgStory from "@/assets/swagsst.png"; 
+import defaultBadge from "@/assets/default_badge.png"; // Added default image
 
 export default function Swag() {
   // -------------------------------------------------------------------------
@@ -51,25 +52,26 @@ export default function Swag() {
     canvas.width = CANVAS_W;
     canvas.height = CANVAS_H;
 
-    // --- LAYER 1: PROFILE IMAGE ---
-    if (profileImage) {
-      const img = new Image();
-      img.src = profileImage;
-      await new Promise((res) => {
-        img.onload = () => {
-          ctx.save();
-          ctx.beginPath();
-          ctx.arc(profileX, profileY, radius, 0, Math.PI * 2);
-          ctx.clip();
-          const scale = Math.max((radius * 2) / img.width, (radius * 2) / img.height);
-          const w = img.width * scale;
-          const h = img.height * scale;
-          ctx.drawImage(img, profileX - w / 2, profileY - h / 2, w, h);
-          ctx.restore();
-          res(null);
-        };
-      });
-    }
+    // --- LAYER 1: PROFILE IMAGE (OR DEFAULT) ---
+    const imgToDraw = profileImage || defaultBadge;
+    
+    const img = new Image();
+    img.src = imgToDraw;
+    await new Promise((res) => {
+      img.onload = () => {
+        ctx.save();
+        ctx.beginPath();
+        ctx.arc(profileX, profileY, radius, 0, Math.PI * 2);
+        ctx.clip();
+        const scale = Math.max((radius * 2) / img.width, (radius * 2) / img.height);
+        const w = img.width * scale;
+        const h = img.height * scale;
+        ctx.drawImage(img, profileX - w / 2, profileY - h / 2, w, h);
+        ctx.restore();
+        res(null);
+      };
+      img.onerror = () => res(null);
+    });
 
     // --- LAYER 2: MAIN FRAME ---
     const bg = new Image();
@@ -78,7 +80,7 @@ export default function Swag() {
     await new Promise((res) => { bg.onload = res; bg.onerror = res; });
     ctx.drawImage(bg, 0, 0, CANVAS_W, CANVAS_H);
 
-    // --- LAYER 3: NAME TEXT (BARLOW + FIRST NAME ONLY + ENGRAVED WHITE) ---
+    // --- LAYER 3: NAME TEXT ---
     const rawName = name.trim() || "";
     const firstName = rawName.split(" ")[0].toUpperCase();
 
@@ -94,13 +96,11 @@ export default function Swag() {
       ctx.font = `900 ${fontSize}px 'Barlow', sans-serif`;
     }
 
-    // WHITE ENGRAVED GRADIENT
     const textGrad = ctx.createLinearGradient(0, nameY - 20, 0, nameY + 20);
-    textGrad.addColorStop(0, "#888888"); // Darker top for inner shadow effect
-    textGrad.addColorStop(0.3, "#f0f0f0"); // Transition to white
-    textGrad.addColorStop(1, "#ffffff"); // Bright bottom edge
+    textGrad.addColorStop(0, "#888888"); 
+    textGrad.addColorStop(0.3, "#f0f0f0"); 
+    textGrad.addColorStop(1, "#ffffff"); 
 
-    // Outer shadow for "edge" highlights
     ctx.shadowColor = "rgba(255,255,255,0.2)";
     ctx.shadowBlur = 1;
     ctx.shadowOffsetY = 1;
@@ -109,7 +109,7 @@ export default function Swag() {
     ctx.fillText(firstName, nameX, nameY);
 
     const link = document.createElement("a");
-    link.download = `galactic-id-${firstName}.png`;
+    link.download = `galactic-id-${firstName || 'HACKER'}.png`;
     link.href = canvas.toDataURL("image/png");
     link.click();
     setIsGenerating(false);
@@ -125,7 +125,7 @@ export default function Swag() {
             className="relative rounded-xl overflow-hidden shadow-[0_0_50px_rgba(0,0,0,0.8)] border border-white/5 bg-black"
             style={{ aspectRatio: '9/16', height: '80vh', maxHeight: '850px' }}
           >
-            {/* PHOTO (Z-10) */}
+            {/* PHOTO (Z-10) - SHOWS DEFAULT IF NO IMAGE UPLOADED */}
             <div 
               className="absolute z-10 rounded-full overflow-hidden flex items-center justify-center bg-zinc-900"
               style={{
@@ -136,13 +136,13 @@ export default function Swag() {
                 aspectRatio: '1/1',
               }}
             >
-              {profileImage ? <img src={profileImage} className="w-full h-full object-cover" /> : <span className="text-2xl">🚀</span>}
+              <img src={profileImage || defaultBadge} className="w-full h-full object-cover" alt="profile" />
             </div>
 
             {/* FRAME (Z-20) */}
             <img src={swagBgStory} className="absolute inset-0 w-full h-full object-cover z-20 pointer-events-none" alt="bg" />
 
-            {/* NAME (Z-30) - WHITE ENGRAVED STYLE */}
+            {/* NAME (Z-30) */}
             <div 
               className="absolute z-30 w-full flex justify-center"
               style={{ 
@@ -160,7 +160,7 @@ export default function Swag() {
                   filter: 'drop-shadow(0px 1px 0px rgba(255,255,255,0.2))'
                 }}
               >
-                {(name.trim().split(" ")[0] || "")}
+                {(name.trim().split(" ")[0] || "HACKER")}
               </h2>
             </div>
           </div>
@@ -168,16 +168,18 @@ export default function Swag() {
 
         {/* UI CONTROLS */}
         <div className="bg-[#0f0f13] border border-white/10 p-10 rounded-3xl shadow-2xl">
-          <Link to="/">
-            <Button variant="ghost" className="pl-0 text-zinc-500 hover:text-white mb-8">
-              <ArrowLeft size={16} className="mr-2" /> EXIT TERMINAL
-            </Button>
+          <Link 
+            to="/" 
+            className="flex items-center gap-2 text-zinc-500 hover:text-white transition-colors duration-200 mb-8 w-fit group"
+          >
+            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> 
+            <span className="text-sm font-bold tracking-widest">EXIT TERMINAL</span>
           </Link>
 
            <h2 className="font-display text-[27px] lg:text-[44px] font-bold mb-2">
             <span className="text-gradient-gold">GALACTIC ID</span>
           </h2>
-          <p className="text-orange-500 font-mono text-xs mb-12 tracking-[0.4em]">Official Hack The Spring '26 Identity</p>
+          <p className="font-barlow text-sm lg:text-[18px] tracking-[0.2em] text-[#C1EAFF] italic uppercase">Official Hack The Spring '26 Identity<br/></p>
 
           <div className="space-y-10">
             <div className="space-y-3">
