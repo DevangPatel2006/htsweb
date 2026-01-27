@@ -192,9 +192,15 @@ export default function HeroSection() {
             }}
           />
 
-          <div className="font-barlow italic tracking-[0.3em] text-white transition-transform duration-300 ease-out hover:scale-105">
-            &gt; View Mission Parameters
-          </div>
+         <a
+  href="https://drive.google.com/file/d/1U163f2QfMgBu2iANc4xQiMQWh5Wx4zF9/view?usp=drive_link"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="font-barlow italic tracking-[0.3em] text-white transition-transform duration-300 ease-out hover:scale-105"
+>
+  &gt; View Mission Parameters
+</a>
+
 
         </div>
       </div>
