@@ -109,7 +109,7 @@ export default function Swag() {
     ctx.fillStyle = textGrad;
     ctx.fillText(firstName, nameX, nameY);
 
-    // --- EXPORT LOGIC ---
+    // --- EXPORT LOGIC (UPDATED) ---
     canvas.toBlob(async (blob) => {
         if (!blob) {
             setIsGenerating(false);
@@ -118,7 +118,18 @@ export default function Swag() {
 
         const fileName = `galactic-id-${firstName || 'HACKER'}.png`;
         const file = new File([blob], fileName, { type: "image/png" });
+        const url = URL.createObjectURL(blob);
 
+        // 1. ALWAYS TRIGGER DOWNLOAD FIRST
+        // This ensures they get the file even if they close the share menu
+        const link = document.createElement("a");
+        link.href = url;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        // 2. TRIGGER SHARE (IF AVAILABLE) SAME TIME
         if (navigator.canShare && navigator.canShare({ files: [file] })) {
             try {
                 await navigator.share({
@@ -127,25 +138,18 @@ export default function Swag() {
                     text: 'Check out my Hack The Spring identity! 🚀',
                 });
             } catch (error) {
-                console.log("Share skipped", error);
+                console.log("Share skipped or cancelled", error);
             }
-        } else {
-            const link = document.createElement("a");
-            link.download = fileName;
-            link.href = canvas.toDataURL("image/png");
-            link.click();
         }
         
+        // Cleanup after a delay to ensure download started
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
         setIsGenerating(false);
     }, "image/png");
   };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#050508] p-6 font-barlow">
-      {/* UPDATED LINE BELOW: 
-          Changed from 'grid' to 'flex flex-col lg:grid'
-          This forces vertical stacking + centering on mobile, but keeps grid on desktop.
-      */}
       <div className="w-full max-w-6xl flex flex-col lg:grid lg:grid-cols-2 gap-12 items-center justify-center">
         
         {/* PREVIEW */}
@@ -196,7 +200,6 @@ export default function Swag() {
         </div>
 
         {/* UI CONTROLS */}
-        {/* Added 'w-full' to ensure it takes full width when centered in flex column */}
         <div className="w-full bg-[#0f0f13] border border-white/10 p-10 rounded-3xl shadow-2xl">
           <Link 
             to="/" 
