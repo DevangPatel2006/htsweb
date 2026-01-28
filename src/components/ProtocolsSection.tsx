@@ -19,37 +19,37 @@ const protocols = [
     id: 1,
     trackSvg: hackSvg,
     initiateLink: "https://unstop.com/p/hackthespring26-government-engineering-college-gec-gandhinagar-1627826",
-    learnMoreLink: "https://drive.google.com/file/d/1xT-37F6uYSOXl-OMQAbAKwqory1VEJht/view?usp=drive_link",
+    learnMoreLink: "/learn/HACK.X OFFICIAL RULEBOOK & CODE OF CONDUCT (2)_compressed.pdf",
   },
   {
     id: 2,
     trackSvg: buildSvg,
     initiateLink: "https://unstop.com/p/buildx-government-engineering-college-gec-gandhinagar-1628010",
-    learnMoreLink: "https://drive.google.com/file/d/1lPnhhttA1RQImVmGi3u0NHd4mnO7Vq5k/view?usp=drive_link",
+    learnMoreLink: "/learn/BUIILD.X OFFICIAL RULEBOOK & CODE OF CONDUCT (1)_compressed.pdf",
   },
   {
     id: 3,
     trackSvg: thinkSvg,
     initiateLink: "https://unstop.com/p/thinkx-government-engineering-college-gec-gandhinagar-1628037",
-    learnMoreLink: "https://drive.google.com/file/d/1Z27uzwsUbaJmztMVkzroB943pXXg29J-/view?usp=drive_link",
+    learnMoreLink: "/learn/THINK.X OFFICIAL RULEBOOK & CODE OF CONDUCT (4)_compressed.pdf",
   },
   {
     id: 4,
     trackSvg: gameSvg,
     initiateLink: "https://unstop.com/p/battle-of-nowhere-esports-tournament-government-engineering-college-gec-gandhinagar-1628523",
-    learnMoreLink: "https://drive.google.com/file/d/1tYHDEl_EZszov5ol2HNJZGfXtz_1A-WB/view?usp=drive_link",
+    learnMoreLink: "/learn/BATTLE OF KNOWHERE OFFICIAL RULEBOOK & CODE OF CONDUCT (5)_compressed.pdf",
   },
   {
     id: 5,
     trackSvg: chessSvg,
     initiateLink: "https://unstop.com/p/solvereigns-gambit-government-engineering-college-gec-gandhinagar-1628065",
-    learnMoreLink: "https://drive.google.com/file/d/1cum1Yc1pTpJ58wJ2RU7ftER8bBW9ZQ6R/view?usp=drive_link",
+    learnMoreLink: "/learn/SOVEREIGN_S GAMBIT OFFICIAL RULEBOOK & CODE OF CONDUCT (6)_compressed.pdf",
   },
   {
     id: 6,
     trackSvg: lastSvg,
     initiateLink: "https://unstop.com/p/cosmic-lens-government-engineering-college-gandhinagar-gujarat-1628652",
-    learnMoreLink: "https://drive.google.com/file/d/1UhbXwlR5o7-CK3I0M2mEhLY6CUVnjbZf/view?usp=drive_link",
+    learnMoreLink: "/learn/COSMIC LENS OFFICIAL RULEBOOK & CODE OF CONDUCT (7)_compressed.pdf",
   },
 ];
 
