@@ -217,7 +217,7 @@ export default function Navbar() {
               <Link to="/swag" onClick={() => setIsMobileMenuOpen(false)}>
                 <motion.span className="px-4 py-2.5 rounded-xl font-barlow text-sm text-primary hover:bg-primary/10 flex items-center gap-2">
                   <Sparkles size={16} />
-                  Swag
+                  Badge
                 </motion.span>
               </Link>
             </div>
