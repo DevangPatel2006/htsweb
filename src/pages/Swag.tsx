@@ -193,7 +193,7 @@ export default function Swag() {
                   filter: 'drop-shadow(0px 1px 0px rgba(255,255,255,0.2))'
                 }}
               >
-                {(name.trim().split(" ")[0] || "HACKER")}
+                {(name.trim().split(" ")[0] || "GROOT")}
               </h2>
             </div>
           </div>
