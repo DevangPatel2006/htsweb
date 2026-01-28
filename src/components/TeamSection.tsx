@@ -438,14 +438,8 @@ export default function TeamSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.4 }}
-            className={`flex justify-start sm:justify-center max-w-7xl mx-auto px-4 sm:px-0 ${
-              // CONTAINER LAYOUT LOGIC
-              activeCategory === "organizers" 
-                ? "flex-wrap justify-center gap-y-12 sm:gap-x-8" // Organizers: Wrap & Stack
-                : "flex-nowrap sm:flex-wrap overflow-x-auto sm:overflow-visible no-scrollbar snap-x snap-mandatory sm:snap-none gap-x-6 sm:gap-x-8 gap-y-12" // Others
-            } ${
-               activeCategory === "administration" ? "sm:gap-x-4" : "" 
-            }`}
+            // CONTAINER: Removed "flex-nowrap" & "overflow-x". Now always "flex-wrap" & "justify-center"
+            className={`flex justify-center max-w-7xl mx-auto px-4 sm:px-0 flex-wrap gap-y-12 gap-x-4 sm:gap-x-8`}
           >
             {sortedMembers.map((member, index) => (
               <motion.div
@@ -454,11 +448,12 @@ export default function TeamSection() {
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4, delay: index * 0.1 }}
                 whileHover={{ y: -5 }}
-                // ITEM WIDTH LOGIC - UPDATED HERE
-                className={`flex-shrink-0 snap-center flex flex-col items-center sm:w-[calc(50%-2rem)] ${
+                // ITEM WIDTH: Mobile = 45% (2 per row), Desktop = preserved
+                className={`flex flex-col items-center ${
                    activeCategory === "organizers" ? "w-full" : "w-[45%]"
                 } ${
-                  // FIX: Changed from lg:w-[calc(20%-1rem)] to lg:w-[18%] to ensure all 5 fit in one line with gaps
+                   "sm:w-[calc(50%-2rem)]" 
+                } ${
                   activeCategory === "administration" ? "lg:w-[18%]" : "lg:w-[calc(25%-2rem)]"
                 }`}
               >
