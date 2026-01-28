@@ -33,7 +33,7 @@ const tracks = [
   {
     id: "buildx",
     name: "BUILD.X",
-    title: "ROCKET'S SUPPLY CACHE",
+    title: "ROCKET SUPPLY CACHE",
     trackBenefits: [
       "CERTIFICATE OF PARTICIPATION",
       "BREAKFAST & LUNCH",
@@ -50,7 +50,7 @@ const tracks = [
   {
     id: "thinkx",
     name: "THINK.X",
-    title: "THE COLLECTOR'S BID",
+    title: "THE COLLECTOR BID",
     prizes: [
       { position: "1st", reward: "₹1000", extra: "+ Mentorship" },
       { position: "2nd", reward: "₹500", extra: "+ Mentorship" },
@@ -161,6 +161,12 @@ export default function PrizesSection() {
                   
                   <h3 className={`font-display text-[10px] sm:text-xs md:text-base font-bold mb-6 sm:mb-8 tracking-widest ${activeStyle.activeText} flex flex-col md:flex-row md:items-baseline gap-2`}>
                     {currentTrack.title}
+                    {/* ADDED: Logic to show + E-CERTIFICATE (or + CERTIFICATE for thinkx) */}
+                    {!["hackx", "buildx"].includes(currentTrack.id) && (
+                      <span className={`font-barlow text-[9px] sm:text-[10px] tracking-wider ${activeStyle.activeText}`}>
+                        {currentTrack.id === "thinkx" ? "+ CERTIFICATE" : "+ E-CERTIFICATE"}
+                      </span>
+                    )}
                   </h3>
 
                   {currentTrack.trackBenefits ? (
