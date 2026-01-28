@@ -81,15 +81,13 @@ export default function Footer() {
             </div>
             
             {/* --- LINKS SECTION --- */}
-            {/* MOBILE FIX: Removed flex-1 on mobile so it centers naturally as a block.
-                DESKTOP (lg): Retained flex-1 logic to keep the pipe geometrically centered.
-            */}
             <div className="flex items-center justify-center w-full max-w-[500px] mt-3 text-[12px] text-[#B0E5FF] uppercase tracking-widest font-barlow">
               
               {/* Left Link: Auto width on mobile, Flex-1/Right-align on Desktop */}
               <div className="lg:flex-1 lg:text-right">
                 <a 
-                  href="https://docs.google.com/document/d/18XM5Vp7Zp_9uPX70eP3ctnzwbdZyrEu8tYyUMmEBpww/edit?usp=drivesdk" 
+                  /* UPDATED: Verify this filename matches your public folder exactly */
+                  href="/HTS26_Terms_&_Conditions_compressed.pdf" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
@@ -104,7 +102,8 @@ export default function Footer() {
               {/* Right Link: Auto width on mobile, Flex-1/Left-align on Desktop */}
               <div className="lg:flex-1 lg:text-left">
                 <a 
-                  href="https://docs.google.com/document/d/1xnkktyxc5uyCJH3j_7DQIshCK1-gnSKlyG-gYIJUWCA/edit?usp=drivesdk" 
+                  /* UPDATED: Verify this filename matches your public folder exactly */
+                  href="/HTS26_Privacy_Policy_compressed.pdf" 
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors"
