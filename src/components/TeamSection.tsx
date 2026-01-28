@@ -5,7 +5,7 @@ import { Instagram, Linkedin, Twitter } from "lucide-react";
 
 // --- TEAM IMAGE IMPORTS ---
 
-// // Organizers
+// Organizers
 import sir from "@/assets/team/fc_nitinsir.png";
 import devangImage from "@/assets/team/og_devang.png";
 import vrajImage from "@/assets/team/og_vraj.png";
@@ -15,43 +15,45 @@ import mohammedImage from "@/assets/team/web_mohammed.png";
 import rikinImage from "@/assets/team/tech_rikin.png"; 
 import princeImage from "@/assets/team/design_prince.png";
 import harshImage from "@/assets/team/design_harsh.png";
-// import dhrumilImage from "@/assets/team/dhrumil.png";
+import dhrumilImage from "@/assets/team/doc_dhrumil.png";
 import mananImage from "@/assets/team/doc_manan.png";
 
-// // Outreach
-// import priyanshuImage from "@/assets/team/priyanshu.png";
-// import kathanImage from "@/assets/team/kathan.png";
-// import parthwImage from "@/assets/team/parth_w.png";
+// Outreach
+import priyanshuImage from "@/assets/team/camp_priyanshu.png";
+import kathanImage from "@/assets/team/camp_kathan.png";
+import parthwImage from "@/assets/team/camp_parth.png";
 import suryaImage from "@/assets/team/camp_surya.png";
 import hemanshiImage from "@/assets/team/camp_himanshi.png";
-// import vandanImage from "@/assets/team/vandan.png";
+import vandanImage from "@/assets/team/cd_vandy.png";
 import viralImage from "@/assets/team/photo_viral.png";
 import bharviImage from "@/assets/team/sm_bharvii.png";
 
-// // Administration
+// Administration
 import divyImage from "@/assets/team/divy.png";
 import parthpImage from "@/assets/team/event_parth.png";
 import hiyaImage from "@/assets/team/event_hiya.png";
 import rageshreeImage from "@/assets/team/evaluation_rageshree.png";
 import vrutiImage from "@/assets/team/evaluation_vruti.png";
 
-// // Venue
-// import pranavImage from "@/assets/team/pranav.png";
-// import karanImage from "@/assets/team/karan.png";
+// Venue
+import pranavImage from "@/assets/team/log_pranav.png";
+import karanImage from "@/assets/team/log_karan.png";
 import yagnitImage from "@/assets/team/logistic_yagnit.png";
-// import pakshilImage from "@/assets/team/pakshil.png";
-// import dhavalImage from "@/assets/team/dhaval.png";
+import pakshilImage from "@/assets/team/co_pakshil.png";
+import dhavalImage from "@/assets/team/co_dhaval.png";
 import trushaImage from "@/assets/team/decor_trusha.png";
 import darshnaImage from "@/assets/team/decor_darshana.png";
 
-// // Operations
+// Operations
+import parthpaneraImage from "@/assets/team/da_parth.png";
+
+import karanmImage from "@/assets/team/da_karan.png";
 import kunjImage from "@/assets/team/regis_kunj.png";
 import preranaImage from "@/assets/team/regis_prerna.png";
-// import parthpaneraImage from "@/assets/team/parth_panera.png";
-// import karanmImage from "@/assets/team/karan_m.png";
+
 import vrajvImage from "@/assets/team/hosp_vraj.png";
 import vivekImage from "@/assets/team/hosp_vivek.png";
-// import shreyanshImage from "@/assets/team/shreyansh.png";
+import shreyanshImage from "@/assets/team/vo_shreyansh.png";
 
 
 const teamCategories = [
@@ -112,12 +114,12 @@ const teamMembers = {
       linkedin: "https://www.linkedin.com/in/harshchauhan081", 
       instagram: "https://www.instagram.com/_.chauhan._27"
     },
-    // {
-    //   name: "Dhrumil Shah",
-    //   role: "Documentation",
-    //   // image: dhrumilImage,
-    //   linkedin: "#", instagram: "#"
-    // },
+    {
+      name: "Dhrumil Shah",
+      role: "Documentation",
+      image: dhrumilImage,
+      linkedin: "#", instagram: "#"
+    },
     {
       name: "Manan Sanghani",
       role: "Documentation",
@@ -127,6 +129,12 @@ const teamMembers = {
     },
   ],
   outreach: [
+    {
+      name: "Vandan Jakhaniya",
+      role: "Social Media",
+      image: vandanImage,
+      linkedin: "#", instagram: "#"
+    },
      {
       name: "Bharvi Savaliya",
       role: "Social Media",
@@ -134,24 +142,26 @@ const teamMembers = {
       linkedin: "https://www.linkedin.com/in/bharvii-savaliya-607048354?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", 
       instagram: "https://www.instagram.com/bharvii._?igsh=MWplM2N2c2JiZmtxcw=="
     },
-    // {
-    //   name: "Priyanshu Singh",
-    //   role: "Campaigning",
-    //   // image: priyanshuImage,
-    //   linkedin: "#", instagram: "#"
-    // },
-    // {
-    //   name: "Kathan Mankad",
-    //   role: "Campaigning",
-    //   // image: kathanImage,
-    //   linkedin: "#", instagram: "#"
-    // },
-    // {
-    //   name: "Parth Wathodkar",
-    //   role: "Campaigning",
-    //   // image: parthwImage,
-    //   linkedin: "#", instagram: "#"
-    // },
+     {
+      name: "Kathan Mankad",
+      role: "Campaigning",
+      image: kathanImage,
+      linkedin: "#", instagram: "#"
+    },
+    {
+      name: "Priyanshu Singh",
+      role: "Campaigning",
+      image: priyanshuImage,
+      linkedin: "#", instagram: "#"
+    },
+    
+   
+    {
+      name: "Parth Wathodkar",
+      role: "Campaigning",
+      image: parthwImage,
+      linkedin: "#", instagram: "#"
+    },
     {
       name: "Surya Chandak",
       role: "Campaigning",
@@ -166,12 +176,7 @@ const teamMembers = {
       linkedin: "https://www.linkedin.com/in/hemanshi-jalondhara-669269284", 
       instagram: "https://www.instagram.com/invites/contact/?utm_source=ig_contact_invite&utm_medium=copy_link&utm_content=wz9j3ap"
     },
-    // {
-    //   name: "Vandan Jakhaniya",
-    //   role: "Social Media",
-    //   // image: vandanImage,
-    //   linkedin: "#", instagram: "#"
-    // },
+    
     {
       name: "Viral Mahemdavadia",
       role: "Social Media",
@@ -219,40 +224,7 @@ const teamMembers = {
     },
   ],
   venue: [
-    // {
-    //   name: "Pranav Patel",
-    //   role: "Logistics",
-    //   // image: pranavImage,
-    //   linkedin: "#", instagram: "#"
-    // },
-    // {
-    //   name: "Karan Rabadiya",
-    //   role: "Logistics",
-    //   // image: karanImage,
-    //   linkedin: "https://www.linkedin.com/in/karan-rabadiya-81bbb6313", 
-    //   instagram: "https://www.instagram.com/k_a_r_a_n_1098?igsh=YXY3dnNydmc2MHNt"
-    // },
-    {
-      name: "Yagnit Baraiya",
-      role: "Logistics",
-      image: yagnitImage,
-      linkedin: "https://www.linkedin.com/in/yagnit-baraiya-73421534a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", 
-      instagram: "https://www.instagram.com/yagnitbaraiya_9924?igsh=MTBkdDd5MjJ0bWRrcA=="
-    },
-    // {
-    //   name: "Pakshil Patel",
-    //   role: "Infrastructure",
-    //   // image: pakshilImage,
-    //   linkedin: "www.linkedin.com/in/pakshil-patel-423911289", 
-    //   instagram: "https://www.instagram.com/pakshil_patel"
-    // },
-    // {
-    //   name: "Dhaval Kanani",
-    //   role: "Infrastructure",
-    //   // image: dhavalImage,
-    //   linkedin: "#", instagram: "#"
-    // },
-    {
+     {
       name: "Trusha Bhatt",
       role: "Decoration",
       image: trushaImage,
@@ -266,8 +238,55 @@ const teamMembers = {
       linkedin: "https://www.linkedin.com/in/darshna-nainuji-8aa586374", 
       instagram: "#"
     },
+    {
+      name: "Pranav Patel",
+      role: "Logistics",
+      image: pranavImage,
+      linkedin: "#", instagram: "#"
+    },
+    {
+      name: "Karan Rabadiya",
+      role: "Logistics",
+      image: karanImage,
+      linkedin: "https://www.linkedin.com/in/karan-rabadiya-81bbb6313", 
+      instagram: "https://www.instagram.com/k_a_r_a_n_1098?igsh=YXY3dnNydmc2MHNt"
+    },
+    {
+      name: "Yagnit Baraiya",
+      role: "Logistics",
+      image: yagnitImage,
+      linkedin: "https://www.linkedin.com/in/yagnit-baraiya-73421534a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", 
+      instagram: "https://www.instagram.com/yagnitbaraiya_9924?igsh=MTBkdDd5MjJ0bWRrcA=="
+    },
+    {
+      name: "Pakshil Patel",
+      role: "Infrastructure",
+      image: pakshilImage,
+      linkedin: "www.linkedin.com/in/pakshil-patel-423911289", 
+      instagram: "https://www.instagram.com/pakshil_patel"
+    },
+    {
+      name: "Dhaval Kanani",
+      role: "Infrastructure",
+      image: dhavalImage,
+      linkedin: "#", instagram: "#"
+    },
+   
   ],
   operations: [
+     {
+      name: "Parth Panera",
+      role: "Delegate Affairs",
+      image: parthpaneraImage,
+      linkedin: "www.linkedin.com/in/parth-panera-79b7b4289", 
+      instagram: "#"
+    },
+    {
+      name: "Karan Meghnathi",
+      role: "Delegate Affairs",
+      image: karanmImage,
+      linkedin: "#", instagram: "#"
+    },
     {
       name: "Kunj Darji",
       role: "Registration",
@@ -282,19 +301,7 @@ const teamMembers = {
       linkedin: "https://www.linkedin.com/in/prerana-som-bm-gecg-dte?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", 
       instagram: "https://www.instagram.com/thephilosophicalpakodi?igsh=ODZkZ2FlbW5vOHoz"
     },
-    // {
-    //   name: "Parth Panera",
-    //   role: "Delegate Affairs",
-    //   // image: parthpaneraImage,
-    //   linkedin: "www.linkedin.com/in/parth-panera-79b7b4289", 
-    //   instagram: "#"
-    // },
-    // {
-    //   name: "Karan Meghnathi",
-    //   role: "Delegate Affairs",
-    //   // image: karanmImage,
-    //   linkedin: "#", instagram: "#"
-    // },
+   
     {
       name: "Vraj Vaghasiya",
       role: "Food & Sanitation",
@@ -309,12 +316,12 @@ const teamMembers = {
       linkedin: "https://www.linkedin.com/in/vivek-patel-220b55290?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", 
       instagram: "https://www.instagram.com/patel_vivekk_523?igsh=MTVlZzBkaHkxYWZsYQ=="
     },
-    // {
-    //   name: "Shreyansh Thakor",
-    //   role: "Safety",
-    //   // image: shreyanshImage,
-    //   linkedin: "#", instagram: "#"
-    // },
+    {
+      name: "Shreyansh Thakor",
+      role: "Safety",
+      image: shreyanshImage,
+      linkedin: "#", instagram: "#"
+    },
   ],
 };
 
