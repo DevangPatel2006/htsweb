@@ -80,7 +80,7 @@ const tracks = [
     title: "AWESOME MIX ROYALTIES",
     prizes: [
       { position: "1st", reward: "₹500", extra: "- Photography" },
-      { position: "2nd", reward: "₹500", extra: "- Content Creation" },
+      { position: "1st", reward: "₹500", extra: "- Content Creation" },
     ],
   },
 ];
