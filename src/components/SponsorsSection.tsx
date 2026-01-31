@@ -84,18 +84,39 @@ export default function SponsorsSection() {
   const renderTier = (tier, tierIndex) => {
     if (!sponsors[tier] || sponsors[tier].length === 0 || !tierConfig[tier]) return null;
 
+    // Check if current tier is Powered By to apply effect
+    const isPoweredBy = tier === "poweredBy";
+
     return (
       <motion.div
         key={tier}
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, delay: tierIndex * 0.1 }}
-        // UPDATED: Changed 'w-full' to 'w-full md:w-auto'
-        // This prevents them from taking up 50% width each and pushing apart
+        // Preserved exact classes from your snippet
         className="flex flex-col items-center w-full md:w-auto"
       >
         <h3 className="font-barlow text-sm sm:text-base md:text-lg font-bold text-[#C1EAFF]/70 tracking-[0.25em] mb-5 sm:mb-6 text-center uppercase relative inline-block">
-          {tierConfig[tier].label}
+          {/* Conditional rendering for the Glow Effect */}
+          {isPoweredBy ? (
+            <motion.span
+              className="font-barlow text-sm sm:text-base md:text-lg font-bold tracking-[0.25em] whitespace-nowrap drop-shadow-[0_0_10px_rgba(255,215,0,0.6)]"
+              style={{
+                backgroundImage: "linear-gradient(90deg, #FFD700 0%, #FFFFFF 50%, #FFD700 100%)",
+                backgroundSize: "200% auto",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                color: "transparent",
+              }}
+              animate={{ backgroundPosition: ["0% 50%", "-200% 50%"] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            >
+              {tierConfig[tier].label}
+            </motion.span>
+          ) : (
+            tierConfig[tier].label
+          )}
+          
           <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-[#C1EAFF]/30 to-transparent"></span>
         </h3>
 
@@ -142,11 +163,7 @@ export default function SponsorsSection() {
         </motion.div>
 
         <div className="max-w-6xl mx-auto">
-          {/* UPDATED: 
-             1. 'justify-center' packs them in the middle.
-             2. 'md:gap-16' gives a controlled gap (approx 64px) between the two blocks.
-             (You can lower this to gap-8 or gap-10 if you want them even closer)
-          */}
+          {/* Preserved exact classes from your snippet (gap-10 md:gap-16) */}
           <div className="flex flex-col md:flex-row justify-center gap-10 md:gap-16 mb-10 sm:mb-12">
             {topTiers.map((tier, index) => renderTier(tier, index))}
           </div>
