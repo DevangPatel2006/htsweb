@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 
-// Import local assets from your file structure
+// Import local assets
 import unstopLogo from "../assets/sponsors/unstop-logo.svg";
 import petpoojaLogo from "../assets/sponsors/petpooja.png";
 import arenaLogo from "../assets/sponsors/arena.png";
@@ -10,6 +10,9 @@ import interLogo from "../assets/sponsors/inter.png";
 import xyzLogo from "../assets/sponsors/xyz_website.png";
 import aparaLogo from "../assets/sponsors/apara_website.png";
 import ssLogo from "../assets/sponsors/ss_website.png";
+import clubIdeLogo from "../assets/sponsors/Club_IDE_logo-removebg-preview.png";
+import awsLogo from "../assets/sponsors/aws-removebg-preview.png";
+import gecgnLogo from "../assets/sponsors/GECGN update Logo.png";
 
 const sponsors = {
   poweredBy: [{ name: "Petpooja", logo: petpoojaLogo }],
@@ -23,38 +26,52 @@ const sponsors = {
     { name: "Apara", logo: aparaLogo },
     { name: "SS Website", logo: ssLogo },
   ],
+  community: [
+    { name: "Club IDE", logo: clubIdeLogo },
+    { name: "AWS", logo: awsLogo },
+    { name: "GECGN", logo: gecgnLogo },
+  ],
 };
+
+// Unified size for all logos to keep them consistent
+const unifiedLogoSize = "w-40 h-20 sm:w-48 sm:h-24"; 
 
 const tierConfig = {
   poweredBy: {
     label: "POWERED BY",
     gridCols: "grid-cols-1",
-    logoSize: "w-48 h-24 sm:w-64 sm:h-32",
+    logoSize: unifiedLogoSize,
     containerClass: "flex justify-center",
   },
   platform: {
     label: "PLATFORM PARTNER",
     gridCols: "grid-cols-1",
-    logoSize: "w-48 h-24 sm:w-64 sm:h-32",
+    logoSize: unifiedLogoSize,
     containerClass: "flex justify-center",
   },
   associate: {
     label: "ASSOCIATE SPONSORS",
     gridCols: "grid-cols-1",
-    logoSize: "w-40 h-20 sm:w-48 sm:h-24",
+    logoSize: unifiedLogoSize,
     containerClass: "flex justify-center",
   },
   technology: {
     label: "TECHNOLOGY PARTNERS",
     gridCols: "grid-cols-1 sm:grid-cols-2",
-    logoSize: "w-36 h-18 sm:w-44 sm:h-22",
-    containerClass: "grid gap-8 justify-center",
+    logoSize: unifiedLogoSize,
+    containerClass: "grid gap-6 justify-center",
   },
   refreshment: {
     label: "REFRESHMENT PARTNERS",
     gridCols: "grid-cols-1 sm:grid-cols-2",
-    logoSize: "w-32 h-16 sm:w-40 sm:h-20",
-    containerClass: "grid gap-8 justify-center",
+    logoSize: unifiedLogoSize,
+    containerClass: "grid gap-6 justify-center",
+  },
+  community: {
+    label: "COMMUNITY PARTNERS",
+    gridCols: "grid-cols-1 sm:grid-cols-3",
+    logoSize: unifiedLogoSize,
+    containerClass: "grid gap-6 justify-center",
   },
 };
 
@@ -66,7 +83,7 @@ export default function SponsorsSection() {
   const otherTiers = Object.keys(sponsors).filter((key) => !topTiers.includes(key));
 
   const renderTier = (tier, tierIndex) => {
-    if (!sponsors[tier] || sponsors[tier].length === 0) return null;
+    if (!sponsors[tier] || sponsors[tier].length === 0 || !tierConfig[tier]) return null;
 
     return (
       <motion.div
@@ -76,7 +93,8 @@ export default function SponsorsSection() {
         transition={{ duration: 0.5, delay: tierIndex * 0.1 }}
         className="flex flex-col items-center w-full"
       >
-        <h3 className="font-barlow text-sm sm:text-base md:text-lg font-bold text-[#C1EAFF]/70 tracking-[0.25em] mb-8 sm:mb-10 text-center uppercase relative inline-block">
+        {/* Reduced bottom margin from mb-8/10 to mb-5/6 to close gap between title and logo */}
+        <h3 className="font-barlow text-sm sm:text-base md:text-lg font-bold text-[#C1EAFF]/70 tracking-[0.25em] mb-5 sm:mb-6 text-center uppercase relative inline-block">
           {tierConfig[tier].label}
           <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-[#C1EAFF]/30 to-transparent"></span>
         </h3>
@@ -92,6 +110,7 @@ export default function SponsorsSection() {
                 delay: tierIndex * 0.1 + index * 0.05,
               }}
               whileHover={{ scale: 1.1 }}
+              // Applied unified size
               className={`${tierConfig[tier].logoSize} flex items-center justify-center mx-auto`}
             >
               <img
@@ -107,13 +126,13 @@ export default function SponsorsSection() {
   };
 
   return (
-    <section id="sponsors" ref={ref} className="relative py-24 lg:pt-[100px] lg:pb-32 overflow-hidden">
+    <section id="sponsors" ref={ref} className="relative py-16 lg:pt-[80px] lg:pb-20 overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-16"
+          className="text-center mb-10" // Reduced from mb-16
         >
           <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-10 lg:mt-0">
             <span className="text-gradient-gold">NOVA CORPS ALLIANCE</span>
@@ -124,11 +143,13 @@ export default function SponsorsSection() {
         </motion.div>
 
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-center gap-16 md:gap-24 mb-16 sm:mb-20">
+          {/* Reduced gap between top tiers from gap-24 to gap-12 */}
+          <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-12 mb-10 sm:mb-12">
             {topTiers.map((tier, index) => renderTier(tier, index))}
           </div>
 
-          <div className="space-y-16 sm:space-y-24">
+          {/* Reduced vertical space between lower tiers from space-y-24 to space-y-10 */}
+          <div className="space-y-10 sm:space-y-14">
             {otherTiers.map((tier, index) =>
               renderTier(tier, index + topTiers.length)
             )}
