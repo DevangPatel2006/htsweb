@@ -1,5 +1,8 @@
 import { useState, useRef } from "react";
-import { motion, useInView } from "framer-motion";
+import { 
+  motion, 
+  useInView 
+} from "framer-motion";
 import { 
   ChevronRight, 
   FileCheck, 
@@ -10,7 +13,7 @@ import {
   Medal, 
   Award,
   CheckCircle2,
-  Ticket // Added for Vouchers icon
+  Ticket 
 } from "lucide-react";
 
 const tracks = [
@@ -58,27 +61,30 @@ const tracks = [
       "NETWORKING ACCESS",
       "MENTORSHIP OPPORTUNITY"
     ],
+    // Changed to Winner / Runner Up
     prizes: [
-      { position: "1st", reward: "₹1000", extra: "+ Mentorship" },
-      { position: "2nd", reward: "₹500", extra: "+ Mentorship" },
+      { position: "Winner", reward: "₹1000", extra: "+ Mentorship" },
+      { position: "Runner Up", reward: "₹500", extra: "+ Mentorship" },
     ],
   },
   {
     id: "BATTLE OF KNOWHERE",
     name: "BATTLE OF KNOWHERE",
     title: "RAVAGER MERCENARY PAY",
+    // Changed to Winner / Runner Up. Kept to 2 boxes, added BGMI/FF to extra tag.
     prizes: [
-      { position: "1st", reward: "₹1000", extra: null },
-      { position: "2nd", reward: "₹500", extra: null },
+      { position: "Winner", reward: "₹1000", extra: "BGMI / Free Fire" },
+      { position: "Runner Up", reward: "₹500", extra: "BGMI / Free Fire" },
     ],
   },
   {
     id: "SOVEREIGN'S GAMBIT",
     name: "SOVEREIGN'S GAMBIT",
     title: "SOVEREIGN GOLD RESERVES",
+    // Changed to Winner / Runner Up
     prizes: [
-      { position: "1st", reward: "₹500", extra: null },
-      { position: "2nd", reward: "₹250", extra: null },
+      { position: "Winner", reward: "₹500", extra: null },
+      { position: "Runner Up", reward: "₹250", extra: null },
     ],
   },
   {
@@ -190,7 +196,8 @@ export default function PrizesSection() {
                   
                   <h3 className={`font-display text-[10px] sm:text-xs md:text-base font-bold mb-6 sm:mb-8 tracking-widest ${activeStyle.activeText} flex flex-col md:flex-row md:items-baseline gap-2`}>
                     {currentTrack.title}
-                    {!["hackx", "buildx"].includes(currentTrack.id) && (
+                    {/* Logic to hide E-Certificate text for Battle of Knowhere */}
+                    {!["hackx", "buildx", "BATTLE OF KNOWHERE"].includes(currentTrack.id) && (
                       <span className={`font-barlow text-[9px] sm:text-[10px] tracking-wider ${activeStyle.activeText}`}>
                         {currentTrack.id === "thinkx" ? "+ CERTIFICATE" : "+ E-CERTIFICATE"}
                       </span>
@@ -203,8 +210,9 @@ export default function PrizesSection() {
                         {currentTrack.prizes.map((prize, index) => {
                           const iconClass = "w-6 h-6 sm:w-8 sm:h-8 text-white";
                           let Icon = Award;
-                          if (prize.position === "1st") Icon = Trophy;
-                          if (prize.position === "2nd") Icon = Medal;
+                          // Handle icons for Winner/Runner Up
+                          if (prize.position === "1st" || prize.position === "Winner") Icon = Trophy;
+                          if (prize.position === "2nd" || prize.position === "Runner Up") Icon = Medal;
 
                           return (
                             <div key={index} className="flex items-center p-3 sm:p-4 rounded-xl bg-white/5 border border-white/10 gap-3 sm:gap-4">
@@ -213,7 +221,8 @@ export default function PrizesSection() {
                               </div>
                               <div>
                                 <p className="font-barlow text-[8px] sm:text-[9px] tracking-[0.2em] text-white/40 mb-0.5 uppercase">
-                                  {prize.position}
+                                  {/* Remove 'Place' suffix for Winner/Runner Up */}
+                                  {["Winner", "Runner Up"].includes(prize.position) ? prize.position : `${prize.position} Place`}
                                 </p>
                                 <p className="font-display text-base sm:text-lg font-bold text-white tracking-[0.1em]">
                                   {prize.reward}
@@ -266,8 +275,9 @@ export default function PrizesSection() {
                         const hasExtra = !!prize.extra;
                         const iconClass = "w-8 h-8 sm:w-10 sm:h-10 md:w-8 md:h-8 text-white";
                         let Icon = Award;
-                        if (prize.position === "1st") Icon = Trophy;
-                        if (prize.position === "2nd") Icon = Medal;
+                        // Handle icons for Winner/Runner Up
+                        if (prize.position === "1st" || prize.position === "Winner") Icon = Trophy;
+                        if (prize.position === "2nd" || prize.position === "Runner Up") Icon = Medal;
 
                         return (
                           <div
@@ -285,7 +295,8 @@ export default function PrizesSection() {
 
                             <div className={`text-left sm:text-center ${hasExtra ? "flex-1" : ""}`}>
                               <p className="font-barlow text-[8px] sm:text-[9px] tracking-[0.15em] sm:tracking-[0.2em] text-white/40 mb-0.5 uppercase">
-                                {prize.position} Place
+                                {/* Remove 'Place' suffix for Winner/Runner Up */}
+                                {["Winner", "Runner Up"].includes(prize.position) ? prize.position : `${prize.position} Place`}
                               </p>
                               
                               <div className="flex flex-row sm:flex-col items-baseline sm:items-center gap-2 sm:gap-1">
