@@ -186,7 +186,7 @@ export default function FAQSection() {
             </a>
 
             <a
-              href="https://discord.gg/hackthespring"
+              href="https://discord.gg/QPxAuBaPZz"
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto"
