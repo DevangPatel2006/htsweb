@@ -33,46 +33,44 @@ const sponsors = {
   ],
 };
 
-// Unified size for all logos
 const unifiedLogoSize = "w-40 h-20 sm:w-48 sm:h-24";
 
 const tierConfig = {
   poweredBy: {
     label: "POWERED BY",
-    gridCols: "", // No grid columns needed for flex
+    gridCols: "",
     logoSize: unifiedLogoSize,
-    containerClass: "flex justify-center gap-4",
+    containerClass: "flex justify-center gap-2",
   },
   platform: {
     label: "PLATFORM PARTNER",
     gridCols: "",
     logoSize: unifiedLogoSize,
-    containerClass: "flex justify-center gap-4",
+    containerClass: "flex justify-center gap-2",
   },
   associate: {
     label: "ASSOCIATE SPONSORS",
     gridCols: "",
     logoSize: unifiedLogoSize,
-    containerClass: "flex justify-center gap-4",
+    containerClass: "flex justify-center gap-6",
   },
-  // UPDATED: Switched from Grid to Flex to remove the huge spacing
   technology: {
     label: "TECHNOLOGY PARTNERS",
-    gridCols: "", // Removed 'grid-cols-2' which was forcing them apart
+    gridCols: "",
     logoSize: unifiedLogoSize,
-    containerClass: "flex flex-wrap justify-center gap-4", // Use flex to pack them close
+    containerClass: "flex flex-wrap justify-center gap-6",
   },
   refreshment: {
     label: "REFRESHMENT PARTNERS",
-    gridCols: "", // Removed grid columns
+    gridCols: "",
     logoSize: unifiedLogoSize,
-    containerClass: "flex flex-wrap justify-center gap-4",
+    containerClass: "flex flex-wrap justify-center gap-6",
   },
   community: {
     label: "COMMUNITY PARTNERS",
-    gridCols: "", // Removed grid columns
+    gridCols: "",
     logoSize: unifiedLogoSize,
-    containerClass: "flex flex-wrap justify-center gap-4",
+    containerClass: "flex flex-wrap justify-center gap-6",
   },
 };
 
@@ -92,7 +90,9 @@ export default function SponsorsSection() {
         initial={{ opacity: 0, y: 30 }}
         animate={isInView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.5, delay: tierIndex * 0.1 }}
-        className="flex flex-col items-center w-full"
+        // UPDATED: Changed 'w-full' to 'w-full md:w-auto'
+        // This prevents them from taking up 50% width each and pushing apart
+        className="flex flex-col items-center w-full md:w-auto"
       >
         <h3 className="font-barlow text-sm sm:text-base md:text-lg font-bold text-[#C1EAFF]/70 tracking-[0.25em] mb-5 sm:mb-6 text-center uppercase relative inline-block">
           {tierConfig[tier].label}
@@ -142,7 +142,12 @@ export default function SponsorsSection() {
         </motion.div>
 
         <div className="max-w-6xl mx-auto">
-          <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-12 mb-10 sm:mb-12">
+          {/* UPDATED: 
+             1. 'justify-center' packs them in the middle.
+             2. 'md:gap-16' gives a controlled gap (approx 64px) between the two blocks.
+             (You can lower this to gap-8 or gap-10 if you want them even closer)
+          */}
+          <div className="flex flex-col md:flex-row justify-center gap-10 md:gap-16 mb-10 sm:mb-12">
             {topTiers.map((tier, index) => renderTier(tier, index))}
           </div>
 
