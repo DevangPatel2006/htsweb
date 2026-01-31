@@ -33,45 +33,46 @@ const sponsors = {
   ],
 };
 
-// Unified size for all logos to keep them consistent
-const unifiedLogoSize = "w-40 h-20 sm:w-48 sm:h-24"; 
+// Unified size for all logos
+const unifiedLogoSize = "w-40 h-20 sm:w-48 sm:h-24";
 
 const tierConfig = {
   poweredBy: {
     label: "POWERED BY",
-    gridCols: "grid-cols-1",
+    gridCols: "", // No grid columns needed for flex
     logoSize: unifiedLogoSize,
-    containerClass: "flex justify-center",
+    containerClass: "flex justify-center gap-4",
   },
   platform: {
     label: "PLATFORM PARTNER",
-    gridCols: "grid-cols-1",
+    gridCols: "",
     logoSize: unifiedLogoSize,
-    containerClass: "flex justify-center",
+    containerClass: "flex justify-center gap-4",
   },
   associate: {
     label: "ASSOCIATE SPONSORS",
-    gridCols: "grid-cols-1",
+    gridCols: "",
     logoSize: unifiedLogoSize,
-    containerClass: "flex justify-center",
+    containerClass: "flex justify-center gap-4",
   },
+  // UPDATED: Switched from Grid to Flex to remove the huge spacing
   technology: {
     label: "TECHNOLOGY PARTNERS",
-    gridCols: "grid-cols-1 sm:grid-cols-2",
+    gridCols: "", // Removed 'grid-cols-2' which was forcing them apart
     logoSize: unifiedLogoSize,
-    containerClass: "grid gap-6 justify-center",
+    containerClass: "flex flex-wrap justify-center gap-4", // Use flex to pack them close
   },
   refreshment: {
     label: "REFRESHMENT PARTNERS",
-    gridCols: "grid-cols-1 sm:grid-cols-2",
+    gridCols: "", // Removed grid columns
     logoSize: unifiedLogoSize,
-    containerClass: "grid gap-6 justify-center",
+    containerClass: "flex flex-wrap justify-center gap-4",
   },
   community: {
     label: "COMMUNITY PARTNERS",
-    gridCols: "grid-cols-1 sm:grid-cols-3",
+    gridCols: "", // Removed grid columns
     logoSize: unifiedLogoSize,
-    containerClass: "grid gap-6 justify-center",
+    containerClass: "flex flex-wrap justify-center gap-4",
   },
 };
 
@@ -93,7 +94,6 @@ export default function SponsorsSection() {
         transition={{ duration: 0.5, delay: tierIndex * 0.1 }}
         className="flex flex-col items-center w-full"
       >
-        {/* Reduced bottom margin from mb-8/10 to mb-5/6 to close gap between title and logo */}
         <h3 className="font-barlow text-sm sm:text-base md:text-lg font-bold text-[#C1EAFF]/70 tracking-[0.25em] mb-5 sm:mb-6 text-center uppercase relative inline-block">
           {tierConfig[tier].label}
           <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-[#C1EAFF]/30 to-transparent"></span>
@@ -110,8 +110,7 @@ export default function SponsorsSection() {
                 delay: tierIndex * 0.1 + index * 0.05,
               }}
               whileHover={{ scale: 1.1 }}
-              // Applied unified size
-              className={`${tierConfig[tier].logoSize} flex items-center justify-center mx-auto`}
+              className={`${tierConfig[tier].logoSize} flex items-center justify-center`}
             >
               <img
                 src={sponsor.logo}
@@ -132,7 +131,7 @@ export default function SponsorsSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6 }}
-          className="text-center mb-10" // Reduced from mb-16
+          className="text-center mb-10"
         >
           <h2 className="font-display text-[27px] lg:text-[48px] font-bold mb-2 mt-10 lg:mt-0">
             <span className="text-gradient-gold">NOVA CORPS ALLIANCE</span>
@@ -143,12 +142,10 @@ export default function SponsorsSection() {
         </motion.div>
 
         <div className="max-w-6xl mx-auto">
-          {/* Reduced gap between top tiers from gap-24 to gap-12 */}
           <div className="flex flex-col md:flex-row justify-center gap-8 md:gap-12 mb-10 sm:mb-12">
             {topTiers.map((tier, index) => renderTier(tier, index))}
           </div>
 
-          {/* Reduced vertical space between lower tiers from space-y-24 to space-y-10 */}
           <div className="space-y-10 sm:space-y-14">
             {otherTiers.map((tier, index) =>
               renderTier(tier, index + topTiers.length)
