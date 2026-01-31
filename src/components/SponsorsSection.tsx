@@ -1,28 +1,30 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { Button } from "@/components/ui/button";
-import { Mail } from "lucide-react";
+// import { Button } from "@/components/ui/button"; // Removed unused import
+// import { Mail } from "lucide-react"; // Removed unused import
 
-// Placeholder sponsor data - in production, replace with actual sponsor logos
+// Placeholder sponsor data
 const sponsors = {
-  title: [
-    { name: "TechCorp", placeholder: true },
+  poweredBy: [
+    { name: "TechGiant", placeholder: true },
   ],
-  gold: [
-    { name: "InnovateTech", placeholder: true },
-    { name: "FutureLabs", placeholder: true },
+  associate: [
+    { name: "InnovateLabs", placeholder: true },
+    { name: "FutureWorks", placeholder: true },
   ],
-  silver: [
-    { name: "CodeBase", placeholder: true },
-    { name: "DevTools", placeholder: true },
-    { name: "CloudSync", placeholder: true },
+  technology: [
+    { name: "DevTools Inc", placeholder: true },
+    { name: "CloudSystems", placeholder: true },
   ],
-  bronze: [
-    { name: "StartupHub", placeholder: true },
-    { name: "TechMentor", placeholder: true },
-    { name: "DataFlow", placeholder: true },
-    { name: "AppForge", placeholder: true },
+  learning: [
+    { name: "EduTech", placeholder: true },
+    { name: "CodeAcademy", placeholder: true },
+  ],
+  refreshment: [
+    { name: "EnergyDrink", placeholder: true },
+    { name: "SnackBar", placeholder: true },
+    { name: "Hydrate", placeholder: true },
   ],
   community: [
     { name: "Dev Community", placeholder: true },
@@ -34,35 +36,47 @@ const sponsors = {
 };
 
 const tierConfig = {
-  title: {
-    label: "TITLE SPONSOR",
+  poweredBy: {
+    label: "POWERED BY",
     gridCols: "grid-cols-1",
-    logoSize: "w-48 h-24",
-    borderColor: "border-primary",
+    logoSize: "w-48 h-24 sm:w-64 sm:h-32", // Larger for top tier
+    borderColor: "border-[#00f0ff]/40", // Cyan tint
+    containerClass: "flex justify-center",
   },
-  gold: {
-    label: "GOLD SPONSORS",
-    gridCols: "grid-cols-2",
-    logoSize: "w-40 h-20",
-    borderColor: "border-yellow-500",
+  associate: {
+    label: "ASSOCIATE SPONSORS",
+    gridCols: "grid-cols-1 sm:grid-cols-2",
+    logoSize: "w-40 h-20 sm:w-48 sm:h-24",
+    borderColor: "border-[#FFD700]/40", // Gold tint
+    containerClass: "grid gap-6 justify-center",
   },
-  silver: {
-    label: "SILVER SPONSORS",
-    gridCols: "grid-cols-3",
-    logoSize: "w-32 h-16",
-    borderColor: "border-gray-400",
+  technology: {
+    label: "TECHNOLOGY PARTNERS",
+    gridCols: "grid-cols-1 sm:grid-cols-2",
+    logoSize: "w-36 h-18 sm:w-44 sm:h-22",
+    borderColor: "border-[#A020F0]/40", // Purple tint
+    containerClass: "grid gap-6 justify-center",
   },
-  bronze: {
-    label: "BRONZE SPONSORS",
-    gridCols: "grid-cols-4",
-    logoSize: "w-24 h-12",
-    borderColor: "border-amber-700",
+  learning: {
+    label: "LEARNING PARTNERS",
+    gridCols: "grid-cols-1 sm:grid-cols-2",
+    logoSize: "w-32 h-16 sm:w-40 sm:h-20",
+    borderColor: "border-[#39FF14]/40", // Green tint
+    containerClass: "grid gap-6 justify-center",
+  },
+  refreshment: {
+    label: "REFRESHMENT PARTNERS",
+    gridCols: "grid-cols-1 sm:grid-cols-3",
+    logoSize: "w-28 h-14 sm:w-36 sm:h-18",
+    borderColor: "border-[#FF8C00]/40", // Orange tint
+    containerClass: "grid gap-6 justify-center",
   },
   community: {
     label: "COMMUNITY PARTNERS",
-    gridCols: "grid-cols-5",
-    logoSize: "w-20 h-10",
-    borderColor: "border-accent",
+    gridCols: "grid-cols-2 sm:grid-cols-3 md:grid-cols-5",
+    logoSize: "w-24 h-12 sm:w-28 sm:h-14",
+    borderColor: "border-white/20",
+    containerClass: "grid gap-4 justify-center",
   },
 };
 
@@ -76,12 +90,6 @@ export default function SponsorsSection() {
       ref={ref}
       className="relative py-24 lg:pt-[100px] lg:pb-32 overflow-hidden"
     >
-      {/* Background */}
-      {/* <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-3xl" />
-      </div> */}
-
       <div className="container mx-auto px-4 relative z-10">
         {/* Section Header */}
         <motion.div
@@ -99,72 +107,61 @@ export default function SponsorsSection() {
           </p>
         </motion.div>
 
-        {/* COMING SOON PLACEHOLDER */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={isInView ? { opacity: 1, scale: 1 } : {}}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="flex justify-center items-center py-12 lg:py-20"
-        >
-          <h1 className="font-barlow text-5xl md:text-7xl font-bold tracking-[0.15em] text-[#C1EAFF]/30 select-none uppercase">
-            COMING SOON
-          </h1>
-        </motion.div>
+        {/* Sponsor Tiers */}
+        <div className="space-y-12 sm:space-y-16 max-w-6xl mx-auto">
+          {Object.keys(sponsors).map((tier, tierIndex) => (
+            <motion.div
+              key={tier}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.5, delay: tierIndex * 0.1 }}
+              className="flex flex-col items-center"
+            >
+              <h3 className="font-barlow text-sm sm:text-base md:text-lg font-bold text-[#C1EAFF]/70 tracking-[0.25em] mb-6 sm:mb-8 text-center uppercase relative inline-block">
+                {tierConfig[tier].label}
+                {/* Decorative underline */}
+                <span className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1/2 h-[1px] bg-gradient-to-r from-transparent via-[#C1EAFF]/30 to-transparent"></span>
+              </h3>
 
-        {/* Sponsor Tiers (Commented Out for now) */}
-        {/* <div className="space-y-16">
-          {(Object.keys(sponsors) as Array<keyof typeof sponsors>).map(
-            (tier, tierIndex) => (
-              <motion.div
-                key={tier}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ duration: 0.5, delay: tierIndex * 0.1 }}
-              >
-                <h3 className="font-primary text-xl md:text-2xl font-semibold text-center mb-8 text-foreground">
-                  {tierConfig[tier].label}
-                </h3>
-
-                <div
-                  className={`grid ${tierConfig[tier].gridCols} gap-4 md:gap-6 max-w-4xl mx-auto justify-items-center`}
-                >
-                  {sponsors[tier].map((sponsor, index) => (
-                    <motion.div
-                      key={sponsor.name}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                      transition={{
-                        duration: 0.4,
-                        delay: tierIndex * 0.1 + index * 0.05,
-                      }}
-                      whileHover={{ scale: 1.05, y: -5 }}
-                      className={`glass-card rounded-xl p-4 flex items-center justify-center hover:border-primary/50 transition-all duration-300 ${tierConfig[tier].logoSize}`}
-                    >
-                      {sponsor.placeholder ? (
-                        <div className="text-center">
-                          <div className={`${tierConfig[tier].borderColor} border-2 border-dashed rounded-lg w-full h-full flex items-center justify-center p-2`}>
-                            <span className="font-body text-xs text-muted-foreground">
-                              {sponsor.name}
-                            </span>
-                          </div>
+              <div className={`${tierConfig[tier].containerClass} ${tierConfig[tier].gridCols} w-full`}>
+                {sponsors[tier].map((sponsor, index) => (
+                  <motion.div
+                    key={sponsor.name}
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{
+                      duration: 0.4,
+                      delay: tierIndex * 0.1 + index * 0.05,
+                    }}
+                    whileHover={{ scale: 1.05, y: -5 }}
+                    className={`
+                      glass-card rounded-xl p-4 flex items-center justify-center 
+                      transition-all duration-300 border border-white/5 bg-white/[0.02]
+                      hover:bg-white/[0.05] hover:border-white/20 hover:shadow-[0_0_15px_rgba(255,255,255,0.05)]
+                      ${tierConfig[tier].logoSize} mx-auto
+                    `}
+                  >
+                    {sponsor.placeholder ? (
+                      <div className="text-center w-full h-full">
+                        <div className={`w-full h-full flex items-center justify-center border border-dashed rounded-lg ${tierConfig[tier].borderColor}`}>
+                          <span className="font-barlow text-[10px] sm:text-xs text-white/40 tracking-wider uppercase text-center">
+                            {sponsor.name}
+                          </span>
                         </div>
-                      ) : (
-                        <img
-                          src={(sponsor as { name: string; logo?: string }).logo}
-                          alt={sponsor.name}
-                          className="max-w-full max-h-full object-contain"
-                        />
-                      )}
-                    </motion.div>
-                  ))}
-                </div>
-              </motion.div>
-            )
-          )}
-        </div> 
-        */}
-
-        {/* Become a Sponsor CTA */}
+                      </div>
+                    ) : (
+                      <img
+                        src={sponsor.logo}
+                        alt={sponsor.name}
+                        className="max-w-full max-h-full object-contain opacity-80 hover:opacity-100 transition-opacity"
+                      />
+                    )}
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
       
       </div>
     </section>
