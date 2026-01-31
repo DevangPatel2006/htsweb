@@ -9,7 +9,8 @@ import {
   Trophy, 
   Medal, 
   Award,
-  CheckCircle2
+  CheckCircle2,
+  Ticket // Added for Vouchers icon
 } from "lucide-react";
 
 const tracks = [
@@ -51,6 +52,12 @@ const tracks = [
     id: "thinkx",
     name: "THINK.X",
     title: "THE COLLECTOR BID",
+    trackBenefits: [
+      "CERTIFICATE OF PARTICIPATION",
+      "SNACKS",
+      "NETWORKING ACCESS",
+      "MENTORSHIP OPPORTUNITY"
+    ],
     prizes: [
       { position: "1st", reward: "₹1000", extra: "+ Mentorship" },
       { position: "2nd", reward: "₹500", extra: "+ Mentorship" },
@@ -112,11 +119,36 @@ export default function PrizesSection() {
   const currentTrack = tracks.find((t) => t.id === activeTrack) || tracks[0];
   const activeStyle = getStyles(activeTrack);
 
+  const currentParticipantBenefits = (() => {
+    const noFoodTracks = ["BATTLE OF KNOWHERE", "SOVEREIGN'S GAMBIT", "COSMIC LENS"];
+    const isLastThree = noFoodTracks.includes(activeTrack);
+
+    let benefits = participantBenefits.filter((benefit) => {
+      if (benefit.text === "Meals / Snacks" && isLastThree) return false;
+      return true;
+    });
+
+    benefits = benefits.map((benefit) => {
+      if (benefit.text === "Meals / Snacks" && activeTrack === "thinkx") {
+        return { ...benefit, text: "Snacks" };
+      }
+      if (benefit.text === "Participation Certificate" && isLastThree) {
+        return { ...benefit, text: "E-Certificate" };
+      }
+      return benefit;
+    });
+
+    if (isLastThree) {
+      benefits.push({ text: "Gift Vouchers", icon: Ticket });
+    }
+
+    return benefits;
+  })();
+
   return (
     <section id="prizes" ref={ref} className="relative py-10 md:py-24 overflow-hidden uppercase">
       <div className="container mx-auto px-4 relative z-10">
         
-        {/* Section Header */}
         <motion.div initial={{ opacity: 0, y: 30 }} animate={isInView ? { opacity: 1, y: 0 } : {}} className="text-center mb-8 md:mb-12">
           <h2 className="font-display text-2xl sm:text-3xl lg:text-[44px] font-bold mb-2">
             <span className="text-gradient-gold">GALACTIC BOUNTIES</span>
@@ -126,12 +158,10 @@ export default function PrizesSection() {
           </p>
         </motion.div>
 
-        {/* Main Content */}
         <div className="max-w-5xl mx-auto">
           <div className={`glass-card rounded-2xl sm:rounded-3xl border overflow-hidden transition-colors duration-500 ${activeStyle.borderColor}`}>
             <div className="flex flex-col md:flex-row">
               
-              {/* Sidebar Tabs */}
               <div className={`md:w-[30%] border-b md:border-b-0 md:border-r bg-card/40 ${activeStyle.borderColor}`}>
                 <div className="p-3 sm:p-4 md:p-6">
                   <div className="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible pb-2 md:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:'none'] [scrollbar-width:'none']">
@@ -155,13 +185,11 @@ export default function PrizesSection() {
                 </div>
               </div>
 
-              {/* Prize Details Panel */}
               <div className={`md:w-[70%] p-4 sm:p-6 md:p-10 transition-colors duration-500 ${activeStyle.rightPanelBg}`}>
                 <motion.div key={currentTrack.id} initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                   
                   <h3 className={`font-display text-[10px] sm:text-xs md:text-base font-bold mb-6 sm:mb-8 tracking-widest ${activeStyle.activeText} flex flex-col md:flex-row md:items-baseline gap-2`}>
                     {currentTrack.title}
-                    {/* ADDED: Logic to show + E-CERTIFICATE (or + CERTIFICATE for thinkx) */}
                     {!["hackx", "buildx"].includes(currentTrack.id) && (
                       <span className={`font-barlow text-[9px] sm:text-[10px] tracking-wider ${activeStyle.activeText}`}>
                         {currentTrack.id === "thinkx" ? "+ CERTIFICATE" : "+ E-CERTIFICATE"}
@@ -171,7 +199,6 @@ export default function PrizesSection() {
 
                   {currentTrack.trackBenefits ? (
                     <div className="flex flex-col lg:flex-row gap-4 sm:gap-6">
-                      {/* Left: Prize Money */}
                       <div className="flex-1 flex flex-col gap-3 sm:gap-4">
                         {currentTrack.prizes.map((prize, index) => {
                           const iconClass = "w-6 h-6 sm:w-8 sm:h-8 text-white";
@@ -197,10 +224,9 @@ export default function PrizesSection() {
                         })}
                       </div>
 
-                      {/* Right: Benefits List */}
                       <div className="lg:w-[220px] shrink-0 flex flex-col rounded-xl bg-white/[0.03] border border-white/5 p-4 sm:p-5">
                           <h4 className="font-display text-[9px] sm:text-[10px] font-bold text-white/60 mb-4 sm:mb-5 tracking-widest border-b border-white/10 pb-2">
-                           INCLUDES
+                            INCLUDES
                           </h4>
                           <ul className="space-y-4 sm:space-y-5">
                            {currentTrack.trackBenefits.map((benefit, i) => {
@@ -235,7 +261,6 @@ export default function PrizesSection() {
                       </div>
                     </div>
                   ) : (
-                    /* Standard Grid for other tracks */
                     <div className="flex flex-col sm:grid sm:grid-cols-3 gap-3 sm:gap-4">
                       {currentTrack.prizes.map((prize, index) => {
                         const hasExtra = !!prize.extra;
@@ -286,13 +311,12 @@ export default function PrizesSection() {
           </div>
         </div>
 
-        {/* Participant Benefits Footer */}
         <div className="mt-8 md:mt-12 glass-card rounded-xl sm:rounded-2xl p-5 sm:p-6 md:p-8 max-w-5xl mx-auto border border-white/5 bg-white/[0.02]">
           <h3 className="font-primary text-[8px] sm:text-[9px] md:text-xs font-bold text-center mb-6 sm:mb-8 tracking-[0.2em] sm:tracking-[0.3em] text-white/70">
             EVERY PARTICIPANT RECEIVES
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-5 sm:gap-6 md:gap-4">
-            {participantBenefits.map((benefit, index) => {
+            {currentParticipantBenefits.map((benefit, index) => {
               const Icon = benefit.icon;
               return (
                 <div key={index} className="flex flex-col items-center text-center gap-2.5 sm:gap-3">
