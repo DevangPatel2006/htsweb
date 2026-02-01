@@ -76,6 +76,41 @@ const day2Events = [
   },
 ];
 
+// --- STYLES CONFIGURATION ---
+const getStyles = (id) => {
+  const styles = {
+    hackx: { borderColor: "border-[#00f0ff]/60", activeText: "text-[#00f0ff]", activeBtnBg: "bg-[#00f0ff]/10", rightPanelBg: "bg-[rgba(0,240,255,0.05)]", hover: "hover:text-[#00f0ff] hover:bg-[#00f0ff]/10" },
+    buildx: { borderColor: "border-[#FF8C00]/60", activeText: "text-[#FF8C00]", activeBtnBg: "bg-[#FF8C00]/10", rightPanelBg: "bg-[rgba(255,140,0,0.05)]", hover: "hover:text-[#FF8C00] hover:bg-[#FF8C00]/10" },
+    thinkx: { borderColor: "border-[#FF003C]/60", activeText: "text-[#FF003C]", activeBtnBg: "bg-[#FF003C]/10", rightPanelBg: "bg-[rgba(255,0,60,0.05)]", hover: "hover:text-[#FF003C] hover:bg-[#FF003C]/10" },
+    "BATTLE OF KNOWHERE": { borderColor: "border-[#A020F0]/60", activeText: "text-[#A020F0]", activeBtnBg: "bg-[#A020F0]/10", rightPanelBg: "bg-[rgba(160,32,240,0.05)]", hover: "hover:text-[#A020F0] hover:bg-[#A020F0]/10" },
+    "SOVEREIGN'S GAMBIT": { borderColor: "border-[#FFD700]/60", activeText: "text-[#FFD700]", activeBtnBg: "bg-[#FFD700]/10", rightPanelBg: "bg-[rgba(255,215,0,0.05)]", hover: "hover:text-[#FFD700] hover:bg-[#FFD700]/10" },
+    "COSMIC LENS": { borderColor: "border-[#39FF14]/60", activeText: "text-[#39FF14]", activeBtnBg: "bg-[#39FF14]/10", rightPanelBg: "bg-[rgba(57,255,20,0.05)]", hover: "hover:text-[#39FF14] hover:bg-[#39FF14]/10" },
+  };
+  return styles[id] || styles.hackx;
+};
+
+// --- HELPER TO COLORIZE TEXT ---
+const highlightText = (text) => {
+  // Regex to match keywords. Note: ( ) capturing group keeps the delimiter in the result array
+  const regex = /(Hack\.X|Build\.X|Think\.X|BGMI|FreeFire)/g;
+  
+  return text.split(regex).map((part, index) => {
+    let colorClass = "";
+    
+    // Map keywords to specific style keys
+    if (part === "Hack.X") colorClass = getStyles("hackx").activeText;
+    else if (part === "Build.X") colorClass = getStyles("buildx").activeText;
+    else if (part === "Think.X") colorClass = getStyles("thinkx").activeText;
+    // Mapping games to 'BATTLE OF KNOWHERE' (Purple)
+    else if (part === "BGMI" || part === "FreeFire") colorClass = getStyles("BATTLE OF KNOWHERE").activeText;
+    
+    if (colorClass) {
+      return <span key={index} className={`font-bold ${colorClass}`}>{part}</span>;
+    }
+    return part;
+  });
+};
+
 export default function TimelineSection() {
   const [activeDay, setActiveDay] = useState(1);
 
@@ -104,7 +139,6 @@ export default function TimelineSection() {
         <div className="flex justify-center gap-8 mb-8 w-fit mx-auto px-8">
           <button
             onClick={() => setActiveDay(1)}
-            // Update: Changed tracking-wider to tracking-normal
             className={`relative pb-3 text-lg md:text-xl font-barlow tracking-normal transition-all duration-300 ${
               activeDay === 1
                 ? "text-primary border-b-2 border-primary drop-shadow-[0_0_8px_rgba(var(--primary),0.6)]" 
@@ -116,7 +150,6 @@ export default function TimelineSection() {
           
           <button
             onClick={() => setActiveDay(2)}
-            // Update: Changed tracking-wider to tracking-normal
             className={`relative pb-3 text-lg md:text-xl font-barlow tracking-normal transition-all duration-300 ${
               activeDay === 2
                 ? "text-primary border-b-2 border-primary drop-shadow-[0_0_8px_rgba(var(--primary),0.6)]" 
@@ -133,11 +166,6 @@ export default function TimelineSection() {
             {/* Day Header */}
             <div className="flex items-center justify-between mb-6 pb-4 border-b border-border/30">
               <div>
-                {/* CHANGE HERE: 
-                  1. Added 'flex items-center gap-1'.
-                  2. 'gap-1' controls the space. You can change to gap-2 (wider) or gap-0.5 (tighter).
-                  3. Wrapped "Day" and activeDay in spans.
-                */}
                 <h3 className="font-display text-2xl md:text-3xl text-gradient-gold gap-5 flex items-center gap-1">
                   <span>Day </span>
                   <span> {activeDay}</span>
@@ -176,11 +204,13 @@ export default function TimelineSection() {
 
                   {/* Content */}
                   <div className="flex-1">
+                    {/* Applied highlightText to title for consistency if keywords appear there too, or just keep it simple */}
                     <h4 className="font-primary text-base md:text-lg font-semibold text-foreground mb-1">
-                      {event.title}
+                      {highlightText(event.title)}
                     </h4>
+                    {/* UPDATED: Calling highlightText function here */}
                     <p className="font-body text-sm text-muted-foreground">
-                      {event.description}
+                      {highlightText(event.description)}
                     </p>
                   </div>
                 </div>
