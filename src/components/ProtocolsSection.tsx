@@ -37,7 +37,7 @@ const protocols = [
     id: 4,
     trackSvg: gameSvg,
     initiateLink: "https://unstop.com/p/battle-of-nowhere-esports-tournament-government-engineering-college-gec-gandhinagar-1628523",
-    learnMoreLink: "/learn/BATTLE OF KNOWHERE OFFICIAL RULEBOOK & CODE OF CONDUCT (5)_compressed.pdf",
+    learnMoreLink: "https://www.hackthespring.in/#hero",
   },
   {
     id: 5,
@@ -49,7 +49,7 @@ const protocols = [
     id: 6,
     trackSvg: lastSvg,
     initiateLink: "https://unstop.com/p/cosmic-lens-government-engineering-college-gandhinagar-gujarat-1628652",
-    learnMoreLink: "/learn/COSMIC LENS OFFICIAL RULEBOOK & CODE OF CONDUCT (7)_compressed.pdf",
+    learnMoreLink: "https://www.hackthespring.in/#hero",
   },
 ];
 
