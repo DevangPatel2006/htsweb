@@ -66,7 +66,7 @@ const day2Events = [
     icon: Clock,
     time: "01:30 PM",
     title: "ENDGAME PROTOCOLS",
-    description: "1:30 PM Arena Unlock: The Grandmaster opens lobbies for BGMI & FreeFire. 2:00 PM Hack.X [Final Round]: Surviving teams begin final code polishing.",
+    description: "1:30 PM Arena Unlock: The Grandmaster opens lobbies for BGMI & FreeFire Max. 2:00 PM Hack.X [Final Round]: Surviving teams begin final code polishing.",
   },
   {
     icon: Trophy,

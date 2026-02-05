@@ -73,8 +73,8 @@ const tracks = [
     title: "RAVAGER MERCENARY PAY",
     // Changed to Winner / Runner Up. Kept to 2 boxes, added BGMI/FF to extra tag.
     prizes: [
-      { position: "Winner", reward: "₹1000", extra: "BGMI / Free Fire" },
-      { position: "Runner Up", reward: "₹500", extra: "BGMI / Free Fire" },
+      { position: "Winner", reward: "₹1000", extra: "BGMI / Free Fire Max" },
+      { position: "Runner Up", reward: "₹500", extra: "BGMI / Free Fire Max" },
     ],
   },
   {
