@@ -22,7 +22,7 @@ const tracks = [
     name: "HACK.X",
     title: "NOVA CORPS TREASURY",
     trackBenefits: [
-      "Internship Opportunity",
+      "Internship Opportunity ",
       "2 Days Breakfast & Lunch",
       "Gift Vouchers",
       "Networking Access",
@@ -244,20 +244,26 @@ export default function PrizesSection() {
                                <li key={i} className="flex items-center gap-2">
                                  <CheckCircle2 className={`w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 ${isInternship ? "text-[#FFD700]" : activeStyle.activeText}`} />
                                  {isInternship ? (
-                                   <motion.span
-                                     className="font-barlow text-[12px] sm:text-[14px] leading-none font-medium tracking-wide whitespace-nowrap drop-shadow-[0_0_10px_rgba(255,215,0,0.6)]"
-                                     style={{
-                                       backgroundImage: "linear-gradient(90deg, #FFD700 0%, #FFFFFF 50%, #FFD700 100%)",
-                                       backgroundSize: "200% auto",
-                                       backgroundClip: "text",
-                                       WebkitBackgroundClip: "text",
-                                       color: "transparent",
-                                     }}
-                                     animate={{ backgroundPosition: ["0% 50%", "-200% 50%"] }}
-                                     transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-                                   >
-                                     {benefit}
-                                   </motion.span>
+                                   <div className="flex flex-wrap items-baseline gap-2">
+                                       <motion.span
+                                         className="font-barlow text-[12px] sm:text-[14px] leading-none font-medium tracking-wide whitespace-nowrap drop-shadow-[0_0_10px_rgba(255,215,0,0.6)]"
+                                         style={{
+                                           backgroundImage: "linear-gradient(90deg, #FFD700 0%, #FFFFFF 50%, #FFD700 100%)",
+                                           backgroundSize: "200% auto",
+                                           backgroundClip: "text",
+                                           WebkitBackgroundClip: "text",
+                                           color: "transparent",
+                                         }}
+                                         animate={{ backgroundPosition: ["0% 50%", "-200% 50%"] }}
+                                         transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+                                       >
+                                         {benefit}
+                                       </motion.span>
+                                       {/* Theme matching text added here */}
+                                       <span className={`font-barlow text-[8px] sm:text-[9px] font-bold tracking-widest uppercase opacity-80 ${activeStyle.activeText}`}>
+                                         ( Only for Sponsor Track )
+                                       </span>
+                                   </div>
                                  ) : (
                                    <span className="font-barlow text-[12px] sm:text-[14px] leading-none font-medium tracking-wide whitespace-nowrap text-white/80">
                                      {benefit}

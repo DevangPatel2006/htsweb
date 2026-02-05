@@ -30,7 +30,7 @@ export default function TracksSection() {
             FOUR FREQUENCIES.  <br className="block sm:hidden" />ONE OBJECTIVE.  <br className="block sm:hidden" />TUNE IN TO YOUR MISSION.
           </p>
           <p className="font-open text-cyan-400 text-xs lg:text-sm tracking-widest">
-            HACK.X [SOFTWARE HACKATHON]
+            Note: Problem statements will be released shortly before the event date—stay tuned to our socials and website!
           </p>
         </motion.div>
 
