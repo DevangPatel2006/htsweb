@@ -6,6 +6,9 @@ import { useRef } from "react";
 import unstopLogo from "../assets/sponsors/unstop-logo.svg";
 import petpoojaLogo from "../assets/sponsors/petpooja.png";
 import arenaLogo from "../assets/sponsors/arena.png";
+// --- NEW IMPORT ADDED HERE ---
+import pv2Logo from "../assets/sponsors/pv 2.png"; 
+// -----------------------------
 import interLogo from "../assets/sponsors/inter.png";
 import xyzLogo from "../assets/sponsors/xyz_website.png";
 import aparaLogo from "../assets/sponsors/apara_website.png";
@@ -17,7 +20,11 @@ import gecgnLogo from "../assets/sponsors/GECGN update Logo.png";
 const sponsors = {
   poweredBy: [{ name: "Petpooja", logo: petpoojaLogo }],
   platform: [{ name: "Unstop", logo: unstopLogo }],
-  associate: [{ name: "Arena Animation", logo: arenaLogo }],
+  associate: [
+    { name: "Arena Animation", logo: arenaLogo },
+    // --- NEW SPONSOR ADDED HERE ---
+    { name: "Preyish Sir", logo: pv2Logo },
+  ],
   technology: [
     { name: "Inter", logo: interLogo },
     { name: "XYZ", logo: xyzLogo },
